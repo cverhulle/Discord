@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SharedModule } from '../../../shared/shared.module';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login-homepage',
   imports: [
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
     
   ],
   templateUrl: './login-homepage.component.html',

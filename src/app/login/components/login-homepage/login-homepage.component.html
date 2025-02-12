@@ -1,7 +1,7 @@
-<mat-card [formGroup]="loginForm" >
+<mat-card [formGroup]="loginForm" class="login-form">
 
     <mat-card-title>
-        <h2> Connexion à Discord</h2>
+        <h2 class="white-text"> Connexion à Discord</h2>
     </mat-card-title>
 
     <mat-form-field>
@@ -20,6 +20,7 @@
     </mat-card-actions>
 
 
-
-
+    <mat-card-content class="white-text">
+        Pas encore inscrit ? <a routerLink="/register"> Inscrivez-vous !</a>
+    </mat-card-content>
 </mat-card>
