@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SharedModule } from '../../../shared/shared.module';
 
 @Component({
@@ -21,8 +21,8 @@ export class LoginHomepageComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: [null],
-      password: [null]
+      email: [null, Validators.required],
+      password: [null, Validators.required]
     })
 
 
@@ -32,5 +32,6 @@ export class LoginHomepageComponent implements OnInit {
 
   onSubmitForm() {
     console.log(this.loginForm.value)
+    this.loginForm.reset()
   }
 }

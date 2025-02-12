@@ -16,7 +16,7 @@
 
 
     <mat-card-actions>
-        <button color="primary" (click)="onSubmitForm()"> Connexion </button>
+        <button color="primary" (click)="onSubmitForm()" [disabled]="loginForm.invalid"> Connexion </button>
     </mat-card-actions>
 
 
