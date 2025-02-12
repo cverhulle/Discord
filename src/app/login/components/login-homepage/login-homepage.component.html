@@ -1,1 +1,25 @@
-<p>login-homepage works!</p>
+<mat-card [formGroup]="loginForm" >
+
+    <mat-card-title>
+        <h2> Connexion à Discord</h2>
+    </mat-card-title>
+
+    <mat-form-field>
+        <mat-label>Adresse mail</mat-label>
+        <input type="text" matInput formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Mot de passe</mat-label>
+        <input type="password" matInput formControlName="password">
+    </mat-form-field>
+
+
+    <mat-card-actions>
+        <button color="primary" (click)="onSubmitForm()"> Connexion </button>
+    </mat-card-actions>
+
+
+
+
+</mat-card>

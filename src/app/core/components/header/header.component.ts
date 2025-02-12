@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { CoreModule } from '../../core.module';
 import { RouterLink } from '@angular/router';
+import { SharedModule } from '../../../shared/shared.module';
 
 @Component({
   selector: 'app-header',
   imports: [
-    CoreModule,
-    RouterLink
+    SharedModule,
+    RouterLink,
+    
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
