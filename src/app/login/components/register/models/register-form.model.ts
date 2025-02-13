@@ -3,9 +3,14 @@ export class RegisterForm {
     firstName: string,
     lastName: string,
   }
-  pseudo!: string
+  email!: string
   
   loginInfo!: {
-    email
+    username: string,
+    password: string,
+    confirmPassword: string
+  }
 
+  image!: string
 }
+
