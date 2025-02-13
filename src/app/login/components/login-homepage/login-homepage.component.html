@@ -1,26 +1,31 @@
 <mat-card [formGroup]="loginForm" class="login-form">
 
+    <!-- Titre de la page -->
     <mat-card-title>
         <h2 class="white-text"> Connexion à Discord</h2>
     </mat-card-title>
 
+    <!-- Champ de l'adresse mail -->
     <mat-form-field>
         <mat-label>Adresse mail</mat-label>
         <input type="text" matInput formControlName="email">
     </mat-form-field>
 
+    <!-- Champ du mot de passe -->
     <mat-form-field>
         <mat-label>Mot de passe</mat-label>
         <input type="password" matInput formControlName="password">
     </mat-form-field>
 
-
+    <!-- Bouton pour envoyer le formulaire -->
     <mat-card-actions>
         <button color="primary" (click)="onSubmitForm()" [disabled]="loginForm.invalid"> Connexion </button>
     </mat-card-actions>
 
-
+    <!-- Lien pour s'inscrire (si pas encore de compte) -->
     <mat-card-content class="white-text">
         Pas encore inscrit ? <a routerLink="register"> Inscrivez-vous !</a>
     </mat-card-content>
+
+
 </mat-card>

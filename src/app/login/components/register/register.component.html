@@ -1,1 +1,75 @@
-<p>register works!</p>
+<mat-card>
+
+    <mat-card-title class="form-title"> Création de votre compte Discord </mat-card-title>
+
+
+    <mat-card> 
+    <!-- Prénom et nom -->
+        <mat-card-subtitle> Informations personnelles </mat-card-subtitle>
+            <div class="form-row">
+                <mat-form-field appearance="fill" class="form-row-first-name">
+                    <mat-label> Prénom </mat-label>
+                    <input type="text" matInput> 
+                </mat-form-field>
+            
+            
+                <mat-form-field appearance="fill">
+                    <mat-label> Nom </mat-label>
+                    <input type="text" matInput> 
+                </mat-form-field>
+            </div>
+
+    </mat-card>
+
+
+    <!-- Pseudo -->
+    <mat-card>
+
+        <mat-card-subtitle> Pseudo </mat-card-subtitle>
+
+
+        <mat-form-field appearance="fill">
+            <mat-label> Pseudo </mat-label>
+            <input type="text" matInput> 
+        </mat-form-field>
+    </mat-card>
+
+
+
+
+    <!-- Email et mot de passe -->
+     <mat-card>
+
+        <mat-card-subtitle> Paramètres de connexion </mat-card-subtitle>
+
+
+        
+     </mat-card>
+
+
+
+
+     <!-- Image de profil -->
+      <mat-card>
+
+        <mat-card-subtitle> Image de profil </mat-card-subtitle>
+
+
+        
+      </mat-card>
+
+
+
+    
+    <!-- Bouton d'envoi-->
+    <mat-card-actions>
+        <button color="primary" (click)="onSubmitForm()"> Enregistrer </button>
+    </mat-card-actions>
+
+
+
+
+
+
+
+</mat-card>
