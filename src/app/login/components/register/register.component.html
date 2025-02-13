@@ -10,12 +10,14 @@
                 <mat-form-field appearance="fill" class="form-row-margin">
                     <mat-label> Prénom </mat-label>
                     <input type="text" matInput formControlName="firstName"> 
+                    <mat-error> Ce champ est requis </mat-error>
                 </mat-form-field>
             
             
                 <mat-form-field appearance="fill">
                     <mat-label> Nom </mat-label>
                     <input type="text" matInput formControlName="lastName"> 
+                    <mat-error> Ce champ est requis </mat-error>
                 </mat-form-field>
             </div>
 
@@ -30,12 +32,14 @@
             <mat-form-field appearance="fill" class="form-row-margin">
                 <mat-label> Email </mat-label>
                 <input type="text" matInput formControlName="email"> 
+                <mat-error> {{ getFormControlErrorText(email) }} </mat-error>
             </mat-form-field>
         
         
             <mat-form-field appearance="fill">
                 <mat-label> Confirmer l'email </mat-label>
                 <input type="text" matInput formControlName="confirmEmail"> 
+                <mat-error> {{ getFormControlErrorText(confirmEmail) }} </mat-error>
             </mat-form-field>
         </div>
 
@@ -52,6 +56,7 @@
             <mat-form-field appearance="fill" class="form-row-margin">
                 <mat-label> Username </mat-label>
                 <input type="text" matInput formControlName="username"> 
+                <mat-error> {{ getFormControlErrorText(username) }} </mat-error>
             </mat-form-field>
 
 
@@ -59,12 +64,15 @@
                 <mat-form-field appearance="fill" class="form-row-margin">
                     <mat-label> Mot de passe </mat-label>
                     <input type="text" matInput formControlName="password"> 
+                    <mat-error> {{ getFormControlErrorText(password) }} </mat-error>
+                    
                 </mat-form-field>
             
             
                 <mat-form-field appearance="fill">
                     <mat-label> Confirmer le mot de passe </mat-label>
                     <input type="text" matInput formControlName="confirmPassword"> 
+                    <mat-error> {{ getFormControlErrorText(confirmPassword) }} </mat-error>
                 </mat-form-field>
             </div>
 
@@ -89,7 +97,7 @@
     
     <!-- Bouton d'envoi-->
     <mat-card-actions>
-        <button mat-flat-button (click)="onSubmitForm()"> Enregistrer </button>
+        <button mat-flat-button (click)="onSubmitForm()" [disabled]="registerForm.invalid"> Enregistrer </button>
     </mat-card-actions>
 
 
