@@ -4,6 +4,7 @@ import { SharedModule } from '../../../shared/shared.module';
 import { RegisterFormService } from './services/register-form.service';
 import { tap } from 'rxjs';
 import { NgIf } from '@angular/common';
+import { confirmEqualValidator } from './validators/confirm-equal.validators';
 
 
 @Component({
@@ -62,6 +63,8 @@ export class RegisterComponent implements OnInit{
     this.emailForm = this.formBuilder.group({
       email: this.email,
       confirmEmail: this.confirmEmail
+    },{
+      validators: [confirmEqualValidator('email', 'confirmEmail')]
     })
 
     // Initialisation du login (username et password).
@@ -73,6 +76,8 @@ export class RegisterComponent implements OnInit{
       password: this.password,
       confirmPassword: this.confirmPassword
 
+    },{
+      validators: [confirmEqualValidator('password', 'confirmPassword')]
     })
 
     //Initialisation de l'image de profil.
