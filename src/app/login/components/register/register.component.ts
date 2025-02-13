@@ -37,12 +37,13 @@ export class RegisterComponent implements OnInit{
 
 
   private initFormControls(): void {
+    // Initialisation des informations personnelles.
     this.personalInfoForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
     })
 
-
+    // Initialisation de l'email.
     this.email = this.formBuilder.control('', [Validators.required]);
     this.confirmEmail = this.formBuilder.control('', [Validators.required]);
     this.emailForm = this.formBuilder.group({
@@ -50,7 +51,7 @@ export class RegisterComponent implements OnInit{
       confirmEmail: this.confirmEmail
     })
 
-
+    // Initialisation du login (username et password).
     this.username = this.formBuilder.control('', [Validators.required]);
     this.password = this.formBuilder.control('', [Validators.required]);
     this.confirmPassword = this.formBuilder.control('', [Validators.required]);
@@ -64,12 +65,20 @@ export class RegisterComponent implements OnInit{
   }
 
 
+
   private initRegisterForm(): void {
-    this.registerForm = this.formBuilder.group({})
+    this.registerForm = this.formBuilder.group({
+      personalInfo: this.personalInfoForm,
+      email: this.emailForm,
+      login: this.loginForm
+    })
   }
   
 
 
-  onSubmitForm() {}
+
+  onSubmitForm() {
+    console.log(this.registerForm.value);
+  }
 
 }
