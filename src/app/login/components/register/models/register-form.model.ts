@@ -3,7 +3,10 @@ export class RegisterForm {
     firstName: string,
     lastName: string,
   }
-  email!: string
+  emailInfo!: {
+    email: string,
+    confirmEmail: string
+  }
   
   loginInfo!: {
     username: string,
