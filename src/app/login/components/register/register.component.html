@@ -87,7 +87,11 @@
       <mat-card>
 
         <mat-card-subtitle> Image de profil </mat-card-subtitle>
-
+            <mat-form-field appearance="fill">
+                <mat-label> Image </mat-label>
+                <input type="text" matInput formControlName="image"> 
+                
+            </mat-form-field>
 
         
       </mat-card>
@@ -97,8 +101,10 @@
     
     <!-- Bouton d'envoi-->
     <mat-card-actions>
-        <button mat-flat-button (click)="onSubmitForm()" [disabled]="registerForm.invalid"> Enregistrer </button>
+        <button mat-flat-button (click)="onSubmitForm()" [disabled]="registerForm.invalid" [disabled]="loading"> Enregistrer </button>
     </mat-card-actions>
+
+    <mat-spinner *ngIf="loading"></mat-spinner>
 
 
 

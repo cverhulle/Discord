@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SharedModule } from '../../../shared/shared.module';
+import { RegisterFormService } from './services/register-form.service';
+import { tap } from 'rxjs';
+import { NgIf } from '@angular/common';
 
 
 @Component({
   selector: 'app-register',
   imports: [
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgIf
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
@@ -15,6 +19,7 @@ import { SharedModule } from '../../../shared/shared.module';
 
 export class RegisterComponent implements OnInit{
 
+  // Variables pour le formulaire
   registerForm! : FormGroup;
   personalInfoForm! : FormGroup;
   emailForm!: FormGroup;
@@ -24,9 +29,16 @@ export class RegisterComponent implements OnInit{
   username! : FormControl;
   password! : FormControl;
   confirmPassword! : FormControl;
+  image!: FormControl;
+
+
+  //Variable pour le chargement
+  loading = false;
   
 
-  constructor(private formBuilder : FormBuilder) {}
+  constructor(private formBuilder : FormBuilder,
+              private registerFormService : RegisterFormService
+  ) {}
 
   
   ngOnInit() {
@@ -54,14 +66,17 @@ export class RegisterComponent implements OnInit{
 
     // Initialisation du login (username et password).
     this.username = this.formBuilder.control('', [Validators.required, Validators.minLength(7)]);
-    this.password = this.formBuilder.control('', [Validators.required, Validators.minLength(7)]);
-    this.confirmPassword = this.formBuilder.control('', [Validators.required, Validators.minLength(7)]);
+    this.password = this.formBuilder.control('', [Validators.required]);
+    this.confirmPassword = this.formBuilder.control('', [Validators.required]);
     this.loginForm = this.formBuilder.group({
       username: this.username,
       password: this.password,
       confirmPassword: this.confirmPassword
 
     })
+
+    //Initialisation de l'image de profil.
+    this.image = this.formBuilder.control('');
     
   }
 
@@ -72,12 +87,14 @@ export class RegisterComponent implements OnInit{
     this.registerForm = this.formBuilder.group({
       personalInfo: this.personalInfoForm,
       email: this.emailForm,
-      login: this.loginForm
+      login: this.loginForm,
+      image: this.image
     })
   }
 
 
   getFormControlErrorText( ctrl: AbstractControl) : string {
+    // Affiche un message d'erreur en fonction de la validation du champ.
     if (ctrl.hasError('required')) {
       return 'Ce champ est requis';
     } else if (ctrl.hasError('email')) {
@@ -93,7 +110,22 @@ export class RegisterComponent implements OnInit{
 
 
   onSubmitForm() {
-    console.log(this.registerForm.value);
+    // Envoie du formulaire d'inscription.
+
+    this.loading = true;
+    this.registerFormService.saveUserInfo(this.registerForm.value).pipe(
+      tap(saved => {
+        this.loading = false;
+        if (saved) {
+          this.registerForm.reset();
+        } else {
+          console.log("Erreur lors de l\'enregistrement de l\'utilisateur");
+        }
+      })
+    ).subscribe();
   }
 
+
+
 }
+
