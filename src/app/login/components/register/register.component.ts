@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SharedModule } from '../../../shared/shared.module';
 import { RegisterFormService } from './services/register-form.service';
-import { tap } from 'rxjs';
-import { NgIf } from '@angular/common';
+import { map, Observable, tap } from 'rxjs';
+import { AsyncPipe, NgIf } from '@angular/common';
 import { confirmEqualValidator } from './validators/confirm-equal.validators';
 
 
@@ -12,7 +12,8 @@ import { confirmEqualValidator } from './validators/confirm-equal.validators';
   imports: [
     SharedModule,
     ReactiveFormsModule,
-    NgIf
+    NgIf,
+    AsyncPipe
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
@@ -35,6 +36,10 @@ export class RegisterComponent implements OnInit{
 
   //Variable pour le chargement
   loading = false;
+
+  //Variables pour les messages d'erreur
+  showEmailError$!: Observable<boolean>;
+  showPasswordError$!: Observable<boolean>;
   
 
   constructor(private formBuilder : FormBuilder,
@@ -45,6 +50,7 @@ export class RegisterComponent implements OnInit{
   ngOnInit() {
     this.initFormControls();
     this.initRegisterForm();
+    this.initObservables()
     
   }
 
@@ -64,7 +70,8 @@ export class RegisterComponent implements OnInit{
       email: this.email,
       confirmEmail: this.confirmEmail
     },{
-      validators: [confirmEqualValidator('email', 'confirmEmail')]
+      validators: [confirmEqualValidator('email', 'confirmEmail')],
+      updateOn: 'blur'
     })
 
     // Initialisation du login (username et password).
@@ -77,7 +84,8 @@ export class RegisterComponent implements OnInit{
       confirmPassword: this.confirmPassword
 
     },{
-      validators: [confirmEqualValidator('password', 'confirmPassword')]
+      validators: [confirmEqualValidator('password', 'confirmPassword')],
+      updateOn: 'blur'
     })
 
     //Initialisation de l'image de profil.
@@ -96,6 +104,31 @@ export class RegisterComponent implements OnInit{
       image: this.image
     })
   }
+
+
+
+  private initObservables(): void {
+    this.showEmailError$ = this.emailForm.statusChanges.pipe(
+      map(status => status === 'INVALID' &&
+          this.email.value &&
+          this.confirmEmail.value
+        )
+    )
+          
+          
+    this.showPasswordError$ = this.loginForm.statusChanges.pipe(
+      map(status => status === 'INVALID' &&
+          this.password.value &&
+          this.confirmPassword.value &&
+          this.loginForm.hasError('confirmEqual')  
+      )
+    )
+
+    
+
+  }
+
+
 
 
   getFormControlErrorText( ctrl: AbstractControl) : string {
