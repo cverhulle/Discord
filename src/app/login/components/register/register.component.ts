@@ -5,6 +5,7 @@ import { RegisterFormService } from './services/register-form.service';
 import { map, Observable, tap } from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { confirmEqualValidator } from './validators/confirm-equal.validators';
+import { correctEmailValidator } from './validators/correct-email.validator'; 
 
 
 @Component({
@@ -42,9 +43,12 @@ export class RegisterComponent implements OnInit{
   showPasswordError$!: Observable<boolean>;
   
 
+
   constructor(private formBuilder : FormBuilder,
               private registerFormService : RegisterFormService
   ) {}
+
+
 
   
   ngOnInit() {
@@ -53,6 +57,8 @@ export class RegisterComponent implements OnInit{
     this.initObservables()
     
   }
+
+
 
 
   private initFormControls(): void {
@@ -64,8 +70,8 @@ export class RegisterComponent implements OnInit{
     })
 
     // Initialisation de l'email.
-    this.email = this.formBuilder.control('', [Validators.required, Validators.email]);
-    this.confirmEmail = this.formBuilder.control('', [Validators.required, Validators.email]);
+    this.email = this.formBuilder.control('', [Validators.required, correctEmailValidator()]);
+    this.confirmEmail = this.formBuilder.control('', [Validators.required, correctEmailValidator()]);
     this.emailForm = this.formBuilder.group({
       email: this.email,
       confirmEmail: this.confirmEmail
@@ -111,7 +117,8 @@ export class RegisterComponent implements OnInit{
     this.showEmailError$ = this.emailForm.statusChanges.pipe(
       map(status => status === 'INVALID' &&
           this.email.value &&
-          this.confirmEmail.value
+          this.confirmEmail.value &&
+          this.emailForm.hasError('confirmEqual')  
         )
     )
           
@@ -135,8 +142,8 @@ export class RegisterComponent implements OnInit{
     // Affiche un message d'erreur en fonction de la validation du champ.
     if (ctrl.hasError('required')) {
       return 'Ce champ est requis';
-    } else if (ctrl.hasError('email')) {
-      return "L\'adresse email est invalide";
+    } else if (ctrl.hasError('correctEmail')) {
+      return "Ceci n'est pas un email valide";
     } else if (ctrl.hasError('minlength')) {
       return 'Ce champ doit contenir au moins 7 caractères';
     } else {
