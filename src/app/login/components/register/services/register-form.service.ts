@@ -10,7 +10,7 @@ export class RegisterFormService {
     constructor(private http: HttpClient) {}
 
     saveUserInfo(formValue: RegisterForm): Observable<boolean> {
-        return this.http.post(`${environment.apiUrl}/users`, formValue).pipe(
+        return this.http.post(`${environment.apiUrl}/users/register`, formValue).pipe(
             map( () => true),
             catchError(() => of(false))
         );
