@@ -114,6 +114,7 @@ export class RegisterComponent implements OnInit{
 
 
   private initObservables(): void {
+    // Observable pour afficher un message d'erreur si l'email et la confirmation de l'email ne sont pas identiques.
     this.showEmailError$ = this.emailForm.statusChanges.pipe(
       map(status => status === 'INVALID' &&
           this.email.value &&
@@ -122,7 +123,7 @@ export class RegisterComponent implements OnInit{
         )
     )
           
-          
+    // Observable pour afficher un message d'erreur si le mot de passe et la confirmation de mot de passe ne sont pas identiques.
     this.showPasswordError$ = this.loginForm.statusChanges.pipe(
       map(status => status === 'INVALID' &&
           this.password.value &&
