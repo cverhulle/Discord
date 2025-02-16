@@ -38,4 +38,5 @@ export class LoginHomepageComponent implements OnInit {
     console.log(this.loginForm.value)
     this.loginForm.reset()
   }
+  
 }
