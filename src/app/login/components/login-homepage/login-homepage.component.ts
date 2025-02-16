@@ -53,7 +53,8 @@ export class LoginHomepageComponent implements OnInit {
       tap( saved => {
         this.loading = false;
         if (saved) {
-          console.log('Utilisateur conneté!')
+          this.loginForm.reset()
+          console.log('Utilisateur connecté!')
         } else {
           console.log('Erreur de connexion')
         }
