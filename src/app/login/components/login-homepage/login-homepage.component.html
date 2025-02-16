@@ -27,5 +27,7 @@
         Pas encore inscrit ? <a routerLink="register"> Inscrivez-vous !</a>
     </mat-card-content>
 
+    <!-- Spinner pendant le chargement -->
+    <mat-spinner *ngIf="loading"></mat-spinner>
 
 </mat-card>
