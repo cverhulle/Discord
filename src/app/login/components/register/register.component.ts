@@ -38,12 +38,17 @@ export class RegisterComponent implements OnInit{
   //Variable pour le chargement
   loading = false;
 
+  //Variable pour stopper l'envoi du formulaire
+  errorForm = false;
+
   //Variables pour les messages d'erreur
   showEmailError$!: Observable<boolean>;
   showPasswordError$!: Observable<boolean>;
 
   //Variable pour afficher l'imge de profil
   showImage$!: Observable<boolean>
+
+
   
   
 
@@ -167,23 +172,42 @@ export class RegisterComponent implements OnInit{
 
   onSubmitForm() {
     // Envoie du formulaire d'inscription.
-
+    this.errorForm = false
     this.loading = true;
-    this.registerFormService.saveUserInfo(this.registerForm.value).pipe(
-      tap(saved => {
-        this.loading = false;
-        if (saved) {
-          this.registerForm.reset();
-          console.log("Utilisateur crée");
-        } else {
-          console.log("Erreur lors de l\'enregistrement de l\'utilisateur");
+
+    this.registerFormService.emailExists(this.registerForm.value).pipe(
+      tap(exist => {
+        if (exist) {
+          this.loading = false;
+          this.errorForm = true
+          console.log("L'email est déjà utilisé")
+          
+
         }
       })
-    ).subscribe();
-  }
+    ).subscribe( 
+    
+      (response) => {
 
+        if (!this.errorForm) {
+          console.log(!this.errorForm)
+          this.registerFormService.saveUserInfo(this.registerForm.value).pipe(
+            tap(saved => {
+              this.loading = false;
+              if (saved) {
+                this.registerForm.reset();
+                console.log("Utilisateur crée");
+              } else {
+                console.log("Erreur lors de l\'enregistrement de l\'utilisateur");
+              }
+            })
+          ).subscribe();
+        }
+      }
 
+  )
   
-
+  
+  }
 }
 
