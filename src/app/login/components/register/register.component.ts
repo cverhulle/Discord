@@ -174,6 +174,7 @@ export class RegisterComponent implements OnInit{
         this.loading = false;
         if (saved) {
           this.registerForm.reset();
+          console.log("Utilisateur crée");
         } else {
           console.log("Erreur lors de l\'enregistrement de l\'utilisateur");
         }
