@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit{
   showEmailError$!: Observable<boolean>;
   showPasswordError$!: Observable<boolean>;
 
-  //Variable pour afficher l'imge de profil
+  //Variable pour afficher l'image de profil
   showImage$!: Observable<boolean>
 
 
@@ -168,14 +168,16 @@ export class RegisterComponent implements OnInit{
 
   
 
-
-
-  onSubmitForm() {
-    // Envoie du formulaire d'inscription.
+  private initSubmitForm(): void{
+    //On remet l'erreur à false et on lance le chargement.
     this.errorForm = false
     this.loading = true;
+  }
 
-    this.registerFormService.emailExists(this.registerForm.value).pipe(
+
+  private emailAlreadyExists(): Observable<boolean> {
+    // Retourne un Observable permettant de vérifier si l'adresse email dans le formulaire envoyée existe déjà dans la BDD.
+    return this.registerFormService.emailExists(this.registerForm.value).pipe(
       tap(exist => {
         if (exist) {
           this.loading = false;
@@ -185,9 +187,14 @@ export class RegisterComponent implements OnInit{
 
         }
       })
-    ).subscribe() 
+    )
+  }
 
-    this.registerFormService.usernameExists(this.registerForm.value).pipe(
+
+
+  private usernameAlreadyExists(): Observable<boolean> {
+    // Retourne un Observable permettant de vérifier si le username dans le formulaire envoyée existe déjà dans la BDD.
+    return this.registerFormService.usernameExists(this.registerForm.value).pipe(
       tap(exist => {
         if (exist) {
           this.loading = false;
@@ -197,31 +204,50 @@ export class RegisterComponent implements OnInit{
 
         }
       })
-    ).subscribe(
-           
-      (response) => 
-        
-        {
+    )
+  }
 
+
+
+  private sendForm(): Observable<boolean> {
+    // Retourne un Observable permettant d'envoyer le formulaire.
+    return this.registerFormService.saveUserInfo(this.registerForm.value).pipe(
+      tap(saved => {
+        this.loading = false;
+        if (saved) {
+          this.registerForm.reset();
+          console.log("Utilisateur crée");
+        } else {
+          console.log("Erreur lors de l\'enregistrement de l\'utilisateur");
+        }
+      })
+    )
+  }
+
+  
+
+
+  onSubmitForm() {
+    // Envoie du formulaire d'inscription.
+
+    //On remet l'erreur à false et on lance le chargement.
+    this.initSubmitForm()
+
+    //On appelle l'Observable pour vérifier si l'email existe déjà.
+    this.emailAlreadyExists().subscribe()
+
+     //On appelle l'Observable pour vérifier si l'usernme existe déjà.
+    this.usernameAlreadyExists().subscribe(
+      (response) => {
+
+        //Une fois ces deux vérifications faites et terminées, on vérifie l'état de errorForm et, on lance l'envoie du formulaire.
         if (!this.errorForm) {
-          console.log(!this.errorForm)
-          this.registerFormService.saveUserInfo(this.registerForm.value).pipe(
-            tap(saved => {
-              this.loading = false;
-              if (saved) {
-                this.registerForm.reset();
-                console.log("Utilisateur crée");
-              } else {
-                console.log("Erreur lors de l\'enregistrement de l\'utilisateur");
-              }
-            })
-          ).subscribe();
+          this.sendForm().subscribe()
         }
       }
-
-  )
+    )
   
-  
+    
   }
 }
 
