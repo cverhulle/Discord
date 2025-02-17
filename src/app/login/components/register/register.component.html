@@ -88,13 +88,17 @@
      <!-- Image de profil -->
       <mat-card>
 
-        <mat-card-subtitle> Image de profil </mat-card-subtitle>
+        <mat-card-subtitle> URL de l'image de profil </mat-card-subtitle>
             <mat-form-field appearance="fill">
                 <mat-label> Image </mat-label>
                 <input type="text" matInput formControlName="image"> 
                 
             </mat-form-field>
-
+        
+        <!-- On affiche l'image de profil sur l'écran de création de compte -->
+        <div *ngIf="showImage$ | async" > 
+            <img [(src)]="image.value" alt="image de profil">
+        </div>
         
       </mat-card>
 
@@ -107,6 +111,7 @@
     </mat-card-actions>
 
     <mat-spinner *ngIf="loading"></mat-spinner>
+
 
 
 

@@ -41,6 +41,10 @@ export class RegisterComponent implements OnInit{
   //Variables pour les messages d'erreur
   showEmailError$!: Observable<boolean>;
   showPasswordError$!: Observable<boolean>;
+
+  //Variable pour afficher l'imge de profil
+  showImage$!: Observable<boolean>
+  
   
 
 
@@ -96,6 +100,7 @@ export class RegisterComponent implements OnInit{
 
     //Initialisation de l'image de profil.
     this.image = this.formBuilder.control('');
+
     
   }
 
@@ -132,6 +137,10 @@ export class RegisterComponent implements OnInit{
       )
     )
 
+    // Observable pour afficher l'image sur la page de création de compte lorsque le champ n'est pas vide.
+    this.showImage$ = this.image.valueChanges.pipe(
+      map(status => this.image.value !== '')
+    )
     
 
   }
@@ -151,6 +160,7 @@ export class RegisterComponent implements OnInit{
       return 'Ce champ contient une erreur'
     }
   }
+
   
 
 
