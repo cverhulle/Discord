@@ -24,5 +24,15 @@ export class RegisterFormService {
             
         );
     }
+
+    usernameExists(formControl: RegisterForm): Observable<boolean>{
+        return this.http.post(`${environment.apiUrl}/users/register/username`, formControl).pipe(
+            map( () => true),
+            catchError(() => of(false))
+            
+        );
+    }
+
+
 }
 

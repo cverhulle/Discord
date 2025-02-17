@@ -185,9 +185,23 @@ export class RegisterComponent implements OnInit{
 
         }
       })
-    ).subscribe( 
-    
-      (response) => {
+    ).subscribe() 
+
+    this.registerFormService.usernameExists(this.registerForm.value).pipe(
+      tap(exist => {
+        if (exist) {
+          this.loading = false;
+          this.errorForm = true
+          console.log("L'username est déjà utilisé")
+          
+
+        }
+      })
+    ).subscribe(
+           
+      (response) => 
+        
+        {
 
         if (!this.errorForm) {
           console.log(!this.errorForm)
