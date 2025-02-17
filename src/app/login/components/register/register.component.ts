@@ -99,7 +99,7 @@ export class RegisterComponent implements OnInit{
     })
 
     //Initialisation de l'image de profil.
-    this.image = this.formBuilder.control('');
+    this.image = this.formBuilder.control('', [Validators.required]);
 
     
   }
