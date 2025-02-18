@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SharedModule } from '../../../shared/shared.module';
 import { RegisterFormService } from './services/register-form.service';
-import { map, Observable, tap } from 'rxjs';
+import { concatMap, map, mergeMap, Observable, of, tap } from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { confirmEqualValidator } from './validators/confirm-equal.validators';
 import { correctEmailValidator } from './validators/correct-email.validator'; 
@@ -250,24 +250,24 @@ export class RegisterComponent implements OnInit{
     // Envoie du formulaire d'inscription.
 
     //On remet l'erreur à false et on lance le chargement.
-    this.initSubmitForm()
-    
-
-    //On appelle l'Observable pour vérifier si l'email existe déjà.
-    this.emailAlreadyExists().subscribe()
-    
-
-     //On appelle l'Observable pour vérifier si l'usernme existe déjà.
-    this.usernameAlreadyExists().subscribe(
-      (after) => {
-
-        //Une fois ces deux vérifications faites et terminées, on vérifie l'état de errorForm et, on lance l'envoie du formulaire.
-        if (!this.errorFormUsername && !this.errorFormEmail) {
-          
-          this.sendForm().subscribe()
+    this.loading = true
+        
+    this.registerFormService.saveUserInfo(this.registerForm.value).pipe(
+      tap(saved => {
+        this.loading = false;
+        if (saved) {
+          this.registerForm.reset();
+          console.log("Utilisateur crée");
+        } else {
+          console.log("Erreur lors de l\'enregistrement de l\'utilisateur");
         }
-      }
+      })
     )
+    
+     
+    
+    
+    
   
     
   }
