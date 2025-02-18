@@ -262,7 +262,7 @@ export class RegisterComponent implements OnInit{
           console.log("Erreur lors de l\'enregistrement de l\'utilisateur");
         }
       })
-    )
+    ).subscribe()
     
      
     
