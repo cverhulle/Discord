@@ -247,22 +247,17 @@ export class RegisterComponent implements OnInit{
 
 
   onSubmitForm() {
-    // Envoie du formulaire d'inscription.
+    this.initSubmitForm()
 
-    //On remet l'erreur à false et on lance le chargement.
-    this.loading = true
-        
-    this.registerFormService.saveUserInfo(this.registerForm.value).pipe(
-      tap(saved => {
-        this.loading = false;
-        if (saved) {
-          this.registerForm.reset();
-          console.log("Utilisateur crée");
-        } else {
-          console.log("Erreur lors de l\'enregistrement de l\'utilisateur");
+    this.emailAlreadyExists().subscribe()
+
+    this.usernameAlreadyExists().subscribe(
+      (response) => {
+        if(!this.errorFormEmail && !this.errorFormUsername) {
+          this.sendForm().subscribe()
         }
-      })
-    ).subscribe()
+      }
+    )
     
      
     
