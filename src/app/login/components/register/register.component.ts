@@ -39,7 +39,8 @@ export class RegisterComponent implements OnInit{
   loading = false;
 
   //Variable pour stopper l'envoi du formulaire
-  errorForm = false;
+  errorFormUsername = false;
+  errorFormEmail = false ;
 
   //Variables pour les messages d'erreur
   showEmailError$!: Observable<boolean>;
@@ -47,6 +48,10 @@ export class RegisterComponent implements OnInit{
 
   //Variable pour afficher l'image de profil
   showImage$!: Observable<boolean>
+
+  //Variables pour retirer les messages d'erreur lorsque l'utilisteur a modifié l'username et/ou l'email après l'envoi du formulaire.
+  hideEmailError$!: Observable<boolean>;
+  hideUsernameError$! : Observable<boolean>
 
 
   
@@ -146,6 +151,19 @@ export class RegisterComponent implements OnInit{
     this.showImage$ = this.image.valueChanges.pipe(
       map(status => this.image.value !== '')
     )
+
+    //Observable pour retirer l'erreur lorsque l'utilisateur a modifié son username incorrect après l'envoi du formulaire
+    this.hideUsernameError$ = this.username.valueChanges.pipe(
+      tap( () => {this.errorFormUsername = false,
+                  console.log(this.errorFormUsername) } 
+      )
+    )
+    
+
+    //Observable pour retirer l'erreur lorsque l'utilisateur a modifié son email incorrect après l'envoi du formulaire
+    this.hideEmailError$ = this.email.valueChanges.pipe(
+      tap( () => this.errorFormEmail = false)
+    )
     
 
   }
@@ -154,7 +172,7 @@ export class RegisterComponent implements OnInit{
 
 
   getFormControlErrorText( ctrl: AbstractControl) : string {
-    // Affiche un message d'erreur en fonction de la validation du champ.
+    // Affiche un message d'erreur en fonction de la validation du champ (pour les Validtors)
     if (ctrl.hasError('required')) {
       return 'Ce champ est requis';
     } else if (ctrl.hasError('correctEmail')) {
@@ -170,7 +188,8 @@ export class RegisterComponent implements OnInit{
 
   private initSubmitForm(): void{
     //On remet l'erreur à false et on lance le chargement.
-    this.errorForm = false
+    this.errorFormEmail = false;
+    this.errorFormUsername = false;
     this.loading = true;
   }
 
@@ -181,7 +200,7 @@ export class RegisterComponent implements OnInit{
       tap(exist => {
         if (exist) {
           this.loading = false;
-          this.errorForm = true
+          this.errorFormEmail = true
           console.log("L'email est déjà utilisé")
           
 
@@ -198,7 +217,7 @@ export class RegisterComponent implements OnInit{
       tap(exist => {
         if (exist) {
           this.loading = false;
-          this.errorForm = true
+          this.errorFormUsername = true
           console.log("L'username est déjà utilisé")
           
 
@@ -232,16 +251,19 @@ export class RegisterComponent implements OnInit{
 
     //On remet l'erreur à false et on lance le chargement.
     this.initSubmitForm()
+    
 
     //On appelle l'Observable pour vérifier si l'email existe déjà.
     this.emailAlreadyExists().subscribe()
+    
 
      //On appelle l'Observable pour vérifier si l'usernme existe déjà.
     this.usernameAlreadyExists().subscribe(
-      (response) => {
+      (after) => {
 
         //Une fois ces deux vérifications faites et terminées, on vérifie l'état de errorForm et, on lance l'envoie du formulaire.
-        if (!this.errorForm) {
+        if (!this.errorFormUsername && !this.errorFormEmail) {
+          
           this.sendForm().subscribe()
         }
       }

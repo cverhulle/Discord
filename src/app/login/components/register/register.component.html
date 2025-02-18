@@ -33,8 +33,9 @@
                 <mat-label> Email </mat-label>
                 <input type="text" matInput formControlName="email"> 
                 <mat-error> {{ getFormControlErrorText(email) }} </mat-error>
+                
             </mat-form-field>
-        
+            
         
             <mat-form-field appearance="fill">
                 <mat-label> Confirmer l'email </mat-label>
@@ -42,6 +43,8 @@
                 <mat-error> {{ getFormControlErrorText(confirmEmail) }} </mat-error>
             </mat-form-field>
         </div>
+
+        <small *ngIf="errorFormEmail" class="error-text"> Cet email est déjà utilisé</small>
 
         <small *ngIf="showEmailError$ | async" class="error-text"> Les emails ne correspondent pas </small>
 
@@ -59,8 +62,9 @@
                 <mat-label> Username </mat-label>
                 <input type="text" matInput formControlName="username"> 
                 <mat-error> {{ getFormControlErrorText(username) }} </mat-error>
+                
             </mat-form-field>
-
+            <small *ngIf="errorFormUsername" class="error-text"> Cet username est déjà utilisé</small>
 
             <div class="form-row">
                 <mat-form-field appearance="fill" class="form-row-margin">
@@ -92,8 +96,9 @@
             <mat-form-field appearance="fill">
                 <mat-label> Image </mat-label>
                 <input type="text" matInput formControlName="image"> 
-                
+                <mat-error> Ce champ est requis </mat-error>
             </mat-form-field>
+            
         
         <!-- On affiche l'image de profil sur l'écran de création de compte -->
         <div *ngIf="showImage$ | async" > 
