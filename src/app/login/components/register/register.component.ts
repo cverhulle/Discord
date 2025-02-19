@@ -49,9 +49,7 @@ export class RegisterComponent implements OnInit{
   //Variable pour afficher l'image de profil
   showImage$!: Observable<boolean>
 
-  //Variables pour retirer les messages d'erreur lorsque l'utilisteur a modifié l'username et/ou l'email après l'envoi du formulaire.
-  hideEmailError$!: Observable<boolean>;
-  hideUsernameError$! : Observable<boolean>
+  
 
 
   
@@ -151,21 +149,6 @@ export class RegisterComponent implements OnInit{
     this.showImage$ = this.image.valueChanges.pipe(
       map(status => this.image.value !== '')
     )
-
-    //Observable pour retirer l'erreur lorsque l'utilisateur a modifié son username incorrect après l'envoi du formulaire
-    this.hideUsernameError$ = this.username.valueChanges.pipe(
-      tap( () => {this.errorFormUsername = false,
-                  console.log(this.errorFormUsername) } 
-      )
-    )
-    
-
-    //Observable pour retirer l'erreur lorsque l'utilisateur a modifié son email incorrect après l'envoi du formulaire
-    this.hideEmailError$ = this.email.valueChanges.pipe(
-      tap( () => this.errorFormEmail = false)
-    )
-    
-
   }
 
 
