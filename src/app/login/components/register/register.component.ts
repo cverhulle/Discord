@@ -187,7 +187,7 @@ export class RegisterComponent implements OnInit{
   
 
   private initSubmitForm(): void{
-    //On remet l'erreur à false et on lance le chargement.
+    //On remet les erreurs à false et on lance le chargement.
     this.errorFormEmail = false;
     this.errorFormUsername = false;
     this.loading = true;
@@ -196,6 +196,7 @@ export class RegisterComponent implements OnInit{
 
   private emailAlreadyExists(): Observable<boolean> {
     // Retourne un Observable permettant de vérifier si l'adresse email dans le formulaire envoyée existe déjà dans la BDD.
+    // Si oui, on arrête le chargement et, on passe errorFormEmail à true.
     return this.registerFormService.emailExists(this.registerForm.value).pipe(
       tap(exist => {
         if (exist) {
@@ -210,7 +211,8 @@ export class RegisterComponent implements OnInit{
 
 
   private usernameAlreadyExists(): Observable<boolean> {
-    // Retourne un Observable permettant de vérifier si le username dans le formulaire envoyée existe déjà dans la BDD.
+    // Retourne un Observable permettant de vérifier si l'username dans le formulaire envoyée existe déjà dans la BDD.
+    // Si oui, on arrête le chargement et, on passe errorFormUsername à true.
     return this.registerFormService.usernameExists(this.registerForm.value).pipe(
       tap(exist => {
         if (exist) {
@@ -243,13 +245,21 @@ export class RegisterComponent implements OnInit{
 
 
   onSubmitForm() {
+    // On remet les erreurs d'username et d'email à false
+    // On lance le chargement
     this.initSubmitForm()
 
+    // On regarde si l'email est déjà dans la base de données.
     this.emailAlreadyExists().subscribe()
 
+    // On regarde si l'username est déjà dans la base de données.
     this.usernameAlreadyExists().subscribe(
       (after) => {
+
+        // On regarde si l'erreur d'username ou l'erreur d'email a lieu.
         if(!this.errorFormEmail && !this.errorFormUsername) {
+
+          // Si les deux erreurs sont fausses, on lance l'envoi du formulaire.
           this.sendForm().subscribe()
         }
       }
