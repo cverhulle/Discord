@@ -107,7 +107,7 @@ export class RegisterComponent implements OnInit{
     })
 
     //Initialisation de l'image de profil.
-    this.image = this.formBuilder.control('', [Validators.required]);
+    this.image = this.formBuilder.control('', {updateOn: 'blur', validators: Validators.required});
 
     
   }
