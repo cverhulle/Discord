@@ -19,17 +19,16 @@ export class RegisterFormService {
 
     emailExists(formControl: RegisterForm): Observable<boolean>{
         return this.http.post(`${environment.apiUrl}/users/register/email`, formControl).pipe(
-            map( () => true),
-            catchError(() => of(false))
+            map( () => false),
+            catchError(() => of(true))
             
         );
     }
 
     usernameExists(formControl: RegisterForm): Observable<boolean>{
         return this.http.post(`${environment.apiUrl}/users/register/username`, formControl).pipe(
-            map( () => true),
-            catchError(() => of(false))
-            
+            map( () => false),
+            catchError(() => of(true))
         );
     }
 

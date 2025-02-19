@@ -202,8 +202,6 @@ export class RegisterComponent implements OnInit{
           this.loading = false;
           this.errorFormEmail = true
           console.log("L'email est déjà utilisé")
-          
-
         }
       })
     )
@@ -219,8 +217,6 @@ export class RegisterComponent implements OnInit{
           this.loading = false;
           this.errorFormUsername = true
           console.log("L'username est déjà utilisé")
-          
-
         }
       })
     )
@@ -252,12 +248,16 @@ export class RegisterComponent implements OnInit{
     this.emailAlreadyExists().subscribe()
 
     this.usernameAlreadyExists().subscribe(
-      (response) => {
+      (after) => {
         if(!this.errorFormEmail && !this.errorFormUsername) {
           this.sendForm().subscribe()
         }
       }
+
     )
+
+
+    
     
      
     
