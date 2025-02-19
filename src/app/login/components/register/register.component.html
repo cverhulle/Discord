@@ -29,7 +29,7 @@
 
         <mat-card-subtitle> Email </mat-card-subtitle>
         <div class="form-row">
-            <mat-form-field appearance="fill" class="form-row-margin">
+            <mat-form-field appearance="fill" class="form-row-margin" (click)="onHideEmailErrorMessage()">
                 <mat-label> Email </mat-label>
                 <input type="text" matInput formControlName="email"> 
                 <mat-error> {{ getFormControlErrorText(email) }} </mat-error>
@@ -44,7 +44,9 @@
             </mat-form-field>
         </div>
 
+        
         <small *ngIf="errorFormEmail" class="error-text"> Cet email est déjà utilisé</small>
+        
 
         <small *ngIf="showEmailError$ | async" class="error-text"> Les emails ne correspondent pas </small>
 
@@ -58,13 +60,16 @@
 
         <mat-card-subtitle> Paramètres de connexion </mat-card-subtitle>
 
-            <mat-form-field appearance="fill" class="form-row-margin">
+            <mat-form-field appearance="fill" class="form-row-margin" (click)="onHideUsernameErrorMessage()">
                 <mat-label> Username </mat-label>
-                <input type="text" matInput formControlName="username"> 
+                <input type="text" matInput formControlName="username" > 
                 <mat-error> {{ getFormControlErrorText(username) }} </mat-error>
                 
             </mat-form-field>
+
+            
             <small *ngIf="errorFormUsername" class="error-text"> Cet username est déjà utilisé</small>
+            
 
             <div class="form-row">
                 <mat-form-field appearance="fill" class="form-row-margin">

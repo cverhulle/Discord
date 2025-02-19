@@ -167,6 +167,21 @@ export class RegisterComponent implements OnInit{
     }
   }
 
+
+  // Lorsqu'on clique sur "Username" le message d'erreur disparaît.
+  onHideUsernameErrorMessage(): void {
+    this.errorFormUsername = false
+  }
+
+  // Lorsqu'on clique sur "Email" le message d'erreur disparaît.
+  onHideEmailErrorMessage(): void {
+    this.errorFormEmail = false
+  }
+
+
+
+
+
   
 
   private initSubmitForm(): void{
@@ -248,16 +263,6 @@ export class RegisterComponent implements OnInit{
       }
 
     )
-
-
-    
-    
-     
-    
-    
-    
-  
-    
   }
 }
 
