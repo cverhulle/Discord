@@ -33,20 +33,14 @@ imageUrl!: string;
 
     this.profilService.getProfile(this.userId).pipe(
       tap( (rep) => {
-        console.log(rep),
         this.firstName = rep['user']['personalInfo']['firstName'],
         this.lastName = rep['user']['personalInfo']['lastName'],
         this.username = rep['user']['loginInfo']['username'],
         this.email = rep['user']['emailInfo']['email'],
-        this.imageUrl = rep['user']['image'],
-        console.log(this.firstName),
-        console.log(this.lastName),
-        console.log(this.username),
-        console.log(this.email),
-        console.log(this.imageUrl)
-        
+        this.imageUrl = rep['user']['image']
       })
     ).subscribe()
   }  
 
+  
 }
