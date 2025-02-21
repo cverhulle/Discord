@@ -9,11 +9,8 @@ import { environment } from "../../../../../environments/environment.development
 export class LoginFormService {
     constructor(private http: HttpClient) {}
 
-    loginUser(formValue: LoginForm): Observable<boolean> {
-        return this.http.post(`${environment.apiUrl}/users/login`, formValue).pipe(
-            map( () => true),
-            catchError(() => of(false))
-        )
+    loginUser(formValue: LoginForm): Observable<any> {
+        return this.http.post(`${environment.apiUrl}/users/login`, formValue)
     }
 
     

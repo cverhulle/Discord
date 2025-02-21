@@ -4,7 +4,7 @@ import { SharedModule } from '../../../shared/shared.module';
 import { RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { LoginFormService } from './service/login-form.service';
-import { tap } from 'rxjs';
+import { catchError, map, of, tap } from 'rxjs';
 
 @Component({
   selector: 'app-login-homepage',
@@ -29,6 +29,10 @@ export class LoginHomepageComponent implements OnInit {
   //Variables pour le formulaire  
   loginForm! : FormGroup
 
+  //Variables pour récupérer le token et l'userId.
+  userId!: string;
+  token!: string;
+
   constructor(private formBuilder: FormBuilder,
               private loginFormService: LoginFormService
   ) {}
@@ -50,6 +54,12 @@ export class LoginHomepageComponent implements OnInit {
   onSubmitForm() {
     this.loading = true;
     this.loginFormService.loginUser(this.loginForm.value).pipe(
+      tap( data => {
+        this.token= data['token'];
+        this.userId = data['userId']
+      }),
+      map( () => true),
+      catchError(() => of(false)),
       tap( saved => {
         this.loading = false;
         if (saved) {
@@ -58,8 +68,11 @@ export class LoginHomepageComponent implements OnInit {
         } else {
           console.log('Erreur de connexion')
         }
+        console.log(this.userId)
+        console.log(this.token)
       })
     ).subscribe()
+
   }
 
 }
