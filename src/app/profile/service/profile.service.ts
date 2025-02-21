@@ -9,6 +9,6 @@ export class ProfileService {
     constructor( private http: HttpClient) {}
 
     getProfile(userId: string): Observable<any> {
-        return this.http.get(`${environment.apiUrl})\profile\${userId}`)
+        return this.http.get(`${environment.apiUrl}/profile/${userId}`)
     }
 }

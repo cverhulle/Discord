@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { ProfileHomepageComponent } from "./components/profile-homepage/profile-homepage.component";
+import { ProfileService } from "./service/profile.service";
 
 
 
@@ -15,6 +16,9 @@ const routes: Routes = [
     
   exports: [
     RouterModule
+  ],
+  providers:[
+    ProfileService
   ]
 })
 

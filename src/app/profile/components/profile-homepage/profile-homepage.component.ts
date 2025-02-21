@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ProfileService } from '../../service/profile.service';
+import { tap } from 'rxjs';
 
 
 @Component({
@@ -9,11 +11,16 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './profile-homepage.component.scss'
 })
 export class ProfileHomepageComponent implements OnInit{
+  userId!: string
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute,
+              private profilService : ProfileService) {}
 
   ngOnInit(): void {
-    console.log(this.route.snapshot.params['id'])
+    this.userId = this.route.snapshot.params['id']
+    this.profilService.getProfile(this.userId).pipe(
+      tap( (rep) => console.log(rep))
+    ).subscribe()
   }  
 
 }
