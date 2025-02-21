@@ -45,31 +45,55 @@ export class LoginHomepageComponent implements OnInit {
       username: [null, Validators.required],
       password: [null, Validators.required]
     })
+  }
 
+
+  private sendForm(saved: boolean) {
+    // On arrête le loading.
+    this.loading = false;
+
+        if (saved) {
+          this.loginForm.reset()
+
+          // On sauvegarde le token et l'userId si l'envoi est réussi.
+          console.log(this.userId)
+          console.log(this.token)
+          console.log('Utilisateur connecté!')
+          localStorage.setItem('token',this.token)
+          localStorage.setItem('userId', this.userId)
+
+        } else {
+          // Si l'envoi échoue, on affiche une erreur
+          console.log('Erreur de connexion')
+        }
 
   }
 
 
 
   onSubmitForm() {
+
+    // On lance le chargement
     this.loading = true;
+
+    // On envoie le formulaire
     this.loginFormService.loginUser(this.loginForm.value).pipe(
+
+      // On récupère le token et l'userId générés.
       tap( data => {
         this.token= data['token'];
         this.userId = data['userId']
       }),
+
+      // Si l'envoi réussi, on modifie l'émission à True.
       map( () => true),
-      catchError(() => of(false)),
+
+      // Si l'envoi échoue, on modifie l'émission à False.
+      catchError((status) => of(false)),
+
+      // Si l'envoi réussi, on envoie le formulaire et on sauvegarde le token.
       tap( saved => {
-        this.loading = false;
-        if (saved) {
-          this.loginForm.reset()
-          console.log('Utilisateur connecté!')
-        } else {
-          console.log('Erreur de connexion')
-        }
-        console.log(this.userId)
-        console.log(this.token)
+        this.sendForm(saved)
       })
     ).subscribe()
 
