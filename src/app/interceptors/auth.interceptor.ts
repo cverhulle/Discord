@@ -10,6 +10,8 @@ export class AuthInterceptor implements HttpInterceptor {
     constructor(private tokenService: TokenService) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+        // On ajoute le token dans le header Authorization de toutes les requetes.
         const headers = new HttpHeaders()
             .append('Authorization', `Bearer ${this.tokenService.getToken()}` );
         const modifiedReq = req.clone({headers});
