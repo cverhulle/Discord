@@ -48,26 +48,18 @@ export class LoginHomepageComponent implements OnInit {
   }
 
 
-  private sendForm(saved: boolean) {
+  private sendForm(data: any) {
     // On arrête le loading.
     this.loading = false;
+    
+    // On reset le formulaire
+    this.loginForm.reset()
 
-        if (saved) {
-          this.loginForm.reset()
-
-          // On sauvegarde le token et l'userId si l'envoi est réussi.
-          console.log(this.userId)
-          console.log(this.token)
-          console.log('Utilisateur connecté!')
-          localStorage.setItem('token',this.token)
-          localStorage.setItem('userId', this.userId)
-
-        } else {
-          // Si l'envoi échoue, on affiche une erreur
-          console.log('Erreur de connexion')
-        }
-
-  }
+    // On sauvegarde le token et l'userId et, on affiche un message de réussite
+    console.log('Utilisateur connecté!')
+    localStorage.setItem('token',data['token'])
+    localStorage.setItem('userId', data['userId'])
+  }  
 
 
 
@@ -77,25 +69,14 @@ export class LoginHomepageComponent implements OnInit {
     this.loading = true;
 
     // On envoie le formulaire
-    this.loginFormService.loginUser(this.loginForm.value).pipe(
-
-      // On récupère le token et l'userId générés.
-      tap( data => {
-        this.token= data['token'];
-        this.userId = data['userId']
-      }),
-
-      // Si l'envoi réussi, on modifie l'émission à True.
-      map( () => true),
-
-      // Si l'envoi échoue, on modifie l'émission à False.
-      catchError((status) => of(false)),
-
-      // Si l'envoi réussi, on envoie le formulaire et on sauvegarde le token.
-      tap( saved => {
-        this.sendForm(saved)
-      })
-    ).subscribe()
+    this.loginFormService.loginUser(this.loginForm.value).subscribe({
+      next: (data) => {
+        // On récupère le token et l'userId générés.
+        this.sendForm(data)
+      },
+      error: (err) => {this.loading = false, 
+                      console.log('Erreur de connexion')}
+  })
 
   }
 
