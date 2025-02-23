@@ -5,6 +5,8 @@ import { RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { LoginFormService } from './service/login-form.service';
 import { catchError, map, of, tap } from 'rxjs';
+import { TokenService } from '../../../interceptors/services/auth.service';
+import { DateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-login-homepage',
@@ -34,7 +36,8 @@ export class LoginHomepageComponent implements OnInit {
   token!: string;
 
   constructor(private formBuilder: FormBuilder,
-              private loginFormService: LoginFormService
+              private loginFormService: LoginFormService,
+              private tokenService: TokenService
   ) {}
 
 
@@ -57,8 +60,9 @@ export class LoginHomepageComponent implements OnInit {
 
     // On sauvegarde le token et l'userId et, on affiche un message de réussite
     console.log('Utilisateur connecté!')
-    localStorage.setItem('token',data['token'])
-    localStorage.setItem('userId', data['userId'])
+    this.tokenService.saveToken(data['token'])
+    this.tokenService.saveUserId(data['userId'])
+    
   }  
 
 
