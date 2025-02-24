@@ -23,5 +23,11 @@ export class TokenService {
         return localStorage.getItem('userId')
     }
 
+    isLogged(): boolean {
+        const token = this.getToken()
+        return !!token
+
+    }
+
     
 }
