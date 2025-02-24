@@ -20,11 +20,11 @@ export function AuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn):
 
     // Si un token est trouvé
     // On ajoute le token dans le header Authorization de toutes les requetes.
-    const headers = new HttpHeaders({
-        Authorization: `Bearer ${token}`
+    const modifiedReq = req.clone({
+        setHeaders : {
+            Authorization : `Bearer ${token}`
+        }
     })
-        
-    const modifiedReq = req.clone({headers})
     
     return next(modifiedReq)    
 
