@@ -18,4 +18,10 @@ export class TokenService {
     getToken() : string | null {
         return localStorage.getItem('token')
     }
+
+    getUserId(): string | null {
+        return localStorage.getItem('userId')
+    }
+
+    
 }
