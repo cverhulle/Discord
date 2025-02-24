@@ -22,4 +22,13 @@ export class HeaderComponent implements OnInit{
     this.userId = this.tokenService.getUserId()
   }
 
+  onChargeUserId(): void {
+    if(this.tokenService.isLogged()) {
+      this.userId = this.tokenService.getUserId()
+    } else {
+      this.userId = '67b5d75126a7c6922f7db331'
+    }
+
+  }
+
 }
