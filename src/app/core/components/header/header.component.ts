@@ -14,12 +14,12 @@ import { TokenService } from '../../../interceptors/services/auth.service';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit{
-  token!: string| null
+  userId!: string| null
 
   constructor(private tokenService : TokenService) {}
 
   ngOnInit(): void {
-    this.token = this.tokenService.getUserId()
+    this.userId = this.tokenService.getUserId()
   }
 
 }
