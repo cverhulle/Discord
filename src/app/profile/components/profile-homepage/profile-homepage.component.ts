@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from '../../service/profile.service';
 import { tap } from 'rxjs';
 import { SharedModule } from '../../../shared/shared.module';
@@ -25,7 +25,8 @@ imageUrl!: string;
 
 
   constructor(private route: ActivatedRoute,
-              private profilService : ProfileService) {}
+              private profilService : ProfileService,
+              private router : Router) {}
 
 
   ngOnInit(): void {
@@ -39,7 +40,11 @@ imageUrl!: string;
         this.imageUrl = rep['user']['image']
       })
     ).subscribe()
-  }  
+  }
+  
+  onModify(): void {
+    this.router.navigateByUrl('/profile/modify')
+  }
 
   
 }

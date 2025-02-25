@@ -3,12 +3,13 @@ import { RouterModule, Routes } from "@angular/router";
 import { ProfileHomepageComponent } from "./components/profile-homepage/profile-homepage.component";
 import { ProfileService } from "./service/profile.service";
 import { AuthGuard } from "../guard/auth.guard";
+import { ModifyProfileComponent } from "./components/modify-profile/modify-profile.component";
 
 
 
 const routes: Routes = [
-    { path: ':id', component: ProfileHomepageComponent, canActivate : [AuthGuard]},
     { path: '', component: ProfileHomepageComponent, canActivate : [AuthGuard]},
+    { path: 'modify', component: ModifyProfileComponent, canActivate : [AuthGuard]},
     { path: '*', redirectTo: ''}
 ];
 
