@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SharedModule } from '../../../shared/shared.module';
 import { RegisterFormService } from '../../../login/components/register/services/register-form.service';
@@ -6,6 +6,7 @@ import { map, Observable, tap } from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { confirmEqualValidator } from '../../../login/components/register/validators/confirm-equal.validators';
 import { correctEmailValidator } from '../../../login/components/register/validators/correct-email.validator'; 
+import { RegisterForm } from '../../../login/components/register/models/register-form.model';
 
 @Component({
   selector: 'app-register-modify-form',
@@ -21,6 +22,10 @@ import { correctEmailValidator } from '../../../login/components/register/valida
 
 
 export class RegisterModifyFormComponent implements OnInit{
+
+  @Input() initForm!: string
+
+
   // Variables pour le formulaire
   registerForm! : FormGroup;
   personalInfoForm! : FormGroup;
@@ -65,7 +70,8 @@ export class RegisterModifyFormComponent implements OnInit{
   ngOnInit() {
     this.initFormControls();
     this.initRegisterForm();
-    this.initObservables()
+    this.initObservables();
+    console.log(this.initForm)
     
   }
 
