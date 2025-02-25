@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProfileService } from '../../service/profile.service';
 import { tap } from 'rxjs';
+import { SharedModule } from '../../../shared/shared.module';
 
 
 @Component({
   selector: 'app-profile-homepage',
-  imports: [],
+  imports: [
+    SharedModule
+  ],
   templateUrl: './profile-homepage.component.html',
   styleUrl: './profile-homepage.component.scss'
 })
