@@ -25,7 +25,7 @@ export class ModifyProfileComponent implements OnInit{
   imageUrl!: string;
 
   // Variable pour stocker le formulaire initialisé
-  initForm: string = 'Bonjour'
+  initForm!: RegisterForm
 
 
   constructor( private profileService: ProfileService) {}
@@ -41,7 +41,25 @@ export class ModifyProfileComponent implements OnInit{
         this.imageUrl = rep['user']['image']
       })
     ).subscribe(
-      
+      (rep) => {
+        this.initForm= {
+          personalInfo: {
+            firstName: this.firstName,
+            lastName: this.lastName
+          },
+          emailInfo: {
+            email: this.email,
+            confirmEmail: this.email
+          },
+          loginInfo: {
+            username: this.username,
+            password: '',
+            confirmPassword: ''
+          },
+          image: this.imageUrl
+        }
+        console.log(this.initForm)
+      }
 
     )
   }

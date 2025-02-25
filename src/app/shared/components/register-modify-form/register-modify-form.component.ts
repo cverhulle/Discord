@@ -23,7 +23,7 @@ import { RegisterForm } from '../../../login/components/register/models/register
 
 export class RegisterModifyFormComponent implements OnInit{
 
-  @Input() initForm!: string
+  @Input() initForm!: RegisterForm
 
 
   // Variables pour le formulaire
