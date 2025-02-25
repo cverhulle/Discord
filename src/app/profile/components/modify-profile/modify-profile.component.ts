@@ -4,12 +4,14 @@ import { ProfileService } from '../../service/profile.service';
 import { tap } from 'rxjs';
 import { RegisterModifyFormComponent } from '../../../shared/components/register-modify-form/register-modify-form.component';
 import { RegisterForm } from '../../../login/components/register/models/register-form.model';
+import { NgIf } from '@angular/common';
 
 
 @Component({
   selector: 'app-modify-profile',
   imports: [
-    RegisterModifyFormComponent
+    RegisterModifyFormComponent,
+    NgIf
   ],
   templateUrl: './modify-profile.component.html',
   styleUrl: './modify-profile.component.scss'
@@ -58,7 +60,6 @@ export class ModifyProfileComponent implements OnInit{
           },
           image: this.imageUrl
         }
-        console.log(this.initForm)
       }
 
     )
