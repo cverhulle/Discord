@@ -9,7 +9,7 @@ export class ProfileService {
     constructor( private http: HttpClient) {}
 
     // Cette méthode lance la requête pour récupérer les données sur un utilisteur donc l'id est donné en argument.
-    getProfile(userId: string): Observable<any> {
-        return this.http.get(`${environment.apiUrl}/profile/${userId}`)
+    getProfile(): Observable<any> {
+        return this.http.get(`${environment.apiUrl}/profile`)
     }
 }

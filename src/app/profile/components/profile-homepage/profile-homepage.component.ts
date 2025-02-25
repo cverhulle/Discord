@@ -11,10 +11,8 @@ import { tap } from 'rxjs';
   styleUrl: './profile-homepage.component.scss'
 })
 export class ProfileHomepageComponent implements OnInit{
-// Variable pour l'id de l'utilisateur.
-userId!: string
 
-// Variables pour stocker les champs apparaissant dans le profil de l'utilisateur.
+  // Variables pour stocker les champs apparaissant dans le profil de l'utilisateur.
 // On ne récupère pas le mot de passe car il est crypté.
 firstName!: string ;
 lastName!: string ;
@@ -29,9 +27,7 @@ imageUrl!: string;
 
   ngOnInit(): void {
 
-    this.userId = this.route.snapshot.params['id']
-
-    this.profilService.getProfile(this.userId).pipe(
+    this.profilService.getProfile().pipe(
       tap( (rep) => {
         this.firstName = rep['user']['personalInfo']['firstName'],
         this.lastName = rep['user']['personalInfo']['lastName'],
