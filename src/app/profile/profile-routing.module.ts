@@ -4,6 +4,7 @@ import { ProfileHomepageComponent } from "./components/profile-homepage/profile-
 import { ProfileService } from "./service/profile.service";
 import { AuthGuard } from "../guard/auth.guard";
 import { ModifyProfileComponent } from "./components/modify-profile/modify-profile.component";
+import { RegisterFormService } from "../login/components/register/services/register-form.service";
 
 
 
@@ -22,7 +23,8 @@ const routes: Routes = [
     RouterModule
   ],
   providers:[
-    ProfileService
+    ProfileService,
+    RegisterFormService
   ]
 })
 
