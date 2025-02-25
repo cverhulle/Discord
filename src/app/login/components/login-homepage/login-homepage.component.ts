@@ -31,8 +31,7 @@ export class LoginHomepageComponent implements OnInit {
   //Variables pour le formulaire  
   loginForm! : FormGroup
 
-  //Variables pour récupérer le token et l'userId.
-  userId!: string;
+  //Variables pour récupérer le token.
   token!: string;
 
   constructor(private formBuilder: FormBuilder,
@@ -61,8 +60,7 @@ export class LoginHomepageComponent implements OnInit {
     // On sauvegarde le token et l'userId et, on affiche un message de réussite
     console.log('Utilisateur connecté!')
     this.tokenService.saveToken(data['token'])
-    this.tokenService.saveUserId(data['userId'])
-    
+        
   }  
 
 
