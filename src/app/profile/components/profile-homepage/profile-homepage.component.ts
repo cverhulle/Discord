@@ -16,12 +16,12 @@ import { SharedModule } from '../../../shared/shared.module';
 export class ProfileHomepageComponent implements OnInit{
 
   // Variables pour stocker les champs apparaissant dans le profil de l'utilisateur.
-// On ne récupère pas le mot de passe car il est crypté.
-firstName!: string ;
-lastName!: string ;
-username!: string ;
-email!: string;
-imageUrl!: string;
+  // On ne récupère pas le mot de passe car il est crypté.
+  firstName!: string ;
+  lastName!: string ;
+  username!: string ;
+  email!: string;
+  imageUrl!: string;
 
 
   constructor(private route: ActivatedRoute,
