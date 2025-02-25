@@ -1,27 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SharedModule } from '../../../shared/shared.module';
-import { RegisterFormService } from './services/register-form.service';
+import { RegisterFormService } from '../../../login/components/register/services/register-form.service';
 import { map, Observable, tap } from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
-import { confirmEqualValidator } from './validators/confirm-equal.validators';
-import { correctEmailValidator } from './validators/correct-email.validator'; 
-
+import { confirmEqualValidator } from '../../../login/components/register/validators/confirm-equal.validators';
+import { correctEmailValidator } from '../../../login/components/register/validators/correct-email.validator'; 
 
 @Component({
-  selector: 'app-register',
+  selector: 'app-register-modify-form',
   imports: [
     SharedModule,
     ReactiveFormsModule,
     NgIf,
     AsyncPipe
   ],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+  templateUrl: './register-modify-form.component.html',
+  styleUrl: './register-modify-form.component.scss'
 })
 
-export class RegisterComponent implements OnInit{
 
+export class RegisterModifyFormComponent implements OnInit{
   // Variables pour le formulaire
   registerForm! : FormGroup;
   personalInfoForm! : FormGroup;

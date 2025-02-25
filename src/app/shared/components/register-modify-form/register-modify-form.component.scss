@@ -1,0 +1,41 @@
+mat-form-field, mat-card{
+    background-color: rgb(74,35,90);
+}
+
+
+.form-title{
+    color: white;
+    text-align: center;
+    font-size: 50px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+ 
+}
+
+mat-card-subtitle{
+    margin-left: 1%;
+}
+
+
+mat-form-field{
+    width: 30%;
+    margin-left: 1%;
+
+      
+}
+
+.form-row{
+    display: flex;
+    
+}
+
+.form-row-margin{
+    margin-right: 1%;
+}
+
+.error-text{
+    color: red;
+    font-size: 20px;
+    margin-left: 1%;
+    margin-bottom: 1%;
+}

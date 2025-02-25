@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { RegisterComponent } from "../../../login/components/register/register.component";
+
 import { ProfileService } from '../../service/profile.service';
 import { tap } from 'rxjs';
+import { RegisterModifyFormComponent } from '../../../shared/components/register-modify-form/register-modify-form.component';
 
 
 @Component({
   selector: 'app-modify-profile',
   imports: [
-    RegisterComponent
+    RegisterModifyFormComponent
   ],
   templateUrl: './modify-profile.component.html',
   styleUrl: './modify-profile.component.scss'
 })
 export class ModifyProfileComponent implements OnInit{
+
+
   // On ne récupère pas le mot de passe car il est crypté.
   firstName!: string ;
   lastName!: string ;
@@ -20,7 +23,9 @@ export class ModifyProfileComponent implements OnInit{
   email!: string;
   imageUrl!: string;
 
+
   constructor( private profileService: ProfileService) {}
+
 
   ngOnInit(): void {
     this.profileService.getProfile().pipe(
