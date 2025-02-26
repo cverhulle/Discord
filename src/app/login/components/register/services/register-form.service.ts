@@ -10,6 +10,21 @@ import { RegisterForm } from "../models/register-form.model";
 export class RegisterFormService {
     constructor(private http: HttpClient) {}
 
+    emailExists(formValue: RegisterForm): Observable<boolean>{
+        return this.http.post(`${environment.apiUrl}/users/register/email`, formValue).pipe(
+            map( () => false),
+            catchError(() => of(true))
+            
+        );
+    }
+
+    usernameExists(formValue: RegisterForm): Observable<boolean>{
+        return this.http.post(`${environment.apiUrl}/users/register/username`, formValue).pipe(
+            map( () => false),
+            catchError(() => of(true))
+        );
+    }
+
     saveUserInfo(formValue: RegisterForm): Observable<boolean> {
         return this.http.post(`${environment.apiUrl}/users/register`, formValue).pipe(
             map( () => true),
@@ -17,19 +32,11 @@ export class RegisterFormService {
         );
     }
 
-    emailExists(formControl: RegisterForm): Observable<boolean>{
-        return this.http.post(`${environment.apiUrl}/users/register/email`, formControl).pipe(
-            map( () => false),
-            catchError(() => of(true))
-            
-        );
-    }
-
-    usernameExists(formControl: RegisterForm): Observable<boolean>{
-        return this.http.post(`${environment.apiUrl}/users/register/username`, formControl).pipe(
-            map( () => false),
-            catchError(() => of(true))
-        );
+    modifyUserInfo(formValue: RegisterForm): Observable<boolean>{
+        return this.http.put(`${environment.apiUrl}/profile/modify`, formValue).pipe(
+            map( () => true),
+            catchError( () => of(false))
+        )
     }
 
 
