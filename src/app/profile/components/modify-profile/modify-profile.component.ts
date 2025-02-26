@@ -75,6 +75,8 @@ export class ModifyProfileComponent implements OnInit{
 
     )
   }
+
+  
   
   modifyProfile(event: ModifyProfileForm) {
     this.profileService.modifyUserInfo(event).pipe(

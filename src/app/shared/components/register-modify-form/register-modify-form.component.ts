@@ -25,7 +25,7 @@ import { ModifyProfileForm } from '../../../profile/models/modify-profile.models
 export class RegisterModifyFormComponent implements OnInit{
 
   // On importe les données pour pré-remplir le formulaire.
-  @Input() initForm!: ModifyProfileForm
+  @Input() initForm!: ModifyProfileForm | RegisterForm
 
   // On importe le titre de la page à afficher (Création du compte ou Modification du compte par exemple)
   @Input() titlePage!: string
