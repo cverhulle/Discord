@@ -6,6 +6,7 @@ import { RegisterModifyFormComponent } from '../../../shared/components/register
 import { RegisterForm } from '../../../login/components/register/models/register-form.model';
 import { NgIf } from '@angular/common';
 import { RegisterFormService } from '../../../login/components/register/services/register-form.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -35,7 +36,8 @@ export class ModifyProfileComponent implements OnInit{
 
 
   constructor( private profileService: ProfileService,
-               private registerFormService : RegisterFormService) {}
+               private registerFormService : RegisterFormService,
+               private router: Router ) {}
 
 
   ngOnInit(): void {
@@ -76,6 +78,7 @@ export class ModifyProfileComponent implements OnInit{
   
   modifyProfile(event: RegisterForm) {
     this.registerFormService.modifyUserInfo(event).subscribe()
+    this.router.navigateByUrl('/profile')
   }
 }
 
