@@ -77,7 +77,15 @@ export class ModifyProfileComponent implements OnInit{
   }
   
   modifyProfile(event: RegisterForm) {
-    this.registerFormService.modifyUserInfo(event).subscribe()
+    this.registerFormService.modifyUserInfo(event).pipe(
+      tap( (modif) => {
+        if (modif) {
+          console.log('Modification(s) enregistrée(s)')
+        } else {
+          console.log('Echec lors de la modification')
+        }
+      })
+    ).subscribe()
     this.router.navigateByUrl('/profile')
   }
 }
