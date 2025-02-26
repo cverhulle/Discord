@@ -32,12 +32,7 @@ export class RegisterFormService {
         );
     }
 
-    modifyUserInfo(formValue: RegisterForm): Observable<boolean>{
-        return this.http.put(`${environment.apiUrl}/profile/modify`, formValue).pipe(
-            map( () => true),
-            catchError( () => of(false))
-        )
-    }
+    
 
 
 }

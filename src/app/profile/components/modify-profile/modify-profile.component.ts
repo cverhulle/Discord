@@ -36,7 +36,6 @@ export class ModifyProfileComponent implements OnInit{
 
 
   constructor( private profileService: ProfileService,
-               private registerFormService : RegisterFormService,
                private router: Router ) {}
 
 
@@ -77,7 +76,7 @@ export class ModifyProfileComponent implements OnInit{
   }
   
   modifyProfile(event: RegisterForm) {
-    this.registerFormService.modifyUserInfo(event).pipe(
+    this.profileService.modifyUserInfo(event).pipe(
       tap( (modif) => {
         if (modif) {
           console.log('Modification(s) enregistrée(s)')
