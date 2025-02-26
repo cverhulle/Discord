@@ -18,7 +18,7 @@ import { NgIf } from '@angular/common';
 })
 export class ModifyProfileComponent implements OnInit{
 
-
+  // On récupère les données de l'utilisateur.
   // On ne récupère pas le mot de passe car il est crypté.
   firstName!: string ;
   lastName!: string ;
@@ -39,6 +39,8 @@ export class ModifyProfileComponent implements OnInit{
   ngOnInit(): void {
     this.profileService.getProfile().pipe(
       tap( (rep) => {
+
+        // On sauvegarde les données de l'utilisateur
         this.firstName = rep['user']['personalInfo']['firstName'],
         this.lastName = rep['user']['personalInfo']['lastName'],
         this.username = rep['user']['loginInfo']['username'],
@@ -47,6 +49,8 @@ export class ModifyProfileComponent implements OnInit{
       })
     ).subscribe(
       (rep) => {
+
+        // On configure initForm qui contient les données de l'utilisateur dans le format du modèle de données.
         this.initForm= {
           personalInfo: {
             firstName: this.firstName,

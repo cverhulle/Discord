@@ -23,7 +23,10 @@ import { RegisterForm } from '../../../login/components/register/models/register
 
 export class RegisterModifyFormComponent implements OnInit{
 
+  // On importe les données pour pré-remplir le formulaire.
   @Input() initForm!: RegisterForm
+
+  // On importe le titre de la page à afficher (Création du compte ou Modification du compte par exemple)
   @Input() titlePage!: string
 
 
@@ -72,8 +75,7 @@ export class RegisterModifyFormComponent implements OnInit{
     this.initFormControls();
     this.initRegisterForm();
     this.initObservables();
-    console.log(this.initForm)
-    
+        
   }
 
 
