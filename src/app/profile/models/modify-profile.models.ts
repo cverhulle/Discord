@@ -8,8 +8,10 @@ export class ModifyProfileForm {
       confirmEmail: string
     }
     
-    username!: string
-     
+    loginInfo!: {
+      username: string
+    } 
+
     image!: string
   }
   

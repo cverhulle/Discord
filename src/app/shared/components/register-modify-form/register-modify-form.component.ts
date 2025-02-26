@@ -107,7 +107,7 @@ export class RegisterModifyFormComponent implements OnInit{
     })
 
     // Initialisation du login (username et password).
-    this.username = this.formBuilder.control(this.initForm['username'], [Validators.required, Validators.minLength(7)]);
+    this.username = this.formBuilder.control(this.initForm['loginInfo']['username'], [Validators.required, Validators.minLength(7)]);
     this.password = this.formBuilder.control('', [Validators.required]);
     this.confirmPassword = this.formBuilder.control('', [Validators.required]);
     this.loginForm = this.formBuilder.group({

@@ -66,7 +66,9 @@ export class ModifyProfileComponent implements OnInit{
             email: this.email,
             confirmEmail: this.email
           },
-          username: this.username,
+          loginInfo: {
+            username: this.username
+          },
           image: this.imageUrl
         }
       }
