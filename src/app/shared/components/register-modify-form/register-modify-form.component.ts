@@ -80,6 +80,7 @@ export class RegisterModifyFormComponent implements OnInit{
     this.initFormControls();
     this.initRegisterForm();
     this.initObservables();
+    this.initPasswordFields(this.disablePasswordFields)
         
   }
 
@@ -165,7 +166,15 @@ export class RegisterModifyFormComponent implements OnInit{
   }
 
 
-
+  private initPasswordFields(disablePasswordFields: boolean) : void {
+    if (this.disablePasswordFields) {
+      this.password.disable();
+      this.confirmPassword.disable();
+    } else {
+      this.password.enable();
+      this.confirmPassword.enable();
+    }
+  }
 
   getFormControlErrorText( ctrl: AbstractControl) : string {
     // Affiche un message d'erreur en fonction de la validation du champ (pour les Validtors)
