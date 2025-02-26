@@ -29,6 +29,9 @@ export class ModifyProfileComponent implements OnInit{
   // Variable pour stocker le formulaire initialisé
   initForm!: RegisterForm
 
+  // Variable pour configurer le titre de la page
+  titlePage = 'Modifier mon compte discord'
+
 
   constructor( private profileService: ProfileService) {}
 
