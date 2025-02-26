@@ -82,13 +82,13 @@ export class RegisterModifyFormComponent implements OnInit{
 
     // Initialisation des informations personnelles.
     this.personalInfoForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      firstName: [this.initForm['personalInfo']['firstName'], Validators.required],
+      lastName: [this.initForm['personalInfo']['lastName'], Validators.required],
     })
 
     // Initialisation de l'email.
-    this.email = this.formBuilder.control('', [Validators.required, correctEmailValidator()]);
-    this.confirmEmail = this.formBuilder.control('', [Validators.required, correctEmailValidator()]);
+    this.email = this.formBuilder.control(this.initForm['emailInfo']['email'], [Validators.required, correctEmailValidator()]);
+    this.confirmEmail = this.formBuilder.control(this.initForm['emailInfo']['confirmEmail'], [Validators.required, correctEmailValidator()]);
     this.emailForm = this.formBuilder.group({
       email: this.email,
       confirmEmail: this.confirmEmail
@@ -98,9 +98,9 @@ export class RegisterModifyFormComponent implements OnInit{
     })
 
     // Initialisation du login (username et password).
-    this.username = this.formBuilder.control('', [Validators.required, Validators.minLength(7)]);
-    this.password = this.formBuilder.control('', [Validators.required]);
-    this.confirmPassword = this.formBuilder.control('', [Validators.required]);
+    this.username = this.formBuilder.control(this.initForm['loginInfo']['username'], [Validators.required, Validators.minLength(7)]);
+    this.password = this.formBuilder.control(this.initForm['loginInfo']['password'], [Validators.required]);
+    this.confirmPassword = this.formBuilder.control(this.initForm['loginInfo']['confirmPassword'], [Validators.required]);
     this.loginForm = this.formBuilder.group({
       username: this.username,
       password: this.password,
@@ -112,7 +112,7 @@ export class RegisterModifyFormComponent implements OnInit{
     })
 
     //Initialisation de l'image de profil.
-    this.image = this.formBuilder.control('', {updateOn: 'blur', validators: Validators.required});
+    this.image = this.formBuilder.control(this.initForm.image, {updateOn: 'blur', validators: Validators.required});
 
     
   }
