@@ -2,11 +2,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SharedModule } from '../../../shared/shared.module';
 import { RegisterFormService } from '../../../login/components/register/services/register-form.service';
-import { map, Observable, tap } from 'rxjs';
+import { map, Observable} from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { confirmEqualValidator } from '../../../login/components/register/validators/confirm-equal.validators';
 import { correctEmailValidator } from '../../../login/components/register/validators/correct-email.validator'; 
 import { RegisterForm } from '../../../login/components/register/models/register-form.model';
+import { ModifyProfileForm } from '../../../profile/models/modify-profile.models';
 
 @Component({
   selector: 'app-register-modify-form',
@@ -24,10 +25,13 @@ import { RegisterForm } from '../../../login/components/register/models/register
 export class RegisterModifyFormComponent implements OnInit{
 
   // On importe les données pour pré-remplir le formulaire.
-  @Input() initForm!: RegisterForm
+  @Input() initForm!: ModifyProfileForm
 
   // On importe le titre de la page à afficher (Création du compte ou Modification du compte par exemple)
   @Input() titlePage!: string
+
+  // On désactive les champs de mot de passe si besoin
+  @Input() disablePasswordFields!: boolean
 
   // On crée un évènement pour retourner le formulaire rempli au composant parent
   @Output() fillForm = new EventEmitter<RegisterForm>
@@ -67,8 +71,7 @@ export class RegisterModifyFormComponent implements OnInit{
 
 
   constructor(private formBuilder : FormBuilder,
-              private registerFormService : RegisterFormService
-  ) {}
+              private registerFormService : RegisterFormService) {}
 
 
 
@@ -103,9 +106,9 @@ export class RegisterModifyFormComponent implements OnInit{
     })
 
     // Initialisation du login (username et password).
-    this.username = this.formBuilder.control(this.initForm['loginInfo']['username'], [Validators.required, Validators.minLength(7)]);
-    this.password = this.formBuilder.control(this.initForm['loginInfo']['password'], [Validators.required]);
-    this.confirmPassword = this.formBuilder.control(this.initForm['loginInfo']['confirmPassword'], [Validators.required]);
+    this.username = this.formBuilder.control(this.initForm['username'], [Validators.required, Validators.minLength(7)]);
+    this.password = this.formBuilder.control('', [Validators.required]);
+    this.confirmPassword = this.formBuilder.control('', [Validators.required]);
     this.loginForm = this.formBuilder.group({
       username: this.username,
       password: this.password,

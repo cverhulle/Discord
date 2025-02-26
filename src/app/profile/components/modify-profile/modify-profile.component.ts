@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-
 import { ProfileService } from '../../service/profile.service';
 import { tap } from 'rxjs';
 import { RegisterModifyFormComponent } from '../../../shared/components/register-modify-form/register-modify-form.component';
 import { RegisterForm } from '../../../login/components/register/models/register-form.model';
 import { NgIf } from '@angular/common';
-import { RegisterFormService } from '../../../login/components/register/services/register-form.service';
+
 import { Router } from '@angular/router';
+import { ModifyProfileForm } from '../../models/modify-profile.models';
 
 
 @Component({
@@ -29,10 +29,13 @@ export class ModifyProfileComponent implements OnInit{
   imageUrl!: string;
 
   // Variable pour stocker le formulaire initialisé
-  initForm!: RegisterForm
+  initForm!: ModifyProfileForm
 
   // Variable pour configurer le titre de la page
   titlePage = 'Modifier mon compte discord'
+
+  // Variable pour désativer les champs de mot de passe
+  disablePasswordFields = true;
 
 
   constructor( private profileService: ProfileService,
@@ -63,11 +66,7 @@ export class ModifyProfileComponent implements OnInit{
             email: this.email,
             confirmEmail: this.email
           },
-          loginInfo: {
-            username: this.username,
-            password: '',
-            confirmPassword: ''
-          },
+          username: this.username,
           image: this.imageUrl
         }
       }
