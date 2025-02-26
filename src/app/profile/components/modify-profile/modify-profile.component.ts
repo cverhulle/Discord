@@ -72,6 +72,9 @@ export class ModifyProfileComponent implements OnInit{
     )
   }
   
-
+  modifyProfile(event: RegisterForm) {
+    console.log('test')
+    console.log(event)
+  }
 }
 
