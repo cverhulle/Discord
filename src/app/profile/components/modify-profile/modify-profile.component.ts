@@ -5,6 +5,7 @@ import { tap } from 'rxjs';
 import { RegisterModifyFormComponent } from '../../../shared/components/register-modify-form/register-modify-form.component';
 import { RegisterForm } from '../../../login/components/register/models/register-form.model';
 import { NgIf } from '@angular/common';
+import { RegisterFormService } from '../../../login/components/register/services/register-form.service';
 
 
 @Component({
@@ -33,7 +34,8 @@ export class ModifyProfileComponent implements OnInit{
   titlePage = 'Modifier mon compte discord'
 
 
-  constructor( private profileService: ProfileService) {}
+  constructor( private profileService: ProfileService,
+               private registerFormService : RegisterFormService) {}
 
 
   ngOnInit(): void {
@@ -73,8 +75,7 @@ export class ModifyProfileComponent implements OnInit{
   }
   
   modifyProfile(event: RegisterForm) {
-    console.log('test')
-    console.log(event)
+    this.registerFormService.modifyUserInfo(event).subscribe()
   }
 }
 
