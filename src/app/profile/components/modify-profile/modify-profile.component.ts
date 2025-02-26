@@ -74,7 +74,7 @@ export class ModifyProfileComponent implements OnInit{
     )
   }
   
-  modifyProfile(event: RegisterForm) {
+  modifyProfile(event: ModifyProfileForm) {
     this.profileService.modifyUserInfo(event).pipe(
       tap( (modif) => {
         if (modif) {
