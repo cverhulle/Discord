@@ -7,6 +7,7 @@ import { RegisterForm } from './models/register-form.model';
 import { NgIf } from '@angular/common';
 import { Observable, tap } from 'rxjs';
 import { RegisterModifyService } from '../../../shared/services/register-modify.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -32,13 +33,32 @@ export class RegisterComponent implements OnInit{
   // Variable pour désativer les champs de mot de passe
   disablePasswordFields = false;
 
+  //Variable pour le chargement
+  loading$!: Observable<boolean>
+
+
+
   constructor(private registerFormService : RegisterFormService,
-              private registerModifyService : RegisterModifyService
-  ) {}
+              private registerModifyService : RegisterModifyService,
+              private router : Router) {}
 
 
 
   ngOnInit() {
+    this.initLoadingAndErrorsObservables()
+    this.createInitForm()
+    
+  }
+
+
+  private initLoadingAndErrorsObservables(): void{
+    // Récupère dans le service l'observable loading
+    this.loading$ = this.registerModifyService.loading$
+  
+  }
+
+  private createInitForm() : void {
+    // On initialise le formulaire (vide ici)
     this.initForm = {
       personalInfo: {
         firstName: '',
@@ -58,13 +78,14 @@ export class RegisterComponent implements OnInit{
   }
 
 
+
   private sendForm(event: RegisterForm): Observable<boolean> {
     // Retourne un Observable permettant d'envoyer le formulaire.
     return this.registerFormService.saveUserInfo(event).pipe(
       tap(saved => {
-        // this.loading = false;
+        this.registerModifyService.setLoading(false)
         if (saved) {
-          // this.registerForm.reset();
+          this.router.navigateByUrl('/homepage')
           console.log("Utilisateur crée");
         } else {
           console.log("Erreur lors de l\'enregistrement de l\'utilisateur");
