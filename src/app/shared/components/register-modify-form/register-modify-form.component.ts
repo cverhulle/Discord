@@ -214,12 +214,12 @@ export class RegisterModifyFormComponent implements OnInit{
 
   // Lorsqu'on clique sur "Username" le message d'erreur disparaît.
   onHideUsernameErrorMessage(): void {
-    this.registerModifyService.setErrorUsername(true)
+    this.registerModifyService.setErrorUsername(false)
   }
 
   // Lorsqu'on clique sur "Email" le message d'erreur disparaît.
   onHideEmailErrorMessage(): void {
-    this.registerModifyService.setErrorEmail(true)
+    this.registerModifyService.setErrorEmail(false)
   }
   
 
