@@ -63,7 +63,7 @@ export class ModifyProfileComponent implements OnInit{
   }
 
 
-  initLoadingAndErrorsObservables() : void {
+  private initLoadingAndErrorsObservables() : void {
     // Récupère dans le service l'observable loading
     this.loading$ = this.registerModifyService.loading$
   }
@@ -72,7 +72,7 @@ export class ModifyProfileComponent implements OnInit{
   private getProfileInfos() : Observable<any> {
 
     // On récupère les données du profil de l'utilisateur.
-    
+
     return this.profileService.getProfile().pipe(
       tap( (rep) => {
 
@@ -113,6 +113,7 @@ export class ModifyProfileComponent implements OnInit{
   modifyProfile(event: ModifyProfileForm) {
     this.profileService.modifyUserInfo(event).pipe(
       tap( (modif) => {
+        this.registerModifyService.setLoading(false)
         if (modif) {
           console.log('Modification(s) enregistrée(s)')
         } else {
@@ -120,7 +121,7 @@ export class ModifyProfileComponent implements OnInit{
         }
       })
     ).subscribe()
-    // this.router.navigateByUrl('/profile')
+    this.router.navigateByUrl('/profile')
   }
 }
 
