@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../../service/profile.service';
-import { tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { RegisterModifyFormComponent } from '../../../shared/components/register-modify-form/register-modify-form.component';
 import { RegisterForm } from '../../../login/components/register/models/register-form.model';
 import { NgIf } from '@angular/common';
@@ -38,14 +38,42 @@ export class ModifyProfileComponent implements OnInit{
   // Variable pour désativer les champs de mot de passe
   disablePasswordFields = true;
 
+  //Variable pour le chargement
+  loading$!: Observable<boolean>
+
+
+
 
   constructor( private profileService: ProfileService,
                private router: Router,
                private registerModifyService : RegisterModifyService ) {}
 
 
+
+
   ngOnInit(): void {
-    this.profileService.getProfile().pipe(
+    this.initLoadingAndErrorsObservables()
+    this.getProfileInfos().subscribe(
+      (rep) => {
+
+        this.createInitForm()
+      }
+
+    )
+  }
+
+
+  initLoadingAndErrorsObservables() : void {
+    // Récupère dans le service l'observable loading
+    this.loading$ = this.registerModifyService.loading$
+  }
+
+
+  private getProfileInfos() : Observable<any> {
+
+    // On récupère les données du profil de l'utilisateur.
+    
+    return this.profileService.getProfile().pipe(
       tap( (rep) => {
 
         // On sauvegarde les données de l'utilisateur
@@ -55,28 +83,30 @@ export class ModifyProfileComponent implements OnInit{
         this.email = rep['user']['emailInfo']['email'],
         this.imageUrl = rep['user']['image']
       })
-    ).subscribe(
-      (rep) => {
-
-        // On configure initForm qui contient les données de l'utilisateur dans le format du modèle de données.
-        this.initForm= {
-          personalInfo: {
-            firstName: this.firstName,
-            lastName: this.lastName
-          },
-          emailInfo: {
-            email: this.email,
-            confirmEmail: this.email
-          },
-          loginInfo: {
-            username: this.username
-          },
-          image: this.imageUrl
-        }
-      }
-
     )
   }
+
+
+
+  private createInitForm() : void {
+    // On configure initForm qui contient les données de l'utilisateur dans le format du modèle de données.
+    this.initForm = {
+      personalInfo: {
+        firstName: this.firstName,
+        lastName: this.lastName
+      },
+      emailInfo: {
+        email: this.email,
+        confirmEmail: this.email
+      },
+      loginInfo: {
+        username: this.username
+      },
+      image: this.imageUrl
+    }
+  }
+
+
 
   
   
