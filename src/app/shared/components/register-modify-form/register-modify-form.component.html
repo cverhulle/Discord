@@ -45,7 +45,7 @@
         </div>
 
         
-        <small *ngIf="errorFormEmail" class="error-text"> Cet email est déjà utilisé</small>
+        <small *ngIf="errorFormEmail$ |async" class="error-text"> Cet email est déjà utilisé</small>
         
 
         <small *ngIf="showEmailError$ | async" class="error-text"> Les emails ne correspondent pas </small>
@@ -68,7 +68,7 @@
             </mat-form-field>
 
             
-            <small *ngIf="errorFormUsername" class="error-text"> Cet username est déjà utilisé</small>
+            <small *ngIf="errorFormUsername$ |async" class="error-text"> Cet username est déjà utilisé</small>
             
 
             <div class="form-row">
