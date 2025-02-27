@@ -6,6 +6,7 @@ import { RegisterModifyFormComponent } from "../../../shared/components/register
 import { RegisterForm } from './models/register-form.model';
 import { NgIf } from '@angular/common';
 import { Observable, tap } from 'rxjs';
+import { RegisterModifyService } from '../../../shared/services/register-modify.service';
 
 
 @Component({
@@ -31,7 +32,9 @@ export class RegisterComponent implements OnInit{
   // Variable pour désativer les champs de mot de passe
   disablePasswordFields = false;
 
-  constructor(private registerFormService : RegisterFormService) {}
+  constructor(private registerFormService : RegisterFormService,
+              private registerModifyService : RegisterModifyService
+  ) {}
 
 
 

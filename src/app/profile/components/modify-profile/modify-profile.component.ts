@@ -7,6 +7,7 @@ import { NgIf } from '@angular/common';
 
 import { Router } from '@angular/router';
 import { ModifyProfileForm } from '../../models/modify-profile.models';
+import { RegisterModifyService } from '../../../shared/services/register-modify.service';
 
 
 @Component({
@@ -39,7 +40,8 @@ export class ModifyProfileComponent implements OnInit{
 
 
   constructor( private profileService: ProfileService,
-               private router: Router ) {}
+               private router: Router,
+               private registerModifyService : RegisterModifyService ) {}
 
 
   ngOnInit(): void {
@@ -88,7 +90,7 @@ export class ModifyProfileComponent implements OnInit{
         }
       })
     ).subscribe()
-    this.router.navigateByUrl('/profile')
+    // this.router.navigateByUrl('/profile')
   }
 }
 

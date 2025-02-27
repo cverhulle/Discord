@@ -8,6 +8,7 @@ import { confirmEqualValidator } from '../../../login/components/register/valida
 import { correctEmailValidator } from '../../../login/components/register/validators/correct-email.validator'; 
 import { RegisterForm } from '../../../login/components/register/models/register-form.model';
 import { ModifyProfileForm } from '../../../profile/models/modify-profile.models';
+import { RegisterModifyService } from '../../services/register-modify.service';
 
 @Component({
   selector: 'app-register-modify-form',
@@ -50,7 +51,8 @@ export class RegisterModifyFormComponent implements OnInit{
 
 
   //Variable pour le chargement
-  loading = false;
+  loading$!: Observable<boolean>
+  loadingInverse$!: Observable<boolean>
 
   //Variable pour stopper l'envoi du formulaire
   errorFormUsername = false;
@@ -71,7 +73,8 @@ export class RegisterModifyFormComponent implements OnInit{
 
 
   constructor(private formBuilder : FormBuilder,
-              private registerFormService : RegisterFormService) {}
+              private registerFormService : RegisterFormService,
+              private registerModifyService : RegisterModifyService) {}
 
 
 
@@ -81,6 +84,13 @@ export class RegisterModifyFormComponent implements OnInit{
     this.initRegisterForm();
     this.initObservables();
     this.initPasswordFields(this.disablePasswordFields)
+
+    //Variable pour le chargement
+    this.loading$ = this.registerModifyService.loading$
+
+    this.loadingInverse$ = this.registerModifyService.loading$.pipe(
+      map(loading => !loading)
+    );
         
   }
 
@@ -202,6 +212,7 @@ export class RegisterModifyFormComponent implements OnInit{
 
 
   onSubmitForm(){
+    this.registerModifyService.setLoading(true)
     this.fillForm.emit(this.registerForm.value)
   }
 
