@@ -55,8 +55,8 @@ export class RegisterModifyFormComponent implements OnInit{
   loadingInverse$!: Observable<boolean>
 
   //Variable pour stopper l'envoi du formulaire
-  errorFormUsername = false;
-  errorFormEmail = false ;
+  errorFormUsername$! : Observable<boolean>
+  errorFormEmail$! : Observable<boolean>
 
   //Variables pour les messages d'erreur
   showEmailError$!: Observable<boolean>;
@@ -181,6 +181,21 @@ export class RegisterModifyFormComponent implements OnInit{
     }
   }
 
+
+  private initLoadingAndErrorsObservables(): void{
+    // Initialisation du loading
+    this.loading$ = this.registerModifyService.loading$
+
+    this.loadingInverse$ = this.registerModifyService.loading$.pipe(
+      map(loading => !loading)
+    );
+
+    // Initialisation des erreurs d'username et d'email déjà utilisés
+    this.errorFormEmail$ = this.registerModifyService.errorEmail$
+    this.errorFormUsername$ = this.registerModifyService.errorUsername$
+  }
+
+
   getFormControlErrorText( ctrl: AbstractControl) : string {
     // Affiche un message d'erreur en fonction de la validation du champ (pour les Validtors)
     if (ctrl.hasError('required')) {
@@ -194,28 +209,30 @@ export class RegisterModifyFormComponent implements OnInit{
     }
   }
 
-  private initLoadingAndErrorsObservables(): void{
-    this.loading$ = this.registerModifyService.loading$
-
-    this.loadingInverse$ = this.registerModifyService.loading$.pipe(
-      map(loading => !loading)
-    );
-  }
+  
 
 
   // Lorsqu'on clique sur "Username" le message d'erreur disparaît.
   onHideUsernameErrorMessage(): void {
-    this.errorFormUsername = false
+    this.registerModifyService.setErrorUsername(true)
   }
 
   // Lorsqu'on clique sur "Email" le message d'erreur disparaît.
   onHideEmailErrorMessage(): void {
-    this.errorFormEmail = false
+    this.registerModifyService.setErrorEmail(true)
+  }
+  
+
+  private initSubmitForm(): void{
+    //On remet les erreurs à false et on lance le chargement.
+    this.registerModifyService.setErrorEmail(false);
+    this.registerModifyService.setErrorUsername(false);
+    this.registerModifyService.setLoading(true)
   }
 
 
   onSubmitForm(){
-    this.registerModifyService.setLoading(true)
+    this.initSubmitForm()
     this.fillForm.emit(this.registerForm.value)
   }
 
