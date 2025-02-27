@@ -84,13 +84,8 @@ export class RegisterModifyFormComponent implements OnInit{
     this.initRegisterForm();
     this.initObservables();
     this.initPasswordFields(this.disablePasswordFields)
-
-    //Variable pour le chargement
-    this.loading$ = this.registerModifyService.loading$
-
-    this.loadingInverse$ = this.registerModifyService.loading$.pipe(
-      map(loading => !loading)
-    );
+    this.initLoadingAndErrorsObservables()
+    
         
   }
 
@@ -197,6 +192,14 @@ export class RegisterModifyFormComponent implements OnInit{
     } else {
       return 'Ce champ contient une erreur'
     }
+  }
+
+  private initLoadingAndErrorsObservables(): void{
+    this.loading$ = this.registerModifyService.loading$
+
+    this.loadingInverse$ = this.registerModifyService.loading$.pipe(
+      map(loading => !loading)
+    );
   }
 
 
