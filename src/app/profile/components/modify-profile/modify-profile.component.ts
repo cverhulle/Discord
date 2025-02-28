@@ -109,7 +109,7 @@ export class ModifyProfileComponent implements OnInit{
 
 
   private emailAlreadyTaken(event: ModifyProfileForm): Observable<boolean> {
-    // Retourne un Observable permettant de vérifier si l'adresse email dans le formulaire envoyée existe déjà dans la BDD (en dehors de l'utilisatteur actuel).
+    // Retourne un Observable permettant de vérifier si l'adresse email dans le formulaire envoyée existe déjà dans la BDD (en dehors de l'utilisateur actuel).
     // Si oui, on arrête le chargement et, on passe errorFormEmail à true.
     return this.profileService.emailTaken(event).pipe(
       tap(exist => {
@@ -124,7 +124,7 @@ export class ModifyProfileComponent implements OnInit{
 
 
   private usernameAlreadyTaken(event: ModifyProfileForm): Observable<boolean> {
-    // Retourne un Observable permettant de vérifier si l'username dans le formulaire envoyée existe déjà dans la BDD.
+    // Retourne un Observable permettant de vérifier si l'username dans le formulaire envoyée existe déjà dans la BDD (en dehors de l'utilisateur actuel)..
     // Si oui, on arrête le chargement et, on passe errorFormUsername à true.
     return this.profileService.usernameTaken(event).pipe(
       tap(exist => {
