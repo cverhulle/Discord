@@ -11,7 +11,7 @@ import { ModifyProfileForm } from "../../../../profile/models/modify-profile.mod
 export class RegisterFormService {
     constructor(private http: HttpClient) {}
 
-    emailExists(formValue: RegisterForm | ModifyProfileForm ): Observable<boolean>{
+    emailExists(formValue: RegisterForm): Observable<boolean>{
         return this.http.post(`${environment.apiUrl}/users/register/email`, formValue).pipe(
             map( () => false),
             catchError(() => of(true))
@@ -19,7 +19,7 @@ export class RegisterFormService {
         );
     }
 
-    usernameExists(formValue: RegisterForm | ModifyProfileForm): Observable<boolean>{
+    usernameExists(formValue: RegisterForm): Observable<boolean>{
         return this.http.post(`${environment.apiUrl}/users/register/username`, formValue).pipe(
             map( () => false),
             catchError(() => of(true))
