@@ -111,7 +111,7 @@ export class ModifyProfileComponent implements OnInit{
 
 
   private emailAlreadyTaken(event: ModifyProfileForm): Observable<boolean> {
-    // Retourne un Observable permettant de vérifier si l'adresse email dans le formulaire envoyée existe déjà dans la BDD.
+    // Retourne un Observable permettant de vérifier si l'adresse email dans le formulaire envoyée existe déjà dans la BDD (en dehors de l'utilisatteur actuel).
     // Si oui, on arrête le chargement et, on passe errorFormEmail à true.
     return this.profileService.emailTaken(event).pipe(
       tap(exist => {
