@@ -20,4 +20,12 @@ export class ProfileService {
             catchError( () => of(false))
         )
     }
+
+    emailTaken(formValue: ModifyProfileForm) : Observable<boolean>{
+        return this.http.post(`${environment.apiUrl}/profile/email`, formValue).pipe(
+            map( () => false),
+            catchError(() => of(true))
+            
+        ); 
+    }
 }

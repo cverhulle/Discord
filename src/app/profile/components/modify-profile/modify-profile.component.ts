@@ -110,10 +110,10 @@ export class ModifyProfileComponent implements OnInit{
 
 
 
-  private emailAlreadyExists(event: ModifyProfileForm): Observable<boolean> {
+  private emailAlreadyTaken(event: ModifyProfileForm): Observable<boolean> {
     // Retourne un Observable permettant de vérifier si l'adresse email dans le formulaire envoyée existe déjà dans la BDD.
     // Si oui, on arrête le chargement et, on passe errorFormEmail à true.
-    return this.registerFormService.emailExists(event).pipe(
+    return this.profileService.emailTaken(event).pipe(
       tap(exist => {
         if (exist) {
           this.registerModifyService.setLoading(false)
@@ -138,7 +138,7 @@ export class ModifyProfileComponent implements OnInit{
       })
     )
   }
-  
+
 
   private sendForm(event: ModifyProfileForm): Observable<boolean> {
     return this.profileService.modifyUserInfo(event).pipe(
@@ -159,7 +159,7 @@ export class ModifyProfileComponent implements OnInit{
   modifyProfile(event: ModifyProfileForm) {
     forkJoin([
           // On regarde si l'email est déjà dans la base de données.
-          this.emailAlreadyExists(event),
+          this.emailAlreadyTaken(event),
     
           // On regarde si l'username est déjà dans la base de données.
           this.usernameAlreadyExists(event)
