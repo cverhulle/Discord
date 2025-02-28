@@ -28,4 +28,11 @@ export class ProfileService {
             
         ); 
     }
+
+    usernameTaken(formValue: ModifyProfileForm): Observable<boolean>{
+            return this.http.post(`${environment.apiUrl}/profile/username`, formValue).pipe(
+                map( () => false),
+                catchError(() => of(true))
+            );
+        }
 }

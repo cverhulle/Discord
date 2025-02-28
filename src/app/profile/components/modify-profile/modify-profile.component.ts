@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../../service/profile.service';
 import { forkJoin, Observable, tap } from 'rxjs';
 import { RegisterModifyFormComponent } from '../../../shared/components/register-modify-form/register-modify-form.component';
-import { RegisterForm } from '../../../login/components/register/models/register-form.model';
 import { NgIf } from '@angular/common';
 
 import { Router } from '@angular/router';
 import { ModifyProfileForm } from '../../models/modify-profile.models';
 import { RegisterModifyService } from '../../../shared/services/register-modify.service';
-import { RegisterFormService } from '../../../login/components/register/services/register-form.service';
+
 
 
 @Component({
@@ -47,8 +46,7 @@ export class ModifyProfileComponent implements OnInit{
 
   constructor( private profileService: ProfileService,
                private router: Router,
-               private registerModifyService : RegisterModifyService,
-               private registerFormService: RegisterFormService ) {}
+               private registerModifyService : RegisterModifyService) {}
 
 
 
@@ -125,10 +123,10 @@ export class ModifyProfileComponent implements OnInit{
   }
 
 
-  private usernameAlreadyExists(event: ModifyProfileForm): Observable<boolean> {
+  private usernameAlreadyTaken(event: ModifyProfileForm): Observable<boolean> {
     // Retourne un Observable permettant de vérifier si l'username dans le formulaire envoyée existe déjà dans la BDD.
     // Si oui, on arrête le chargement et, on passe errorFormUsername à true.
-    return this.registerFormService.usernameExists(event).pipe(
+    return this.profileService.usernameTaken(event).pipe(
       tap(exist => {
         if (exist) {
           this.registerModifyService.setLoading(false)
@@ -162,12 +160,12 @@ export class ModifyProfileComponent implements OnInit{
           this.emailAlreadyTaken(event),
     
           // On regarde si l'username est déjà dans la base de données.
-          this.usernameAlreadyExists(event)
+          this.usernameAlreadyTaken(event)
         ]).subscribe(
-          ([emailExists,usernameExists]) => {
+          ([emailTaken,usernameTaken]) => {
     
             // On regarde si l'erreur d'username ou l'erreur d'email a lieu.
-            if (!emailExists && !usernameExists) {
+            if (!emailTaken && !usernameTaken) {
             
               // Si les deux erreurs sont fausses, on lance l'envoi du formulaire.
               this.sendForm(event).subscribe()
