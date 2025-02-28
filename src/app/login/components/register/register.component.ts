@@ -5,7 +5,7 @@ import { RegisterFormService } from './services/register-form.service';
 import { RegisterModifyFormComponent } from "../../../shared/components/register-modify-form/register-modify-form.component"; 
 import { RegisterForm } from './models/register-form.model';
 import { NgIf } from '@angular/common';
-import { Observable, tap } from 'rxjs';
+import { forkJoin, Observable, tap } from 'rxjs';
 import { RegisterModifyService } from '../../../shared/services/register-modify.service';
 import { Router } from '@angular/router';
 
@@ -128,19 +128,22 @@ export class RegisterComponent implements OnInit{
 
 
   onCreateUser(event: RegisterForm) {
-    // On regarde si l'email est déjà dans la base de données.
-    this.emailAlreadyExists(event).subscribe()
 
-    // On regarde si l'username est déjà dans la base de données.
-    this.usernameAlreadyExists(event).subscribe(
-      (after) => {
+    forkJoin([
+      // On regarde si l'email est déjà dans la base de données.
+      this.emailAlreadyExists(event),
+
+      // On regarde si l'username est déjà dans la base de données.
+      this.usernameAlreadyExists(event)
+    ]).subscribe(
+      ([emailExists,usernameExists]) => {
 
         // On regarde si l'erreur d'username ou l'erreur d'email a lieu.
-        // if(!this.errorFormEmail && !this.errorFormUsername) {
-
+        if (!emailExists && !usernameExists) {
+        
           // Si les deux erreurs sont fausses, on lance l'envoi du formulaire.
           this.sendForm(event).subscribe()
-        // }
+        }
       }
 
     )

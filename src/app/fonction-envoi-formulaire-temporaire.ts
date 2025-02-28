@@ -80,4 +80,89 @@ private initSubmitForm(): void{
     )
   }
 
+
+
+
+
+
+
+
+
+
+import { forkJoin, Observable } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
+
+// Méthode pour vérifier si l'email existe déjà
+private emailAlreadyExists(event: RegisterForm): Observable<boolean> {
+  return this.registerFormService.emailExists(event).pipe(
+    tap(exist => {
+      if (exist) {
+        this.registerModifyService.setLoading(false);
+        this.registerModifyService.setErrorEmail(true);
+        console.log("L'email est déjà utilisé");
+      }
+    }),
+    catchError(() => {
+      this.registerModifyService.setLoading(false);
+      return of(false); // En cas d'erreur, on renvoie false
+    })
+  );
+}
+
+// Méthode pour vérifier si le nom d'utilisateur existe déjà
+private usernameAlreadyExists(event: RegisterForm): Observable<boolean> {
+  return this.registerFormService.usernameExists(event).pipe(
+    tap(exist => {
+      if (exist) {
+        this.registerModifyService.setLoading(false);
+        this.registerModifyService.setErrorUsername(true);
+        console.log("L'username est déjà utilisé");
+      }
+    }),
+    catchError(() => {
+      this.registerModifyService.setLoading(false);
+      return of(false); // En cas d'erreur, on renvoie false
+    })
+  );
+}
+
+// Méthode pour envoyer le formulaire
+private sendForm(event: RegisterForm): Observable<boolean> {
+  return this.registerFormService.saveUserInfo(event).pipe(
+    tap(saved => {
+      this.registerModifyService.setLoading(false);
+      if (saved) {
+        console.log("Utilisateur créé");
+        this.router.navigateByUrl('/homepage');
+      } else {
+        console.log("Erreur lors de l'enregistrement de l'utilisateur");
+      }
+    }),
+    catchError(() => {
+      this.registerModifyService.setLoading(false);
+      return of(false); // En cas d'erreur, on renvoie false
+    })
+  );
+}
+
+// Méthode principale pour créer un utilisateur
+onCreateUser(event: RegisterForm) {
+  this.registerModifyService.setLoading(true); // Démarre le chargement
+
+  // Vérifie à la fois l'email et le nom d'utilisateur en parallèle
+  forkJoin([
+    this.emailAlreadyExists(event),
+    this.usernameAlreadyExists(event)
+  ]).subscribe(([emailExists, usernameExists]) => {
+    if (!emailExists && !usernameExists) {
+      // Si aucune erreur n'a été trouvée, envoie le formulaire
+      this.sendForm(event).subscribe();
+    } else {
+      // Si l'une des vérifications échoue, on ne fait rien ou on gère une erreur supplémentaire
+      console.log("Des erreurs sont présentes, le formulaire ne sera pas envoyé.");
+    }
+  });
+}
+
+
 */
