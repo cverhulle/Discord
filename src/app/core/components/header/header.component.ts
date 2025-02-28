@@ -21,6 +21,13 @@ export class HeaderComponent implements OnInit{
   
   }
 
+  onLogout(): void {
+    if(this.tokenService.isLogged()) {
+      this.tokenService.removeToken()
+      console.log('Utilisateur déconnecté')
+    }
+  }
+
   
 
 }
