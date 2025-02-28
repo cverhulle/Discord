@@ -1,5 +1,4 @@
 <!-- On affiche la div que lorsque initForm est configuré -->
- <p> En cours de modificaion à partir du composant réutilisable (messge d'erreur, loading, email et username deja utilisés </p>
 <div *ngIf="initForm">
     <app-register-modify-form [initForm]="initForm" [titlePage]="titlePage" [disablePasswordFields]="disablePasswordFields" (fillForm)="onCreateUser($event)"> </app-register-modify-form>
 </div>
