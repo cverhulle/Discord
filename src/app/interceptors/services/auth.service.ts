@@ -1,17 +1,18 @@
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class TokenService {
-    constructor() {}
+    constructor(private router: Router) {}
 
     saveToken(token: string): void {
         localStorage.setItem('token', token)
     }
 
-    //saveUserId(id: string): void {
+    // saveUserId(id: string): void {
     //    localStorage.setItem('userId', id)
     // }
 
@@ -27,6 +28,11 @@ export class TokenService {
         const token = this.getToken()
         return !!token
 
+    }
+
+    removeToken(): void {
+        localStorage.removeItem('token')
+        this.router.navigateByUrl('/homepage')
     }
 
     
