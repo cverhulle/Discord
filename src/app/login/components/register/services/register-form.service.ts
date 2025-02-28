@@ -3,6 +3,7 @@ import { catchError, map, Observable, of, tap } from "rxjs";
 import { environment } from "../../../../../environments/environment.development";
 import { HttpClient } from "@angular/common/http";
 import { RegisterForm } from "../models/register-form.model";
+import { ModifyProfileForm } from "../../../../profile/models/modify-profile.models";
 
 
 @Injectable()
@@ -10,7 +11,7 @@ import { RegisterForm } from "../models/register-form.model";
 export class RegisterFormService {
     constructor(private http: HttpClient) {}
 
-    emailExists(formValue: RegisterForm): Observable<boolean>{
+    emailExists(formValue: RegisterForm | ModifyProfileForm ): Observable<boolean>{
         return this.http.post(`${environment.apiUrl}/users/register/email`, formValue).pipe(
             map( () => false),
             catchError(() => of(true))
@@ -18,7 +19,7 @@ export class RegisterFormService {
         );
     }
 
-    usernameExists(formValue: RegisterForm): Observable<boolean>{
+    usernameExists(formValue: RegisterForm | ModifyProfileForm): Observable<boolean>{
         return this.http.post(`${environment.apiUrl}/users/register/username`, formValue).pipe(
             map( () => false),
             catchError(() => of(true))

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../../service/profile.service';
-import { Observable, tap } from 'rxjs';
+import { forkJoin, Observable, tap } from 'rxjs';
 import { RegisterModifyFormComponent } from '../../../shared/components/register-modify-form/register-modify-form.component';
 import { RegisterForm } from '../../../login/components/register/models/register-form.model';
 import { NgIf } from '@angular/common';
@@ -8,6 +8,7 @@ import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { ModifyProfileForm } from '../../models/modify-profile.models';
 import { RegisterModifyService } from '../../../shared/services/register-modify.service';
+import { RegisterFormService } from '../../../login/components/register/services/register-form.service';
 
 
 @Component({
@@ -46,7 +47,8 @@ export class ModifyProfileComponent implements OnInit{
 
   constructor( private profileService: ProfileService,
                private router: Router,
-               private registerModifyService : RegisterModifyService ) {}
+               private registerModifyService : RegisterModifyService,
+               private registerFormService: RegisterFormService ) {}
 
 
 
@@ -108,20 +110,71 @@ export class ModifyProfileComponent implements OnInit{
 
 
 
+  private emailAlreadyExists(event: ModifyProfileForm): Observable<boolean> {
+    // Retourne un Observable permettant de vérifier si l'adresse email dans le formulaire envoyée existe déjà dans la BDD.
+    // Si oui, on arrête le chargement et, on passe errorFormEmail à true.
+    return this.registerFormService.emailExists(event).pipe(
+      tap(exist => {
+        if (exist) {
+          this.registerModifyService.setLoading(false)
+          this.registerModifyService.setErrorEmail(true)
+          console.log("L'email est déjà utilisé")
+        }
+      })
+    )
+  }
+
+
+  private usernameAlreadyExists(event: ModifyProfileForm): Observable<boolean> {
+    // Retourne un Observable permettant de vérifier si l'username dans le formulaire envoyée existe déjà dans la BDD.
+    // Si oui, on arrête le chargement et, on passe errorFormUsername à true.
+    return this.registerFormService.usernameExists(event).pipe(
+      tap(exist => {
+        if (exist) {
+          this.registerModifyService.setLoading(false)
+          this.registerModifyService.setErrorUsername(true)
+          console.log("L'username est déjà utilisé")
+        }
+      })
+    )
+  }
   
-  
-  modifyProfile(event: ModifyProfileForm) {
-    this.profileService.modifyUserInfo(event).pipe(
+
+  private sendForm(event: ModifyProfileForm): Observable<boolean> {
+    return this.profileService.modifyUserInfo(event).pipe(
       tap( (modif) => {
         this.registerModifyService.setLoading(false)
         if (modif) {
           console.log('Modification(s) enregistrée(s)')
+          this.router.navigateByUrl('/profile')
         } else {
           console.log('Echec lors de la modification')
         }
       })
-    ).subscribe()
-    this.router.navigateByUrl('/profile')
+    )
+    
+  }
+  
+  
+  modifyProfile(event: ModifyProfileForm) {
+    forkJoin([
+          // On regarde si l'email est déjà dans la base de données.
+          this.emailAlreadyExists(event),
+    
+          // On regarde si l'username est déjà dans la base de données.
+          this.usernameAlreadyExists(event)
+        ]).subscribe(
+          ([emailExists,usernameExists]) => {
+    
+            // On regarde si l'erreur d'username ou l'erreur d'email a lieu.
+            if (!emailExists && !usernameExists) {
+            
+              // Si les deux erreurs sont fausses, on lance l'envoi du formulaire.
+              this.sendForm(event).subscribe()
+            }
+          }
+    
+        )
   }
 }
 
