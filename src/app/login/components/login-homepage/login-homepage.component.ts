@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SharedModule } from '../../../shared/shared.module';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { LoginFormService } from './service/login-form.service';
 import { catchError, map, of, tap } from 'rxjs';
@@ -36,7 +36,8 @@ export class LoginHomepageComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private loginFormService: LoginFormService,
-              private tokenService: TokenService
+              private tokenService: TokenService,
+              private router : Router
   ) {}
 
 
@@ -75,11 +76,12 @@ export class LoginHomepageComponent implements OnInit {
       next: (data) => {
         // On récupère le token et l'userId générés.
         this.sendForm(data)
+        this.router.navigateByUrl('/profile')
       },
       error: (err) => {this.loading = false, 
                       console.log('Erreur de connexion')}
   })
-
+    
   }
 
 }
