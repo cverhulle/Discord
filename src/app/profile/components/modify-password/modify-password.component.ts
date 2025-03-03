@@ -4,6 +4,7 @@ import { Observable, tap } from 'rxjs';
 import { RegisterModifyService } from '../../../shared/services/register-modify.service';
 import { RegisterForm } from '../../../login/components/register/models/register-form.model';
 import { Router } from '@angular/router';
+import { ProfileService } from '../../service/profile.service';
 
 
 @Component({
@@ -28,6 +29,7 @@ export class ModifyPasswordComponent implements OnInit{
 
 
   constructor(private registerModifyService : RegisterModifyService,
+              private profileService : ProfileService,
               private router : Router) {}
 
 
@@ -44,7 +46,7 @@ export class ModifyPasswordComponent implements OnInit{
 
   private sendForm(event: RegisterForm) {
 
-    return this.registerModifyService.modifyPassword.pipe(      
+    return this.profileService.modifyPassword.pipe(      
       tap( saved => {
         this.registerModifyService.setLoading(false)
         if (saved) {
