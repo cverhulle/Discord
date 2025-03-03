@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterModifyFormComponent } from "../../../shared/components/register-modify-form/register-modify-form.component";
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { RegisterModifyService } from '../../../shared/services/register-modify.service';
+import { RegisterForm } from '../../../login/components/register/models/register-form.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -25,10 +27,11 @@ export class ModifyPasswordComponent implements OnInit{
 
 
 
-  constructor(private registerModifyService : RegisterModifyService) {}
+  constructor(private registerModifyService : RegisterModifyService,
+              private router : Router) {}
 
 
-  
+
   ngOnInit(): void {
     this.initLoading()
   }
@@ -39,9 +42,28 @@ export class ModifyPasswordComponent implements OnInit{
   }
 
 
+  private sendForm(event: RegisterForm) {
 
-  onModifyPassword(event : any) {
+    return this.registerModifyService.modifyPassword.pipe(      
+      tap( saved => {
+        this.registerModifyService.setLoading(false)
+        if (saved) {
+          console.log('Mot de passe modifié')
+          this.router.navigateByUrl('/profile')
+        } else {
+          console.log('Echec lors de l\'enregistrement')
+        }
+        
+        
+      }
+    )
+    ).subscribe()
 
+  }
+
+
+  onModifyPassword(event : RegisterForm) {
+    this.sendForm(event)
   }
 
 
