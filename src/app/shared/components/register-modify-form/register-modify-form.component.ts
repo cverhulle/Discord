@@ -217,12 +217,12 @@ export class RegisterModifyFormComponent implements OnInit{
   // Si l'argument est true, on désactive tous les champs sauf ceux en rapport avec le mot de passe.
     if (this.disableFieldsExceptPasswords) {
       this.personalInfoForm.disable()
-      this.email.disable()
+      this.emailForm.disable()
       this.username.disable()
       this.image.disable()
     } else {
       this.personalInfoForm.enable()
-      this.email.enable()
+      this.emailForm.enable()
       this.username.enable()
       this.image.enable()
     }
