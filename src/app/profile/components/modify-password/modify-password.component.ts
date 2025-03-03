@@ -16,7 +16,7 @@ export class ModifyPasswordComponent implements OnInit{
   titlePage = 'Modifier mon mot de passe' ; 
 
   // Variable pour désativer les champs de mot de passe
-  disablePasswordFields = false;
+  disableFieldsExceptPasswords = true;
 
 
 
