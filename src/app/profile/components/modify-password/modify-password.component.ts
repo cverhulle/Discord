@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterModifyFormComponent } from "../../../shared/components/register-modify-form/register-modify-form.component";
+import { Observable } from 'rxjs';
+import { RegisterModifyService } from '../../../shared/services/register-modify.service';
 
 
 @Component({
@@ -18,13 +20,23 @@ export class ModifyPasswordComponent implements OnInit{
   // Variable pour désativer les champs de mot de passe
   disableFieldsExceptPasswords = true;
 
+  //Variable pour le chargement
+  loading$!: Observable<boolean>
 
 
 
+  constructor(private registerModifyService : RegisterModifyService) {}
+
+
+  
   ngOnInit(): void {
-        
+    this.initLoading()
   }
 
+  private initLoading() {
+    // Récupère dans le service l'observable loading
+    this.loading$ = this.registerModifyService.loading$
+  }
 
 
 
