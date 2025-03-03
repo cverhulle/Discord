@@ -30,9 +30,6 @@ export class RegisterComponent implements OnInit{
   // Variable pour configurer le titre de la page
   titlePage = 'Créer mon compte discord' ; 
 
-  // Variable pour désativer les champs de mot de passe
-  disablePasswordFields = false;
-
   //Variable pour le chargement
   loading$!: Observable<boolean>
 
