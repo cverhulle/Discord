@@ -34,6 +34,9 @@ export class RegisterModifyFormComponent implements OnInit{
   // On désactive les champs de mot de passe si besoin
   @Input() disablePasswordFields!: boolean
 
+  // On désactive tous les champs à l'exeption du mot de passe
+  @Input() disableFieldsExceptPasswords!: boolean
+
   // On crée un évènement pour retourner le formulaire rempli au composant parent
   @Output() fillForm = new EventEmitter<RegisterForm>
 
@@ -78,10 +81,11 @@ export class RegisterModifyFormComponent implements OnInit{
               
               {
                 this.disablePasswordFields = false
+                this.disableFieldsExceptPasswords = false
                 this.createInitForm()
               }
 
-              
+
   private createInitForm() : void {
     // On initialise le formulaire (vide ici)
     this.initForm = {
@@ -108,6 +112,7 @@ export class RegisterModifyFormComponent implements OnInit{
     this.initRegisterForm();
     this.initObservables();
     this.initPasswordFields(this.disablePasswordFields)
+    this.initFieldsExceptPasswords(this.disableFieldsExceptPasswords)
     this.initLoadingAndErrorsObservables()
     
         
@@ -204,6 +209,12 @@ export class RegisterModifyFormComponent implements OnInit{
       this.confirmPassword.enable();
     }
   }
+
+  private initFieldsExceptPasswords(disableFieldsExceptPasswords : boolean) {
+
+  }
+
+
 
 
   private initLoadingAndErrorsObservables(): void{
