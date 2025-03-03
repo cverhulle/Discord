@@ -42,9 +42,12 @@ export class ProfileHomepageComponent implements OnInit{
     ).subscribe()
   }
   
-  onModify(): void {
+  onModifyProfile(): void {
     this.router.navigateByUrl('/profile/modify')
   }
 
+  onModifyPassword() : void {
+    
+  }
   
 }
