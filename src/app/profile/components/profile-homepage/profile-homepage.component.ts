@@ -47,7 +47,7 @@ export class ProfileHomepageComponent implements OnInit{
   }
 
   onModifyPassword() : void {
-    
+    this.router.navigateByUrl('/profile/modifyPassword')
   }
   
 }
