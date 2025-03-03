@@ -4,7 +4,6 @@ import { SharedModule } from '../../../shared/shared.module';
 import { RegisterFormService } from './services/register-form.service';
 import { RegisterModifyFormComponent } from "../../../shared/components/register-modify-form/register-modify-form.component"; 
 import { RegisterForm } from './models/register-form.model';
-import { NgIf } from '@angular/common';
 import { forkJoin, Observable, tap } from 'rxjs';
 import { RegisterModifyService } from '../../../shared/services/register-modify.service';
 import { Router } from '@angular/router';
