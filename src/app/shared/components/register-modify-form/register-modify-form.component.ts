@@ -74,7 +74,11 @@ export class RegisterModifyFormComponent implements OnInit{
 
   constructor(private formBuilder : FormBuilder,
               private registerFormService : RegisterFormService,
-              private registerModifyService : RegisterModifyService) {}
+              private registerModifyService : RegisterModifyService) 
+              
+              {
+                this.disablePasswordFields = false
+              }
 
 
 
