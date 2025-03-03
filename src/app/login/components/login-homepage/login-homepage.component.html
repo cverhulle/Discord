@@ -19,7 +19,8 @@
 
     <!-- Bouton pour envoyer le formulaire -->
     <mat-card-actions>
-        <button color="primary" (click)="onSubmitForm()" [disabled]="loginForm.invalid"> Connexion </button>
+
+        <button mat-flat-button color="primary" (click)="onSubmitForm()" [disabled]="loginForm.invalid"> Connexion </button>
     </mat-card-actions>
 
     <!-- Lien pour s'inscrire (si pas encore de compte) -->
