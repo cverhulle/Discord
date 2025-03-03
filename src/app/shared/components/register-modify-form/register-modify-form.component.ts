@@ -87,7 +87,7 @@ export class RegisterModifyFormComponent implements OnInit{
 
 
   private createInitForm() : void {
-    // On initialise le formulaire (vide ici)
+    // On initialise le formulaire à vide par défaut.
     this.initForm = {
       personalInfo: {
         firstName: '',
@@ -200,7 +200,10 @@ export class RegisterModifyFormComponent implements OnInit{
   }
 
 
+
   private initPasswordFields(disablePasswordFields: boolean) : void {
+
+  // Si l'argument est true, on désactive les champs relatifs aux mot de passe.
     if (this.disablePasswordFields) {
       this.password.disable();
       this.confirmPassword.disable();
@@ -211,6 +214,19 @@ export class RegisterModifyFormComponent implements OnInit{
   }
 
   private initFieldsExceptPasswords(disableFieldsExceptPasswords : boolean) {
+  // Si l'argument est true, on désactive tous les champs sauf ceux en rapport avec le mot de passe.
+    if (this.disableFieldsExceptPasswords) {
+      this.personalInfoForm.disable()
+      this.email.disable()
+      this.username.disable()
+      this.image.disable()
+    } else {
+      this.personalInfoForm.enable()
+      this.email.enable()
+      this.username.enable()
+      this.image.enable()
+    }
+      
 
   }
 
