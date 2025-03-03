@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { environment } from "../../../environments/environment.development";
 import { catchError, map, Observable, of } from "rxjs";
 import { ModifyProfileForm } from "../models/modify-profile.models";
+import { RegisterForm } from "../../login/components/register/models/register-form.model";
 
 @Injectable()
 
@@ -16,6 +17,13 @@ export class ProfileService {
 
     modifyUserInfo(formValue: ModifyProfileForm): Observable<boolean>{
         return this.http.put(`${environment.apiUrl}/profile/modify`, formValue).pipe(
+            map( () => true),
+            catchError( () => of(false))
+        )
+    }
+
+    modifyPassword(formValue: RegisterForm): Observable<boolean> {
+        return this.http.put(`${environment.apiUrl}/profile/modifyPassword`, formValue).pipe(
             map( () => true),
             catchError( () => of(false))
         )

@@ -46,7 +46,7 @@ export class ModifyPasswordComponent implements OnInit{
 
   private sendForm(event: RegisterForm) {
 
-    return this.profileService.modifyPassword.pipe(      
+    return this.profileService.modifyPassword(event).pipe(      
       tap( saved => {
         this.registerModifyService.setLoading(false)
         if (saved) {
