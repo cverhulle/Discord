@@ -5,12 +5,14 @@ import { ProfileService } from "./service/profile.service";
 import { AuthGuard } from "../guard/auth.guard";
 import { ModifyProfileComponent } from "./components/modify-profile/modify-profile.component";
 import { RegisterFormService } from "../login/components/register/services/register-form.service";
+import { ModifyPasswordComponent } from "./components/modify-password/modify-password.component";
 
 
 
 const routes: Routes = [
     { path: '', component: ProfileHomepageComponent, canActivate : [AuthGuard]},
     { path: 'modify', component: ModifyProfileComponent, canActivate : [AuthGuard]},
+    { path: 'modifyPassword', component: ModifyPasswordComponent, canActivate : [AuthGuard]},
     { path: '*', redirectTo: ''}
 ];
 
