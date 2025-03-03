@@ -14,9 +14,6 @@ import { NgIf } from '@angular/common';
 })
 export class ModifyPasswordComponent implements OnInit{
 
-  // Variable pour stocker le formulaire initialisé
-  initForm!: RegisterForm ;
-
   // Variable pour configurer le titre de la page
   titlePage = 'Modifier mon mot de passe' ; 
 
@@ -27,30 +24,11 @@ export class ModifyPasswordComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.createInitForm()
-    
+        
   }
 
 
-  private createInitForm() : void {
-    // On initialise le formulaire (vide ici)
-    this.initForm = {
-      personalInfo: {
-        firstName: '',
-        lastName: ''
-      },
-      emailInfo: {
-        email: '',
-        confirmEmail: ''
-      },
-      loginInfo: {
-        username: '',
-        password: '',
-        confirmPassword: ''
-      },
-      image: ''
-    }
-  }
+
 
   onModifyPassword(event : any) {
 

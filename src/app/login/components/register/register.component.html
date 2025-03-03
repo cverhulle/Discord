@@ -1,4 +1,1 @@
-<!-- On affiche la div que lorsque initForm est configuré -->
-<div *ngIf="initForm">
-    <app-register-modify-form [initForm]="initForm" [titlePage]="titlePage" (fillForm)="onCreateUser($event)"> </app-register-modify-form>
-</div>
+<app-register-modify-form [titlePage]="titlePage" (fillForm)="onCreateUser($event)"> </app-register-modify-form>

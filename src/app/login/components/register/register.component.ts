@@ -15,7 +15,6 @@ import { Router } from '@angular/router';
   imports: [
     SharedModule,
     ReactiveFormsModule,
-    NgIf,
     RegisterModifyFormComponent
 ],
   templateUrl: './register.component.html',
@@ -23,9 +22,6 @@ import { Router } from '@angular/router';
 })
 
 export class RegisterComponent implements OnInit{
-
-  // Variable pour stocker le formulaire initialisé
-  initForm!: RegisterForm ;
 
   // Variable pour configurer le titre de la page
   titlePage = 'Créer mon compte discord' ; 
@@ -43,8 +39,7 @@ export class RegisterComponent implements OnInit{
 
   ngOnInit() {
     this.initLoadingAndErrorsObservables()
-    this.createInitForm()
-    
+        
   }
 
 
@@ -54,25 +49,7 @@ export class RegisterComponent implements OnInit{
   
   }
 
-  private createInitForm() : void {
-    // On initialise le formulaire (vide ici)
-    this.initForm = {
-      personalInfo: {
-        firstName: '',
-        lastName: ''
-      },
-      emailInfo: {
-        email: '',
-        confirmEmail: ''
-      },
-      loginInfo: {
-        username: '',
-        password: '',
-        confirmPassword: ''
-      },
-      image: ''
-    }
-  }
+  
 
 
 

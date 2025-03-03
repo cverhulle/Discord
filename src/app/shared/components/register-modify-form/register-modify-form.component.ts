@@ -78,9 +78,29 @@ export class RegisterModifyFormComponent implements OnInit{
               
               {
                 this.disablePasswordFields = false
+                this.createInitForm()
               }
 
-
+              
+  private createInitForm() : void {
+    // On initialise le formulaire (vide ici)
+    this.initForm = {
+      personalInfo: {
+        firstName: '',
+        lastName: ''
+      },
+      emailInfo: {
+        email: '',
+        confirmEmail: ''
+      },
+      loginInfo: {
+        username: '',
+        password: '',
+        confirmPassword: ''
+      },
+      image: ''
+    }
+  }
 
   
   ngOnInit() {
@@ -93,7 +113,7 @@ export class RegisterModifyFormComponent implements OnInit{
         
   }
 
-
+  
 
 
   private initFormControls(): void {
