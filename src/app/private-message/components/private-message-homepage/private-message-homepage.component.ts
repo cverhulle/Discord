@@ -26,7 +26,7 @@ export class PrivateMessageHomepageComponent {
   }
 
   onSearch(): void {
-    
+    console.log(this.searchQuery)
   }
 
 
