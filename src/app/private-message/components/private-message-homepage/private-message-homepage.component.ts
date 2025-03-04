@@ -3,6 +3,7 @@ import { FormsModule, NgModel } from '@angular/forms';
 import { SharedModule } from '../../../shared/shared.module';
 import { usernameImage } from '../../models/username-image.models';
 import { debounce, debounceTime, Subject } from 'rxjs';
+import { PrivateMessageService } from '../../service/private-message.service';
 
 @Component({
   selector: 'app-private-message-homepage',
@@ -13,6 +14,8 @@ import { debounce, debounceTime, Subject } from 'rxjs';
   templateUrl: './private-message-homepage.component.html',
   styleUrl: './private-message-homepage.component.scss'
 })
+
+
 export class PrivateMessageHomepageComponent {
   // Contient la requete de l'utilisateur
   searchQuery!: string;
@@ -23,7 +26,9 @@ export class PrivateMessageHomepageComponent {
   // On crée un Subject pour réagir aux changements sur le formulaire
   private searchSubject: Subject<string> = new Subject();
 
-  constructor() {
+  constructor(
+    private privateMessage : PrivateMessageService) {
+
     this.searchQuery = '';
     this.users = [];
 
@@ -37,7 +42,15 @@ export class PrivateMessageHomepageComponent {
   
   // On lance la recherche dans le serveur
   onSearch(query: string): void {
-    console.log(query)
+    this.privateMessage.searchQueryUsers(query).subscribe(
+      (data) => {
+        console.log('La recherche est terminée.')
+        this.users = data
+      },
+      error => {
+        console.log('Erreur dans la recherche des utilisateurs.', error)
+      }
+    )
   }
 
   // Au changement dans le champ de recherche, on lance cette méthode
