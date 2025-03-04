@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms';
 import { SharedModule } from '../../../shared/shared.module';
 import { usernameImage } from '../../models/username-image.models';
-import { debounce, debounceTime, Subject } from 'rxjs';
+import { debounce, debounceTime, Subject, switchMap, tap } from 'rxjs';
 import { PrivateMessageService } from '../../service/private-message.service';
 
 @Component({
@@ -33,26 +33,16 @@ export class PrivateMessageHomepageComponent {
     this.users = [];
 
     this.searchSubject.pipe(
-      debounceTime(1000)
-    ).subscribe(query => {
-      this.onSearch(query)
-    })
+      debounceTime(1000),
+      switchMap(query => this.privateMessage.searchQueryUsers(query)),
+      tap(users => {
+        console.log('La recherche est terminée.')
+        this.users = users
+      })
+    ).subscribe()
   }
 
   
-  // On lance la recherche dans le serveur
-  onSearch(query: string): void {
-    this.privateMessage.searchQueryUsers(query).subscribe(
-      (data) => {
-        console.log('La recherche est terminée.')
-        this.users = data
-      },
-      error => {
-        console.log('Erreur dans la recherche des utilisateurs.', error)
-      }
-    )
-  }
-
   // Au changement dans le champ de recherche, on lance cette méthode
   onInputChange(): void {
     this.searchSubject.next(this.searchQuery)
