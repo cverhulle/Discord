@@ -25,5 +25,9 @@ export class PrivateMessageHomepageComponent {
     this.users = []
   }
 
+  onSearch(): void {
+    
+  }
+
 
 }
