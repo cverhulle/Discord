@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule} from '@angular/forms';
 import { SharedModule } from '../../../shared/shared.module';
 import { usernameImage } from '../../models/username-image.models';
-import { debounce, debounceTime, Subject, switchMap, tap } from 'rxjs';
+import { catchError, debounceTime, of, Subject, switchMap, tap } from 'rxjs';
 import { PrivateMessageService } from '../../service/private-message.service';
 
 @Component({
@@ -34,7 +34,13 @@ export class PrivateMessageHomepageComponent {
 
     this.searchSubject.pipe(
       debounceTime(1000),
-      switchMap(query => this.privateMessage.searchQueryUsers(query)),
+      switchMap(query => this.privateMessage.searchQueryUsers(query).pipe(
+        catchError(error => {
+          console.log('Erreur lors de la recherche.');
+          this.users = [];
+          return of([]);      
+        })
+      )),
       tap(users => {
         console.log('La recherche est terminée.')
         this.users = users
