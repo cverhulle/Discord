@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule} from '@angular/forms';
 import { SharedModule } from '../../../shared/shared.module';
 import { RegisterFormService } from './services/register-form.service';
-import { RegisterModifyFormComponent } from "../../../shared/components/register-modify-form/register-modify-form.component"; 
+import { RegisterModifyFormComponent } from '../../../shared/register-modify/components/register-modify-form/register-modify-form.component';
 import { RegisterForm } from './models/register-form.model';
 import { forkJoin, Observable, tap } from 'rxjs';
-import { RegisterModifyService } from '../../../shared/services/register-modify.service';
+import { RegisterModifyService } from '../../../shared/register-modify/services/register-modify.service';
 import { Router } from '@angular/router';
 
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RegisterModifyFormComponent } from "../../../shared/components/register-modify-form/register-modify-form.component";
+import { RegisterModifyFormComponent } from '../../../shared/register-modify/components/register-modify-form/register-modify-form.component';
 import { Observable, tap } from 'rxjs';
-import { RegisterModifyService } from '../../../shared/services/register-modify.service';
+import { RegisterModifyService } from '../../../shared/register-modify/services/register-modify.service';
 import { RegisterForm } from '../../../login/components/register/models/register-form.model';
 import { Router } from '@angular/router';
 import { ProfileService } from '../../service/profile.service';

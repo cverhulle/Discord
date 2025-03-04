@@ -1,13 +1,13 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { SharedModule } from '../../../shared/shared.module';
-import { RegisterFormService } from '../../../login/components/register/services/register-form.service';
+import { SharedModule } from '../../../shared.module';
+import { RegisterFormService } from '../../../../login/components/register/services/register-form.service';
 import { map, Observable} from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
-import { confirmEqualValidator } from '../../../login/components/register/validators/confirm-equal.validators';
-import { correctEmailValidator } from '../../../login/components/register/validators/correct-email.validator'; 
-import { RegisterForm } from '../../../login/components/register/models/register-form.model';
-import { ModifyProfileForm } from '../../../profile/models/modify-profile.models';
+import { confirmEqualValidator } from '../../../../login/components/register/validators/confirm-equal.validators';
+import { correctEmailValidator } from '../../../../login/components/register/validators/correct-email.validator'; 
+import { RegisterForm } from '../../../../login/components/register/models/register-form.model';
+import { ModifyProfileForm } from '../../../../profile/models/modify-profile.models';
 import { RegisterModifyService } from '../../services/register-modify.service';
 
 @Component({

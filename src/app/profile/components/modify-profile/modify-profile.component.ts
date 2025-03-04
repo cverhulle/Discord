@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../../service/profile.service';
 import { forkJoin, Observable, tap } from 'rxjs';
-import { RegisterModifyFormComponent } from '../../../shared/components/register-modify-form/register-modify-form.component';
 import { NgIf } from '@angular/common';
-
 import { Router } from '@angular/router';
 import { ModifyProfileForm } from '../../models/modify-profile.models';
-import { RegisterModifyService } from '../../../shared/services/register-modify.service';
+import { RegisterModifyService } from '../../../shared/register-modify/services/register-modify.service';
+import { RegisterModifyFormComponent } from '../../../shared/register-modify/components/register-modify-form/register-modify-form.component';
 
 
 
