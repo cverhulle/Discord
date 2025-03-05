@@ -19,17 +19,27 @@
 }
 
 .avatar{
-    width: 10%;
-    border-radius: 50%;
-    object-fit: cover;
+    width: 45%;
 }
+
 
 .mat-card-users{
     width: 30%;
     margin-left: 1%;
     background-color: aqua;
-    display: flex;
-    flex-direction: row;
     font-size: 150%;
     margin-bottom: 1%;
+    display: grid;
+    grid-template-columns: 20% 55% 25%;
+      
 }
+
+.button{
+    margin: auto;
+}
+
+
+
+
+
+
