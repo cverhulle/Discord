@@ -12,10 +12,9 @@
     </mat-form-field>
 
     
-    <mat-card *ngFor = "let user of users">
+    <mat-card *ngFor = "let user of users" class="mat-card-users">
+        <img [src]="user.image" alt="Avatar de {{user.username}}" class="avatar">
         <mat-card-header> {{user.username}} </mat-card-header>
-        <img [src]="user.image" alt="rien" class="avatar">
-        
         
     </mat-card>
     
