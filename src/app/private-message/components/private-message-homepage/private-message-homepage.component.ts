@@ -63,7 +63,7 @@ export class PrivateMessageHomepageComponent {
   }
 
   getProfileImage(user: usernameImage): string {
-    return this.imageErrors[user.username] ? 'public/images/logopersonnedefaut.jpg' : user.image
+    return this.imageErrors[user.username] ? 'https://static.vecteezy.com/ti/vecteur-libre/p1/4274186-person-icon-user-interface-icon-silhouette-of-man-simple-symbol-a-glyph-symbol-in-your-web-site-design-logo-app-ui-webinar-video-chat-ect-vectoriel.jpg' : user.image
   }
 
 
