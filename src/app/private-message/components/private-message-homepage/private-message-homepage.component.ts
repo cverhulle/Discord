@@ -25,11 +25,15 @@ export class PrivateMessageHomepageComponent {
   // Variable pour contenir la liste des utilisateurs correspondant à la requete
   users!: usernameImage[];
 
+  // Variable pour stocker l'URL des images de profil par défaut.
+  defaultUrl: string = 'https://static.vecteezy.com/ti/vecteur-libre/p1/4274186-person-icon-user-interface-icon-silhouette-of-man-simple-symbol-a-glyph-symbol-in-your-web-site-design-logo-app-ui-webinar-video-chat-ect-vectoriel.jpg'
+
   // Dictionnaire pour stocker les erreurs de chargement d'image.
   imageErrors: { [key: string] : boolean } = {}
 
   // On crée un Subject pour réagir aux changements sur le formulaire
   private searchSubject: Subject<string> = new Subject();
+
 
   constructor(
     private privateMessage : PrivateMessageService) {
@@ -63,7 +67,7 @@ export class PrivateMessageHomepageComponent {
   }
 
   getProfileImage(user: usernameImage): string {
-    return this.imageErrors[user.username] ? 'https://static.vecteezy.com/ti/vecteur-libre/p1/4274186-person-icon-user-interface-icon-silhouette-of-man-simple-symbol-a-glyph-symbol-in-your-web-site-design-logo-app-ui-webinar-video-chat-ect-vectoriel.jpg' : user.image
+    return this.imageErrors[user.username] ? this.defaultUrl : user.image
   }
 
 
