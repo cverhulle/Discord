@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule} from '@angular/forms';
 import { SharedModule } from '../../../shared/shared.module';
 import { usernameImage } from '../../models/username-image.models';
@@ -18,12 +18,12 @@ import { NgFor } from '@angular/common';
 })
 
 
-export class PrivateMessageHomepageComponent {
+export class PrivateMessageHomepageComponent implements OnInit{
   // Contient la requete de l'utilisateur
-  searchQuery!: string;
+  searchQuery: string = ''
   
   // Variable pour contenir la liste des utilisateurs correspondant à la requete
-  users!: usernameImage[];
+  users: usernameImage[] = []
 
   // Variable pour stocker l'URL des images de profil par défaut.
   defaultUrl: string = 'https://static.vecteezy.com/ti/vecteur-libre/p1/4274186-person-icon-user-interface-icon-silhouette-of-man-simple-symbol-a-glyph-symbol-in-your-web-site-design-logo-app-ui-webinar-video-chat-ect-vectoriel.jpg'
@@ -36,10 +36,9 @@ export class PrivateMessageHomepageComponent {
 
 
   constructor(
-    private privateMessage : PrivateMessageService) {
+    private privateMessage : PrivateMessageService) {}
 
-    this.searchQuery = '';
-    this.users = [];
+  ngOnInit(): void {
 
     this.searchSubject.pipe(
       debounceTime(1000),
