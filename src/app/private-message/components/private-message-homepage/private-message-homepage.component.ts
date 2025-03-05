@@ -39,12 +39,12 @@ export class PrivateMessageHomepageComponent {
           console.log('Erreur lors de la recherche.');
           this.users = [];
           return of([]);      
+        }),
+        tap(users => {
+          console.log('La recherche est terminée.')
+          this.users = users
         })
-      )),
-      tap(users => {
-        console.log('La recherche est terminée.')
-        this.users = users
-      })
+      ))
     ).subscribe()
   }
 
