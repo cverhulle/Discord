@@ -25,6 +25,9 @@ export class PrivateMessageHomepageComponent {
   // Variable pour contenir la liste des utilisateurs correspondant à la requete
   users!: usernameImage[];
 
+  // Dictionnaire pour stocker les erreurs de chargement d'image.
+  imageErrors: { [key: string] : boolean } = {}
+
   // On crée un Subject pour réagir aux changements sur le formulaire
   private searchSubject: Subject<string> = new Subject();
 
@@ -45,6 +48,9 @@ export class PrivateMessageHomepageComponent {
         tap(users => {
           console.log('La recherche est terminée.')
           this.users = users
+          this.users.forEach(user => {
+            this.imageErrors[user.username] = false
+          })
         })
       ))
     ).subscribe()
@@ -54,6 +60,10 @@ export class PrivateMessageHomepageComponent {
   // Au changement dans le champ de recherche, on lance cette méthode
   onInputChange(): void {
     this.searchSubject.next(this.searchQuery)
+  }
+
+  getProfileImage(user: usernameImage): string {
+    return this.imageErrors[user.username] ? 'public/images/logopersonnedefaut.jpg' : user.image
   }
 
 
