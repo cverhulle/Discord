@@ -11,11 +11,14 @@
         <input matInput [(ngModel)]="searchQuery" (input)="onInputChange()" placeholder="Rechercher des utilisateurs">
     </mat-form-field>
 
-    <ul>
-        <li *ngFor = "let user of users">
-            <img [src]="user.image" alt = {{user.username}}>
-            <span> {{user.username}} </span>
-        </li>
-    </ul>
+    
+    <mat-card *ngFor = "let user of users">
+        <mat-card-header> {{user.username}} </mat-card-header>
+        <img [src]="user.image" alt="rien" class="avatar">
+        
+        
+    </mat-card>
+    
+    
     
 </div>
