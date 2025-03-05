@@ -4,12 +4,14 @@ import { SharedModule } from '../../../shared/shared.module';
 import { usernameImage } from '../../models/username-image.models';
 import { catchError, debounceTime, of, Subject, switchMap, tap } from 'rxjs';
 import { PrivateMessageService } from '../../service/private-message.service';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-private-message-homepage',
   imports: [
     FormsModule,
-    SharedModule
+    SharedModule,
+    NgFor
   ],
   templateUrl: './private-message-homepage.component.html',
   styleUrl: './private-message-homepage.component.scss'
