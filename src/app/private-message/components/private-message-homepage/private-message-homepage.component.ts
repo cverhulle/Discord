@@ -39,7 +39,11 @@ export class PrivateMessageHomepageComponent implements OnInit{
     private privateMessage : PrivateMessageService) {}
 
   ngOnInit(): void {
+    this.initSubjectQuery()
+    
+  }
 
+  private initSubjectQuery(): void {
     this.searchSubject.pipe(
       debounceTime(1000),
       switchMap(query => this.privateMessage.searchQueryUsers(query).pipe(
@@ -65,6 +69,7 @@ export class PrivateMessageHomepageComponent implements OnInit{
     this.searchSubject.next(this.searchQuery)
   }
 
+  // Si l'image ne peut pas être chargée, on modifie l'Url du profil par l'Url par défaut.
   getProfileImage(user: usernameImage): string {
     return this.imageErrors[user.username] ? this.defaultUrl : user.image
   }
