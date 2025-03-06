@@ -17,13 +17,16 @@ export class PrivateMessageChatComponent implements OnInit{
   constructor() {}
 
   ngOnInit(): void {
+    this.initOtherUser()
+  }
+
+  // Cette méthode initialise les données de l'utilisateur avec lequel on va communiquer.
+  private initOtherUser(): void {
     this.otherUser = new usernameImage();
     this.otherUser['id'] = history.state['id'],
     this.otherUser['username'] = history.state['username'],
     this.otherUser['image'] = history.state['image']
-    console.log(this.otherUser)
   }
-
 
 
 }
