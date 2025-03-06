@@ -76,7 +76,7 @@ export class PrivateMessageHomepageComponent implements OnInit{
     return this.imageErrors[user.username] ? this.defaultUrl : user.image
   }
 
-  onChat(): void {
+  onChat(user: usernameImage): void {
     this.router.navigateByUrl('/private-message/chat')
   }
 
