@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { usernameImage } from '../../models/username-image.models';
 import { ProfileService } from '../../../profile/service/profile.service';
 import { tap } from 'rxjs';
+import { SharedModule } from '../../../shared/shared.module';
 
 
 @Component({
   selector: 'app-private-message-chat',
-  imports: [],
+  imports: [
+    SharedModule
+  ],
   templateUrl: './private-message-chat.component.html',
   styleUrl: './private-message-chat.component.scss'
 })
