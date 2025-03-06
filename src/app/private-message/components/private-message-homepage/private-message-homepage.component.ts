@@ -77,7 +77,7 @@ export class PrivateMessageHomepageComponent implements OnInit{
   }
 
   onChat(user: usernameImage): void {
-    this.router.navigate(['/private-message/chat'], {state: {user: user} })
+    this.router.navigate(['/private-message/chat'], {state: {id: user.id, username: user.username, image: user.image} })
   }
 
 }
