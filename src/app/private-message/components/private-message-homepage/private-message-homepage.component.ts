@@ -5,6 +5,7 @@ import { usernameImage } from '../../models/username-image.models';
 import { catchError, debounceTime, of, Subject, switchMap, tap } from 'rxjs';
 import { PrivateMessageService } from '../../service/private-message.service';
 import { NgFor } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-private-message-homepage',
@@ -36,7 +37,8 @@ export class PrivateMessageHomepageComponent implements OnInit{
 
 
   constructor(
-    private privateMessage : PrivateMessageService) {}
+    private privateMessage : PrivateMessageService,
+    private router: Router) {}
 
   ngOnInit(): void {
     this.initSubjectQuery()
@@ -74,5 +76,8 @@ export class PrivateMessageHomepageComponent implements OnInit{
     return this.imageErrors[user.username] ? this.defaultUrl : user.image
   }
 
+  onChat(): void {
+    this.router.navigateByUrl('/private-message/chat')
+  }
 
 }
