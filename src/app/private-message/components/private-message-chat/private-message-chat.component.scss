@@ -8,12 +8,14 @@
     justify-content: center; 
 }
 
-.discussion{
-    min-height: 75%;
+html, body{
+    height: 100%;
 }
+
 
 .send-message{
     width: 100%;
     position: fixed;
+    bottom: 0;
     
 }
