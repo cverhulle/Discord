@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { usernameImage } from '../../models/username-image.models';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-private-message-chat',
@@ -14,11 +14,13 @@ export class PrivateMessageChatComponent implements OnInit{
   // Variable pour récupérer les données de l'utilisateur à qui on envoie des messages.
   otherUser!: usernameImage;
 
-  constructor(private router: Router) {}
+  constructor() {}
 
   ngOnInit(): void {
-    
-    this.otherUser = history.state
+    this.otherUser = new usernameImage();
+    this.otherUser['id'] = history.state['id'],
+    this.otherUser['username'] = history.state['username'],
+    this.otherUser['image'] = history.state['image']
     console.log(this.otherUser)
   }
 
