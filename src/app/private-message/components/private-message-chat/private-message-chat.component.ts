@@ -62,8 +62,8 @@ export class PrivateMessageChatComponent implements OnInit{
     this.otherUser['image'] = history.state['image']
   }
 
-
-  onSendMessage(): void{
+  // Création du post à envoyer au backend.
+  private createPostToSend(): void {
     this.post = {
       id : this.currentUser.id,
       username : this.currentUser.username,
@@ -71,9 +71,11 @@ export class PrivateMessageChatComponent implements OnInit{
       content : this.messageContent,
       timestamp : new Date()
     }
-    console.log(this.post)
+  }
 
-
+  onSendMessage(): void{
+    this.createPostToSend()
+    this.messageContent = ''
   }
 
 }
