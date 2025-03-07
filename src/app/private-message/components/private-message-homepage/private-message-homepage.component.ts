@@ -74,7 +74,7 @@ export class PrivateMessageHomepageComponent implements OnInit{
 
   // Si l'image ne peut pas être chargée, on modifie l'Url du profil par l'Url par défaut.
   getProfileImage(user: usernameImage): string {
-    return this.avatarService.getProfileImage(user)
+    return this.avatarService.getProfileImage(user.image, user.username)
   }
 
   onChat(user: usernameImage): void {

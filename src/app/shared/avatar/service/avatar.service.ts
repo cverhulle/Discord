@@ -22,8 +22,8 @@ export class AvatarService{
     }
 
 
-    getProfileImage(user: usernameImage) : string {
+    getProfileImage(userImage: string, username: string) : string {
         const currentErrors = this.imageErrorsSubject.value;
-        return currentErrors[user.username] ? this.defaultUrl : user.image;
+        return currentErrors[username] ? this.defaultUrl : userImage;
     }
 }
