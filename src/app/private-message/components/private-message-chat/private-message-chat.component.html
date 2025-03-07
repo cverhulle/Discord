@@ -3,6 +3,14 @@
 </h1>
 
 <div class="discussion">
+
+    <mat-card *ngFor="let post of chat" class="mat-card-post">
+        <img [src]="getProfileImage(post)" (error)="setImageError(post)" alt="Avatar de {{post.username}}" class="avatar">
+        <mat-card-header> {{post.username}} </mat-card-header>
+        <mat-card-content> {{post.content}} </mat-card-content>
+          
+    </mat-card>
+
     Discussion à afficher <br>    Discussion à afficher <br>     Discussion à afficher <br>      Discussion à afficher <br>    Discussion à afficher <br>
     Discussion à afficher <br>    Discussion à afficher <br>     Discussion à afficher <br>      Discussion à afficher <br>    Discussion à afficher <br>
     Discussion à afficher <br>    Discussion à afficher <br>     Discussion à afficher <br>      Discussion à afficher <br>    Discussion à afficher <br>
@@ -18,11 +26,7 @@
     Discussion à afficher <br>    Discussion à afficher <br>     Discussion à afficher <br>      Discussion à afficher <br>    Discussion à afficher <br>
     Discussion à afficher <br>    Discussion à afficher <br>     Discussion à afficher <br>      Discussion à afficher <br>    Discussion à afficher <br>
    
-    <mat-card *ngFor="let post of chat" class="mat-card-users">
-        <img [src]="getProfileImage(post)" (error)="setImageError(post)" alt="Avatar de {{post.username}}" class="avatar">
-        <mat-card-header> {{post.username}} </mat-card-header>
-          
-    </mat-card>
+    
 </div>
 
 <mat-form-field appearance="fill" class="send-message">
