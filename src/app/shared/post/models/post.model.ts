@@ -1,5 +1,6 @@
 export class Post{
-    id!: string;
+    currentUserId!: string;
+    otherUserId!: string;
     username!: string;
     image!: string;
     content!: string;
