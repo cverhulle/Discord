@@ -35,7 +35,6 @@ export class PrivateMessageChatComponent implements OnInit{
 
     this.profileService.getProfile().pipe(
       tap((profile) => {
-        console.log(profile.user)
         this.currentUser['id']= profile.user._id,
         this.currentUser['username']=profile.user.loginInfo.username,
         this.currentUser['image']=profile.user.image
