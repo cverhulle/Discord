@@ -34,7 +34,7 @@ export class PrivateMessageChatComponent implements OnInit{
   post!: Post
 
   // Variable qui stocke la discussion entre les utilisateurs
-  chat!: Post[]
+  chat: Post[] = []
 
   constructor(private profileService : ProfileService,
               private avatarService : AvatarService,
