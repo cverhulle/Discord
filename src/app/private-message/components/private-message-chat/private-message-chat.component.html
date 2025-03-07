@@ -5,8 +5,11 @@
 <div class="discussion">
 
     <mat-card *ngFor="let post of chat" class="mat-card-post">
-        <img [src]="getProfileImage(post)" (error)="setImageError(post)" alt="Avatar de {{post.username}}" class="avatar">
-        <mat-card-header> {{post.username}} </mat-card-header>
+        <div class="avatar-username"> 
+            <img [src]="getProfileImage(post)" (error)="setImageError(post)" alt="Avatar de {{post.username}}" class="avatar">
+            <mat-card-header> {{post.username}} </mat-card-header>
+        </div>
+        
         <mat-card-content> {{post.content}} </mat-card-content>
           
     </mat-card>
