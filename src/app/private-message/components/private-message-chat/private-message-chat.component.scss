@@ -38,3 +38,18 @@ html, body{
     min-height: 5em; /* Ajustez cette valeur pour afficher plus de lignes */
 
 }
+
+.avatar{
+    width: 45%;
+}
+
+.mat-card-users{
+    width: 30%;
+    margin-left: 1%;
+    background-color: aqua;
+    font-size: 150%;
+    margin-bottom: 1%;
+    display: grid;
+    grid-template-columns: 20% 55% 25%;
+      
+}
