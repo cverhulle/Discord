@@ -15,5 +15,9 @@ export class PostService{
             catchError( () => of(false))
         )
     }
+
+    getAllPosts(): Observable<Post[]> {
+        return this.http.get<Post[]>(`${environment.apiUrl}/private-message/getPost`)
+    }
 }
 
