@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { usernameImage } from '../../models/username-image.models';
 import { ProfileService } from '../../../profile/service/profile.service';
-import { tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { SharedModule } from '../../../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { Post } from '../../../shared/post/models/post.model';
 import { AvatarService } from '../../../shared/avatar/service/avatar.service';
+import { PostService } from '../../../shared/post/services/post.service';
 
 
 @Component({
@@ -33,7 +34,8 @@ export class PrivateMessageChatComponent implements OnInit{
   post!: Post
 
   constructor(private profileService : ProfileService,
-              private avatarService : AvatarService) {}
+              private avatarService : AvatarService,
+              private postService : PostService) {}
 
   ngOnInit(): void {
     this.initCurrentUser()
@@ -73,9 +75,24 @@ export class PrivateMessageChatComponent implements OnInit{
     }
   }
 
+  // Envoi du post
+  private sendPost(): Observable<boolean> {
+    return this.postService.sendPost(this.post).pipe(
+      tap( send => {
+        if (send) {
+          console.log("Message envoyé")
+          this.messageContent = ''
+        } else {
+          console.log("Le message ne s'est pas envoyé.")
+        }
+      })
+    )
+  }
+
   onSendMessage(): void{
     this.createPostToSend()
-    this.messageContent = ''
+    this.sendPost().subscribe()
+    
   }
 
 }
