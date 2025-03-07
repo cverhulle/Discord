@@ -17,7 +17,7 @@ export class PostService{
     }
 
     getAllPosts(): Observable<Post[]> {
-        return this.http.get<Post[]>(`${environment.apiUrl}/private-message/getPost`)
+        return this.http.get<Post[]>(`${environment.apiUrl}/private-message/getPosts`)
     }
 }
 
