@@ -86,7 +86,7 @@ export class PrivateMessageChatComponent implements OnInit{
       currentUserId : this.currentUser.id,
       otherUserId : this.otherUser.id,
       username : this.currentUser.username,
-      image : this.avatarService.getProfileImage(this.currentUser),
+      image : this.currentUser.image,
       content : this.messageContent,
       timestamp : new Date()
     }
@@ -113,13 +113,13 @@ export class PrivateMessageChatComponent implements OnInit{
   }
 
   // Si l'image ne peut pas être chargée, on modifie l'Url du profil par l'Url par défaut.
-  getProfileImage(user: usernameImage): string {
-    return this.avatarService.getProfileImage(user)
+  getProfileImage(post: Post): string {
+    return this.avatarService.getProfileImage(post.image, post.username)
   }
 
   // Met l'imageError du service à true pour l'utilisateur.
-  setImageError(user: usernameImage): void {
-    this.avatarService.updateImageError(user.username, true)
+  setImageError(post: Post): void {
+    this.avatarService.updateImageError(post.username, true)
   }
 
 }
