@@ -7,13 +7,15 @@ import { FormsModule } from '@angular/forms';
 import { Post } from '../../../shared/post/models/post.model';
 import { AvatarService } from '../../../shared/avatar/service/avatar.service';
 import { PostService } from '../../../shared/post/services/post.service';
+import { NgFor } from '@angular/common';
 
 
 @Component({
   selector: 'app-private-message-chat',
   imports: [
     SharedModule,
-    FormsModule
+    FormsModule,
+    NgFor
   ],
   templateUrl: './private-message-chat.component.html',
   styleUrl: './private-message-chat.component.scss'
@@ -108,6 +110,16 @@ export class PrivateMessageChatComponent implements OnInit{
     this.createPostToSend()
     this.sendPost().subscribe()
     
+  }
+
+  // Si l'image ne peut pas être chargée, on modifie l'Url du profil par l'Url par défaut.
+  getProfileImage(user: usernameImage): string {
+    return this.avatarService.getProfileImage(user)
+  }
+
+  // Met l'imageError du service à true pour l'utilisateur.
+  setImageError(user: usernameImage): void {
+    this.avatarService.updateImageError(user.username, true)
   }
 
 }
