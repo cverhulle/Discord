@@ -33,6 +33,9 @@ export class PrivateMessageChatComponent implements OnInit{
   // Variable pour stocker le post à envoyer au backend
   post!: Post
 
+  // Variable qui stocke la discussion entre les utilisateurs
+  chat!: Post[]
+
   constructor(private profileService : ProfileService,
               private avatarService : AvatarService,
               private postService : PostService) {}
@@ -40,6 +43,7 @@ export class PrivateMessageChatComponent implements OnInit{
   ngOnInit(): void {
     this.initCurrentUser()
     this.initOtherUser()
+    this.initChat(this.otherUser.id)
   }
 
   // Cette méthode initialise les données de l'utilisateur actuellement connecté
@@ -62,6 +66,16 @@ export class PrivateMessageChatComponent implements OnInit{
     this.otherUser['id'] = history.state['id'],
     this.otherUser['username'] = history.state['username'],
     this.otherUser['image'] = history.state['image']
+  }
+
+  // Cette méthode initialise l'historique de la discussion entre les utilisateurs
+  private initChat(otherUserId: string): void {
+    this.postService.getAllPosts(otherUserId).pipe(
+      tap( (posts) => {
+        this.chat = posts;
+        console.log(this.chat)
+      })
+    ).subscribe()
   }
 
   // Création du post à envoyer au backend.
