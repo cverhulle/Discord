@@ -67,7 +67,8 @@ export class PrivateMessageChatComponent implements OnInit{
   // Création du post à envoyer au backend.
   private createPostToSend(): void {
     this.post = {
-      id : this.currentUser.id,
+      currentUserId : this.currentUser.id,
+      otherUserId : this.otherUser.id,
       username : this.currentUser.username,
       image : this.avatarService.getProfileImage(this.currentUser),
       content : this.messageContent,
