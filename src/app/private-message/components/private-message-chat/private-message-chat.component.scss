@@ -27,6 +27,14 @@ html, body{
     
 }
 
+
 .send-message-icon{
     cursor: pointer;
+}
+
+
+.send-message textarea {
+    resize: none; /* Empêche le redimensionnement */
+    min-height: 5em; /* Ajustez cette valeur pour afficher plus de lignes */
+
 }
