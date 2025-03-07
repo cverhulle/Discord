@@ -13,7 +13,7 @@
 
     
     <mat-card *ngFor = "let user of users" class="mat-card-users">
-        <img [src]="getProfileImage(user)" (error)="imageErrors[user.username]=true" alt="Avatar de {{user.username}}" class="avatar">
+        <img [src]="getProfileImage(user)" (error)="setImageError(user)" alt="Avatar de {{user.username}}" class="avatar">
         <mat-card-header> {{user.username}} </mat-card-header>
         <button mat-flat-button class="button" (click)="onChat(user)"> Message </button>
         

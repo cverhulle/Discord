@@ -6,6 +6,7 @@ import { catchError, debounceTime, of, Subject, switchMap, tap } from 'rxjs';
 import { PrivateMessageService } from '../../service/private-message.service';
 import { NgFor } from '@angular/common';
 import { Router } from '@angular/router';
+import { AvatarService } from '../../../shared/avatar/service/avatar.service';
 
 @Component({
   selector: 'app-private-message-homepage',
@@ -26,19 +27,14 @@ export class PrivateMessageHomepageComponent implements OnInit{
   // Variable pour contenir la liste des utilisateurs correspondant à la requete
   users: usernameImage[] = []
 
-  // Variable pour stocker l'URL des images de profil par défaut.
-  defaultUrl: string = 'https://static.vecteezy.com/ti/vecteur-libre/p1/4274186-person-icon-user-interface-icon-silhouette-of-man-simple-symbol-a-glyph-symbol-in-your-web-site-design-logo-app-ui-webinar-video-chat-ect-vectoriel.jpg'
-
-  // Dictionnaire pour stocker les erreurs de chargement d'image.
-  imageErrors: { [key: string] : boolean } = {}
-
   // On crée un Subject pour réagir aux changements sur le formulaire
   private searchSubject: Subject<string> = new Subject();
 
 
   constructor(
     private privateMessage : PrivateMessageService,
-    private router: Router) {}
+    private router: Router,
+    private avatarService: AvatarService) {}
 
   ngOnInit(): void {
     this.initSubjectQuery()
@@ -58,7 +54,7 @@ export class PrivateMessageHomepageComponent implements OnInit{
           console.log('La recherche est terminée.')
           this.users = users
           this.users.forEach(user => {
-            this.imageErrors[user.username] = false
+            this.avatarService.updateImageError(user.username, false)
           })
         })
       ))
@@ -71,9 +67,14 @@ export class PrivateMessageHomepageComponent implements OnInit{
     this.searchSubject.next(this.searchQuery)
   }
 
+  // Met l'imageError du service à true pour l'utilisateur.
+  setImageError(user: usernameImage): void {
+    this.avatarService.updateImageError(user.username, true)
+  }
+
   // Si l'image ne peut pas être chargée, on modifie l'Url du profil par l'Url par défaut.
   getProfileImage(user: usernameImage): string {
-    return this.imageErrors[user.username] ? this.defaultUrl : user.image
+    return this.avatarService.getProfileImage(user)
   }
 
   onChat(user: usernameImage): void {
