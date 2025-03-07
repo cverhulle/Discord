@@ -16,9 +16,9 @@ export class PostService{
         )
     }
 
-    getAllPosts(currentUserId: string, otherUserId: string): Observable<Post[]> {
+    getAllPosts(otherUserId: string): Observable<Post[]> {
         return this.http.get<Post[]>(`${environment.apiUrl}/private-message/getPosts`, {
-            params: {currentUserId, otherUserId} 
+            params: {otherUserId} 
         })
     }
 }
