@@ -3,12 +3,14 @@ import { usernameImage } from '../../models/username-image.models';
 import { ProfileService } from '../../../profile/service/profile.service';
 import { tap } from 'rxjs';
 import { SharedModule } from '../../../shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-private-message-chat',
   imports: [
-    SharedModule
+    SharedModule,
+    FormsModule
   ],
   templateUrl: './private-message-chat.component.html',
   styleUrl: './private-message-chat.component.scss'
@@ -21,6 +23,9 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Variable pour récupérer les données de l'utilisateur à qui on envoie des messages.
   otherUser!: usernameImage;
+
+  // Variable pour récupérer le texte dans le message.
+  messageContent!: string;
 
   constructor(private profileService : ProfileService) {}
 
@@ -51,5 +56,9 @@ export class PrivateMessageChatComponent implements OnInit{
     this.otherUser['image'] = history.state['image']
   }
 
+
+  onSendMessage(): void{
+    console.log(this.messageContent)
+  }
 
 }
