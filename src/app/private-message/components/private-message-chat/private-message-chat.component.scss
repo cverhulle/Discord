@@ -47,10 +47,12 @@ html, body{
     width: 90%;
     margin-left: 1%;
     margin-bottom: 1%;
-    background-color: rgb(94, 20, 94);
+    background-color: rgb(97, 18, 97);
     font-size: 150%;
-    
-    
-    
-      
+}
+
+.avatar-username{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1%;
 }
