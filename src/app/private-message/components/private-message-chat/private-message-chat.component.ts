@@ -75,7 +75,7 @@ export class PrivateMessageChatComponent implements OnInit{
     this.postService.getAllPosts(otherUserId).pipe(
       tap( (posts) => {
         this.chat = posts;
-        console.log(this.chat)
+        
       })
     ).subscribe()
   }
