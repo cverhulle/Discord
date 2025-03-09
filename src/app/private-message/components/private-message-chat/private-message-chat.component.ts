@@ -49,6 +49,8 @@ export class PrivateMessageChatComponent implements OnInit{
     this.initChat(this.otherUser.id)
   }
 
+
+  
   // Cette méthode initialise les données de l'utilisateur actuellement connecté
   private initCurrentUser(): void {
     this.currentUser = new usernameImage();
@@ -63,6 +65,8 @@ export class PrivateMessageChatComponent implements OnInit{
     ).subscribe()
   }
 
+
+
   // Cette méthode initialise les données de l'utilisateur avec lequel on va communiquer.
   private initOtherUser(): void {
     this.otherUser = new usernameImage();
@@ -70,6 +74,8 @@ export class PrivateMessageChatComponent implements OnInit{
     this.otherUser['username'] = history.state['username'],
     this.otherUser['image'] = history.state['image']
   }
+
+
 
   // Cette méthode initialise l'historique de la discussion entre les utilisateurs
   private initChat(otherUserId: string): void {
@@ -80,6 +86,8 @@ export class PrivateMessageChatComponent implements OnInit{
       })
     ).subscribe()
   }
+
+
 
   // Création du post à envoyer au backend.
   private createPostToSend(): void {
@@ -93,7 +101,9 @@ export class PrivateMessageChatComponent implements OnInit{
     }
   }
 
-  // Envoi du post
+
+
+  // Méthode pour envoyer le post au service.
   private sendPost(): Observable<boolean> {
     return this.postService.sendPost(this.post).pipe(
       tap( send => {
@@ -107,11 +117,17 @@ export class PrivateMessageChatComponent implements OnInit{
     )
   }
 
+
+
+  // Méthode au clic sur le bouton envoi.
   onSendMessage(): void{
     this.createPostToSend()
     this.sendPost().subscribe()
     
   }
+
+
+
 
   // Si l'image ne peut pas être chargée, on modifie l'Url du profil par l'Url par défaut.
   getProfileImage(post: Post): string {
