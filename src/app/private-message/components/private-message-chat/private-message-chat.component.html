@@ -4,8 +4,8 @@
 
 <div class="discussion">
 
-    <div *ngIf="chatIsEmpty">
-        <p> Pas de message </p>
+    <div *ngIf="chatIsEmpty" class="empty-chat">
+        <p> Vous n'avez pas encore échangé de messages avec {{otherUser.username}}. </p>
     </div>
 
     <div *ngIf="!chatIsEmpty">
