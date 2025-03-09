@@ -117,9 +117,10 @@ export class PrivateMessageChatComponent implements OnInit{
           // On réinitialise le formulaire
           this.messageContent = ''
 
-          // On ajoute le message au chat
+          // On ajoute le message au chat et on reteste si le chat est vide ou non.
           this.chat.push(this.post)
-          
+          this.chatIsEmpty = this.chat.length === 0
+
         } else {
           console.log("Le message ne s'est pas envoyé.")
         }
