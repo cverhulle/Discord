@@ -142,6 +142,7 @@ export class PrivateMessageChatComponent implements OnInit{
     
   }
 
+  // Scroll de l'écran après l'envoi d'un nouveau message.
   private scrollToBottom(): void {
     setTimeout(() => {
       this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
