@@ -8,6 +8,7 @@ import { Post } from '../../../shared/post/models/post.model';
 import { AvatarService } from '../../../shared/avatar/service/avatar.service';
 import { PostService } from '../../../shared/post/services/post.service';
 import { NgFor, NgIf, NgStyle } from '@angular/common';
+import { TimeAgoPipe } from '../../../shared/post/pipe/time-ago.pipe';
 
 
 @Component({
@@ -17,7 +18,8 @@ import { NgFor, NgIf, NgStyle } from '@angular/common';
     FormsModule,
     NgFor,
     NgStyle,
-    NgIf
+    NgIf,
+    TimeAgoPipe
   ],
   templateUrl: './private-message-chat.component.html',
   styleUrl: './private-message-chat.component.scss'
