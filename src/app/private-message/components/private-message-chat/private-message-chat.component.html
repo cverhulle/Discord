@@ -2,7 +2,7 @@
     Discussion avec {{otherUser.username}}
 </h1>
 
-<div class="discussion">
+<div class="discussion" #chatContainer>
 
     <div *ngIf="chatIsEmpty" class="empty-chat">
         <p> Vous n'avez pas encore échangé de messages avec {{otherUser.username}}. </p>

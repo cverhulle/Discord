@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { usernameImage } from '../../models/username-image.models';
 import { ProfileService } from '../../../profile/service/profile.service';
 import { Observable, tap } from 'rxjs';
@@ -25,6 +25,9 @@ import { NgFor, NgIf, NgStyle } from '@angular/common';
 
 
 export class PrivateMessageChatComponent implements OnInit{
+  // Directive pour scroller el chat en bas après l'envoi d'un nouveau message.
+  @ViewChild('chatContainer') chatContainer!: ElementRef
+
   // Variable pour récupérer les données de l'utilisateur actuel.
   currentUser!: usernameImage;
 
@@ -133,8 +136,16 @@ export class PrivateMessageChatComponent implements OnInit{
   // Méthode au clic sur le bouton envoi.
   onSendMessage(): void{
     this.createPostToSend()
-    this.sendPost().subscribe()
+    this.sendPost().subscribe( () => {
+      this.scrollToBottom();
+    })
     
+  }
+
+  private scrollToBottom(): void {
+    setTimeout(() => {
+      this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
+    }, 200);
   }
 
 
