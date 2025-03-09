@@ -3,12 +3,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from '../../service/profile.service';
 import { tap } from 'rxjs';
 import { SharedModule } from '../../../shared/shared.module';
+import { ShortenPipe } from '../../../shared/profil/pipe/shorten.pipe';
 
 
 @Component({
   selector: 'app-profile-homepage',
   imports: [
-    SharedModule
+    SharedModule,
+    ShortenPipe
   ],
   templateUrl: './profile-homepage.component.html',
   styleUrl: './profile-homepage.component.scss'
