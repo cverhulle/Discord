@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { Post } from '../../../shared/post/models/post.model';
 import { AvatarService } from '../../../shared/avatar/service/avatar.service';
 import { PostService } from '../../../shared/post/services/post.service';
-import { NgFor } from '@angular/common';
+import { NgFor, NgStyle } from '@angular/common';
 
 
 @Component({
@@ -15,7 +15,8 @@ import { NgFor } from '@angular/common';
   imports: [
     SharedModule,
     FormsModule,
-    NgFor
+    NgFor,
+    NgStyle
   ],
   templateUrl: './private-message-chat.component.html',
   styleUrl: './private-message-chat.component.scss'
@@ -120,6 +121,11 @@ export class PrivateMessageChatComponent implements OnInit{
   // Met l'imageError du service à true pour l'utilisateur.
   setImageError(post: Post): void {
     this.avatarService.updateImageError(post.username, true)
+  }
+
+  // Récupérer la couleur de la mat-card
+  getPostCardColor(postId: string) : string {
+    return this.postService.getPostCardColor(postId, this.currentUser.id)
   }
 
 }

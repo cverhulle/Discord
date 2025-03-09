@@ -4,7 +4,7 @@
 
 <div class="discussion">
 
-    <mat-card *ngFor="let post of chat" class="mat-card-post">
+    <mat-card *ngFor="let post of chat" class="mat-card-post" [ngStyle]="{'background-color': getPostCardColor(post.currentUserId)}">
         <div class="avatar-username"> 
             <img [src]="getProfileImage(post)" (error)="setImageError(post)" alt="Avatar de {{post.username}}" class="avatar">
             <mat-card-header> {{post.username}} </mat-card-header>
