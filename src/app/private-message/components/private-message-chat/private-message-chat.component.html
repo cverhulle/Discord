@@ -4,11 +4,14 @@
 
 <div class="discussion" #chatContainer>
 
-    <div *ngIf="chatIsEmpty" class="empty-chat">
+    <mat-spinner *ngIf="loading"> </mat-spinner>
+    
+
+    <div *ngIf="chatIsEmpty && !loading" class="empty-chat">
         <p> Vous n'avez pas encore échangé de messages avec {{otherUser.username}}. </p>
     </div>
 
-    <div *ngIf="!chatIsEmpty">
+    <div *ngIf="!chatIsEmpty && !loading">
         <mat-card *ngFor="let post of chat" class="mat-card-post" [ngStyle]="{'background-color': getPostCardColor(post.currentUserId)}">
             <div class="avatar-username"> 
                 <img [src]="getProfileImage(post)" (error)="setImageError(post)" alt="Avatar de {{post.username}}" class="avatar">
