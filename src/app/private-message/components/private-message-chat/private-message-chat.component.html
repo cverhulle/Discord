@@ -4,31 +4,23 @@
 
 <div class="discussion">
 
-    <mat-card *ngFor="let post of chat" class="mat-card-post" [ngStyle]="{'background-color': getPostCardColor(post.currentUserId)}">
-        <div class="avatar-username"> 
-            <img [src]="getProfileImage(post)" (error)="setImageError(post)" alt="Avatar de {{post.username}}" class="avatar">
-            <mat-card-header> {{post.username}} </mat-card-header>
-        </div>
-        
-        <mat-card-content> {{post.content}} </mat-card-content>
-          
-    </mat-card>
+    <div *ngIf="chatIsEmpty">
+        <p> Pas de message </p>
+    </div>
 
-    Discussion à afficher <br>    Discussion à afficher <br>     Discussion à afficher <br>      Discussion à afficher <br>    Discussion à afficher <br>
-    Discussion à afficher <br>    Discussion à afficher <br>     Discussion à afficher <br>      Discussion à afficher <br>    Discussion à afficher <br>
-    Discussion à afficher <br>    Discussion à afficher <br>     Discussion à afficher <br>      Discussion à afficher <br>    Discussion à afficher <br>
-    Discussion à afficher <br>    Discussion à afficher <br>     Discussion à afficher <br>      Discussion à afficher <br>    Discussion à afficher <br>
-    Discussion à afficher <br>    Discussion à afficher <br>     Discussion à afficher <br>      Discussion à afficher <br>    Discussion à afficher <br>
-    Discussion à afficher <br>    Discussion à afficher <br>     Discussion à afficher <br>      Discussion à afficher <br>    Discussion à afficher <br>
-    Discussion à afficher <br>    Discussion à afficher <br>     Discussion à afficher <br>      Discussion à afficher <br>    Discussion à afficher <br>
-    Discussion à afficher <br>    Discussion à afficher <br>     Discussion à afficher <br>      Discussion à afficher <br>    Discussion à afficher <br>
-    Discussion à afficher <br>    Discussion à afficher <br>     Discussion à afficher <br>      Discussion à afficher <br>    Discussion à afficher <br>
-    Discussion à afficher <br>    Discussion à afficher <br>     Discussion à afficher <br>      Discussion à afficher <br>    Discussion à afficher <br>
-    Discussion à afficher <br>    Discussion à afficher <br>     Discussion à afficher <br>      Discussion à afficher <br>    Discussion à afficher <br>
-    Discussion à afficher <br>    Discussion à afficher <br>     Discussion à afficher <br>      Discussion à afficher <br>    Discussion à afficher <br>
-    Discussion à afficher <br>    Discussion à afficher <br>     Discussion à afficher <br>      Discussion à afficher <br>    Discussion à afficher <br>
-    Discussion à afficher <br>    Discussion à afficher <br>     Discussion à afficher <br>      Discussion à afficher <br>    Discussion à afficher <br>
-   
+    <div *ngIf="!chatIsEmpty">
+        <mat-card *ngFor="let post of chat" class="mat-card-post" [ngStyle]="{'background-color': getPostCardColor(post.currentUserId)}">
+            <div class="avatar-username"> 
+                <img [src]="getProfileImage(post)" (error)="setImageError(post)" alt="Avatar de {{post.username}}" class="avatar">
+                <mat-card-header> {{post.username}} </mat-card-header>
+            </div>
+            
+            <mat-card-content> {{post.content}} </mat-card-content>
+            
+        </mat-card>
+    </div>
+
+    
     
 </div>
 

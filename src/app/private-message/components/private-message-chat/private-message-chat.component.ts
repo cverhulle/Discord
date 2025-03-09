@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { Post } from '../../../shared/post/models/post.model';
 import { AvatarService } from '../../../shared/avatar/service/avatar.service';
 import { PostService } from '../../../shared/post/services/post.service';
-import { NgFor, NgStyle } from '@angular/common';
+import { NgFor, NgIf, NgStyle } from '@angular/common';
 
 
 @Component({
@@ -16,7 +16,8 @@ import { NgFor, NgStyle } from '@angular/common';
     SharedModule,
     FormsModule,
     NgFor,
-    NgStyle
+    NgStyle,
+    NgIf
   ],
   templateUrl: './private-message-chat.component.html',
   styleUrl: './private-message-chat.component.scss'
@@ -39,6 +40,9 @@ export class PrivateMessageChatComponent implements OnInit{
   // Variable qui stocke la discussion entre les utilisateurs
   chat: Post[] = []
 
+  // Variable pour vérifier si l'historique de discussion entre deux utilisateurs est vide ou non
+  chatIsEmpty!: boolean
+
   constructor(private profileService : ProfileService,
               private avatarService : AvatarService,
               private postService : PostService) {}
@@ -50,7 +54,7 @@ export class PrivateMessageChatComponent implements OnInit{
   }
 
 
-  
+
   // Cette méthode initialise les données de l'utilisateur actuellement connecté
   private initCurrentUser(): void {
     this.currentUser = new usernameImage();
@@ -82,7 +86,7 @@ export class PrivateMessageChatComponent implements OnInit{
     this.postService.getAllPosts(otherUserId).pipe(
       tap( (posts) => {
         this.chat = posts;
-        
+        this.chatIsEmpty = this.chat.length === 0
       })
     ).subscribe()
   }
