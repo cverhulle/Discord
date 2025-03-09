@@ -30,6 +30,9 @@ export class PrivateMessageChatComponent implements OnInit{
   // Directive pour scroller el chat en bas après l'envoi d'un nouveau message.
   @ViewChild('chatContainer') chatContainer!: ElementRef
 
+  // Variable pour suivre l'état de chargement
+  loading!: boolean
+
   // Variable pour récupérer les données de l'utilisateur actuel.
   currentUser!: usernameImage;
 
@@ -88,10 +91,12 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Cette méthode initialise l'historique de la discussion entre les utilisateurs
   private initChat(otherUserId: string): void {
+    this.loading = true
     this.postService.getAllPosts(otherUserId).pipe(
       tap( (posts) => {
         this.chat = posts;
-        this.chatIsEmpty = this.chat.length === 0
+        this.chatIsEmpty = this.chat.length === 0;
+        this.loading = false
       })
     ).subscribe()
   }
@@ -137,8 +142,10 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Méthode au clic sur le bouton envoi.
   onSendMessage(): void{
+    this.loading = true
     this.createPostToSend()
     this.sendPost().subscribe( () => {
+      this.loading = false
       this.scrollToBottom();
     })
     
