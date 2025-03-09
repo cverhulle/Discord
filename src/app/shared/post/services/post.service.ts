@@ -24,7 +24,7 @@ export class PostService{
 
     getPostCardColor(postId: string, currentUserId: string) : string {
         if(postId === currentUserId) {
-            return 'rgb(0,255,255)'
+            return 'rgb(48, 92, 70)'
         } else {
             return  'rgb(97, 18, 97)'
         }
