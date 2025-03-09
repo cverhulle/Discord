@@ -113,7 +113,13 @@ export class PrivateMessageChatComponent implements OnInit{
       tap( send => {
         if (send) {
           console.log("Message envoyé")
+
+          // On réinitialise le formulaire
           this.messageContent = ''
+
+          // On ajoute le message au chat
+          this.chat.push(this.post)
+          
         } else {
           console.log("Le message ne s'est pas envoyé.")
         }
