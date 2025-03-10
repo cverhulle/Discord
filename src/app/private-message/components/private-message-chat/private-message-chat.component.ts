@@ -119,25 +119,49 @@ export class PrivateMessageChatComponent implements OnInit{
 
 
 
+  // Méthode à appeler lorsque l'envoi du post est réussi.
+  private sendPostSuccess(): void {
+    console.log("Message envoyé")
+
+    // On réinitialise le formulaire
+    this.messageContent = ''
+
+    // On ajoute le message au chat.
+    this.chat.push(this.post)
+
+    // On vérifie si le chat est vide ou non.
+    this.chatIsEmpty = this.chat.length === 0
+
+  }
+
+
+  // Méthode pour afficher un message d'erreur lors de l'envoi d'un message.
+  private displayError(message: string): void {
+    this.matSnackBar.open(message, 'Fermer', {
+      duration: 10000,
+      verticalPosition: 'top',
+      horizontalPosition: 'center'
+    });
+  }
+
+
+  private sendPostError(): void {
+    console.log("Erreur lors de l'envoi du message.");
+    this.displayError('Erreur lors de l\'envoi du message.');
+  }
+
+
+
   // Méthode pour envoyer le post au service.
   private sendPost(): Observable<boolean> {
     return this.postService.sendPost(this.post).pipe(
-      tap( send => {
-        if (send) {
-          console.log("Message envoyé")
-
-          // On réinitialise le formulaire
-          this.messageContent = ''
-
-          // On ajoute le message au chat.
-          this.chat.push(this.post)
-
-          // On vérifie si le chat est vide ou non.
-          this.chatIsEmpty = this.chat.length === 0
-
+      tap( sucess => {
+        if (sucess) {
+          this.sendPostSuccess()
         } else {
-          console.log("Le message ne s'est pas envoyé.")
+          this.sendPostError()
         }
+        this.loading = false
       })
     )
   }
@@ -153,14 +177,7 @@ export class PrivateMessageChatComponent implements OnInit{
 
 
 
-  // Méthode pour afficher un message d'erreur lors de l'envoi d'un message.
-  private displayError(message: string): void {
-    this.matSnackBar.open(message, 'Fermer', {
-      duration: 10000,
-      verticalPosition: 'top',
-      horizontalPosition: 'center'
-    });
-  }
+  
 
 
   // Méthode au clic sur le bouton envoi.
@@ -168,12 +185,9 @@ export class PrivateMessageChatComponent implements OnInit{
     this.loading = true
     this.createPostToSend()
     this.sendPost().subscribe( (success) => {
-      this.loading = false
       if (success) {
         this.scrollToBottom();
-      } else {
-        this.displayError('Erreur lors de l\'envoi du message.')
-      }
+      } 
       
     })
     
