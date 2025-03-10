@@ -41,7 +41,7 @@ export class PrivateMessageChatComponent implements OnInit{
   otherUser!: usernameImage;
 
   // Variable pour récupérer le texte dans le message.
-  messageContent!: string;
+  messageContent: string = ''
 
   // Variable pour stocker le post à envoyer au backend
   post!: Post
@@ -183,9 +183,13 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Méthode au clic sur le bouton envoi.
   onSendMessage(): void{
-    this.loading = true
-    this.createPostToSend()
-    this.sendPost().subscribe()
+    if (this.postService.messageValid(this.messageContent)) {
+      this.loading = true
+      this.createPostToSend()
+      this.sendPost().subscribe()
+    } else {
+      this.displayError('Le message ne peut pas être vide et doit contenir moins de 500 caractères.')
+    }
     
   }
 
