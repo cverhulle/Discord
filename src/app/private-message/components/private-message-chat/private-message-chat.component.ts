@@ -119,6 +119,16 @@ export class PrivateMessageChatComponent implements OnInit{
 
 
 
+
+  // Scroll de l'écran après l'envoi d'un nouveau message.
+  private scrollToBottom(): void {
+    setTimeout(() => {
+      this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
+    }, 200);
+  }
+
+
+
   // Méthode à appeler lorsque l'envoi du post est réussi.
   private sendPostSuccess(): void {
     console.log("Message envoyé")
@@ -131,6 +141,9 @@ export class PrivateMessageChatComponent implements OnInit{
 
     // On vérifie si le chat est vide ou non.
     this.chatIsEmpty = this.chat.length === 0
+
+    // On scroll en bas de la page pour voir le message envoyé.
+    this.scrollToBottom();
 
   }
 
@@ -168,33 +181,15 @@ export class PrivateMessageChatComponent implements OnInit{
 
 
 
-  // Scroll de l'écran après l'envoi d'un nouveau message.
-  private scrollToBottom(): void {
-    setTimeout(() => {
-      this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
-    }, 200);
-  }
-
-
-
-  
-
-
   // Méthode au clic sur le bouton envoi.
   onSendMessage(): void{
     this.loading = true
     this.createPostToSend()
-    this.sendPost().subscribe( (success) => {
-      if (success) {
-        this.scrollToBottom();
-      } 
-      
-    })
+    this.sendPost().subscribe()
     
   }
 
   
-
 
 
   // Si l'image ne peut pas être chargée, on modifie l'Url du profil par l'Url par défaut.
