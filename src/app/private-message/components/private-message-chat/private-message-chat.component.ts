@@ -129,8 +129,10 @@ export class PrivateMessageChatComponent implements OnInit{
           // On réinitialise le formulaire
           this.messageContent = ''
 
-          // On ajoute le message au chat et on reteste si le chat est vide ou non.
+          // On ajoute le message au chat.
           this.chat.push(this.post)
+
+          // On vérifie si le chat est vide ou non.
           this.chatIsEmpty = this.chat.length === 0
 
         } else {
@@ -140,6 +142,25 @@ export class PrivateMessageChatComponent implements OnInit{
     )
   }
 
+
+
+  // Scroll de l'écran après l'envoi d'un nouveau message.
+  private scrollToBottom(): void {
+    setTimeout(() => {
+      this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
+    }, 200);
+  }
+
+
+
+  // Méthode pour afficher un message d'erreur lors de l'envoi d'un message.
+  private displayError(message: string): void {
+    this.matSnackBar.open(message, 'Fermer', {
+      duration: 10000,
+      verticalPosition: 'top',
+      horizontalPosition: 'center'
+    });
+  }
 
 
   // Méthode au clic sur le bouton envoi.
@@ -158,13 +179,7 @@ export class PrivateMessageChatComponent implements OnInit{
     
   }
 
-  // Scroll de l'écran après l'envoi d'un nouveau message.
-  private scrollToBottom(): void {
-    setTimeout(() => {
-      this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
-    }, 200);
-  }
-
+  
 
 
 
@@ -183,13 +198,8 @@ export class PrivateMessageChatComponent implements OnInit{
     return this.postService.getPostCardColor(postId, this.currentUser.id)
   }
 
-  // Méthode pour afficher un message d'erreur lors de l'envoi d'un message.
-  private displayError(message: string): void {
-    this.matSnackBar.open(message, 'Fermer', {
-      duration: 10000,
-      verticalPosition: 'top',
-      horizontalPosition: 'center'
-    });
-  }
+
+
+  
 
 }
