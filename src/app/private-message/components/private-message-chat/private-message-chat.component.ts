@@ -9,6 +9,7 @@ import { AvatarService } from '../../../shared/avatar/service/avatar.service';
 import { PostService } from '../../../shared/post/services/post.service';
 import { NgFor, NgIf, NgStyle } from '@angular/common';
 import { TimeAgoPipe } from '../../../shared/post/pipe/time-ago.pipe';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -53,7 +54,8 @@ export class PrivateMessageChatComponent implements OnInit{
 
   constructor(private profileService : ProfileService,
               private avatarService : AvatarService,
-              private postService : PostService) {}
+              private postService : PostService,
+              private matSnackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.initCurrentUser()
@@ -174,6 +176,15 @@ export class PrivateMessageChatComponent implements OnInit{
   // Récupérer la couleur de la mat-card
   getPostCardColor(postId: string) : string {
     return this.postService.getPostCardColor(postId, this.currentUser.id)
+  }
+
+  // Méthode pour afficher un message d'erreur lors de l'envoi d'un message.
+  private displayError(message: string): void {
+    this.matSnackBar.open(message, 'Fermer', {
+      duration: 3000,
+      verticalPosition: 'top',
+      horizontalPosition: 'center'
+    });
   }
 
 }
