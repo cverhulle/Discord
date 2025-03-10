@@ -146,9 +146,14 @@ export class PrivateMessageChatComponent implements OnInit{
   onSendMessage(): void{
     this.loading = true
     this.createPostToSend()
-    this.sendPost().subscribe( () => {
+    this.sendPost().subscribe( (success) => {
       this.loading = false
-      this.scrollToBottom();
+      if (success) {
+        this.scrollToBottom();
+      } else {
+        this.displayError('Erreur lors de l\'envoi du message.')
+      }
+      
     })
     
   }
@@ -181,7 +186,7 @@ export class PrivateMessageChatComponent implements OnInit{
   // Méthode pour afficher un message d'erreur lors de l'envoi d'un message.
   private displayError(message: string): void {
     this.matSnackBar.open(message, 'Fermer', {
-      duration: 3000,
+      duration: 10000,
       verticalPosition: 'top',
       horizontalPosition: 'center'
     });
