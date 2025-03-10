@@ -29,5 +29,12 @@ export class PostService{
             return  'rgb(97, 18, 97)'
         }
     }
+
+    // Cette méthode vérifie si le message n'est pas vide et si sa longueur ne dépasse pas maxLenght (500 par défaut).
+    messageValid(message: string, maxLenght: number = 500): boolean {
+        
+        // trim supprime les espaces au début et à la fin de message.
+        return message.trim().length > 0 && message.length <= maxLenght;
+    }
 }
 
