@@ -151,7 +151,7 @@ export class PrivateMessageChatComponent implements OnInit{
   // Méthode pour afficher un message d'erreur lors de l'envoi d'un message.
   private displayError(message: string): void {
     this.matSnackBar.open(message, 'Fermer', {
-      duration: 10000,
+      duration: 6000,
       verticalPosition: 'top',
       horizontalPosition: 'center'
     });
