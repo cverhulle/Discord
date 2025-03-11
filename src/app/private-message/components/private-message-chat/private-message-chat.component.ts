@@ -50,9 +50,6 @@ export class PrivateMessageChatComponent implements OnInit{
   // Variable pour récupérer le texte dans le message.
   messageContent: string = ''
 
-  // Variable pour stocker le post à envoyer au backend
-  post!: Post
-
   // Variable qui stocke la discussion entre les utilisateurs
   chat: Post[] = []
 
