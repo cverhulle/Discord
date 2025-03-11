@@ -9,6 +9,7 @@ import { environment } from "../../../../environments/environment.development";
 export class PostService{
     constructor(private http: HttpClient){}
 
+    
     sendPost(post : Post): Observable<boolean> {
         return this.http.post(`${environment.apiUrl}/private-message/post`, post).pipe(
             map( () => true),
@@ -19,6 +20,12 @@ export class PostService{
     getAllPosts(otherUserId: string): Observable<Post[]> {
         return this.http.get<Post[]>(`${environment.apiUrl}/private-message/getPosts`, {
             params: {otherUserId} 
+        })
+    }
+
+    getPreviousPosts(otherUserId: string, skip: number): Observable<Post[]> {
+        return this.http.get<Post[]>(`${environment.apiUrl}/private-message/getPosts/previous`, {
+            params: {otherUserId, skip} 
         })
     }
 
