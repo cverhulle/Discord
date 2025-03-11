@@ -91,7 +91,7 @@ export class PrivateMessageChatComponent implements OnInit{
 
 
 
-  // Cette méthode initialise l'historique de la discussion entre les utilisateurs
+  // Cette méthode initialise l'historique de la discussion entre les utilisateurs : on ne récupère que les 10 derniers messages.
   private initChat(otherUserId: string): void {
     this.loading = true
     this.postService.getPreviousPosts(otherUserId,0).pipe(
@@ -148,7 +148,7 @@ export class PrivateMessageChatComponent implements OnInit{
   }
 
 
-  // Méthode pour afficher un message d'erreur lors de l'envoi d'un message.
+  // Méthode pour afficher un message d'erreur.
   private displayError(message: string): void {
     this.matSnackBar.open(message, 'Fermer', {
       duration: 6000,
@@ -157,7 +157,7 @@ export class PrivateMessageChatComponent implements OnInit{
     });
   }
 
-
+  // Méthode à appeler lorsque l'envoi du post a échoué.
   private sendPostError(): void {
     console.log("Erreur lors de l'envoi du message.");
     this.displayError('Erreur lors de l\'envoi du message.');
@@ -193,6 +193,7 @@ export class PrivateMessageChatComponent implements OnInit{
     
   }
 
+  // Méthode pour charger plus de messages à l'appui du bouton.
   onLoadMore(): void {
     this.loading = true;
     const skip = this.chat.length;
