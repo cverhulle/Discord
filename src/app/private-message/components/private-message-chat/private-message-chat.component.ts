@@ -129,12 +129,7 @@ export class PrivateMessageChatComponent implements OnInit{
 
 
 
-  // Scroll de l'écran après l'envoi d'un nouveau message.
-  private scrollToBottom(): void {
-    setTimeout(() => {
-      this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
-    }, 200);
-  }
+  
 
 
 
@@ -155,14 +150,7 @@ export class PrivateMessageChatComponent implements OnInit{
   }
 
 
-  // Méthode pour afficher un message d'erreur.
-  private displayError(message: string): void {
-    this.matSnackBar.open(message, 'Fermer', {
-      duration: 6000,
-      verticalPosition: 'top',
-      horizontalPosition: 'center'
-    });
-  }
+
 
   // Méthode à appeler lorsque l'envoi du post a échoué.
   private sendPostError(): void {
@@ -220,6 +208,22 @@ export class PrivateMessageChatComponent implements OnInit{
 
   
 
+  // Scroll de l'écran après l'envoi d'un nouveau message.
+  private scrollToBottom(): void {
+    setTimeout(() => {
+      this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
+    }, 200);
+  }
+
+  // Méthode pour afficher un message d'erreur.
+  private displayError(message: string): void {
+    this.matSnackBar.open(message, 'Fermer', {
+      duration: 6000,
+      verticalPosition: 'top',
+      horizontalPosition: 'center'
+    });
+  }
+
 
   // Si l'image ne peut pas être chargée, on modifie l'Url du profil par l'Url par défaut.
   getProfileImage(post: Post): string {
@@ -235,6 +239,8 @@ export class PrivateMessageChatComponent implements OnInit{
   getPostCardColor(postId: string) : string {
     return this.postService.getPostCardColor(postId, this.currentUser.id)
   }
+
+
 
 
 
