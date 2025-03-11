@@ -13,8 +13,8 @@
 
     <div *ngIf="!chatIsEmpty && !loading">
 
-        <mat-card-actions>
-            <button mat-flat-button (click)="onLoadMore()" [disabled]="loading"> Charger les messages précédents </button>
+        <mat-card-actions class="button-previous-post">
+            <button mat-flat-button (click)="onLoadMore()" [disabled]="loading" > Charger les messages précédents </button>
         </mat-card-actions>
 
 
