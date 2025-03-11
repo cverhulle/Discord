@@ -20,4 +20,12 @@ export class UserService{
             })
         )
     }
+
+    getOtherUser(historyState: any): usernameImage{
+        const otherUser = new usernameImage();
+        otherUser.id = historyState.id;
+        otherUser.username = historyState.username;
+        otherUser.image = historyState.image;
+        return otherUser;
+    }
 }
