@@ -15,6 +15,7 @@ import { AvatarService } from '../../../shared/avatar/service/avatar.service';
 import { PostService } from '../../../shared/post/services/post.service';
 
 import { TimeAgoPipe } from '../../../shared/post/pipe/time-ago.pipe';
+import { UserService } from '../../../shared/post/services/user.service';
 
 
 
@@ -61,6 +62,7 @@ export class PrivateMessageChatComponent implements OnInit{
   constructor(private profileService : ProfileService,
               private avatarService : AvatarService,
               private postService : PostService,
+              private userService : UserService,
               private matSnackBar: MatSnackBar) {}
 
 
@@ -77,14 +79,11 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Cette méthode initialise les données de l'utilisateur actuellement connecté
   private initCurrentUser(): void {
-    this.currentUser = new usernameImage();
-
-    this.profileService.getProfile().pipe(
-      tap((profile) => {
-        this.currentUser['id']= profile.user._id,
-        this.currentUser['username']=profile.user.loginInfo.username,
-        this.currentUser['image']=profile.user.image
-        
+    this.userService.getCurrentUser().pipe(
+      tap( user => this.currentUser = user),
+      catchError( () => {
+        this.displayError('Erreur lors de la récupération des données de l\'utilisateur.')
+        return of(false)
       })
     ).subscribe()
   }

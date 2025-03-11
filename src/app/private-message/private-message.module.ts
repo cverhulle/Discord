@@ -6,6 +6,7 @@ import { PrivateMessageService } from './service/private-message.service';
 import { ProfileService } from '../profile/service/profile.service';
 import { AvatarService } from '../shared/avatar/service/avatar.service';
 import { PostService } from '../shared/post/services/post.service';
+import { UserService } from '../shared/post/services/user.service';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { PostService } from '../shared/post/services/post.service';
     PrivateMessageService,
     ProfileService,
     AvatarService,
-    PostService
+    PostService,
+    UserService
   ]
 })
 export class PrivateMessageModule { }
