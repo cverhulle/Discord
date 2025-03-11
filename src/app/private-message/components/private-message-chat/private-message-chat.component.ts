@@ -140,8 +140,6 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Méthode à appeler lorsque l'envoi du post est réussi.
   private sendPostSuccess(): void {
-    console.log("Message envoyé")
-
     // On réinitialise le formulaire
     this.messageContent = ''
 
@@ -168,7 +166,6 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Méthode à appeler lorsque l'envoi du post a échoué.
   private sendPostError(): void {
-    console.log("Erreur lors de l'envoi du message.");
     this.displayError('Erreur lors de l\'envoi du message.');
   }
 
