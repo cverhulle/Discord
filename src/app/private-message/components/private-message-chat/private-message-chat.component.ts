@@ -1,15 +1,21 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { usernameImage } from '../../models/username-image.models';
-import { ProfileService } from '../../../profile/service/profile.service';
 import { catchError, Observable, of, tap } from 'rxjs';
-import { SharedModule } from '../../../shared/shared.module';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+
 import { FormsModule } from '@angular/forms';
+import { NgFor, NgIf, NgStyle } from '@angular/common';
+import { SharedModule } from '../../../shared/shared.module';
+
+import { usernameImage } from '../../models/username-image.models';
 import { Post } from '../../../shared/post/models/post.model';
+
+import { ProfileService } from '../../../profile/service/profile.service';
 import { AvatarService } from '../../../shared/avatar/service/avatar.service';
 import { PostService } from '../../../shared/post/services/post.service';
-import { NgFor, NgIf, NgStyle } from '@angular/common';
+
 import { TimeAgoPipe } from '../../../shared/post/pipe/time-ago.pipe';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 
 @Component({
