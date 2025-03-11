@@ -57,13 +57,17 @@ export class PrivateMessageChatComponent implements OnInit{
               private postService : PostService,
               private matSnackBar: MatSnackBar) {}
 
+              
   ngOnInit(): void {
-    this.initCurrentUser()
-    this.initOtherUser()
+    this.initUsers()
     this.initChat(this.otherUser.id)
   }
 
-
+  // Cette méthode initialise les données des utilisateurs de la discussion.
+  private initUsers(): void {
+    this.initCurrentUser(),
+    this.initOtherUser()
+  }
 
   // Cette méthode initialise les données de l'utilisateur actuellement connecté
   private initCurrentUser(): void {
