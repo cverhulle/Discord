@@ -57,7 +57,7 @@ export class PrivateMessageChatComponent implements OnInit{
               private postService : PostService,
               private matSnackBar: MatSnackBar) {}
 
-              
+
   ngOnInit(): void {
     this.initUsers()
     this.initChat(this.otherUser.id)
@@ -103,6 +103,11 @@ export class PrivateMessageChatComponent implements OnInit{
         this.chat = posts;
         this.chatIsEmpty = this.chat.length === 0;
         this.loading = false
+      }),
+      catchError( () => {
+        this.displayError('Erreur lors du chargement de la discussion.')
+        this.loading = false
+        return of(false)
       })
     ).subscribe()
   }
