@@ -118,8 +118,8 @@ export class PrivateMessageChatComponent implements OnInit{
 
 
   // Création du post à envoyer au backend.
-  private createPostToSend(): void {
-    this.post = {
+  private createPostToSend(): Post {
+    return {
       currentUserId : this.currentUser.id,
       otherUserId : this.otherUser.id,
       username : this.currentUser.username,
@@ -137,12 +137,12 @@ export class PrivateMessageChatComponent implements OnInit{
 
 
   // Méthode à appeler lorsque l'envoi du post est réussi.
-  private sendPostSuccess(): void {
+  private sendPostSuccess(message : Post): void {
     // On réinitialise le formulaire
     this.messageContent = ''
 
     // On ajoute le message au chat.
-    this.chat.push(this.post)
+    this.chat.push(message)
 
     // On vérifie si le chat est vide ou non.
     this.chatIsEmpty = this.chat.length === 0
@@ -163,11 +163,11 @@ export class PrivateMessageChatComponent implements OnInit{
 
 
   // Méthode pour envoyer le post au service.
-  private sendPost(): Observable<boolean> {
-    return this.postService.sendPost(this.post).pipe(
+  private sendPost(message : Post): Observable<boolean> {
+    return this.postService.sendPost(message).pipe(
       tap( sucess => {
         if (sucess) {
-          this.sendPostSuccess()
+          this.sendPostSuccess(message)
         } else {
           this.sendPostError()
         }
@@ -182,8 +182,7 @@ export class PrivateMessageChatComponent implements OnInit{
   onSendMessage(): void{
     if (this.postService.messageValid(this.messageContent)) {
       this.loading = true
-      this.createPostToSend()
-      this.sendPost().subscribe()
+      this.sendPost(this.createPostToSend()).subscribe()
     } else {
       this.displayError('Le message ne peut pas être vide et doit contenir moins de 500 caractères.')
     }
