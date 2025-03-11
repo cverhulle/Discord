@@ -193,6 +193,9 @@ export class PrivateMessageChatComponent implements OnInit{
     
   }
 
+  onLoadMore(): void {
+  }
+
   
 
 

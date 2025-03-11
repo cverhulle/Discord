@@ -12,6 +12,12 @@
     </div>
 
     <div *ngIf="!chatIsEmpty && !loading">
+
+        <mat-card-actions>
+            <button mat-flat-button (click)="onLoadMore()" [disabled]="loading"> Charger les messages précédents </button>
+        </mat-card-actions>
+
+
         <mat-card *ngFor="let post of chat" class="mat-card-post" [ngStyle]="{'background-color': getPostCardColor(post.currentUserId)}">
             <div class="avatar-username"> 
                 <img [src]="getProfileImage(post)" (error)="setImageError(post)" alt="Avatar de {{post.username}}" class="avatar">
@@ -22,6 +28,8 @@
             <mat-card-footer class="timestamp"> {{post.timestamp | timeAgo }} </mat-card-footer>
             
         </mat-card>
+
+        
     </div>
 
     
