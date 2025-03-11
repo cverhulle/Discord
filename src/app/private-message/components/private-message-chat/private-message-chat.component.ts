@@ -144,7 +144,7 @@ export class PrivateMessageChatComponent implements OnInit{
     // On vérifie si le chat est vide ou non.
     this.chatIsEmpty = this.chat.length === 0
 
-    // On scroll en bas de la page pour voir le message envoyé.
+    // On scrolle en bas de la page pour voir le message envoyé.
     this.scrollToBottom();
 
   }
@@ -168,7 +168,6 @@ export class PrivateMessageChatComponent implements OnInit{
         } else {
           this.sendPostError()
         }
-        this.loading = false
       })
     )
   }
@@ -179,7 +178,7 @@ export class PrivateMessageChatComponent implements OnInit{
   onSendMessage(): void{
     if (this.postService.messageValid(this.messageContent)) {
       this.loading = true
-      this.sendPost(this.createPostToSend()).subscribe()
+      this.sendPost(this.createPostToSend()).subscribe( () => this.loading = false)
     } else {
       this.displayError('Le message ne peut pas être vide et doit contenir moins de 500 caractères.')
     }
