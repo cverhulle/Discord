@@ -94,7 +94,7 @@ export class PrivateMessageChatComponent implements OnInit{
   // Cette méthode initialise l'historique de la discussion entre les utilisateurs
   private initChat(otherUserId: string): void {
     this.loading = true
-    this.postService.getAllPosts(otherUserId).pipe(
+    this.postService.getPreviousPosts(otherUserId,0).pipe(
       tap( (posts) => {
         this.chat = posts;
         this.chatIsEmpty = this.chat.length === 0;
