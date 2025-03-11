@@ -9,7 +9,7 @@ import { environment } from "../../../../environments/environment.development";
 export class PostService{
     constructor(private http: HttpClient){}
 
-    
+    // Méthode pour envoyer le post au backend et le sauvegarder.
     sendPost(post : Post): Observable<boolean> {
         return this.http.post(`${environment.apiUrl}/private-message/post`, post).pipe(
             map( () => true),
@@ -17,18 +17,21 @@ export class PostService{
         )
     }
 
+    // Méthode pour récupérer tous les posts entre l'utilisateur actuel et celui avec lequel il communique (à partir de son id).
     getAllPosts(otherUserId: string): Observable<Post[]> {
         return this.http.get<Post[]>(`${environment.apiUrl}/private-message/getPosts`, {
             params: {otherUserId} 
         })
     }
 
+    // Méthode pour récupérer les 10 derniers posts entre deux utilisateurs.
     getPreviousPosts(otherUserId: string, skip: number): Observable<Post[]> {
         return this.http.get<Post[]>(`${environment.apiUrl}/private-message/getPosts/previous`, {
             params: {otherUserId, skip} 
         })
     }
 
+    // Méthode pour gérer la couleur des cartes de messages.
     getPostCardColor(postId: string, currentUserId: string) : string {
         if(postId === currentUserId) {
             return 'rgb(48, 92, 70)'
