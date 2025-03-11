@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { usernameImage } from '../../models/username-image.models';
 import { ProfileService } from '../../../profile/service/profile.service';
-import { Observable, tap } from 'rxjs';
+import { catchError, Observable, of, tap } from 'rxjs';
 import { SharedModule } from '../../../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { Post } from '../../../shared/post/models/post.model';
@@ -194,7 +194,22 @@ export class PrivateMessageChatComponent implements OnInit{
   }
 
   onLoadMore(): void {
-  }
+    this.loading = true;
+    const skip = this.chat.length;
+
+    this.postService.getPreviousPosts(this.otherUser.id, skip).pipe(
+      tap( (posts) => {
+        this.chat = [...posts, ...this.chat];
+        this.loading = false
+      }),
+      catchError( () => {
+        this.displayError('Erreur lors du chargement des messages précédents.')
+        this.loading = false
+        return of(false)
+      }),
+      
+    ).subscribe()
+  } 
 
   
 
