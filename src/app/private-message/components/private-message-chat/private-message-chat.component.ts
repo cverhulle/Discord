@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { catchError, Observable, of, tap } from 'rxjs';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 
 import { FormsModule } from '@angular/forms';
@@ -16,6 +16,7 @@ import { PostService } from '../../../shared/post/services/post.service';
 
 import { TimeAgoPipe } from '../../../shared/post/pipe/time-ago.pipe';
 import { UserService } from '../../../shared/post/services/user.service';
+import { ErrorService } from '../../../shared/error/service/error.service';
 
 
 
@@ -60,7 +61,7 @@ export class PrivateMessageChatComponent implements OnInit{
               private avatarService : AvatarService,
               private postService : PostService,
               private userService : UserService,
-              private matSnackBar: MatSnackBar) {}
+              private errorService : ErrorService) {}
 
 
   ngOnInit(): void {
@@ -215,11 +216,7 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Méthode pour afficher un message d'erreur.
   private displayError(message: string): void {
-    this.matSnackBar.open(message, 'Fermer', {
-      duration: 6000,
-      verticalPosition: 'top',
-      horizontalPosition: 'center'
-    });
+    this.errorService.displayError(message);
   }
 
 
