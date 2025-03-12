@@ -52,9 +52,8 @@ export class PostService{
 
     // Méthode à appeler lorsque l'envoi du post a échoué.
     sendPostError(): void {
-        this.displayError('Erreur lors de l\'envoi du message.');
-        throw new Error('Erreur lors de l\'envoi du message.')
-  }
+        this.errorService.displayError('Erreur lors de l\'envoi du message.');
+    }
 
 
 
@@ -99,9 +98,6 @@ export class PostService{
         return message.trim().length > 0 && message.length <= maxLenght;
     }
 
-    // Méthode pour afficher un message d'erreur.
-    displayError(message: string): void {
-        this.errorService.displayError(message)
-    }
+
 }
 

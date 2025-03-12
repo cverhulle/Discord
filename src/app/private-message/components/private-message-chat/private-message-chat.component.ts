@@ -139,7 +139,7 @@ export class PrivateMessageChatComponent implements OnInit{
   }
 
 
-
+ 
   // Méthode pour envoyer le post au service.
   private sendPost(message : Post): Observable<boolean> {
     return this.postService.sendPost(message).pipe(
@@ -149,6 +149,11 @@ export class PrivateMessageChatComponent implements OnInit{
         } else {
           this.sendPostError()
         }
+      }),
+      catchError( () => {
+        this.sendPostError()
+        this.loading = false
+        return of(false);
       })
     )
   }
