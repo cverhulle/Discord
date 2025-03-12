@@ -98,16 +98,16 @@ export class PostService{
     }
 
     // Méthode pour initialiser le chat en connaissant l'userId de l'autre utilisateur (10 messages cf backend pour changer).
-    initChat(otherUserId: string): Observable<{updatedChat: Post[], chatIsEmpty: boolean}> {
+    initChat(otherUserId: string): Observable<{updatedChat: Post[], updatedChatIsEmpty: boolean}> {
         return this.getPreviousPosts(otherUserId,0).pipe(
             map( (posts) => {
               const updatedChat = posts;
-              const chatIsEmpty = this.IsChatEmpty(updatedChat)
-              return ({updatedChat, chatIsEmpty})
+              const updatedChatIsEmpty = this.IsChatEmpty(updatedChat)
+              return ({updatedChat, updatedChatIsEmpty})
             }),
             catchError( () => {
               this.errorService.displayError('Erreur lors du chargement de la discussion.')
-              return of({updatedChat: [], chatIsEmpty: true})
+              return of({updatedChat: [], updatedChatIsEmpty: true})
             })
         )
     }
