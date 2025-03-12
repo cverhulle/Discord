@@ -112,7 +112,20 @@ export class PostService{
         )
     }
 
-
+    // Méthode pour charger 10 messages de plus dans une discussion entre deux utilisateurs.
+    loadMoreMessages(otherUserId: string, chat: Post[]): Observable<Post[]> {
+        const skip = chat.length;
+        return this.getPreviousPosts(otherUserId, skip).pipe(
+            map( (posts) => {
+                return [...posts, ...chat]
+            }),
+            catchError( () => {
+                this.errorService.displayError('Erreur lors du chargement des messages précédents.')
+                return of(chat)
+            })
+        )
+    }
+    
     // Méthode pour gérer la couleur des cartes de messages.
     getPostCardColor(postId: string, currentUserId: string) : string {
         if(postId === currentUserId) {
