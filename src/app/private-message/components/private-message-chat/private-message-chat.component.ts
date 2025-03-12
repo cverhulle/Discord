@@ -46,7 +46,7 @@ export class PrivateMessageChatComponent implements OnInit{
   currentUser!: usernameImage;
 
   // Variable pour récupérer les données de l'utilisateur à qui on envoie des messages.
-  otherUser!: usernameImage;
+  otherUser: usernameImage = {id: '', username: '', image: ''}
 
   // Variable pour récupérer le texte dans le message.
   messageContent: string = ''
@@ -66,7 +66,7 @@ export class PrivateMessageChatComponent implements OnInit{
 
   ngOnInit(): void {
     this.initUsers()
-    if (this.otherUser) {
+    if (this.otherUser.id !== '') {
       this.initChat(this.otherUser.id)
     }
   }
