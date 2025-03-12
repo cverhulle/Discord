@@ -135,7 +135,7 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Méthode à appeler lorsque l'envoi du post a échoué.
   private sendPostError(): void {
-    this.displayError('Erreur lors de l\'envoi du message.');
+    this.postService.sendPostError()
   }
 
 
