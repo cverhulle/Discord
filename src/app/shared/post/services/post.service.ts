@@ -27,7 +27,12 @@ export class PostService{
     addPostToChat(message : Post, chat: Post[]): Post[] {
         chat.push(message)
         return chat
-  }
+    }
+
+    resetString(): string {
+        return ''
+    }
+
 
 
     // Méthode pour envoyer le post au backend et le sauvegarder.

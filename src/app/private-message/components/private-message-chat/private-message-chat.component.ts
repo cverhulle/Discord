@@ -119,7 +119,7 @@ export class PrivateMessageChatComponent implements OnInit{
   // Méthode à appeler lorsque l'envoi du post est réussi.
   private sendPostSuccess(message : Post): void {
     // On réinitialise le formulaire
-    this.messageContent = ''
+    this.messageContent = this.postService.resetString()
 
     // On ajoute le message au chat.
     this.chat = this.postService.addPostToChat(message, this.chat)
