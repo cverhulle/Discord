@@ -39,6 +39,14 @@ export class PostService{
         return chat.length === 0
     }
 
+    // Méthode à appeler lorsque l'envoi du post est réussi.
+    // On retourne le nouveau chat avec le message ajouté, un booléen pour savoir si le chat est vide ou non et on réinitialise le contenu du message.
+    sendPostSuccess(message : Post, chat: Post[]): {updatedChat: Post[], updatedChatIsEmpty : boolean, updatedMessageContent : string} {
+        const updatedChat = this.addPostToChat(message, chat);
+        const updatedChatIsEmpty = this.IsChatEmpty(updatedChat);
+        const updatedMessageContent = this.resetString();
+        return {updatedChat, updatedChatIsEmpty, updatedMessageContent}
+    }
 
     
 
