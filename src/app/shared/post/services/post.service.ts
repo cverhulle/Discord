@@ -3,11 +3,14 @@ import { Injectable } from "@angular/core";
 import { Post } from "../models/post.model";
 import { catchError, map, Observable, of } from "rxjs";
 import { environment } from "../../../../environments/environment.development";
+import { ErrorService } from "../../error/service/error.service";
 
 @Injectable() 
 
 export class PostService{
-    constructor(private http: HttpClient){}
+    constructor(private http: HttpClient,
+                private errorService: ErrorService
+    ){}
 
     // Création du post à envoyer au backend.
     createPostToSend(currentUserId: string, otherUserId : string, username: string, image: string, message: string): Post {
@@ -21,8 +24,7 @@ export class PostService{
         }
     }
 
-
-    
+   
     // Méthode à appeler pour ajouter un message au chat.
     addPostToChat(message : Post, chat: Post[]): Post[] {
         chat.push(message)
@@ -47,6 +49,15 @@ export class PostService{
         const updatedMessageContent = this.resetString();
         return {updatedChat, updatedChatIsEmpty, updatedMessageContent}
     }
+
+    // Méthode à appeler lorsque l'envoi du post a échoué.
+    sendPostError(): void {
+        this.displayError('Erreur lors de l\'envoi du message.');
+        throw new Error('Erreur lors de l\'envoi du message.')
+  }
+
+
+
 
     
 
@@ -86,6 +97,11 @@ export class PostService{
         
         // trim supprime les espaces au début et à la fin de message.
         return message.trim().length > 0 && message.length <= maxLenght;
+    }
+
+    // Méthode pour afficher un message d'erreur.
+    displayError(message: string): void {
+        this.errorService.displayError(message)
     }
 }
 
