@@ -66,7 +66,9 @@ export class PrivateMessageChatComponent implements OnInit{
 
   ngOnInit(): void {
     this.initUsers()
-    this.initChat(this.otherUser.id)
+    if (this.otherUser) {
+      this.initChat(this.otherUser.id)
+    }
   }
 
   // Cette méthode initialise les données des utilisateurs de la discussion.
