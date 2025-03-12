@@ -102,7 +102,7 @@ export class PrivateMessageChatComponent implements OnInit{
     this.postService.getPreviousPosts(otherUserId,0).pipe(
       tap( (posts) => {
         this.chat = posts;
-        this.chatIsEmpty = this.chat.length === 0;
+        this.chatIsEmpty = this.postService.IsChatEmpty(this.chat)
         this.loading = false
       }),
       catchError( () => {
