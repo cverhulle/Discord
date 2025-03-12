@@ -152,7 +152,6 @@ export class PrivateMessageChatComponent implements OnInit{
       }),
       catchError( () => {
         this.sendPostError()
-        this.loading = false
         return of(false);
       })
     )
