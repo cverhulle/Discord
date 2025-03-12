@@ -118,14 +118,12 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Méthode à appeler lorsque l'envoi du post est réussi.
   private sendPostSuccess(message : Post): void {
-    // On réinitialise le formulaire
-    this.messageContent = this.postService.resetString()
+    const result = this.postService.sendPostSuccess(message, this.chat)
 
-    // On ajoute le message au chat.
-    this.chat = this.postService.addPostToChat(message, this.chat)
-
-    // On vérifie si le chat est vide ou non.
-    this.chatIsEmpty = this.postService.IsChatEmpty(this.chat)
+    // On met à jour le chat, la variable pour vérifier si le chat est vide et le contenu du message.
+    this.chat = result.updatedChat;
+    this.chatIsEmpty = result.updatedChatIsEmpty;
+    this.messageContent = result.updatedMessageContent;
 
     // On scrolle en bas de la page pour voir le message envoyé.
     this.scrollToBottom();
