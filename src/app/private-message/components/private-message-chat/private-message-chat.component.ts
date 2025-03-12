@@ -142,7 +142,7 @@ export class PrivateMessageChatComponent implements OnInit{
  
   // Méthode pour envoyer le post au service.
   private sendPost(message : Post): Observable<boolean> {
-    return this.postService.sendPost(message).pipe(
+    return this.postService.sendPostBackend(message).pipe(
       tap( sucess => {
         if (sucess) {
           this.sendPostSuccess(message)

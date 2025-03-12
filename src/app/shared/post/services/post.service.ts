@@ -61,7 +61,7 @@ export class PostService{
     
 
     // Méthode pour envoyer le post au backend et le sauvegarder.
-    sendPost(post : Post): Observable<boolean> {
+    sendPostBackend(post : Post): Observable<boolean> {
         return this.http.post(`${environment.apiUrl}/private-message/post`, post).pipe(
             map( () => true),
             catchError( () => of(false))
