@@ -138,22 +138,15 @@ export class PrivateMessageChatComponent implements OnInit{
   }
 
   // Méthode pour charger plus de messages à l'appui du bouton.
-  onLoadMore(): void {
+  onLoadMoreMessages(): void {
     this.loading = true;
-    const skip = this.chat.length;
-
-    this.postService.getPreviousPosts(this.otherUser.id, skip).pipe(
-      tap( (posts) => {
-        this.chat = [...posts, ...this.chat];
+    
+    this.postService.loadMoreMessages(this.otherUser.id, this.chat).subscribe(
+      ( (chat) => {
+        this.chat = chat
         this.loading = false
       }),
-      catchError( () => {
-        this.errorService.displayError('Erreur lors du chargement des messages précédents.')
-        this.loading = false
-        return of(false)
-      }),
-      
-    ).subscribe()
+    )
   } 
 
   
