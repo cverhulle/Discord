@@ -22,6 +22,14 @@ export class PostService{
     }
 
 
+    
+    // Méthode à appeler pour ajouter un message au chat.
+    addPostToChat(message : Post, chat: Post[]): Post[] {
+        chat.push(message)
+        return chat
+  }
+
+
     // Méthode pour envoyer le post au backend et le sauvegarder.
     sendPost(post : Post): Observable<boolean> {
         return this.http.post(`${environment.apiUrl}/private-message/post`, post).pipe(

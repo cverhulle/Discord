@@ -122,7 +122,7 @@ export class PrivateMessageChatComponent implements OnInit{
     this.messageContent = ''
 
     // On ajoute le message au chat.
-    this.chat.push(message)
+    this.chat = this.postService.addPostToChat(message, this.chat)
 
     // On vérifie si le chat est vide ou non.
     this.chatIsEmpty = this.chat.length === 0
