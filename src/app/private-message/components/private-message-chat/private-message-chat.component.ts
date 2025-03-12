@@ -115,24 +115,6 @@ export class PrivateMessageChatComponent implements OnInit{
 
 
 
-  // Création du post à envoyer au backend.
-  private createPostToSend(): Post {
-    return {
-      currentUserId : this.currentUser.id,
-      otherUserId : this.otherUser.id,
-      username : this.currentUser.username,
-      image : this.currentUser.image,
-      content : this.messageContent,
-      timestamp : new Date()
-    }
-  }
-
-
-
-
-  
-
-
 
   // Méthode à appeler lorsque l'envoi du post est réussi.
   private sendPostSuccess(message : Post): void {
@@ -179,7 +161,8 @@ export class PrivateMessageChatComponent implements OnInit{
   onSendMessage(): void{
     if (this.postService.messageValid(this.messageContent)) {
       this.loading = true
-      this.sendPost(this.createPostToSend()).subscribe( () => this.loading = false)
+      this.sendPost(this.postService.createPostToSend(this.currentUser.id, this.otherUser.id, this.currentUser.username, this.currentUser.image, this.messageContent))
+        .subscribe( () => this.loading = false)
     } else {
       this.displayError('Le message ne peut pas être vide et doit contenir moins de 500 caractères.')
     }

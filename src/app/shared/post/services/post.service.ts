@@ -9,6 +9,19 @@ import { environment } from "../../../../environments/environment.development";
 export class PostService{
     constructor(private http: HttpClient){}
 
+    // Création du post à envoyer au backend.
+    createPostToSend(currentUserId: string, otherUserId : string, username: string, image: string, message: string): Post {
+        return {
+        currentUserId : currentUserId,
+        otherUserId : otherUserId,
+        username : username,
+        image : image,
+        content : message,
+        timestamp : new Date()
+        }
+    }
+
+
     // Méthode pour envoyer le post au backend et le sauvegarder.
     sendPost(post : Post): Observable<boolean> {
         return this.http.post(`${environment.apiUrl}/private-message/post`, post).pipe(
