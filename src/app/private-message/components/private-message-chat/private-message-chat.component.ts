@@ -80,7 +80,7 @@ export class PrivateMessageChatComponent implements OnInit{
     this.userService.getCurrentUser().pipe(
       tap( user => this.currentUser = user),
       catchError( () => {
-        this.displayError('Erreur lors de la récupération des données de l\'utilisateur.')
+        this.errorService.displayError('Erreur lors de la récupération des données de l\'utilisateur.')
         return of(false)
       })
     ).subscribe()
@@ -106,7 +106,7 @@ export class PrivateMessageChatComponent implements OnInit{
         this.loading = false
       }),
       catchError( () => {
-        this.displayError('Erreur lors du chargement de la discussion.')
+        this.errorService.displayError('Erreur lors du chargement de la discussion.')
         this.loading = false
         return of(false)
       })
@@ -166,7 +166,7 @@ export class PrivateMessageChatComponent implements OnInit{
       this.sendPost(this.postService.createPostToSend(this.currentUser.id, this.otherUser.id, this.currentUser.username, this.currentUser.image, this.messageContent), this.chat)
         .subscribe( () => this.loading = false)
     } else {
-      this.displayError('Le message ne peut pas être vide et doit contenir moins de 500 caractères.')
+      this.errorService.displayError('Le message ne peut pas être vide et doit contenir moins de 500 caractères.')
     }
     
   }
@@ -182,7 +182,7 @@ export class PrivateMessageChatComponent implements OnInit{
         this.loading = false
       }),
       catchError( () => {
-        this.displayError('Erreur lors du chargement des messages précédents.')
+        this.errorService.displayError('Erreur lors du chargement des messages précédents.')
         this.loading = false
         return of(false)
       }),
@@ -198,12 +198,6 @@ export class PrivateMessageChatComponent implements OnInit{
       this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
     }, 200);
   }
-
-  // Méthode pour afficher un message d'erreur.
-  private displayError(message: string): void {
-    this.errorService.displayError(message);
-  }
-
 
   // Si l'image ne peut pas être chargée, on modifie l'Url du profil par l'Url par défaut.
   getProfileImage(post: Post): string {
