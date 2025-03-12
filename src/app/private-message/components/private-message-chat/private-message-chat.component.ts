@@ -172,8 +172,14 @@ export class PrivateMessageChatComponent implements OnInit{
         this.messageContent
       )
 
-      this.sendPost(postToSend, this.chat)
-        .subscribe( () => this.loading = false)
+      this.postService.sendPost(postToSend, this.chat)
+        .subscribe( (result) => {
+          this.chat= result.updatedChat
+          this.chatIsEmpty = result.updatedChatIsEmpty
+          this.messageContent = result.updatedMessageContent
+          this.loading = false
+          this.scrollToBottom();
+      })
         
     } else {
       this.errorService.displayError('Le message ne peut pas être vide et doit contenir moins de 500 caractères.')
