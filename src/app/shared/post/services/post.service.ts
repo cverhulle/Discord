@@ -29,11 +29,18 @@ export class PostService{
         return chat
     }
 
+    // Méthode pour remettre un string à ''
     resetString(): string {
         return ''
     }
+    
+    // Méthode pour vérifier si le chat est vide ou non
+    IsChatEmpty(chat: Post[]): boolean {
+        return chat.length === 0
+    }
 
 
+    
 
     // Méthode pour envoyer le post au backend et le sauvegarder.
     sendPost(post : Post): Observable<boolean> {

@@ -125,7 +125,7 @@ export class PrivateMessageChatComponent implements OnInit{
     this.chat = this.postService.addPostToChat(message, this.chat)
 
     // On vérifie si le chat est vide ou non.
-    this.chatIsEmpty = this.chat.length === 0
+    this.chatIsEmpty = this.postService.IsChatEmpty(this.chat)
 
     // On scrolle en bas de la page pour voir le message envoyé.
     this.scrollToBottom();
