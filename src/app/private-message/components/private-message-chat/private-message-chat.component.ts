@@ -90,7 +90,11 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Cette méthode initialise les données de l'utilisateur avec lequel on va communiquer.
   private initOtherUser(): void {
-    this.otherUser = this.userService.getOtherUser(history.state)
+    try {
+      this.otherUser = this.userService.getOtherUser(history.state)
+    } catch (error) {
+      this.errorService.displayError('Erreur lors de la récupération des données de l\'utilisateur.')
+    }
           
   }
 
