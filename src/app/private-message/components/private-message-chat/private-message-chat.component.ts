@@ -113,52 +113,6 @@ export class PrivateMessageChatComponent implements OnInit{
     ).subscribe()
   }
 
-
-
-
-  // Méthode à appeler lorsque l'envoi du post est réussi.
-  private sendPostSuccess(message : Post, chat: Post[]): void {
-    const result = this.postService.sendPostSuccess(message, chat)
-
-    // On met à jour le chat, la variable pour vérifier si le chat est vide et le contenu du message.
-    this.chat = result.updatedChat;
-    this.chatIsEmpty = result.updatedChatIsEmpty;
-    this.messageContent = result.updatedMessageContent;
-
-    // On scrolle en bas de la page pour voir le message envoyé.
-    this.scrollToBottom();
-
-  }
-
-
-
-
-  // Méthode à appeler lorsque l'envoi du post a échoué.
-  private sendPostError(): void {
-    this.postService.sendPostError()
-  }
-
-
- 
-  // Méthode pour envoyer le post au service.
-  private sendPost(message : Post, chat: Post[]): Observable<boolean> {
-    return this.postService.sendPostBackend(message).pipe(
-      tap( sucess => {
-        if (sucess) {
-          this.sendPostSuccess(message, chat)
-        } else {
-          this.sendPostError()
-        }
-      }),
-      catchError( () => {
-        this.sendPostError()
-        return of(false);
-      })
-    )
-  }
-
-
-
   // Méthode au clic sur le bouton envoi.
   onSendMessage(): void{
     if (this.postService.messageValid(this.messageContent)) {
