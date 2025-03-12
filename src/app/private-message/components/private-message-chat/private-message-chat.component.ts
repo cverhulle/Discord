@@ -163,8 +163,18 @@ export class PrivateMessageChatComponent implements OnInit{
   onSendMessage(): void{
     if (this.postService.messageValid(this.messageContent)) {
       this.loading = true
-      this.sendPost(this.postService.createPostToSend(this.currentUser.id, this.otherUser.id, this.currentUser.username, this.currentUser.image, this.messageContent), this.chat)
+
+      const postToSend = this.postService.createPostToSend(
+        this.currentUser.id, 
+        this.otherUser.id, 
+        this.currentUser.username, 
+        this.currentUser.image, 
+        this.messageContent
+      )
+
+      this.sendPost(postToSend, this.chat)
         .subscribe( () => this.loading = false)
+        
     } else {
       this.errorService.displayError('Le message ne peut pas être vide et doit contenir moins de 500 caractères.')
     }
