@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Post } from "../models/post.model";
-import { catchError, map, Observable, of } from "rxjs";
+import { catchError, map, Observable, of, tap } from "rxjs";
 import { environment } from "../../../../environments/environment.development";
 import { ErrorService } from "../../error/service/error.service";
 
@@ -55,11 +55,6 @@ export class PostService{
         this.errorService.displayError('Erreur lors de l\'envoi du message.');
     }
 
-
-
-
-    
-
     // Méthode pour envoyer le post au backend et le sauvegarder.
     sendPostBackend(post : Post): Observable<boolean> {
         return this.http.post(`${environment.apiUrl}/private-message/post`, post).pipe(
@@ -67,6 +62,26 @@ export class PostService{
             catchError( () => of(false))
         )
     }
+
+
+    // Méthode pour envoyer le post.
+    sendPost(message : Post, chat: Post[]): Observable<{updatedChat: Post[], updatedChatIsEmpty : boolean, updatedMessageContent : string}> {
+        return this.sendPostBackend(message).pipe(
+            map( sucess => {
+            if (sucess) {
+                return this.sendPostSuccess(message, chat)
+            } else {
+                this.sendPostError()
+                return ({updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: message.content});
+            }
+            }),
+            catchError( () => {
+            this.sendPostError()
+            return of({updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: message.content});
+            })
+        )
+    }
+
 
     // Méthode pour récupérer tous les posts entre l'utilisateur actuel et celui avec lequel il communique (à partir de son id).
     getAllPosts(otherUserId: string): Observable<Post[]> {
