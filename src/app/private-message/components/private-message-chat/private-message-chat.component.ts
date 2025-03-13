@@ -180,6 +180,14 @@ export class PrivateMessageChatComponent implements OnInit{
   }
 
 
+  onEditMessage() {
+
+  }
+
+  onDeleteMessage() {
+  }
+
+
 
 
 
