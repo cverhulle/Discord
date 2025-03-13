@@ -155,6 +155,24 @@ export class PrivateMessageChatComponent implements OnInit{
     )
   } 
 
+  // Méthode pour éditer un message.
+  onEditMessage(post : Post) {
+    console.log(post)
+  }
+
+  // Méthode pour supprimer un message.
+  onDeleteMessage(post : Post) {
+    this.loading = true
+
+    this.postService.deletePost(post.timestamp, this.chat).subscribe(
+      (updatedChat) => {
+        this.chat = updatedChat
+        this.loading = false
+      }
+    )
+
+
+  }
   
 
   // Scroll de l'écran après l'envoi d'un nouveau message.
@@ -180,22 +198,7 @@ export class PrivateMessageChatComponent implements OnInit{
   }
 
 
-  onEditMessage(post : Post) {
-    console.log(post)
-  }
 
-  onDeleteMessage(post : Post) {
-    this.loading = true
-
-    this.postService.deletePost(post.timestamp, this.chat).subscribe(
-      (updatedChat) => {
-        this.chat = updatedChat
-        this.loading = false
-      }
-    )
-
-
-  }
 
 
 
