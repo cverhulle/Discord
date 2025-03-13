@@ -125,6 +125,22 @@ export class PostService{
             })
         )
     }
+
+    deletePost(postTimestamp: Date, chat: Post[]): Observable<Post[]> {
+        return this.http.delete(`${environment.apiUrl}/private-message/deletePost`, {
+            params: {postTimestamp : postTimestamp.toString()}
+        }).pipe(
+            map( () => {
+                const updatedChat = chat.filter( post => post.timestamp.getTime() !== postTimestamp.getTime())
+                this.errorService.displayError('Message supprimé avec succès.')
+                return updatedChat
+        }),
+            catchError( () => {
+                this.errorService.displayError('Erreur lors de la suppression du message.')
+                return of(chat)
+        }) 
+        )
+    }
     
     // Méthode pour gérer la couleur des cartes de messages.
     getPostCardColor(postId: string, currentUserId: string) : string {
