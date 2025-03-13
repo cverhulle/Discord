@@ -55,10 +55,16 @@ html, body{
     font-size: 150%;
 }
 
+.avatar-username-menu{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1%;
+}
+
 .avatar-username{
     display: flex;
     align-items: center;
-    margin-bottom: 1%;
 }
 
 .timestamp{
