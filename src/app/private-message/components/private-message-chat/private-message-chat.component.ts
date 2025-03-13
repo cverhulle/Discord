@@ -185,7 +185,15 @@ export class PrivateMessageChatComponent implements OnInit{
   }
 
   onDeleteMessage(post : Post) {
-    console.log(post)
+    this.loading = true
+
+    this.postService.deletePost(post.timestamp, this.chat).subscribe(
+      (updatedChat) => {
+        this.chat = updatedChat
+        this.loading = false
+      }
+    )
+
 
   }
 
