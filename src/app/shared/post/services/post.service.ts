@@ -52,7 +52,7 @@ export class PostService{
 
     // Méthode à appeler lorsque l'envoi du post a échoué.
     sendPostError(): void {
-        this.errorService.displayError('Erreur lors de l\'envoi du message.');
+        this.errorService.displayMessage('Erreur lors de l\'envoi du message.');
     }
 
     // Méthode pour envoyer le post au backend et le sauvegarder.
@@ -106,7 +106,7 @@ export class PostService{
               return ({updatedChat, updatedChatIsEmpty})
             }),
             catchError( () => {
-              this.errorService.displayError('Erreur lors du chargement de la discussion.')
+              this.errorService.displayMessage('Erreur lors du chargement de la discussion.')
               return of({updatedChat: [], updatedChatIsEmpty: true})
             })
         )
@@ -120,7 +120,7 @@ export class PostService{
                 return [...posts, ...chat]
             }),
             catchError( () => {
-                this.errorService.displayError('Erreur lors du chargement des messages précédents.')
+                this.errorService.displayMessage('Erreur lors du chargement des messages précédents.')
                 return of(chat)
             })
         )
@@ -135,11 +135,11 @@ export class PostService{
         }).pipe(
             map( () => {
                 const updatedChat = chat.filter( post => new Date(post.timestamp).getTime() !== datePostTimestamp.getTime())
-                this.errorService.displayError('Message supprimé avec succès.')
+                this.errorService.displayMessage('Message supprimé avec succès.')
                 return updatedChat
         }),
             catchError( () => {
-                this.errorService.displayError('Erreur lors de la suppression du message.')
+                this.errorService.displayMessage('Erreur lors de la suppression du message.')
                 return of(chat)
         }) 
         )

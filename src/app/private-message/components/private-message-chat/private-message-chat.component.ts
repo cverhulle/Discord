@@ -82,7 +82,7 @@ export class PrivateMessageChatComponent implements OnInit{
     this.userService.getCurrentUser().pipe(
       tap( user => this.currentUser = user),
       catchError( () => {
-        this.errorService.displayError('Erreur lors de la récupération des données de l\'utilisateur.')
+        this.errorService.displayMessage('Erreur lors de la récupération des données de l\'utilisateur.')
         return of(false)
       })
     ).subscribe()
@@ -95,7 +95,7 @@ export class PrivateMessageChatComponent implements OnInit{
     try {
       this.otherUser = this.userService.getOtherUser(history.state)
     } catch (error) {
-      this.errorService.displayError('Erreur lors de la récupération des données de l\'utilisateur.')
+      this.errorService.displayMessage('Erreur lors de la récupération des données de l\'utilisateur.')
     }
           
   }
@@ -138,7 +138,7 @@ export class PrivateMessageChatComponent implements OnInit{
       })
         
     } else {
-      this.errorService.displayError('Le message ne peut pas être vide et doit contenir moins de 500 caractères.')
+      this.errorService.displayMessage('Le message ne peut pas être vide et doit contenir moins de 500 caractères.')
     }
     
   }

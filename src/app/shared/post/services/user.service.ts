@@ -33,7 +33,7 @@ export class UserService{
             otherUser.image = historyState.image;
             return otherUser;
         } else {
-            this.errorService.displayError('Impossible de récupérer les informations de l\'autre utilisateur.');
+            this.errorService.displayMessage('Impossible de récupérer les informations de l\'autre utilisateur.');
             this.router.navigateByUrl('/private-message');
             throw new Error('Impossible de récupérer les informations de l\'autre utilisateur.');
         }

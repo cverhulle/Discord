@@ -6,7 +6,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 export class ErrorService {
     constructor(private matSnackBar: MatSnackBar) {}
   
-    displayError(message: string): void {
+    displayMessage(message: string): void {
       this.matSnackBar.open(message, 'Fermer', {
         duration: 6000,
         verticalPosition: 'top',
