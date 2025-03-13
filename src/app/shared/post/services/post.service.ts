@@ -127,6 +127,7 @@ export class PostService{
     }
 
     deletePost(postTimestamp: Date, chat: Post[]): Observable<Post[]> {
+        // Résoudre le problème de la date.
         const datePostTimestamp = new Date(postTimestamp)
         
         return this.http.delete(`${environment.apiUrl}/private-message/deletePost`, {
