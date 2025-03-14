@@ -69,8 +69,9 @@ export class PostService{
     // Méthode pour envoyer le post.
     sendPost(message : Post, chat: Post[]): Observable<{updatedChat: Post[], updatedChatIsEmpty : boolean, updatedMessageContent : string}> {
         return this.sendPostBackend(message).pipe(
-            map( sucess => {
-            if (sucess) {
+            map( postId => {
+            if (typeof postId === 'string') {
+                message.postId = postId;
                 return this.sendPostSuccess(message, chat)
             } else {
                 this.sendPostError()
