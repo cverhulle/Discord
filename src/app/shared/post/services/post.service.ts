@@ -73,7 +73,7 @@ export class PostService{
         return this.sendPostBackend(message).pipe(
             map( postId => {
             if (typeof postId === 'string') {
-                message.postId = postId;
+                message._id = postId;
                 return this.sendPostSuccess(message, chat)
             } else {
                 this.sendPostError()
@@ -136,7 +136,7 @@ export class PostService{
             params: {postId}
         }).pipe(
             map( () => {
-                const updatedChat = chat.filter( post => post.postId !== postId)
+                const updatedChat = chat.filter( post => post._id !== postId)
                 this.displayService.displayMessage('Message supprimé avec succès.')
                 return updatedChat
         }),

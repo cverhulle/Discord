@@ -109,6 +109,7 @@ export class PrivateMessageChatComponent implements OnInit{
         this.chat = result.updatedChat
         this.chatIsEmpty = result.updatedChatIsEmpty
         this.loading = false
+        console.log(this.chat)
         this.scrollToBottom()
       }
     )
@@ -130,6 +131,7 @@ export class PrivateMessageChatComponent implements OnInit{
       this.postService.sendPost(postToSend, this.chat)
         .subscribe( (result) => {
           this.chat= result.updatedChat
+          console.log(this.chat)
           this.chatIsEmpty = result.updatedChatIsEmpty
           this.messageContent = result.updatedMessageContent
           this.loading = false
@@ -161,14 +163,14 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Méthode pour supprimer un message.
   onDeleteMessage(post : Post) {
-    if (!post.postId) {
+    if (!post._id) {
       this.displayService.displayMessage('ID du message non disponible.');
       return; 
     }
 
     this.loading = true
 
-    this.postService.deletePost(post.postId, this.chat).subscribe(
+    this.postService.deletePost(post._id, this.chat).subscribe(
       (updatedChat) => {
         this.chat = updatedChat
         this.loading = false
