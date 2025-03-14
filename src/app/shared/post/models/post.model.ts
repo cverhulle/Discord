@@ -1,4 +1,5 @@
 export class Post{
+    postId?: string;
     currentUserId!: string;
     otherUserId!: string;
     username!: string;
