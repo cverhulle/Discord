@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { catchError, Observable, of, tap } from 'rxjs';
+import { catchError, of, tap } from 'rxjs';
 
 
 
@@ -10,13 +10,13 @@ import { SharedModule } from '../../../shared/shared.module';
 import { usernameImage } from '../../models/username-image.models';
 import { Post } from '../../../shared/post/models/post.model';
 
-import { ProfileService } from '../../../profile/service/profile.service';
 import { AvatarService } from '../../../shared/avatar/service/avatar.service';
 import { PostService } from '../../../shared/post/services/post.service';
 
 import { TimeAgoPipe } from '../../../shared/post/pipe/time-ago.pipe';
 import { UserService } from '../../../shared/post/services/user.service';
-import { ErrorService } from '../../../shared/error/service/error.service';
+import { DisplayService } from '../../../shared/display/service/display.service';
+
 
 
 
@@ -57,11 +57,10 @@ export class PrivateMessageChatComponent implements OnInit{
   // Variable pour vérifier si l'historique de discussion entre deux utilisateurs est vide ou non
   chatIsEmpty!: boolean
 
-  constructor(private profileService : ProfileService,
-              private avatarService : AvatarService,
+  constructor(private avatarService : AvatarService,
               private postService : PostService,
               private userService : UserService,
-              private errorService : ErrorService) {}
+              private displayService : DisplayService) {}
 
 
   ngOnInit(): void {
@@ -82,7 +81,7 @@ export class PrivateMessageChatComponent implements OnInit{
     this.userService.getCurrentUser().pipe(
       tap( user => this.currentUser = user),
       catchError( () => {
-        this.errorService.displayMessage('Erreur lors de la récupération des données de l\'utilisateur.')
+        this.displayService.displayMessage('Erreur lors de la récupération des données de l\'utilisateur.')
         return of(false)
       })
     ).subscribe()
@@ -95,7 +94,7 @@ export class PrivateMessageChatComponent implements OnInit{
     try {
       this.otherUser = this.userService.getOtherUser(history.state)
     } catch (error) {
-      this.errorService.displayMessage('Erreur lors de la récupération des données de l\'utilisateur.')
+      this.displayService.displayMessage('Erreur lors de la récupération des données de l\'utilisateur.')
     }
           
   }
@@ -138,7 +137,7 @@ export class PrivateMessageChatComponent implements OnInit{
       })
         
     } else {
-      this.errorService.displayMessage('Le message ne peut pas être vide et doit contenir moins de 500 caractères.')
+      this.displayService.displayMessage('Le message ne peut pas être vide et doit contenir moins de 500 caractères.')
     }
     
   }

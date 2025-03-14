@@ -3,13 +3,13 @@ import { ProfileService } from "../../../profile/service/profile.service";
 import { map, Observable, tap } from "rxjs";
 import { usernameImage } from "../../../private-message/models/username-image.models";
 import { Router } from "@angular/router";
-import { ErrorService } from "../../error/service/error.service";
+import { DisplayService } from "../../display/service/display.service";
 
 @Injectable()
 
 export class UserService{
     constructor(private profileService : ProfileService,
-                private errorService: ErrorService,
+                private displayService : DisplayService,
                 private router : Router){}
 
     getCurrentUser(): Observable<usernameImage>{
@@ -33,7 +33,7 @@ export class UserService{
             otherUser.image = historyState.image;
             return otherUser;
         } else {
-            this.errorService.displayMessage('Impossible de récupérer les informations de l\'autre utilisateur.');
+            this.displayService.displayMessage('Impossible de récupérer les informations de l\'autre utilisateur.');
             this.router.navigateByUrl('/private-message');
             throw new Error('Impossible de récupérer les informations de l\'autre utilisateur.');
         }

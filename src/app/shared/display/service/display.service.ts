@@ -3,7 +3,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Injectable()
 
-export class ErrorService {
+export class DisplayService {
     constructor(private matSnackBar: MatSnackBar) {}
   
     displayMessage(message: string): void {

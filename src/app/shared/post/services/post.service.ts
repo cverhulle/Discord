@@ -3,14 +3,13 @@ import { Injectable } from "@angular/core";
 import { Post } from "../models/post.model";
 import { catchError, map, Observable, of, tap } from "rxjs";
 import { environment } from "../../../../environments/environment.development";
-import { ErrorService } from "../../error/service/error.service";
+import { DisplayService } from "../../display/service/display.service";
 
 @Injectable() 
 
 export class PostService{
     constructor(private http: HttpClient,
-                private errorService: ErrorService
-    ){}
+                private displayService: DisplayService){}
 
     // Création du post à envoyer au backend.
     createPostToSend(currentUserId: string, otherUserId : string, username: string, image: string, message: string): Post {
@@ -52,7 +51,7 @@ export class PostService{
 
     // Méthode à appeler lorsque l'envoi du post a échoué.
     sendPostError(): void {
-        this.errorService.displayMessage('Erreur lors de l\'envoi du message.');
+        this.displayService.displayMessage('Erreur lors de l\'envoi du message.');
     }
 
     // Méthode pour envoyer le post au backend et le sauvegarder.
@@ -106,7 +105,7 @@ export class PostService{
               return ({updatedChat, updatedChatIsEmpty})
             }),
             catchError( () => {
-              this.errorService.displayMessage('Erreur lors du chargement de la discussion.')
+              this.displayService.displayMessage('Erreur lors du chargement de la discussion.')
               return of({updatedChat: [], updatedChatIsEmpty: true})
             })
         )
@@ -120,7 +119,7 @@ export class PostService{
                 return [...posts, ...chat]
             }),
             catchError( () => {
-                this.errorService.displayMessage('Erreur lors du chargement des messages précédents.')
+                this.displayService.displayMessage('Erreur lors du chargement des messages précédents.')
                 return of(chat)
             })
         )
@@ -135,11 +134,11 @@ export class PostService{
         }).pipe(
             map( () => {
                 const updatedChat = chat.filter( post => new Date(post.timestamp).getTime() !== datePostTimestamp.getTime())
-                this.errorService.displayMessage('Message supprimé avec succès.')
+                this.displayService.displayMessage('Message supprimé avec succès.')
                 return updatedChat
         }),
             catchError( () => {
-                this.errorService.displayMessage('Erreur lors de la suppression du message.')
+                this.displayService.displayMessage('Erreur lors de la suppression du message.')
                 return of(chat)
         }) 
         )
