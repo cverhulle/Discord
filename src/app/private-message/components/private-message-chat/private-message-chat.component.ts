@@ -109,7 +109,6 @@ export class PrivateMessageChatComponent implements OnInit{
         this.chat = result.updatedChat
         this.chatIsEmpty = result.updatedChatIsEmpty
         this.loading = false
-        console.log(this.chat)
         this.scrollToBottom()
       }
     )
