@@ -54,10 +54,13 @@ export class PostService{
         this.displayService.displayMessage('Erreur lors de l\'envoi du message.');
     }
 
+
     // Méthode pour envoyer le post au backend et le sauvegarder.
-    sendPostBackend(post : Post): Observable<boolean> {
-        return this.http.post(`${environment.apiUrl}/private-message/post`, post).pipe(
-            map( () => true),
+    sendPostBackend(post : Post): Observable<boolean | string> {
+        return this.http.post<{message : string, postId : string}>(`${environment.apiUrl}/private-message/post`, post).pipe(
+            map( (response) => {
+                return response.postId
+            }),
             catchError( () => of(false))
         )
     }
