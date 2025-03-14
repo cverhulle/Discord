@@ -161,6 +161,11 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Méthode pour supprimer un message.
   onDeleteMessage(post : Post) {
+    if (!post.postId) {
+      this.displayService.displayMessage('ID du message non disponible.');
+      return; 
+    }
+
     this.loading = true
 
     this.postService.deletePost(post.postId, this.chat).subscribe(
