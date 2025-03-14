@@ -163,7 +163,7 @@ export class PrivateMessageChatComponent implements OnInit{
   onDeleteMessage(post : Post) {
     this.loading = true
 
-    this.postService.deletePost(post.timestamp, this.chat).subscribe(
+    this.postService.deletePost(post.postId, this.chat).subscribe(
       (updatedChat) => {
         this.chat = updatedChat
         this.loading = false

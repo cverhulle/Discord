@@ -131,15 +131,12 @@ export class PostService{
         )
     }
 
-    deletePost(postTimestamp: Date, chat: Post[]): Observable<Post[]> {
-        // Résoudre le problème de la date.
-        const datePostTimestamp = new Date(postTimestamp)
-        
+    deletePost(postId: string, chat: Post[]): Observable<Post[]> {
         return this.http.delete(`${environment.apiUrl}/private-message/deletePost`, {
-            params: {postTimestamp : datePostTimestamp.toISOString()}
+            params: {postId}
         }).pipe(
             map( () => {
-                const updatedChat = chat.filter( post => new Date(post.timestamp).getTime() !== datePostTimestamp.getTime())
+                const updatedChat = chat.filter( post => post.postId !== postId)
                 this.displayService.displayMessage('Message supprimé avec succès.')
                 return updatedChat
         }),
