@@ -61,7 +61,9 @@ export class PostService{
             map( (response) => {
                 return response.postId
             }),
-            catchError( () => of(false))
+            catchError( () => {
+                return of(false)
+            })
         )
     }
 
