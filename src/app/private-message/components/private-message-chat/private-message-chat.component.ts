@@ -119,6 +119,7 @@ export class PrivateMessageChatComponent implements OnInit{
     if (this.postService.messageValid(this.messageContent)) {
       this.loading = true
 
+      // On crée le psot à envoyer au backend (sans l'id du post).
       const postToSend = this.postService.createPostToSend(
         this.currentUser.id, 
         this.otherUser.id, 
@@ -129,8 +130,8 @@ export class PrivateMessageChatComponent implements OnInit{
 
       this.postService.sendPost(postToSend, this.chat)
         .subscribe( (result) => {
+          // Le chat mis à jour contient le dernier post avec son postId récupéré du backend.
           this.chat= result.updatedChat
-          console.log(this.chat)
           this.chatIsEmpty = result.updatedChatIsEmpty
           this.messageContent = result.updatedMessageContent
           this.loading = false
