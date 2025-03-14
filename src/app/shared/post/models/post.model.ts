@@ -1,5 +1,5 @@
 export class Post{
-    _id?: string;
+    postId?: string;
     currentUserId!: string;
     otherUserId!: string;
     username!: string;
