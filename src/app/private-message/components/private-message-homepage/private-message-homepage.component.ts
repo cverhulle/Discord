@@ -46,12 +46,11 @@ export class PrivateMessageHomepageComponent implements OnInit{
       debounceTime(1000),
       switchMap(query => this.privateMessage.searchQueryUsers(query).pipe(
         catchError(error => {
-          console.log('Erreur lors de la recherche.');
+          
           this.users = [];
           return of([]);      
         }),
         tap(users => {
-          console.log('La recherche est terminée.')
           this.users = users
           this.users.forEach(user => {
             this.avatarService.updateImageError(user.username, false)
