@@ -56,6 +56,8 @@ export class PostService{
 
 
     // Méthode pour envoyer le post au backend et le sauvegarder.
+    // On retourne l'id du post si l'envoi a réussi, sinon on retourne false.
+    // L'id du post est nécessaire car, si l'utilisateur ne recharge pas la page, il n'a pas accès à postId du backend.
     sendPostBackend(post : Post): Observable<boolean | string> {
         return this.http.post<{message : string, postId : string}>(`${environment.apiUrl}/private-message/post`, post).pipe(
             map( (response) => {
@@ -69,6 +71,8 @@ export class PostService{
 
 
     // Méthode pour envoyer le post.
+    // On vérifie si l'envoi du post au backend a réussi grâce au type de postId.
+    // On sauvegarde le postId dans le post pour que l'utilisateur ait accès au postId du backend sans devoir recharger la page.
     sendPost(message : Post, chat: Post[]): Observable<{updatedChat: Post[], updatedChatIsEmpty : boolean, updatedMessageContent : string}> {
         return this.sendPostBackend(message).pipe(
             map( postId => {
