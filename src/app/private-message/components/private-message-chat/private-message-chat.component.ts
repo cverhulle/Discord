@@ -214,11 +214,9 @@ export class PrivateMessageChatComponent implements OnInit{
       timestamp : editedPost.timestamp
     };
 
-    this.postService.sendPostBackend(updatedPost).subscribe( (result) => {
-      if (result) {
-        const messageIndex = this.chat.findIndex(post => post.postId === updatedPost.postId);
-        this.chat[messageIndex] = updatedPost;
-      }
+    this.postService.updatePost(updatedPost).subscribe( (result) => {
+      const messageIndex = this.chat.findIndex(post => post.postId === updatedPost.postId);
+      this.chat[messageIndex] = updatedPost;
       this.resetEditMessage();
       this.loading = false;
       this.scrollToBottom();
