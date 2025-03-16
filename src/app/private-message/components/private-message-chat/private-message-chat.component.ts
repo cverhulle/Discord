@@ -140,7 +140,12 @@ export class PrivateMessageChatComponent implements OnInit{
     if (this.postService.messageValid(this.messageContent)) {
       this.loading = true
 
-      // On crée le psot à envoyer au backend (sans l'id du post).
+      if (this.editedPost) {
+        this.onUpdateMessage(this.editedPost)
+        return;
+      }
+
+      // On crée le post à envoyer au backend (sans l'id du post).
       const postToSend = this.postService.createPostToSend(
         this.currentUser.id, 
         this.otherUser.id, 
