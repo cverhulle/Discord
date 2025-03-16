@@ -58,7 +58,7 @@ export class PrivateMessageChatComponent implements OnInit{
   chatIsEmpty!: boolean
 
   // Variable pour stocker le post à modifier
-  editPost: Post | null = null
+  editedPost: Post | null = null
 
   // Observable pour réagir lorsque l'utilisateur modifie un message.
   editMessage$!: Observable<boolean>;
@@ -178,7 +178,8 @@ export class PrivateMessageChatComponent implements OnInit{
   } 
 
   // Méthode pour éditer un message.
-  onEditMessage() {
+  onEditMessage(post : Post) {
+    this.editedPost = post
     this.postService.setEditMessageStatus(true)
   }
 
