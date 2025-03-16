@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { catchError, of, tap } from 'rxjs';
+import { catchError, Observable, of, tap } from 'rxjs';
 
 
 
@@ -57,6 +57,9 @@ export class PrivateMessageChatComponent implements OnInit{
   // Variable pour vérifier si l'historique de discussion entre deux utilisateurs est vide ou non
   chatIsEmpty!: boolean
 
+  // Observable pour réagir lorsque l'utilisateur modifie un message.
+  editMessage$!: Observable<Post | null>;
+
   constructor(private avatarService : AvatarService,
               private postService : PostService,
               private userService : UserService,
@@ -68,6 +71,7 @@ export class PrivateMessageChatComponent implements OnInit{
     if (this.otherUser.id !== '') {
       this.initChat(this.otherUser.id)
     }
+    this.initObservable()
   }
 
   // Cette méthode initialise les données des utilisateurs de la discussion.
@@ -112,6 +116,11 @@ export class PrivateMessageChatComponent implements OnInit{
         this.scrollToBottom()
       }
     )
+  }
+
+  // Cette méthode initialise l'observable pour réagir aux modifications de message.
+  private initObservable(): void {
+    this.editMessage$ = this.postService.editMessage$
   }
 
   // Méthode au clic sur le bouton envoi.
