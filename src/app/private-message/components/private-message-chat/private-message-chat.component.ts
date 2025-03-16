@@ -133,6 +133,7 @@ export class PrivateMessageChatComponent implements OnInit{
       } else {
         this.editedPost = null
         this.messageContent = ''
+        this.scrollToBottom()
       }
     })
   }
@@ -169,7 +170,6 @@ export class PrivateMessageChatComponent implements OnInit{
       if (this.editedPost) {
         this.onUpdateMessage(this.editedPost);
         this.loading = false;
-        this.scrollToBottom();
         return;
       }
 
