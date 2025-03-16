@@ -121,10 +121,11 @@ export class PostService{
             content : newContent,
             timestamp : editedPost.timestamp
           };
+          
         
         return this.updatePostBackend(updatedPost).pipe(
             map((post) => {
-                return post;
+                return updatedPost;
             }),
             catchError( () => {
                 this.displayService.displayMessage('Erreur lors de la modification du message')
