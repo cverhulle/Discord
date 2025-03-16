@@ -189,6 +189,35 @@ export class PrivateMessageChatComponent implements OnInit{
     this.postService.setEditMessageStatus(false)
   }
 
+  private onUpdateMessage(editedPost : Post): void {
+    if (!editedPost.postId) {
+      this.displayService.displayMessage('ID du message non disponible.')
+      return;
+    }
+
+    this.loading = true 
+
+    const updatedPost = {
+      postId : editedPost.postId,
+      currentUserId : editedPost.currentUserId,
+      otherUserId : editedPost.otherUserId,
+      username : editedPost.username,
+      image : editedPost.image,
+      content : this.messageContent,
+      timestamp : editedPost.timestamp
+    };
+
+    this.postService.sendPostBackend(updatedPost).subscribe( (result) => {
+      if (result) {
+        const messageIndex = this.chat.findIndex(post => post.postId === updatedPost.postId);
+        this.chat[messageIndex] = updatedPost;
+      }
+      this.resetEditMessage();
+      this.loading = false;
+      this.scrollToBottom();
+    })
+  }
+
   // Méthode pour supprimer un message.
   onDeleteMessage(post : Post) {
     if (!post.postId) {
