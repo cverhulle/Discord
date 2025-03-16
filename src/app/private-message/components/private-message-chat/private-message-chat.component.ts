@@ -185,12 +185,14 @@ export class PrivateMessageChatComponent implements OnInit{
   // Méthode pour éditer un message.
   onEditMessage(post : Post) {
     this.editedPost = post
+    this.messageContent = post.content
     this.postService.setEditMessageStatus(true)
   }
 
   // Méthode pour réinitialiser l'édition d'un message.
   private resetEditMessage(): void {
     this.editedPost = null
+    this.messageContent = ''
     this.postService.setEditMessageStatus(false)
   }
 
