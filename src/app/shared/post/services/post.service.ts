@@ -95,7 +95,7 @@ export class PostService{
         )
     }
 
-    // Méthode pour modifier un message.
+    // Méthode pour modifier un message dans le backend.
     updatePostBackend(post: Post) : Observable<Post> {
         return this.http.put<Post>(`${environment.apiUrl}/private-message/updatePost`, post).pipe(
             catchError( () => {
