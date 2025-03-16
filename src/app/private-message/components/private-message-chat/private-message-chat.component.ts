@@ -61,7 +61,7 @@ export class PrivateMessageChatComponent implements OnInit{
   editedPost: Post | null = null
 
   // Observable pour réagir lorsque l'utilisateur modifie un message.
-  editMessage$!: Observable<boolean>;
+  editMessage$!: Observable<Post | null>;
 
   constructor(private avatarService : AvatarService,
               private postService : PostService,
@@ -125,27 +125,20 @@ export class PrivateMessageChatComponent implements OnInit{
   private initObservable(): void {
     this.editMessage$ = this.postService.editMessage$
 
-    this.editMessage$.subscribe( (isEditing) => {
-      if (isEditing) {
-        console.log('Edition du message')
+    this.editMessage$.subscribe( (post) => {
+      if (post) {
+        this.editedPost = post
+        this.messageContent = post.content
       } else {
-      console.log('Pas d\'édition du message')
+        this.editedPost = null
+        this.messageContent = ''
       }
     })
   }
 
   // Méthode pour éditer un message.
   onEditMessage(post : Post) {
-    this.editedPost = post
-    this.messageContent = post.content
-    this.postService.setEditMessageStatus(true)
-  }
-
-  // Méthode pour réinitialiser l'édition d'un message.
-  private resetEditMessage(): void {
-    this.editedPost = null
-    this.messageContent = ''
-    this.postService.setEditMessageStatus(false)
+    this.postService.setEditMessage(post)
   }
 
   private onUpdateMessage(editedPost : Post): void {
@@ -157,7 +150,7 @@ export class PrivateMessageChatComponent implements OnInit{
     this.postService.updatePost(editedPost, this.messageContent).subscribe( (updatedPost) => {
       const messageIndex = this.chat.findIndex(post => post.postId === updatedPost.postId);
       this.chat[messageIndex] = updatedPost;
-      this.resetEditMessage();
+      this.postService.setEditMessage(null)
       
     })
   }

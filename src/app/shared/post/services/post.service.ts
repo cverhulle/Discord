@@ -12,8 +12,13 @@ export class PostService{
                 private displayService: DisplayService){}
 
     // Observable pour réagir lorsque l'utilisateur modifie un message.
-    private editMessageSubject = new BehaviorSubject<boolean>(false);
+    private editMessageSubject = new BehaviorSubject<Post | null>(null);
     editMessage$ = this.editMessageSubject.asObservable();
+
+    // Méthode pour modifier le statut de l'observable editMessage.
+    setEditMessage(post : Post | null): void {
+        this.editMessageSubject.next(post)
+    }
 
     // Création du post à envoyer au backend.
     createPostToSend(currentUserId: string, otherUserId : string, username: string, image: string, message: string): Post {
@@ -206,10 +211,7 @@ export class PostService{
         return message.trim().length > 0 && message.length <= maxLenght;
     }
 
-    // Méthode pour modifier le statut de l'observable editMessage.
-    setEditMessageStatus(status : boolean): void {
-        this.editMessageSubject.next(status)
-    }
+    
 
 
 }
