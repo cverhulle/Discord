@@ -155,14 +155,11 @@ export class PrivateMessageChatComponent implements OnInit{
       return;
     }
 
-    this.loading = true 
-
     this.postService.updatePost(editedPost, this.messageContent).subscribe( (updatedPost) => {
       const messageIndex = this.chat.findIndex(post => post.postId === updatedPost.postId);
       this.chat[messageIndex] = updatedPost;
       this.resetEditMessage();
-      this.loading = false;
-      this.scrollToBottom();
+      
     })
   }
 
@@ -172,7 +169,9 @@ export class PrivateMessageChatComponent implements OnInit{
       this.loading = true
 
       if (this.editedPost) {
-        this.onUpdateMessage(this.editedPost)
+        this.onUpdateMessage(this.editedPost);
+        this.loading = false;
+        this.scrollToBottom();
         return;
       }
 
