@@ -2,20 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SharedModule } from '../../../shared/shared.module';
 import { TokenService } from '../../../interceptors/services/auth.service';
+import { DisplayService } from '../../../shared/display/service/display.service';
+import { CoreModule } from '../../core.module';
 
 @Component({
   selector: 'app-header',
   imports: [
     SharedModule,
     RouterLink,
-    
+    CoreModule
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit{
   
-  constructor(private tokenService : TokenService) {}
+  constructor(private tokenService : TokenService,
+              private displayService : DisplayService) {}
 
   ngOnInit(): void {
   
@@ -24,7 +27,7 @@ export class HeaderComponent implements OnInit{
   onLogout(): void {
     if(this.tokenService.isLogged()) {
       this.tokenService.removeToken()
-      console.log('Utilisateur déconnecté')
+      this.displayService.displayMessage('Vous êtes déconnecté.')
     }
   }
 
