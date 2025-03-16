@@ -81,5 +81,6 @@
 <mat-form-field appearance="fill" class="send-message">
     <mat-label> Mon message </mat-label>
     <textarea matInput placeholder="Entrez votre message ici..." [(ngModel)]="messageContent"> </textarea>
+    <mat-icon matSuffix (click)="openEmojisList()"> mood </mat-icon>
     <mat-icon matSuffix class="send-message-icon" (click)="onSendMessage()"> send </mat-icon>
 </mat-form-field>
