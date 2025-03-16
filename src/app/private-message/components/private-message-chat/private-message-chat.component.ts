@@ -183,6 +183,12 @@ export class PrivateMessageChatComponent implements OnInit{
     this.postService.setEditMessageStatus(true)
   }
 
+  // Méthode pour réinitialiser l'édition d'un message.
+  private resetEditMessage(): void {
+    this.editedPost = null
+    this.postService.setEditMessageStatus(false)
+  }
+
   // Méthode pour supprimer un message.
   onDeleteMessage(post : Post) {
     if (!post.postId) {
