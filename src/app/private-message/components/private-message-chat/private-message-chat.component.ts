@@ -142,6 +142,11 @@ export class PrivateMessageChatComponent implements OnInit{
     this.postService.setEditMessage(post)
   }
 
+  // Méthode pour annuler la modification d'un message
+  onNotModify() : void{
+    this.postService.setEditMessage(null)
+  }
+
   private onUpdateMessage(editedPost : Post): void {
     if (!editedPost.postId) {
       this.displayService.displayMessage('ID du message non disponible.')

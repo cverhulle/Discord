@@ -66,6 +66,12 @@
             
             
         </mat-card>
+
+        <!-- On affiche un bouton pour revenir en arrière -->
+        <mat-card-actions class="button-previous-post">
+            <button mat-flat-button (click)="onNotModify()" [disabled]="loading" > Revenir en arrière </button>
+        </mat-card-actions>
+
     </div>
 
     
