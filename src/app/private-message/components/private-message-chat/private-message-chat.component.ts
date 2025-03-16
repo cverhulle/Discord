@@ -127,6 +127,7 @@ export class PrivateMessageChatComponent implements OnInit{
 
     this.editMessage$.subscribe( (post) => {
       if (post) {
+        this.displayService.displayMessage('Vous modifiez un message')
         this.editedPost = post
         this.messageContent = post.content
       } else {
