@@ -154,6 +154,16 @@ export class PostService{
         }) 
         )
     }
+
+    // Méthode pour modifier un message.
+    updatePost(post: Post) : Observable<Post> {
+        return this.http.put<Post>(`${environment.apiUrl}/private-message/updatePost`, post).pipe(
+            catchError( () => {
+                this.displayService.displayMessage('Erreur lors de la modification du message.')
+                return of(post)
+            })
+        )
+    }
     
     // Méthode pour gérer la couleur des cartes de messages.
     getPostCardColor(postId: string, currentUserId: string) : string {
