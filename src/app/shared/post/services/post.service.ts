@@ -125,7 +125,7 @@ export class PostService{
         
         return this.updatePostBackend(updatedPost).pipe(
             map((post) => {
-                return updatedPost;
+                return post;
             }),
             catchError( () => {
                 this.displayService.displayMessage('Erreur lors de la modification du message')
