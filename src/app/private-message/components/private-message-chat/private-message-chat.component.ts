@@ -167,7 +167,7 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Méthode pour éditer un message.
   onEditMessage(post : Post) {
-    console.log(post)
+    this.postService.triggerEditMessage(post)
   }
 
   // Méthode pour supprimer un message.
