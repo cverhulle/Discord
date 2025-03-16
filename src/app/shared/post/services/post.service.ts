@@ -171,8 +171,8 @@ export class PostService{
         return message.trim().length > 0 && message.length <= maxLenght;
     }
 
-    // Méthode pour déclencher la modification d'un message.
-    triggerEditMessage(status : boolean): void {
+    // Méthode pour modifier le statut de l'observable editMessage.
+    setEditMessageStatus(status : boolean): void {
         this.editMessageSubject.next(status)
     }
 
