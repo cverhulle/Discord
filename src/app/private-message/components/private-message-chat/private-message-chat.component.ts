@@ -135,6 +135,47 @@ export class PrivateMessageChatComponent implements OnInit{
     this.editMessage$ = this.postService.editMessage$
   }
 
+  // Méthode pour éditer un message.
+  onEditMessage(post : Post) {
+    this.editedPost = post
+    this.messageContent = post.content
+    this.postService.setEditMessageStatus(true)
+  }
+
+  // Méthode pour réinitialiser l'édition d'un message.
+  private resetEditMessage(): void {
+    this.editedPost = null
+    this.messageContent = ''
+    this.postService.setEditMessageStatus(false)
+  }
+
+  private onUpdateMessage(editedPost : Post): void {
+    if (!editedPost.postId) {
+      this.displayService.displayMessage('ID du message non disponible.')
+      return;
+    }
+
+    this.loading = true 
+
+    const updatedPost = {
+      postId : editedPost.postId,
+      currentUserId : editedPost.currentUserId,
+      otherUserId : editedPost.otherUserId,
+      username : editedPost.username,
+      image : editedPost.image,
+      content : this.messageContent,
+      timestamp : editedPost.timestamp
+    };
+
+    this.postService.updatePost(updatedPost).subscribe( (result) => {
+      const messageIndex = this.chat.findIndex(post => post.postId === updatedPost.postId);
+      this.chat[messageIndex] = updatedPost;
+      this.resetEditMessage();
+      this.loading = false;
+      this.scrollToBottom();
+    })
+  }
+
   // Méthode au clic sur le bouton envoi.
   onSendMessage(): void{
     if (this.postService.messageValid(this.messageContent)) {
@@ -181,47 +222,6 @@ export class PrivateMessageChatComponent implements OnInit{
       }),
     )
   } 
-
-  // Méthode pour éditer un message.
-  onEditMessage(post : Post) {
-    this.editedPost = post
-    this.messageContent = post.content
-    this.postService.setEditMessageStatus(true)
-  }
-
-  // Méthode pour réinitialiser l'édition d'un message.
-  private resetEditMessage(): void {
-    this.editedPost = null
-    this.messageContent = ''
-    this.postService.setEditMessageStatus(false)
-  }
-
-  private onUpdateMessage(editedPost : Post): void {
-    if (!editedPost.postId) {
-      this.displayService.displayMessage('ID du message non disponible.')
-      return;
-    }
-
-    this.loading = true 
-
-    const updatedPost = {
-      postId : editedPost.postId,
-      currentUserId : editedPost.currentUserId,
-      otherUserId : editedPost.otherUserId,
-      username : editedPost.username,
-      image : editedPost.image,
-      content : this.messageContent,
-      timestamp : editedPost.timestamp
-    };
-
-    this.postService.updatePost(updatedPost).subscribe( (result) => {
-      const messageIndex = this.chat.findIndex(post => post.postId === updatedPost.postId);
-      this.chat[messageIndex] = updatedPost;
-      this.resetEditMessage();
-      this.loading = false;
-      this.scrollToBottom();
-    })
-  }
 
   // Méthode pour supprimer un message.
   onDeleteMessage(post : Post) {
