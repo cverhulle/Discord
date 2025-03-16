@@ -49,10 +49,10 @@
 
     <!-- Affichage en cas chat vide, pas de chargement et, si l'on modifie un message-->
     <div *ngIf="!loading && !chatIsEmpty && editedPost!== null">
-        <p> Vous modifiez le message suivant : </p>
+        <p class="modify-post"> Vous modifiez le message suivant : </p>
 
         <!-- On affiche le post que l'on modifie -->
-        <mat-card [ngStyle]="{'background-color': getPostCardColor(editedPost.currentUserId)}">
+        <mat-card class="mat-card-post" [ngStyle]="{'background-color': getPostCardColor(editedPost.currentUserId)}">
             <div class="avatar-username-menu"> 
                 <div class="avatar-username">
                     <img [src]="getProfileImage(editedPost)" (error)="setImageError(editedPost)" alt="Avatar de {{editedPost.username}}" class="avatar">
