@@ -96,11 +96,34 @@ export class PostService{
     }
 
     // Méthode pour modifier un message.
-    updatePost(post: Post) : Observable<Post> {
+    updatePostBackend(post: Post) : Observable<Post> {
         return this.http.put<Post>(`${environment.apiUrl}/private-message/updatePost`, post).pipe(
             catchError( () => {
                 this.displayService.displayMessage('Erreur lors de la modification du message.')
                 return of(post)
+            })
+        )
+    }
+
+    // Méthode pour modifier un message
+    updatePost(editedPost : Post, newContent : string): Observable<Post>{
+        const updatedPost = {
+            postId : editedPost.postId,
+            currentUserId : editedPost.currentUserId,
+            otherUserId : editedPost.otherUserId,
+            username : editedPost.username,
+            image : editedPost.image,
+            content : newContent,
+            timestamp : editedPost.timestamp
+          };
+        
+        return this.updatePostBackend(updatedPost).pipe(
+            map((post) => {
+                return post;
+            }),
+            catchError( () => {
+                this.displayService.displayMessage('Erreur lors de la modification du message')
+                return of(editedPost)
             })
         )
     }

@@ -157,17 +157,7 @@ export class PrivateMessageChatComponent implements OnInit{
 
     this.loading = true 
 
-    const updatedPost = {
-      postId : editedPost.postId,
-      currentUserId : editedPost.currentUserId,
-      otherUserId : editedPost.otherUserId,
-      username : editedPost.username,
-      image : editedPost.image,
-      content : this.messageContent,
-      timestamp : editedPost.timestamp
-    };
-
-    this.postService.updatePost(updatedPost).subscribe( (result) => {
+    this.postService.updatePost(editedPost, this.messageContent).subscribe( (updatedPost) => {
       const messageIndex = this.chat.findIndex(post => post.postId === updatedPost.postId);
       this.chat[messageIndex] = updatedPost;
       this.resetEditMessage();
