@@ -72,6 +72,15 @@ export class PrivateMessageChatComponent implements OnInit{
       this.initChat(this.otherUser.id)
     }
     this.initObservable()
+
+    this.editMessage$.subscribe( (isEditing) => {
+      if (isEditing) {
+        console.log('Edition du message')
+      } else {
+      console.log('Pas d\'édition du message')
+      }
+    })
+
   }
 
   // Cette méthode initialise les données des utilisateurs de la discussion.
