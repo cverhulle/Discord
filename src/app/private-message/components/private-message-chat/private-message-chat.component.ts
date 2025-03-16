@@ -57,6 +57,9 @@ export class PrivateMessageChatComponent implements OnInit{
   // Variable pour vérifier si l'historique de discussion entre deux utilisateurs est vide ou non
   chatIsEmpty!: boolean
 
+  // Variable pour stocker le post à modifier
+  editPost: Post | null = null
+
   // Observable pour réagir lorsque l'utilisateur modifie un message.
   editMessage$!: Observable<boolean>;
 
