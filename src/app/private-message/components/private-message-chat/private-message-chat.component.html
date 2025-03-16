@@ -3,21 +3,22 @@
 </h1>
 
 <div class="discussion" #chatContainer>
-
+    <!-- Affichage en cas de chargement -->
     <mat-spinner *ngIf="loading"> </mat-spinner>
     
-
+    <!-- Affichage en cas chat vide  et pas de chargement -->
     <div *ngIf="chatIsEmpty && !loading" class="empty-chat">
         <p> Vous n'avez pas encore échangé de messages avec {{otherUser.username}}. </p>
     </div>
 
+    <!-- Affichage en cas chat non vide, pas de chargement et, si on ne modifie pas un message-->
     <div *ngIf="!chatIsEmpty && !loading && editedPost=== null">
-
+        <!-- Bouton pour charger plus de messages -->
         <mat-card-actions class="button-previous-post">
             <button mat-flat-button (click)="onLoadMoreMessages()" [disabled]="loading" > Charger les messages précédents </button>
         </mat-card-actions>
 
-
+        <!-- Affichage des messages dans un chat à l'aide de mat-card -->
         <mat-card *ngFor="let post of chat" class="mat-card-post" [ngStyle]="{'background-color': getPostCardColor(post.currentUserId)}">
             <div class="avatar-username-menu"> 
                 <div class="avatar-username">
@@ -25,6 +26,7 @@
                     <mat-card-header> {{post.username}} </mat-card-header>
                 </div>
 
+                <!-- Menu déroulant pour modifier ou supprimer un message -->
                 <mat-card-actions *ngIf="post.currentUserId === currentUser.id">
                     <button mat-icon-button [matMenuTriggerFor]="menu">
                         <mat-icon> more_vert </mat-icon>
@@ -45,8 +47,11 @@
         
     </div>
 
+    <!-- Affichage en cas chat vide, pas de chargement et, si l'on modifie un message-->
     <div *ngIf="!loading && !chatIsEmpty && editedPost!== null">
         <p> Vous modifiez le message suivant : </p>
+
+        <!-- On affiche le post que l'on modifie -->
         <mat-card [ngStyle]="{'background-color': getPostCardColor(editedPost.currentUserId)}">
             <div class="avatar-username-menu"> 
                 <div class="avatar-username">
