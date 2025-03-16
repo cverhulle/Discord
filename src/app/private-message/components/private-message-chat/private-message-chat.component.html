@@ -11,7 +11,7 @@
         <p> Vous n'avez pas encore échangé de messages avec {{otherUser.username}}. </p>
     </div>
 
-    <div *ngIf="!chatIsEmpty && !loading">
+    <div *ngIf="!chatIsEmpty && !loading && editedPost=== null">
 
         <mat-card-actions class="button-previous-post">
             <button mat-flat-button (click)="onLoadMoreMessages()" [disabled]="loading" > Charger les messages précédents </button>
@@ -43,6 +43,24 @@
         </mat-card>
 
         
+    </div>
+
+    <div *ngIf="!loading && !chatIsEmpty && editedPost!== null">
+        <p> Vous modifiez le message suivant : </p>
+        <mat-card [ngStyle]="{'background-color': getPostCardColor(editedPost.currentUserId)}">
+            <div class="avatar-username-menu"> 
+                <div class="avatar-username">
+                    <img [src]="getProfileImage(editedPost)" (error)="setImageError(editedPost)" alt="Avatar de {{editedPost.username}}" class="avatar">
+                    <mat-card-header> {{editedPost.username}} </mat-card-header>
+                </div>
+
+            </div>
+            
+            <mat-card-content> {{editedPost.content}} </mat-card-content>
+            <mat-card-footer class="timestamp"> {{editedPost.timestamp | timeAgo }} </mat-card-footer>
+            
+            
+        </mat-card>
     </div>
 
     
