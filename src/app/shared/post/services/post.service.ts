@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Post } from "../models/post.model";
-import { catchError, map, Observable, of, tap } from "rxjs";
+import { catchError, map, Observable, of, Subject, tap } from "rxjs";
 import { environment } from "../../../../environments/environment.development";
 import { DisplayService } from "../../display/service/display.service";
 
@@ -10,6 +10,10 @@ import { DisplayService } from "../../display/service/display.service";
 export class PostService{
     constructor(private http: HttpClient,
                 private displayService: DisplayService){}
+
+    // Observable pour réagir lorsque l'utilisateur modifie un message.
+    private editMessageSubject = new Subject<Post>();
+    editMessage$ = this.editMessageSubject.asObservable();
 
     // Création du post à envoyer au backend.
     createPostToSend(currentUserId: string, otherUserId : string, username: string, image: string, message: string): Post {
