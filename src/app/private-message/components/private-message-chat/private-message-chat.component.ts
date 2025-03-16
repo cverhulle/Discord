@@ -58,7 +58,7 @@ export class PrivateMessageChatComponent implements OnInit{
   chatIsEmpty!: boolean
 
   // Observable pour réagir lorsque l'utilisateur modifie un message.
-  editMessage$!: Observable<Post | null>;
+  editMessage$!: Observable<boolean>;
 
   constructor(private avatarService : AvatarService,
               private postService : PostService,
@@ -166,8 +166,8 @@ export class PrivateMessageChatComponent implements OnInit{
   } 
 
   // Méthode pour éditer un message.
-  onEditMessage(post : Post) {
-    this.postService.triggerEditMessage(post)
+  onEditMessage() {
+    this.postService.triggerEditMessage(true)
   }
 
   // Méthode pour supprimer un message.

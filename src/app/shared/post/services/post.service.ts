@@ -12,7 +12,7 @@ export class PostService{
                 private displayService: DisplayService){}
 
     // Observable pour réagir lorsque l'utilisateur modifie un message.
-    private editMessageSubject = new BehaviorSubject<Post | null>(null);
+    private editMessageSubject = new BehaviorSubject<boolean>(false);
     editMessage$ = this.editMessageSubject.asObservable();
 
     // Création du post à envoyer au backend.
@@ -172,8 +172,8 @@ export class PostService{
     }
 
     // Méthode pour déclencher la modification d'un message.
-    triggerEditMessage(post: Post): void {
-        this.editMessageSubject.next(post)
+    triggerEditMessage(status : boolean): void {
+        this.editMessageSubject.next(status)
     }
 
 
