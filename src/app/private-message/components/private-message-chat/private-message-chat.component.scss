@@ -86,15 +86,12 @@ html, body{
 
 .emoji-list{
     position: fixed; 
-    bottom: 50px; 
-    left: 0;
-    max-width: 300px; 
-    max-height: 200px; 
     overflow: auto; 
     background-color: white; 
-    border: 1px solid #ccc; 
-    border-radius: 5px;
-    z-index: 1000;
+    max-width: 20em; 
+    max-height: 20em; 
+    bottom: 10em; 
+
 }
 
 
