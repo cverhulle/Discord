@@ -232,6 +232,20 @@ export class PrivateMessageChatComponent implements OnInit{
 
 
   }
+
+    // Méthode pour ouvrir la roue d'émoticones
+    openEmojisList() : void{
+      this.displayService.displayMessage('À venir')
+      this.showEmojisList = !this.showEmojisList
+    }
+    
+    // Méthode pour ajouter l'émote dans le message de l'utilisateur.
+    onEmojiClick(event: any): void {
+      const emoji = event.emoji.native;
+      this.messageContent += emoji
+    }
+
+
   
 
   // Scroll de l'écran après l'envoi d'un nouveau message.
@@ -257,16 +271,7 @@ export class PrivateMessageChatComponent implements OnInit{
   }
 
 
-  // Méthode pour ouvrir la roue d'émoticones
-  openEmojisList() : void{
-    this.displayService.displayMessage('À venir')
-    this.showEmojisList = !this.showEmojisList
-  }
 
-  onEmojiClick(event: any): void {
-    const emoji = event.emoji.native;
-    this.messageContent += emoji
-  }
   
 
 }
