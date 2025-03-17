@@ -262,6 +262,11 @@ export class PrivateMessageChatComponent implements OnInit{
     this.displayService.displayMessage('À venir')
     this.showEmojisList = !this.showEmojisList
   }
+
+  onEmojiClick(event: any): void {
+    const emoji = event.emoji.native;
+    this.messageContent += emoji
+  }
   
 
 }
