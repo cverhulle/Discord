@@ -66,6 +66,9 @@ export class PrivateMessageChatComponent implements OnInit{
   // Variable pour afficher ou cacher la liste des émojis.
   showEmojisList: boolean = false
 
+  // Catégories d'émojis à ne pas charger
+  categoriesEmojisExcluded = ["flags"]
+
   constructor(private avatarService : AvatarService,
               private postService : PostService,
               private userService : UserService,

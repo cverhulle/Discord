@@ -84,7 +84,7 @@
 
     <mat-icon matSuffix (click)="openEmojisList()"> mood </mat-icon>
     <div *ngIf="showEmojisList" class="emoji-list">
-        <emoji-mart (emojiClick)="onEmojiClick($event)"> </emoji-mart>
+        <emoji-mart (emojiClick)="onEmojiClick($event)" [exclude]="categoriesEmojisExcluded"> </emoji-mart>
     </div>
 
     <mat-icon matSuffix class="send-message-icon" (click)="onSendMessage()"> send </mat-icon>
