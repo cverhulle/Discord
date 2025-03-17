@@ -63,6 +63,9 @@ export class PrivateMessageChatComponent implements OnInit{
   // Observable pour réagir lorsque l'utilisateur modifie un message.
   editMessage$!: Observable<Post | null>;
 
+  // Variable pour afficher ou cacher la liste des émojis.
+  showEmojisList: boolean = false
+
   constructor(private avatarService : AvatarService,
               private postService : PostService,
               private userService : UserService,
@@ -257,6 +260,8 @@ export class PrivateMessageChatComponent implements OnInit{
   // Méthode pour ouvrir la roue d'émoticones
   openEmojisList() : void{
     this.displayService.displayMessage('À venir')
+    this.showEmojisList = !this.showEmojisList
+    console.log(this.showEmojisList)
   }
 
 
