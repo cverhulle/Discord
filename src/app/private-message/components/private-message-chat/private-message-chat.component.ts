@@ -261,13 +261,7 @@ export class PrivateMessageChatComponent implements OnInit{
   openEmojisList() : void{
     this.displayService.displayMessage('À venir')
     this.showEmojisList = !this.showEmojisList
-    console.log(this.showEmojisList)
   }
-
-
-
-
-
   
 
 }
