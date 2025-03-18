@@ -16,6 +16,7 @@ import { PostService } from '../../../shared/post/services/post.service';
 import { TimeAgoPipe } from '../../../shared/post/pipe/time-ago.pipe';
 import { UserService } from '../../../shared/post/services/user.service';
 import { DisplayService } from '../../../shared/display/service/display.service';
+import { EmojisService } from '../../../shared/emojis/services/emojis.service';
 
 
 
@@ -67,12 +68,17 @@ export class PrivateMessageChatComponent implements OnInit{
   showEmojisList: boolean = false
 
   // Catégories d'émojis à ne pas charger
-  categoriesEmojisExcluded = ["flags"]
+  categoriesEmojisExcluded!: [string] 
 
   constructor(private avatarService : AvatarService,
               private postService : PostService,
               private userService : UserService,
-              private displayService : DisplayService) {}
+              private displayService : DisplayService,
+              private emojisService : EmojisService) {}
+                
+               
+                
+              
 
 
   ngOnInit(): void {
@@ -81,6 +87,7 @@ export class PrivateMessageChatComponent implements OnInit{
       this.initChat(this.otherUser.id)
     }
     this.initObservable()
+    this.categoriesEmojisExcluded = this.emojisService.categoryExcluded()
   }
 
   // Cette méthode initialise les données des utilisateurs de la discussion.
