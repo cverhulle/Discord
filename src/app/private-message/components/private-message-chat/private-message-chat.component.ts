@@ -251,7 +251,7 @@ export class PrivateMessageChatComponent implements OnInit{
   }
 
     // Méthode pour ouvrir la roue d'émoticones
-    openEmojisList() : void{
+    onOpenEmojisList() : void{
       this.emojisService.openEmojisList()
     }
     
