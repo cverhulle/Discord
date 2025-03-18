@@ -83,7 +83,7 @@
     <textarea matInput placeholder="Entrez votre message ici..." [(ngModel)]="messageContent"> </textarea>
 
     <mat-icon matSuffix (click)="openEmojisList()"> mood </mat-icon>
-    <div *ngIf="showEmojisList" class="emoji-list">
+    <div *ngIf="showEmojisList$ | async" class="emoji-list">
         <emoji-mart (emojiClick)="onEmojiClick($event)" [exclude]="categoriesEmojisExcluded"> </emoji-mart>
     </div>
 

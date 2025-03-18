@@ -5,7 +5,7 @@ import { BehaviorSubject } from "rxjs";
 
 export class EmojisService{
     // Création d'un BehaviourSubject pour gérer l'affichage du selecteur d'émotes.
-    private showEmojisListSubject = new BehaviorSubject<boolean>(false);
+    showEmojisListSubject = new BehaviorSubject<boolean>(false);
     showEmojisList$ = this.showEmojisListSubject.asObservable();
 
     // Tableau pour exclure des catégories dans le selecteur d'émotes
@@ -25,8 +25,8 @@ export class EmojisService{
     }
 
     // Variable pour gérer l'ouverture et la fermeture du selecteur d'émojis.
-    openEmojisList(showEmojisList: boolean): boolean{
-        return !showEmojisList
+    openEmojisList(showEmojisList: boolean): void{
+        this.showEmojisListSubject.next(showEmojisList)
     }
 
 

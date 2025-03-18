@@ -4,7 +4,7 @@ import { catchError, Observable, of, tap } from 'rxjs';
 
 
 import { FormsModule } from '@angular/forms';
-import { NgFor, NgIf, NgStyle } from '@angular/common';
+import { AsyncPipe, NgFor, NgIf, NgStyle } from '@angular/common';
 import { SharedModule } from '../../../shared/shared.module';
 
 import { usernameImage } from '../../models/username-image.models';
@@ -29,7 +29,8 @@ import { EmojisService } from '../../../shared/emojis/services/emojis.service';
     NgFor,
     NgStyle,
     NgIf,
-    TimeAgoPipe
+    TimeAgoPipe,
+    AsyncPipe
   ],
   templateUrl: './private-message-chat.component.html',
   styleUrl: './private-message-chat.component.scss'
@@ -64,8 +65,8 @@ export class PrivateMessageChatComponent implements OnInit{
   // Observable pour réagir lorsque l'utilisateur modifie un message.
   editMessage$!: Observable<Post | null>;
 
-  // Variable pour afficher ou cacher la liste des émojis.
-  showEmojisList: boolean = false
+  // Observable pour gérer l'affichage du selecteur d'émotes
+  showEmojisList$!: Observable<boolean>
 
   // Variable pour stocker les catégories d'émojis à ne pas charger
   categoriesEmojisExcluded!: [string] 
@@ -88,6 +89,7 @@ export class PrivateMessageChatComponent implements OnInit{
     }
     this.initObservable()
     this.initEmojis()
+    this.showEmojisList$= this.emojisService.showEmojisList$
   }
 
   // Cette méthode initialise les données des utilisateurs de la discussion.
@@ -250,7 +252,8 @@ export class PrivateMessageChatComponent implements OnInit{
 
     // Méthode pour ouvrir la roue d'émoticones
     openEmojisList() : void{
-      this.showEmojisList = this.emojisService.openEmojisList(this.showEmojisList)
+      const showEmojisList = this.emojisService.showEmojisListSubject.getValue();
+      this.emojisService.openEmojisList(!showEmojisList)
     }
     
     // Méthode pour ajouter l'émote dans le message de l'utilisateur.
