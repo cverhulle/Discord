@@ -10,4 +10,9 @@ export class EmojisService{
     addEmojisToMessage(emoji: string, message: string): string{
         return message += emoji
     }
+
+    addEmojisToMessageTemplate(event: any, message: string): string{
+        const emoji = event.emoji.native
+        return this.addEmojisToMessage(emoji, message)
+    }
 }
