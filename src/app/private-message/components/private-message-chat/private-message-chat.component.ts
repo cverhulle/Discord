@@ -168,7 +168,7 @@ export class PrivateMessageChatComponent implements OnInit{
     this.postService.setEditMessage(null)
   }
 
-  private onUpdateMessage(editedPost : Post): void {
+  private updateMessage(editedPost : Post): void {
     if (!editedPost.postId) {
       this.displayService.displayMessage('ID du message non disponible.')
       return;
@@ -188,7 +188,7 @@ export class PrivateMessageChatComponent implements OnInit{
       this.loading = true
 
       if (this.editedPost) {
-        this.onUpdateMessage(this.editedPost);
+        this.updateMessage(this.editedPost);
         this.loading = false;
         return;
       }
