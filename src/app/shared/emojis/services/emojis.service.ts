@@ -19,6 +19,11 @@ export class EmojisService{
         return message += emoji
     }
 
+    // Variable pour gérer l'ouverture et la fermeture du selecteur d'émojis.
+    openEmojisList(showEmojisList: boolean): boolean{
+        return !showEmojisList
+    }
+
 
 
 }
