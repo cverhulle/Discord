@@ -25,8 +25,9 @@ export class EmojisService{
     }
 
     // Variable pour gérer l'ouverture et la fermeture du selecteur d'émojis.
-    openEmojisList(showEmojisList: boolean): void{
-        this.showEmojisListSubject.next(showEmojisList)
+    openEmojisList(): void{
+        const showEmojisList = this.showEmojisListSubject.getValue();
+        this.showEmojisListSubject.next(!showEmojisList)
     }
 
 
