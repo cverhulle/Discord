@@ -67,7 +67,7 @@ export class PrivateMessageChatComponent implements OnInit{
   // Variable pour afficher ou cacher la liste des émojis.
   showEmojisList: boolean = false
 
-  // Catégories d'émojis à ne pas charger
+  // Variable pour stocker les catégories d'émojis à ne pas charger
   categoriesEmojisExcluded!: [string] 
 
   constructor(private avatarService : AvatarService,
@@ -87,7 +87,7 @@ export class PrivateMessageChatComponent implements OnInit{
       this.initChat(this.otherUser.id)
     }
     this.initObservable()
-    this.categoriesEmojisExcluded = this.emojisService.categoryExcluded()
+    this.initEmojis()
   }
 
   // Cette méthode initialise les données des utilisateurs de la discussion.
@@ -149,6 +149,11 @@ export class PrivateMessageChatComponent implements OnInit{
         this.scrollToBottom()
       }
     })
+  }
+
+  // Méthode pour initialiser les catégories d'émojis à ne pas charger.
+  private initEmojis(): void {
+    this.categoriesEmojisExcluded = this.emojisService.categoryExcluded()
   }
 
   // Méthode pour éditer un message.
