@@ -86,10 +86,11 @@ export class PrivateMessageChatComponent implements OnInit{
     this.initUsers()
     if (this.otherUser.id !== '') {
       this.initChat(this.otherUser.id)
+      this.initObservable()
+      this.initEmojis()
     }
-    this.initObservable()
-    this.initEmojis()
-    this.showEmojisList$= this.emojisService.showEmojisList$
+    
+    
   }
 
   // Cette méthode initialise les données des utilisateurs de la discussion.
@@ -138,6 +139,7 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Cette méthode initialise l'observable pour réagir aux modifications de message.
   private initObservable(): void {
+    // On initialise l'Observable pour la modification de messages.
     this.editMessage$ = this.postService.editMessage$
 
     this.editMessage$.subscribe( (post) => {
@@ -151,6 +153,9 @@ export class PrivateMessageChatComponent implements OnInit{
         this.scrollToBottom()
       }
     })
+
+    // On initialise l'Observable pour afficher le selecteur d'émotes.
+    this.showEmojisList$= this.emojisService.showEmojisList$
   }
 
   // Méthode pour initialiser les catégories d'émojis à ne pas charger.
