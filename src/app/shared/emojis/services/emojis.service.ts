@@ -7,12 +7,15 @@ export class EmojisService{
         return ["flags"]
     }
 
-    addEmojisToMessage(emoji: string, message: string): string{
+    loadEmojisFromEvent(event: any): string{
+        return event.emoji.native
+    }
+
+    addEmojisToMessage(event: any, message: string): string{
+        const emoji = this.loadEmojisFromEvent(event)
         return message += emoji
     }
 
-    addEmojisToMessageTemplate(event: any, message: string): string{
-        const emoji = event.emoji.native
-        return this.addEmojisToMessage(emoji, message)
-    }
+
+
 }

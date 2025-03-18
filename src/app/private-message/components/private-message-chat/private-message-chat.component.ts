@@ -255,7 +255,7 @@ export class PrivateMessageChatComponent implements OnInit{
     
     // Méthode pour ajouter l'émote dans le message de l'utilisateur.
     onEmojiClick(event: any): void {
-      this.messageContent = this.emojisService.addEmojisToMessageTemplate(event, this.messageContent)
+      this.messageContent = this.emojisService.addEmojisToMessage(event, this.messageContent)
     }
 
 
