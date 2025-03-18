@@ -168,6 +168,7 @@ export class PrivateMessageChatComponent implements OnInit{
     this.postService.setEditMessage(null)
   }
 
+  // Méthode pour mettre à jour le contenu d'un post.
   private updateMessage(editedPost : Post): void {
     if (!editedPost.postId) {
       this.displayService.displayMessage('ID du message non disponible.')
