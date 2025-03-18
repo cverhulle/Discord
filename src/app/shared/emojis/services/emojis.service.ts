@@ -4,6 +4,7 @@ import { BehaviorSubject } from "rxjs";
 @Injectable()
 
 export class EmojisService{
+    // Création d'un BehaviourSubject pour gérer l'affichage du selecteur d'émotes.
     private showEmojisList = new BehaviorSubject<boolean>(false);
     showEmojisList$ = this.showEmojisList.asObservable();
 
