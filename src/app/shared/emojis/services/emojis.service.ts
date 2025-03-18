@@ -1,8 +1,12 @@
 import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable()
 
 export class EmojisService{
+    private showEmojisList = new BehaviorSubject<boolean>(false);
+    showEmojisList$ = this.showEmojisList.asObservable();
+
     // Tableau pour exclure des catégories dans le selecteur d'émotes
     categoryExcluded(): [string] {
         return ["flags"]
