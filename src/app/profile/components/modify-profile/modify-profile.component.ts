@@ -61,16 +61,14 @@ export class ModifyProfileComponent implements OnInit{
     )
   }
 
-
+  // On récupère dans le service l'observable loading
   private initLoadingAndErrorsObservables() : void {
-    // Récupère dans le service l'observable loading
     this.loading$ = this.registerModifyService.loading$
   }
 
 
+  // On récupère les données du profil de l'utilisateur.
   private getProfileInfos() : Observable<any> {
-
-    // On récupère les données du profil de l'utilisateur.
 
     return this.profileService.getProfile().pipe(
       tap( (rep) => {
@@ -86,9 +84,9 @@ export class ModifyProfileComponent implements OnInit{
   }
 
 
-
+  // On configure initForm qui contient les données de l'utilisateur dans le format du modèle de données.
   private createInitForm() : void {
-    // On configure initForm qui contient les données de l'utilisateur dans le format du modèle de données.
+    
     this.initForm = {
       personalInfo: {
         firstName: this.firstName,
@@ -106,10 +104,10 @@ export class ModifyProfileComponent implements OnInit{
   }
 
 
-
+  // Retourne un Observable permettant de vérifier si l'adresse email dans le formulaire envoyée existe déjà dans la BDD (en dehors de l'utilisateur actuel).
+  // Si oui, on arrête le chargement et, on passe errorFormEmail à true.
   private emailAlreadyTaken(event: ModifyProfileForm): Observable<boolean> {
-    // Retourne un Observable permettant de vérifier si l'adresse email dans le formulaire envoyée existe déjà dans la BDD (en dehors de l'utilisateur actuel).
-    // Si oui, on arrête le chargement et, on passe errorFormEmail à true.
+    
     return this.profileService.emailTaken(event).pipe(
       tap(exist => {
         if (exist) {
@@ -121,10 +119,10 @@ export class ModifyProfileComponent implements OnInit{
     )
   }
 
-
+  // Retourne un Observable permettant de vérifier si l'username dans le formulaire envoyée existe déjà dans la BDD (en dehors de l'utilisateur actuel)..
+  // Si oui, on arrête le chargement et, on passe errorFormUsername à true.
   private usernameAlreadyTaken(event: ModifyProfileForm): Observable<boolean> {
-    // Retourne un Observable permettant de vérifier si l'username dans le formulaire envoyée existe déjà dans la BDD (en dehors de l'utilisateur actuel)..
-    // Si oui, on arrête le chargement et, on passe errorFormUsername à true.
+    
     return this.profileService.usernameTaken(event).pipe(
       tap(exist => {
         if (exist) {
@@ -136,7 +134,7 @@ export class ModifyProfileComponent implements OnInit{
     )
   }
 
-
+  // Méthode à appeler pour envoyer les nouveaux champs au backend.
   private sendForm(event: ModifyProfileForm): Observable<boolean> {
     return this.profileService.modifyUserInfo(event).pipe(
       tap( (modif) => {
@@ -152,7 +150,7 @@ export class ModifyProfileComponent implements OnInit{
     
   }
   
-  
+  // Cette méthode est déclenchée à l'appui sur le bouton.
   modifyProfile(event: ModifyProfileForm) {
     forkJoin([
           // On regarde si l'email est déjà dans la base de données.
