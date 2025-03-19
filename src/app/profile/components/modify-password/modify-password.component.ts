@@ -5,6 +5,7 @@ import { RegisterModifyService } from '../../../shared/register-modify/services/
 import { RegisterForm } from '../../../login/components/register/models/register-form.model';
 import { Router } from '@angular/router';
 import { ProfileService } from '../../service/profile.service';
+import { DisplayService } from '../../../shared/display/service/display.service';
 
 
 @Component({
@@ -30,7 +31,8 @@ export class ModifyPasswordComponent implements OnInit{
 
   constructor(private registerModifyService : RegisterModifyService,
               private profileService : ProfileService,
-              private router : Router) {}
+              private router : Router,
+              private displayService : DisplayService) {}
 
 
 
@@ -43,17 +45,17 @@ export class ModifyPasswordComponent implements OnInit{
     this.loading$ = this.registerModifyService.loading$
   }
 
-
+  // Cette méthode est utilisée pour envoyer le nouveau mot de passe au back-end.
   private sendForm(event: RegisterForm) {
 
     return this.profileService.modifyPassword(event).pipe(      
       tap( saved => {
         this.registerModifyService.setLoading(false)
         if (saved) {
-          console.log('Mot de passe modifié')
+          this.displayService.displayMessage('Mot de passe modifié.')
           this.router.navigateByUrl('/profile')
         } else {
-          console.log('Echec lors de l\'enregistrement')
+          this.displayService.displayMessage("Erreur lors de l'enregistrement du mot de passe.")
         }
         
         
@@ -63,7 +65,7 @@ export class ModifyPasswordComponent implements OnInit{
 
   }
 
-
+  // Méthode à déclencher lors de l'appui sur le bouton "Modifier".
   onModifyPassword(event : RegisterForm) {
     this.sendForm(event)
   }
