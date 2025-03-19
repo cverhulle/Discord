@@ -7,6 +7,7 @@ import { LoginFormService } from './service/login-form.service';
 import { catchError, map, of, tap } from 'rxjs';
 import { TokenService } from '../../../interceptors/services/auth.service';
 import { DateAdapter } from '@angular/material/core';
+import { DisplayService } from '../../../shared/display/service/display.service';
 
 @Component({
   selector: 'app-login-homepage',
@@ -37,8 +38,8 @@ export class LoginHomepageComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private loginFormService: LoginFormService,
               private tokenService: TokenService,
-              private router : Router
-  ) {}
+              private router : Router,
+              private displayService : DisplayService) {}
 
 
 
@@ -54,7 +55,7 @@ export class LoginHomepageComponent implements OnInit {
     })
   }
 
-  
+
   // Cette méthode permet d'envoyer le formulaire au back-end.
   private sendForm(data: any) {
     // On arrête le loading.
@@ -63,9 +64,11 @@ export class LoginHomepageComponent implements OnInit {
     // On reset le formulaire
     this.loginForm.reset()
 
-    // On sauvegarde le token et l'userId et, on affiche un message de réussite
-    console.log('Utilisateur connecté!')
+    // On sauvegarde le token.
     this.tokenService.saveToken(data['token'])
+
+    // On affiche un message à l'utilisateur
+    this.displayService.displayMessage('Vous êtes connecté')
         
   }  
 
@@ -84,7 +87,7 @@ export class LoginHomepageComponent implements OnInit {
         this.router.navigateByUrl('/profile')
       },
       error: (err) => {this.loading = false, 
-                      console.log('Erreur de connexion')}
+                      this.displayService.displayMessage('Erreur lors de la connexion')}
   })
     
   }
