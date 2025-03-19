@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit{
   
   }
 
+  // Méthode pour supprimer le token en cas de déconnexion.
   onLogout(): void {
     if(this.tokenService.isLogged()) {
       this.tokenService.removeToken()
