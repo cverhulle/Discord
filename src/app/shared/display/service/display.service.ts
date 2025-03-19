@@ -5,7 +5,8 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 
 export class DisplayService {
     constructor(private matSnackBar: MatSnackBar) {}
-  
+
+    // Cette méthode permet d'afficher un message à l'utilisateur.
     displayMessage(message: string): void {
       this.matSnackBar.open(message, 'Fermer', {
         duration: 6000,
