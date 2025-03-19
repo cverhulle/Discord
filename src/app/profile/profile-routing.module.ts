@@ -6,6 +6,7 @@ import { AuthGuard } from "../guard/auth.guard";
 import { ModifyProfileComponent } from "./components/modify-profile/modify-profile.component";
 import { RegisterFormService } from "../login/components/register/services/register-form.service";
 import { ModifyPasswordComponent } from "./components/modify-password/modify-password.component";
+import { DisplayService } from "../shared/display/service/display.service";
 
 
 
@@ -26,7 +27,8 @@ const routes: Routes = [
   ],
   providers:[
     ProfileService,
-    RegisterFormService
+    RegisterFormService,
+    DisplayService
   ]
 })
 
