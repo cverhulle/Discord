@@ -43,6 +43,10 @@ export class LoginHomepageComponent implements OnInit {
 
 
   ngOnInit() {
+    this.initForm()
+  }
+
+  private initForm(): void {
     // Initialisation du formulaire
     this.loginForm = this.formBuilder.group({
       username: [null, Validators.required],
@@ -65,7 +69,7 @@ export class LoginHomepageComponent implements OnInit {
   }  
 
 
-
+  // Métohde à appeler à l'appui du bouton "Connexion"
   onSubmitForm() {
 
     // On lance le chargement
