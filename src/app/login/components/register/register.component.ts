@@ -7,6 +7,7 @@ import { RegisterForm } from './models/register-form.model';
 import { forkJoin, Observable, tap } from 'rxjs';
 import { RegisterModifyService } from '../../../shared/register-modify/services/register-modify.service';
 import { Router } from '@angular/router';
+import { DisplayService } from '../../../shared/display/service/display.service';
 
 
 @Component({
@@ -32,7 +33,8 @@ export class RegisterComponent implements OnInit{
 
   constructor(private registerFormService : RegisterFormService,
               private registerModifyService : RegisterModifyService,
-              private router : Router) {}
+              private router : Router,
+              private displayService : DisplayService) {}
 
 
 
@@ -60,7 +62,7 @@ export class RegisterComponent implements OnInit{
         if (exist) {
           this.registerModifyService.setLoading(false)
           this.registerModifyService.setErrorEmail(true)
-          console.log("L'email est déjà utilisé")
+          this.displayService.displayMessage('Cet email est déjà utilisé.')
         }
       })
     )
@@ -75,7 +77,7 @@ export class RegisterComponent implements OnInit{
         if (exist) {
           this.registerModifyService.setLoading(false)
           this.registerModifyService.setErrorUsername(true)
-          console.log("L'username est déjà utilisé")
+          this.displayService.displayMessage('Cet username est déjà utilisé.')
         }
       })
     )
@@ -90,10 +92,10 @@ export class RegisterComponent implements OnInit{
       tap(saved => {
         this.registerModifyService.setLoading(false)
         if (saved) {
-          console.log("Utilisateur crée");
+          this.displayService.displayMessage('Utilisateur crée.')
           this.router.navigateByUrl('/homepage')
         } else {
-          console.log("Erreur lors de l\'enregistrement de l\'utilisateur");
+          this.displayService.displayMessage("Erreur dans l'enregistrement de l'utilisateur.");
         }
       })
     )
