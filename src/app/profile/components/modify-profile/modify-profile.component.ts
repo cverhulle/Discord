@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { ModifyProfileForm } from '../../models/modify-profile.models';
 import { RegisterModifyService } from '../../../shared/register-modify/services/register-modify.service';
 import { RegisterModifyFormComponent } from '../../../shared/register-modify/components/register-modify-form/register-modify-form.component';
+import { DisplayService } from '../../../shared/display/service/display.service';
 
 
 
@@ -45,7 +46,8 @@ export class ModifyProfileComponent implements OnInit{
 
   constructor( private profileService: ProfileService,
                private router: Router,
-               private registerModifyService : RegisterModifyService) {}
+               private registerModifyService : RegisterModifyService,
+               private displayService : DisplayService) {}
 
 
 
@@ -113,7 +115,7 @@ export class ModifyProfileComponent implements OnInit{
         if (exist) {
           this.registerModifyService.setLoading(false)
           this.registerModifyService.setErrorEmail(true)
-          console.log("L'email est déjà utilisé")
+          this.displayService.displayMessage("L'email est déjà utilisé.")
         }
       })
     )
@@ -128,7 +130,7 @@ export class ModifyProfileComponent implements OnInit{
         if (exist) {
           this.registerModifyService.setLoading(false)
           this.registerModifyService.setErrorUsername(true)
-          console.log("L'username est déjà utilisé")
+          this.displayService.displayMessage("L'username est déjà utilisé.")
         }
       })
     )
@@ -140,10 +142,10 @@ export class ModifyProfileComponent implements OnInit{
       tap( (modif) => {
         this.registerModifyService.setLoading(false)
         if (modif) {
-          console.log('Modification(s) enregistrée(s)')
+          this.displayService.displayMessage("Modifications enregistrées.")
           this.router.navigateByUrl('/profile')
         } else {
-          console.log('Echec lors de la modification')
+          this.displayService.displayMessage('Erreur lors de la modification.')
         }
       })
     )
