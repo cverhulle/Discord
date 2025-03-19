@@ -12,6 +12,7 @@ export class UserService{
                 private displayService : DisplayService,
                 private router : Router){}
 
+    // Cette méthode permet de récupérer les données de l'utilisateur actuel.
     getCurrentUser(): Observable<usernameImage>{
         const currentUser = new usernameImage();
     
@@ -25,6 +26,7 @@ export class UserService{
         )
     }
 
+    // Cette méthode permet de récupérer les données de l'utilisateur avec lequel on communique.
     getOtherUser(historyState: any): usernameImage{
         if (historyState && historyState.id && historyState.username && historyState.image) {
             const otherUser = new usernameImage();
