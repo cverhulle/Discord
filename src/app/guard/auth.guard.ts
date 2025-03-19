@@ -6,6 +6,7 @@ import { TokenService } from "../interceptors/services/auth.service";
     providedIn : 'root'
 })
 
+// Ce guard permet de bloquer l'accès à un onglet de l'application si l'utilisateur n'est pas connecté. Il est alors redirigé vers la page de login.
 export class AuthGuard implements CanActivate{
 
     constructor(private tokenService : TokenService,
