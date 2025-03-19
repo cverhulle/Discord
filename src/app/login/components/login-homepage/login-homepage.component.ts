@@ -46,15 +46,16 @@ export class LoginHomepageComponent implements OnInit {
     this.initForm()
   }
 
+  // Cette méthode permet d'nitialiser le formulaire.
   private initForm(): void {
-    // Initialisation du formulaire
     this.loginForm = this.formBuilder.group({
       username: [null, Validators.required],
       password: [null, Validators.required]
     })
   }
 
-
+  
+  // Cette méthode permet d'envoyer le formulaire au back-end.
   private sendForm(data: any) {
     // On arrête le loading.
     this.loading = false;
