@@ -298,6 +298,11 @@ export class PrivateMessageChatComponent implements OnInit{
 
   onImageToSend(event : Event): void {
     this.displayService.displayMessage('Une image est sélectionnée')
+    const target = event.target as HTMLInputElement
+    if(target.files) {
+      this.imageToSend = target.files[0]
+    }
+    console.log(this.imageToSend)
   }
 
 }
