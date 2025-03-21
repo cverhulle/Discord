@@ -296,6 +296,8 @@ export class PrivateMessageChatComponent implements OnInit{
 
 
 
-  
+  onImageToSend(event : Event): void {
+    this.displayService.displayMessage('Une image est sélectionnée')
+  }
 
 }
