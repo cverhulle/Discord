@@ -78,17 +78,21 @@
     
 </div>
 
+<!-- Barre d'envoi de messages -->
 <mat-form-field appearance="fill" class="send-message">
     <mat-label> Mon message </mat-label>
     <textarea matInput placeholder="Entrez votre message ici..." [(ngModel)]="messageContent"> </textarea>
 
+    <!-- Envoi d'émotes -->
     <mat-icon matSuffix (click)="onOpenEmojisList()"> mood </mat-icon>
     <div *ngIf="showEmojisList$ | async" class="emoji-list">
         <emoji-mart (emojiClick)="onEmojiClick($event)" [exclude]="categoriesEmojisExcluded"> </emoji-mart>
     </div>
 
+    <!-- Envoi d'images -->
     <mat-icon matSuffix (click)="fileInput.click()"> image </mat-icon>
     <input type="file" #fileInput accept=".jpg, .jpeg, .png" style="display: none;">
 
+    <!-- Bouton pour envoyer le message -->
     <mat-icon matSuffix class="send-message-icon" (click)="onSendMessage()"> send </mat-icon>
 </mat-form-field>
