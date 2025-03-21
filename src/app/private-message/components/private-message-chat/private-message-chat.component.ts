@@ -71,6 +71,9 @@ export class PrivateMessageChatComponent implements OnInit{
   // Variable pour stocker les catégories d'émojis à ne pas charger
   categoriesEmojisExcluded!: [string] 
 
+  // Variable pour stocker l'image à envoyer
+  imageToSend : File | null = null;
+
   constructor(private avatarService : AvatarService,
               private postService : PostService,
               private userService : UserService,
