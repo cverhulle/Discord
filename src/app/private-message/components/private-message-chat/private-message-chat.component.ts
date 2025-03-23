@@ -302,7 +302,7 @@ export class PrivateMessageChatComponent implements OnInit{
     if(target.files) {
       // On récupère l'image dans l'attribut files de target.
       this.imageToSend = target.files[0]
-      // Pour le moment, on upload l'images dans le backend au clic sur l'iamge
+      // Pour le moment, on upload l'image dans le backend au clic sur l'iamge
       this.uploadImage(this.imageToSend)
     }
     
@@ -311,7 +311,7 @@ export class PrivateMessageChatComponent implements OnInit{
   // Cette méthode permet de sauvegarder l'image dans le backend.
   private uploadImage(image: File): void {
 
-    // Créer une instance XMLHttpRequest
+    // On crée une instance XMLHttpRequest
     const xhr = new XMLHttpRequest();
 
     // On crée un objet FormData pour encapsuler les données à envoyer.
