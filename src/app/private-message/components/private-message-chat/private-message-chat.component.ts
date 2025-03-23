@@ -301,8 +301,33 @@ export class PrivateMessageChatComponent implements OnInit{
     const target = event.target as HTMLInputElement
     if(target.files) {
       this.imageToSend = target.files[0]
+      console.log(this.imageToSend)
+      this.uploadImage(this.imageToSend)
     }
-    console.log(this.imageToSend)
+    
   }
+
+  private uploadImage(image: File): void {
+    const xhr = new XMLHttpRequest();
+    const formData = new FormData();
+    
+    // Ajoutez le fichier au FormData
+    formData.append('image', image, image.name);
+    
+    xhr.open('POST', 'http://localhost:3000/api/upload', true);
+    xhr.send(formData); // Envoyer le FormData
+    
+    xhr.onload = () => {
+        if (xhr.status === 201) {
+            console.log('Image uploaded successfully', JSON.parse(xhr.responseText));
+        } else {
+            console.error('Error uploading image', xhr.responseText);
+        }
+    };
+
+    xhr.onerror = () => {
+        console.error('Request failed');
+    };
+}
 
 }
