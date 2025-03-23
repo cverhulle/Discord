@@ -295,7 +295,7 @@ export class PrivateMessageChatComponent implements OnInit{
   }
 
 
-  // Méthode à déclencher au clic sur une image.
+  // Méthode à déclencher au clic sur une image. Pour le moment, le clic sur une image la sauvegarde dans le backend (en cours...)
   onImageToSend(event : Event): void {
     // On récupère l'élément "target" de l'event.
     const target = event.target as HTMLInputElement
