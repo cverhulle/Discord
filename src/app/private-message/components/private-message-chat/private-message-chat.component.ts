@@ -295,28 +295,38 @@ export class PrivateMessageChatComponent implements OnInit{
   }
 
 
-
+  // Méthode à déclencher au clic sur une image.
   onImageToSend(event : Event): void {
-    this.displayService.displayMessage('Une image est sélectionnée')
+    // On récupère l'élément "target" de l'event.
     const target = event.target as HTMLInputElement
     if(target.files) {
+      // On récupère l'image dans l'attribut files de target.
       this.imageToSend = target.files[0]
-      console.log(this.imageToSend)
+      // Pour le moment, on upload l'images dans le backend au clic sur l'iamge
       this.uploadImage(this.imageToSend)
     }
     
   }
 
+  // Cette méthode permet de sauvegarder l'image dans le backend.
   private uploadImage(image: File): void {
+
+    // Créer une instance XMLHttpRequest
     const xhr = new XMLHttpRequest();
+
+    // On crée un objet FormData pour encapsuler les données à envoyer.
     const formData = new FormData();
     
-    // Ajoutez le fichier au FormData
+    // On ajoute le fichier au FormData sous le nom 'image'
     formData.append('image', image, image.name);
     
+    // On "ouvre" la requête HTPP.
     xhr.open('POST', 'http://localhost:3000/api/upload', true);
-    xhr.send(formData); // Envoyer le FormData
+
+    // On envoie le formData au serveur.
+    xhr.send(formData); 
     
+    // On définit la réponse lorsque la requête est terminée avec succès
     xhr.onload = () => {
         if (xhr.status === 201) {
             console.log('Image uploaded successfully', JSON.parse(xhr.responseText));
@@ -325,9 +335,10 @@ export class PrivateMessageChatComponent implements OnInit{
         }
     };
 
+    // On définit la réponse lorsque la requête retourne une erreur.
     xhr.onerror = () => {
         console.error('Request failed');
     };
-}
+ }
 
 }
