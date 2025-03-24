@@ -234,15 +234,16 @@ export class PostService{
     }
 
     sendPostSuccessImage(formData: FormData, chat: Post[]): { updatedChat: Post[], updatedChatIsEmpty: boolean, updatedMessageContent: string, updatedImageToSend: null } {
-        // Créer le message à partir des données dans formData
+        
         const message: Post = {
-            postId: formData.get('postId') ? formData.get('postId') as string : '', // Si vous avez besoin de l'ID du post
+            postId: formData.get('postId') ? formData.get('postId') as string : '',
             currentUserId: formData.get('currentUserId') as string,
             otherUserId: formData.get('otherUserId') as string,
             username: formData.get('username') as string,
-            image: formData.get('image') instanceof File ? (formData.get('image') as File).name : '', // Vérification du type
+            image: formData.get('image') as string,
             content: formData.get('content') as string,
-            timestamp: new Date() // Ou utilisez un timestamp renvoyé par le backend
+            timestamp: new Date(),
+            imageToSend: formData.get('imageToSend') instanceof File ? (formData.get('image') as File).name : '', 
         };
     
         const updatedChat = this.addPostToChat(message, chat);
