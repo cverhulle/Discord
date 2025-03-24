@@ -295,7 +295,7 @@ export class PrivateMessageChatComponent implements OnInit{
   }
 
 
-  // Méthode à déclencher au clic sur une image. Pour le moment, le clic sur une image la sauvegarde dans le backend (en cours...)
+  // Méthode à déclencher au clic sur une image. Pour le moment, le clic sur une image la sauvegarde dans le backend.
   onImageToSend(event : Event): void {
     // On récupère l'élément "target" de l'event.
     const target = event.target as HTMLInputElement
@@ -308,7 +308,7 @@ export class PrivateMessageChatComponent implements OnInit{
     
   }
 
-  // Cette méthode permet de sauvegarder l'image dans le backend.
+  // Cette méthode permet de sauvegarder l'image, en argument, dans le backend.
   private uploadImage(image: File): void {
 
     // On crée une instance XMLHttpRequest
