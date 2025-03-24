@@ -320,7 +320,7 @@ export class PrivateMessageChatComponent implements OnInit{
       // On récupère l'image dans l'attribut files de target.
       this.imageToSend = target.files[0]
       // Pour le moment, on upload l'image dans le backend au clic sur l'iamge
-      this.uploadImage(this.imageToSend)
+      // this.uploadImage(this.imageToSend)
     }
     
   }
