@@ -214,6 +214,42 @@ export class PostService{
 
     
 
+    // Méthode pour envoyer un post avec image via le formData.
+    sendPostWithImage(formData: FormData, chat: Post[]): Observable<{ updatedChat: Post[], updatedChatIsEmpty: boolean, updatedMessageContent: string, updatedImageToSend: null }> {
+        return this.http.post<{ message: string, postId: string }>(`${environment.apiUrl}/private-message/send-message-image`, formData).pipe(
+            map(response => {
+                if (response.postId) {
+                    formData.append('postId', response.postId);
+                }
 
+                // Utilisez sendPostSuccessImage pour renvoyer l'objet correct
+                return this.sendPostSuccessImage(formData, chat);
+            }),
+            catchError(() => {
+                this.sendPostError();
+                // Assurez-vous de retourner un objet avec updatedImageToSend
+                return of({ updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: '', updatedImageToSend: null });
+            })
+        );
+    }
+
+    sendPostSuccessImage(formData: FormData, chat: Post[]): { updatedChat: Post[], updatedChatIsEmpty: boolean, updatedMessageContent: string, updatedImageToSend: null } {
+        // Créer le message à partir des données dans formData
+        const message: Post = {
+            postId: formData.get('postId') ? formData.get('postId') as string : '', // Si vous avez besoin de l'ID du post
+            currentUserId: formData.get('currentUserId') as string,
+            otherUserId: formData.get('otherUserId') as string,
+            username: formData.get('username') as string,
+            image: formData.get('image') instanceof File ? (formData.get('image') as File).name : '', // Vérification du type
+            content: formData.get('content') as string,
+            timestamp: new Date() // Ou utilisez un timestamp renvoyé par le backend
+        };
+    
+        const updatedChat = this.addPostToChat(message, chat);
+        const updatedChatIsEmpty = this.IsChatEmpty(updatedChat);
+        const updatedMessageContent = this.resetString();
+        const updatedImageToSend = null
+        return { updatedChat, updatedChatIsEmpty, updatedMessageContent, updatedImageToSend };
+    }
 }
 
