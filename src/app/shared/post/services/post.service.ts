@@ -214,7 +214,7 @@ export class PostService{
 
     
 
-    // Méthode pour envoyer un post avec image via le formData.
+    
     sendPostWithImage(formData: FormData, chat: Post[]): Observable<{ updatedChat: Post[], updatedChatIsEmpty: boolean, updatedMessageContent: string, updatedImageToSend: null }> {
         return this.http.post<{ message: string, postId: string }>(`${environment.apiUrl}/private-message/send-message-image`, formData).pipe(
             map(response => {
@@ -222,12 +222,12 @@ export class PostService{
                     formData.append('postId', response.postId);
                 }
 
-                // Utilisez sendPostSuccessImage pour renvoyer l'objet correct
+                
                 return this.sendPostSuccessImage(formData, chat);
             }),
             catchError(() => {
                 this.sendPostError();
-                // Assurez-vous de retourner un objet avec updatedImageToSend
+                
                 return of({ updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: '', updatedImageToSend: null });
             })
         );
@@ -243,7 +243,7 @@ export class PostService{
             image: formData.get('image') as string,
             content: formData.get('content') as string,
             timestamp: new Date(),
-            imageToSend: formData.get('imageToSend') instanceof File ? (formData.get('image') as File).name : '', 
+            imageToSend: formData.get('imageToSend') instanceof File ? (formData.get('image') as File).name : null, 
         };
     
         const updatedChat = this.addPostToChat(message, chat);
