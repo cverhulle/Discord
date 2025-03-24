@@ -211,6 +211,13 @@ export class PrivateMessageChatComponent implements OnInit{
         this.messageContent
       )
 
+      // On crée un formData pour encapsuler postToSend et l'image.
+      const formData = new FormData();
+      formData.append('post', JSON.stringify(postToSend));
+      if(this.imageToSend) {
+        formData.append('image', this.imageToSend, this.imageToSend.name)
+      }
+
       this.postService.sendPost(postToSend, this.chat)
         .subscribe( (result) => {
           // Le chat mis à jour contient le dernier post avec son postId récupéré du backend.
