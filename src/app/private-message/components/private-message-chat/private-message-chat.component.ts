@@ -329,15 +329,15 @@ export class PrivateMessageChatComponent implements OnInit{
     // On définit la réponse lorsque la requête est terminée avec succès
     xhr.onload = () => {
         if (xhr.status === 201) {
-            console.log('Image uploaded successfully', JSON.parse(xhr.responseText));
+            console.log("L'image est correctement envoyée", JSON.parse(xhr.responseText));
         } else {
-            console.error('Error uploading image', xhr.responseText);
+            console.error("Erreur lors de l'enregistrement de l'image", xhr.responseText);
         }
     };
 
     // On définit la réponse lorsque la requête retourne une erreur.
     xhr.onerror = () => {
-        console.error('Request failed');
+        console.error('La requête a échoué');
     };
  }
 
