@@ -214,7 +214,11 @@ export class PrivateMessageChatComponent implements OnInit{
       if(this.imageToSend) {
         // On crée un formData pour encapsuler postToSend et l'image.
         const formData = new FormData();
-        formData.append('post', JSON.stringify(postToSend));
+        formData.append('currentUserId', this.currentUser.id);
+        formData.append('otherUserId', this.otherUser.id);
+        formData.append('username', this.currentUser.username);
+        formData.append('content', this.messageContent);
+        formData.append('image', this.currentUser.image)
         formData.append('imageToSend', this.imageToSend, this.imageToSend.name)
         this.postService.sendPostWithImage(formData, this.chat)
           .subscribe((result) => {
