@@ -337,7 +337,7 @@ export class PrivateMessageChatComponent implements OnInit{
 
     // On définit la réponse lorsque la requête retourne une erreur.
     xhr.onerror = () => {
-        console.error('La requête a échoué');
+        console.error('La requête a échoué'); 
     };
  }
 
