@@ -211,10 +211,10 @@ export class PrivateMessageChatComponent implements OnInit{
         this.messageContent
       )
 
-      // On crée un formData pour encapsuler postToSend et l'image.
-      const formData = new FormData();
-      formData.append('post', JSON.stringify(postToSend));
       if(this.imageToSend) {
+        // On crée un formData pour encapsuler postToSend et l'image.
+        const formData = new FormData();
+        formData.append('post', JSON.stringify(postToSend));
         formData.append('image', this.imageToSend, this.imageToSend.name)
       }
 
