@@ -6,6 +6,7 @@ export class Post{
     image!: string;
     content!: string;
     timestamp!: Date;
-    imageToSend?: string | null
+    imageToSend?: string | null;
+    imageInChat?: string | null 
 
 }

@@ -220,11 +220,10 @@ export class PostService{
             map(response => {
                 if (response.postId) {
                     formData.append('postId', response.postId);
-                    formData.append('imageInChat', response.imageInChat)
                 }
 
                 
-                return this.sendPostSuccessImage(formData, chat);
+                return this.sendPostSuccessImage(formData, chat, response.imageInChat);
             }),
             catchError(() => {
                 this.sendPostError();
@@ -234,7 +233,7 @@ export class PostService{
         );
     }
 
-    sendPostSuccessImage(formData: FormData, chat: Post[]): { updatedChat: Post[], updatedChatIsEmpty: boolean, updatedMessageContent: string, updatedImageToSend: null } {
+    sendPostSuccessImage(formData: FormData, chat: Post[], imagePath: string): { updatedChat: Post[], updatedChatIsEmpty: boolean, updatedMessageContent: string, updatedImageToSend: null } {
         
         const message: Post = {
             postId: formData.get('postId') ? formData.get('postId') as string : '',
@@ -245,6 +244,7 @@ export class PostService{
             content: formData.get('content') as string,
             timestamp: new Date(),
             imageToSend: formData.get('imageToSend') instanceof File ? (formData.get('imageToSend') as File).name : null, 
+            imageInChat : imagePath
         };
     
         const updatedChat = this.addPostToChat(message, chat);
