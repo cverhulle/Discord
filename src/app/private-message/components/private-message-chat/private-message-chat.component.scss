@@ -1,3 +1,4 @@
+// Styles pour le titre de la page
 .title{
     color: white;
     text-align: center;
@@ -15,6 +16,7 @@ html, body{
     height: 100%;
 }
 
+// Style pour l'encart des discussions
 .discussion{
     overflow-y: auto;
     height: 65%;
@@ -26,7 +28,7 @@ html, body{
 
 
 
-
+// Style à appliquer lorsque le message de chat vide apparaît
 .empty-chat{
     margin-top: 10%;
     color: white;
@@ -37,17 +39,23 @@ html, body{
     justify-content: center; 
 }
 
+
+
+
+
+
+// Style pour le bouton pour charger plus de messages.
 .button-previous-post{
     display: flex;
     justify-content: center;
 }
 
-
-
+// Style pour l'image de profil
 .avatar{
     width: 5%;
 }
 
+// Style pour la mat-card de chaque post
 .mat-card-post{
     width: 90%;
     margin-left: 1%;
@@ -55,6 +63,7 @@ html, body{
     font-size: 150%;
 }
 
+// Style pour le menu déroulant
 .avatar-username-menu{
     display: flex;
     align-items: center;
@@ -62,16 +71,19 @@ html, body{
     margin-bottom: 1%;
 }
 
+// Style pour placer l'avatar, l'username et le menu sur la même ligne
 .avatar-username{
     display: flex;
     align-items: center;
 }
 
+// Style pour gérer l'image dans le post
 .post-image-container{
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .post-image{
     max-width: 50vh;
     max-height: 50vh;
@@ -79,7 +91,7 @@ html, body{
     height: auto;
 }
 
-
+// Style pour afficher la date du post.
 .timestamp{
     font-size: 0.7em;
     margin-top: 1%;
@@ -102,7 +114,7 @@ html, body{
 
 
 
-
+// Style à appliquer lorsque l'utilisateur veut modifier un post.
 .modify-post{
     color: white;
     font-size: 40px;
@@ -123,7 +135,7 @@ html, body{
 
 
 
-
+// Style pour afficher l'émote des émojis
 .emoji-list{
     position: fixed; 
     overflow: auto; 
@@ -138,6 +150,7 @@ html, body{
 
 
 
+// Style pour la mat-card d'envoi d'un message
 .send-message{
     height: 15%;
     width: 100%;
@@ -146,14 +159,14 @@ html, body{
     
 }
 
-
+// Style pour le bouton d'envoi d'un message
 .send-message-icon{
     cursor: pointer;
 }
 
-
+// Style pour gérer la taille du text-area pour l'envoi d'un message
 .send-message textarea {
-    resize: none; /* Empêche le redimensionnement */
-    min-height: 5em; /* Ajustez cette valeur pour afficher plus de lignes */
+    resize: none; 
+    min-height: 5em; 
 
 }
