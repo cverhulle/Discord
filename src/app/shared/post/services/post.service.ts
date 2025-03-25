@@ -216,10 +216,11 @@ export class PostService{
 
     
     sendPostWithImage(formData: FormData, chat: Post[]): Observable<{ updatedChat: Post[], updatedChatIsEmpty: boolean, updatedMessageContent: string, updatedImageToSend: null }> {
-        return this.http.post<{ message: string, postId: string }>(`${environment.apiUrl}/private-message/send-message-image`, formData).pipe(
+        return this.http.post<{ message: string, postId: string, imageInChat: string }>(`${environment.apiUrl}/private-message/send-message-image`, formData).pipe(
             map(response => {
                 if (response.postId) {
                     formData.append('postId', response.postId);
+                    formData.append('imageInChat', response.imageInChat)
                 }
 
                 
