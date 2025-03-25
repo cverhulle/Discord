@@ -67,11 +67,16 @@ html, body{
     align-items: center;
 }
 
-
-.post-image{
+.post-image-container{
+    display: flex;
     justify-content: center;
-    max-width: 30em;
-    max-height: auto;
+    align-items: center;
+}
+.post-image{
+    max-width: 50vh;
+    max-height: 50vh;
+    width: auto;
+    height: auto;
 }
 
 
