@@ -42,7 +42,7 @@
             <mat-card-content> {{post.content}} </mat-card-content>
 
             <!-- Affichage de l'image -->
-            <img *ngIf="post.imageInChat" [src]="post.imageInChat" alt="message du post">
+            <img *ngIf="post.imageInChat" [src]="post.imageInChat" alt="message du post" class="post-image">
 
             <!-- Affichage de la date du message -->            
             <mat-card-footer class="timestamp"> {{post.timestamp | timeAgo }} </mat-card-footer>
