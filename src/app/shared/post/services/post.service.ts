@@ -243,7 +243,6 @@ export class PostService{
             image: formData.get('image') as string,
             content: formData.get('content') as string,
             timestamp: new Date(),
-            imageToSend: formData.get('imageToSend') instanceof File ? (formData.get('imageToSend') as File).name : null, 
             imageInChat : imagePath
         };
     
