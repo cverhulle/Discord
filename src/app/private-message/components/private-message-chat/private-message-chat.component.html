@@ -38,8 +38,13 @@
                 </mat-card-actions>
             </div>
             
+            <!-- Affichage du message -->
             <mat-card-content> {{post.content}} </mat-card-content>
+
+            <!-- Affichage de l'image -->
             <img *ngIf="post.imageInChat" [src]="post.imageInChat" alt="message du post">
+
+            <!-- Affichage de la date du message -->            
             <mat-card-footer class="timestamp"> {{post.timestamp | timeAgo }} </mat-card-footer>
             
             
@@ -54,6 +59,8 @@
 
         <!-- On affiche le post que l'on modifie -->
         <mat-card class="mat-card-post" [ngStyle]="{'background-color': getPostCardColor(editedPost.currentUserId)}">
+
+            <!-- Affichage de l'en-tête du post : nom de l'utilisateur, photo etc... -->
             <div class="avatar-username-menu"> 
                 <div class="avatar-username">
                     <img [src]="getProfileImage(editedPost)" (error)="setImageError(editedPost)" alt="Avatar de {{editedPost.username}}" class="avatar">
@@ -62,6 +69,7 @@
 
             </div>
             
+            <!-- Affichage du contenu à modifier et la date de parution-->
             <mat-card-content> {{editedPost.content}} </mat-card-content>
             <mat-card-footer class="timestamp"> {{editedPost.timestamp | timeAgo }} </mat-card-footer>
             
