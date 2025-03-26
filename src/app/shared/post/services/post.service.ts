@@ -20,19 +20,6 @@ export class PostService{
         this.editMessageSubject.next(post)
     }
 
-    // Création du post à envoyer au backend.
-    createPostToSend(currentUserId: string, otherUserId : string, username: string, image: string, message: string): Post {
-        return {
-        currentUserId : currentUserId,
-        otherUserId : otherUserId,
-        username : username,
-        image : image,
-        content : message,
-        timestamp : new Date()
-        }
-    }
-
-   
     // Méthode à appeler pour ajouter un message au chat.
     addPostToChat(message : Post, chat: Post[]): Post[] {
         chat.push(message)
