@@ -299,6 +299,11 @@ export class PrivateMessageChatComponent implements OnInit{
       this.imageToSend = this.imageService.getImageToSend(event)      
     }
 
+    // Méthode pour retirer l'image dans le Post
+    onRemoveImage(): void {
+      
+    }
+
 
   
 

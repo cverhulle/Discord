@@ -104,6 +104,13 @@
     <mat-icon matSuffix (click)="fileInput.click()"> image </mat-icon>
     <input type="file" #fileInput accept=".jpg, .jpeg, .png" style="display: none;" (change)="onImageToSend($event)">
 
+    <!-- Affichage de l'icone pour supprimer l'image du message -->
+    <div *ngIf="imageToSend">
+        <button (click)="onRemoveImage()">
+            <mat-icon> delete </mat-icon>
+        </button>
+     </div>
+
     <!-- Bouton pour envoyer le message -->
     <mat-icon matSuffix class="send-message-icon" (click)="onSendMessage()"> send </mat-icon>
 </mat-form-field>
