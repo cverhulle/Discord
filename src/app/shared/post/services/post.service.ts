@@ -20,6 +20,23 @@ export class PostService{
         this.editMessageSubject.next(post)
     }
 
+    // Méthode pour créer le formData avec toutes les données pour l'envoi d'un post.
+    createFormDataToSend(currentUserId : string, otherUserId : string, username: string, messageContent: string, image: string, imageToSend : any): FormData {
+        const formData = new FormData();
+        formData.append('currentUserId', currentUserId);
+        formData.append('otherUserId', otherUserId);
+        formData.append('username', username);
+        formData.append('content', messageContent);
+        formData.append('image', image)
+            
+
+        if(imageToSend) {
+            formData.append('imageToSend', imageToSend, imageToSend.name)
+        }
+
+        return formData
+    }
+
     // Méthode à appeler pour ajouter un message au chat.
     addPostToChat(message : Post, chat: Post[]): Post[] {
         chat.push(message)

@@ -204,17 +204,14 @@ export class PrivateMessageChatComponent implements OnInit{
         return;
       }
 
-      const formData = new FormData();
-      formData.append('currentUserId', this.currentUser.id);
-      formData.append('otherUserId', this.otherUser.id);
-      formData.append('username', this.currentUser.username);
-      formData.append('content', this.messageContent);
-      formData.append('image', this.currentUser.image)
-          
-
-      if(this.imageToSend) {
-        formData.append('imageToSend', this.imageToSend, this.imageToSend.name)
-      }
+      const formData = this.postService.createFormDataToSend(
+        this.currentUser.id,
+        this.otherUser.id,
+        this.currentUser.username,
+        this.messageContent,
+        this.currentUser.image,
+        this.imageToSend
+      )
 
       this.postService.sendPost(formData, this.chat, this.imageToSend)
           .subscribe((result) => {
