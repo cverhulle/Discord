@@ -38,7 +38,7 @@ export class ImageService {
     }
 
     
-    getImageInPost(event: Event): File | null{
+    getImageToSend(event: Event): File | null{
         // On récupère l'élément "target" de l'event.
         const target = event.target as HTMLInputElement
         if(target.files) {

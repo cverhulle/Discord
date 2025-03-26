@@ -296,7 +296,7 @@ export class PrivateMessageChatComponent implements OnInit{
     
     // Méthode à déclencher au clic sur une image. 
     onImageToSend(event : Event): void {
-      this.imageToSend = this.imageService.getImageInPost(event)      
+      this.imageToSend = this.imageService.getImageToSend(event)      
     }
 
 
