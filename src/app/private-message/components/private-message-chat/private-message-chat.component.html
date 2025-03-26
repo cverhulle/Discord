@@ -108,12 +108,10 @@
             <input type="file" #fileInput accept=".jpg, .jpeg, .png" style="display: none;" (change)="onImageToSend($event)">
         </ng-container>
 
+        <!-- Affichage de l'icône pour supprimer l'image du message -->
         <ng-template #deleteImageIcon>
-            <!-- Affichage de l'icône pour supprimer l'image du message -->
             <mat-icon (click)="onRemoveImage()" >delete</mat-icon>
         </ng-template>
-
-        
     </ng-container>
     
 
