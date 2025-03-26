@@ -291,43 +291,46 @@ export class PrivateMessageChatComponent implements OnInit{
       this.messageContent = this.emojisService.addEmojisToMessage(event, this.messageContent)
     }
 
+    
+    // Méthode à déclencher au clic sur une image. 
+    onImageToSend(event : Event): void {
+      // On récupère l'élément "target" de l'event.
+      const target = event.target as HTMLInputElement
+      if(target.files) {
+        // On récupère l'image dans l'attribut files de target.
+        this.imageToSend = target.files[0]
+        
+      }
+      
+    }
+
 
   
 
-  // Scroll de l'écran après l'envoi d'un nouveau message.
-  private scrollToBottom(): void {
-    setTimeout(() => {
-      this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
-    }, 200);
-  }
-
-  // Si l'image ne peut pas être chargée, on modifie l'Url du profil par l'Url par défaut.
-  getProfileImage(post: Post): string {
-    return this.avatarService.getProfileImage(post.image, post.username)
-  }
-
-  // Met l'imageError du service à true pour l'utilisateur.
-  setImageError(post: Post): void {
-    this.avatarService.updateImageError(post.username, true)
-  }
-
-  // Récupérer la couleur de la mat-card
-  getPostCardColor(postId: string) : string {
-    return this.postService.getPostCardColor(postId, this.currentUser.id)
-  }
-
-
-  // Méthode à déclencher au clic sur une image. 
-  onImageToSend(event : Event): void {
-    // On récupère l'élément "target" de l'event.
-    const target = event.target as HTMLInputElement
-    if(target.files) {
-      // On récupère l'image dans l'attribut files de target.
-      this.imageToSend = target.files[0]
-      
+    // Scroll de l'écran après l'envoi d'un nouveau message.
+    private scrollToBottom(): void {
+      setTimeout(() => {
+        this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
+      }, 200);
     }
-    
-  }
+
+    // Si l'image ne peut pas être chargée, on modifie l'Url du profil par l'Url par défaut.
+    getProfileImage(post: Post): string {
+      return this.avatarService.getProfileImage(post.image, post.username)
+    }
+
+    // Met l'imageError du service à true pour l'utilisateur.
+    setImageError(post: Post): void {
+      this.avatarService.updateImageError(post.username, true)
+    }
+
+    // Récupérer la couleur de la mat-card
+    getPostCardColor(postId: string) : string {
+      return this.postService.getPostCardColor(postId, this.currentUser.id)
+    }
+
+
+
 
 
 
