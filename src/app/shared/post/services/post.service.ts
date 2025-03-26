@@ -51,7 +51,7 @@ export class PostService{
 
     // Méthode à appeler lors du succès de l'envoi du Post.
     // Cette méthode retourne le chat, le booléan pour savoir si le chat est vide, le nouveau contenu du formulaire et l'image dans le Post à jour.
-    sendPostSuccessTest(message : Post, chat: Post[]): {updatedChat: Post[], updatedChatIsEmpty : boolean, updatedMessageContent : string, updatedImageToSend: null} {
+    sendPostSuccess(message : Post, chat: Post[]): {updatedChat: Post[], updatedChatIsEmpty : boolean, updatedMessageContent : string, updatedImageToSend: null} {
         const updatedChat = this.addPostToChat(message, chat);
         const updatedChatIsEmpty = this.IsChatEmpty(updatedChat);
         const updatedMessageContent = this.resetString();
@@ -64,8 +64,8 @@ export class PostService{
         this.displayService.displayMessage('Erreur lors de l\'envoi du message.');
     }
 
-
-    sendPostWithOptionalImage(formData: FormData, chat: Post[]): Observable<{ updatedChat: Post[], updatedChatIsEmpty: boolean, updatedMessageContent: string, updatedImageToSend: null }> {
+    // Méthode pour envoyer un post et l'enregistrer sur le serveur.
+    sendPost(formData: FormData, chat: Post[]): Observable<{ updatedChat: Post[], updatedChatIsEmpty: boolean, updatedMessageContent: string, updatedImageToSend: null }> {
         return this.http.post<{ message: string, postId: string, imageInChat?: string }>(`${environment.apiUrl}/private-message/send-message-image-test`, formData).pipe(
             map(response => {
                 const postId = response.postId;
@@ -85,7 +85,7 @@ export class PostService{
                         imageInChat: response.imageInChat || null
                     };
     
-                    return this.sendPostSuccessTest(message, chat);
+                    return this.sendPostSuccess(message, chat);
                 } else {
                     this.sendPostError();
                     return { updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: '', updatedImageToSend: null };
