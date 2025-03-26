@@ -58,7 +58,7 @@ export class PostService{
 
     // Méthode pour envoyer un post et l'enregistrer sur le serveur.
     sendPost(formData: FormData, chat: Post[], currentImageToSend : any): Observable<{ updatedChat: Post[], updatedChatIsEmpty: boolean, updatedMessageContent: string, updatedImageToSend: null }> {
-        return this.http.post<{ message: string, postId: string, imageInChat?: string }>(`${environment.apiUrl}/private-message/send-message-image-test`, formData).pipe(
+        return this.http.post<{ message: string, postId: string, imageInChat?: string }>(`${environment.apiUrl}/private-message/send-message`, formData).pipe(
             map(response => {
                 const postId = response.postId;
                 if (postId) {
