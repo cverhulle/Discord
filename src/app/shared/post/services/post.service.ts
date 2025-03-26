@@ -37,6 +37,20 @@ export class PostService{
         return formData
     }
 
+    // Méthode pour créer le message, de type Post, dans le Chat après l'envoi réussi au serveur
+    createPostAfterSending(formData: FormData, imageInChat : string | null ): Post {
+        return {
+            postId: formData.get('postId') ? formData.get('postId') as string : '',
+            currentUserId: formData.get('currentUserId') as string,
+            otherUserId: formData.get('otherUserId') as string,
+            username: formData.get('username') as string,
+            image: formData.get('image') as string,
+            content: formData.get('content') as string,
+            timestamp: new Date(),
+            imageInChat: imageInChat,
+        };
+    }
+
     // Méthode à appeler pour ajouter un message au chat.
     addPostToChat(message : Post, chat: Post[]): Post[] {
         chat.push(message)
