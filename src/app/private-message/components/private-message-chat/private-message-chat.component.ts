@@ -218,8 +218,7 @@ export class PrivateMessageChatComponent implements OnInit{
 
       this.postService.sendPost(formData, this.chat, this.imageToSend)
           .subscribe((result) => {
-            // Le chat mis à jour contient le dernier post avec son postId récupéré du backend.
-            console.log("Résultat du service :", result)
+            // Mis à jour des éléments
             this.chat = result.updatedChat;
             this.chatIsEmpty = result.updatedChatIsEmpty;
             this.messageContent = result.updatedMessageContent;
