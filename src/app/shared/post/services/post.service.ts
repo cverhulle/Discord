@@ -95,10 +95,16 @@ export class PostService{
                 if (postId) {
                     // Ajouter le postId au FormData pour les traitements futurs
                     formData.append('postId', postId);
+
+                    // On sauvegarde l'url de l'image, ou null, dans umageInChat
                     const imageInChat = response.imageInChat? response.imageInChat : null
-                    
+
+                    // On construit le Post dans le front-End pour l'afficher 
                     const message = this.createPostAfterSending(formData, imageInChat)
+                    
+                    // Appelle la méthode pour mettre à jour l'affichage du chat
                     return this.sendPostSuccess(message, chat);
+
                 } else {
                     this.sendPostError();
                     return { updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: formData.get('content') as string, updatedImageToSend: currentImageToSend };
