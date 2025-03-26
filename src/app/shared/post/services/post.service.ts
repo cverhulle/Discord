@@ -70,7 +70,7 @@ export class PostService{
     }
 
     // Méthode pour envoyer un post et l'enregistrer sur le serveur.
-    sendPost(formData: FormData, chat: Post[]): Observable<{ updatedChat: Post[], updatedChatIsEmpty: boolean, updatedMessageContent: string, updatedImageToSend: null }> {
+    sendPost(formData: FormData, chat: Post[], currentImageToSend : any): Observable<{ updatedChat: Post[], updatedChatIsEmpty: boolean, updatedMessageContent: string, updatedImageToSend: null }> {
         return this.http.post<{ message: string, postId: string, imageInChat?: string }>(`${environment.apiUrl}/private-message/send-message-image-test`, formData).pipe(
             map(response => {
                 const postId = response.postId;
@@ -93,12 +93,12 @@ export class PostService{
                     return this.sendPostSuccess(message, chat);
                 } else {
                     this.sendPostError();
-                    return { updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: formData.get('content') as string, updatedImageToSend: this.resetImageToSend() };
+                    return { updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: formData.get('content') as string, updatedImageToSend: currentImageToSend };
                 }
             }),
             catchError(() => {
                 this.sendPostError();
-                return of({ updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: formData.get('content') as string, updatedImageToSend: this.resetImageToSend() });
+                return of({ updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: formData.get('content') as string, updatedImageToSend: currentImageToSend });
             })
         );
     }
