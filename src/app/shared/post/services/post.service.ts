@@ -95,19 +95,9 @@ export class PostService{
                 if (postId) {
                     // Ajouter le postId au FormData pour les traitements futurs
                     formData.append('postId', postId);
+                    const imageInChat = response.imageInChat? response.imageInChat : null
                     
-                    // Créer un message à partir des données du FormData
-                    const message: Post = {
-                        postId: formData.get('postId') ? formData.get('postId') as string : '',
-                        currentUserId: formData.get('currentUserId') as string,
-                        otherUserId: formData.get('otherUserId') as string,
-                        username: formData.get('username') as string,
-                        image: formData.get('image') as string,
-                        content: formData.get('content') as string,
-                        timestamp: new Date(),
-                        imageInChat: response.imageInChat || null
-                    };
-    
+                    const message = this.createPostAfterSending(formData, imageInChat)
                     return this.sendPostSuccess(message, chat);
                 } else {
                     this.sendPostError();
