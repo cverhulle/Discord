@@ -36,4 +36,15 @@ export class ImageService {
             console.error('La requête a échoué'); 
         };
     }
+
+    
+    getImageInPost(event: Event): File | null{
+        // On récupère l'élément "target" de l'event.
+        const target = event.target as HTMLInputElement
+        if(target.files) {
+        // On récupère l'image dans l'attribut files de target.
+            return target.files[0]
+        }
+        return null
+    }
 }
