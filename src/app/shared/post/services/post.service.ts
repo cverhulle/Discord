@@ -49,14 +49,7 @@ export class PostService{
         return chat.length === 0
     }
 
-    // Méthode à appeler lorsque l'envoi du post est réussi.
-    // On retourne le nouveau chat avec le message ajouté, un booléen pour savoir si le chat est vide ou non et on réinitialise le contenu du message.
-    sendPostSuccess(message : Post, chat: Post[]): {updatedChat: Post[], updatedChatIsEmpty : boolean, updatedMessageContent : string} {
-        const updatedChat = this.addPostToChat(message, chat);
-        const updatedChatIsEmpty = this.IsChatEmpty(updatedChat);
-        const updatedMessageContent = this.resetString();
-        return {updatedChat, updatedChatIsEmpty, updatedMessageContent}
-    }
+
 
     // Méthode à appeler lorsque l'envoi du post a échoué.
     sendPostError(): void {
@@ -64,41 +57,10 @@ export class PostService{
     }
 
 
-    // Méthode pour envoyer le post au backend et le sauvegarder.
-    // On retourne l'id du post si l'envoi a réussi, sinon on retourne false.
-    // L'id du post est nécessaire car, si l'utilisateur ne recharge pas la page, il n'a pas accès à postId du backend.
-    sendPostBackend(post : Post): Observable<boolean | string> {
-        return this.http.post<{message : string, postId : string}>(`${environment.apiUrl}/private-message/post`, post).pipe(
-            map( (response) => {
-                return response.postId
-            }),
-            catchError( () => {
-                return of(false)
-            })
-        )
-    }
 
 
-    // Méthode pour envoyer le post.
-    // On vérifie si l'envoi du post au backend a réussi grâce au type de postId.
-    // On sauvegarde le postId dans le post pour que l'utilisateur ait accès au postId du backend sans devoir recharger la page.
-    sendPost(message : Post, chat: Post[]): Observable<{updatedChat: Post[], updatedChatIsEmpty : boolean, updatedMessageContent : string}> {
-        return this.sendPostBackend(message).pipe(
-            map( postId => {
-            if (typeof postId === 'string') {
-                message.postId = postId;
-                return this.sendPostSuccess(message, chat)
-            } else {
-                this.sendPostError()
-                return ({updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: message.content});
-            }
-            }),
-            catchError( () => {
-            this.sendPostError()
-            return of({updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: message.content});
-            })
-        )
-    }
+
+
 
     // Méthode pour modifier un message dans le backend.
     updatePostBackend(post: Post) : Observable<Post> {
@@ -210,47 +172,6 @@ export class PostService{
         
         // trim supprime les espaces au début et à la fin de message.
         return message.trim().length > 0 && message.length <= maxLenght;
-    }
-
-    
-
-    
-    sendPostWithImage(formData: FormData, chat: Post[]): Observable<{ updatedChat: Post[], updatedChatIsEmpty: boolean, updatedMessageContent: string, updatedImageToSend: null }> {
-        return this.http.post<{ message: string, postId: string, imageInChat: string }>(`${environment.apiUrl}/private-message/send-message-image`, formData).pipe(
-            map(response => {
-                if (response.postId) {
-                    formData.append('postId', response.postId);
-                }
-
-                
-                return this.sendPostSuccessImage(formData, chat, response.imageInChat);
-            }),
-            catchError(() => {
-                this.sendPostError();
-                
-                return of({ updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: '', updatedImageToSend: null });
-            })
-        );
-    }
-
-    sendPostSuccessImage(formData: FormData, chat: Post[], imagePath: string): { updatedChat: Post[], updatedChatIsEmpty: boolean, updatedMessageContent: string, updatedImageToSend: null } {
-        
-        const message: Post = {
-            postId: formData.get('postId') ? formData.get('postId') as string : '',
-            currentUserId: formData.get('currentUserId') as string,
-            otherUserId: formData.get('otherUserId') as string,
-            username: formData.get('username') as string,
-            image: formData.get('image') as string,
-            content: formData.get('content') as string,
-            timestamp: new Date(),
-            imageInChat : imagePath
-        };
-    
-        const updatedChat = this.addPostToChat(message, chat);
-        const updatedChatIsEmpty = this.IsChatEmpty(updatedChat);
-        const updatedMessageContent = this.resetString();
-        const updatedImageToSend = null
-        return { updatedChat, updatedChatIsEmpty, updatedMessageContent, updatedImageToSend };
     }
 
     sendPostWithOptionalImage(formData: FormData, chat: Post[]): Observable<{ updatedChat: Post[], updatedChatIsEmpty: boolean, updatedMessageContent: string, updatedImageToSend: null }> {
