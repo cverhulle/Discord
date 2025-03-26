@@ -93,12 +93,12 @@ export class PostService{
                     return this.sendPostSuccess(message, chat);
                 } else {
                     this.sendPostError();
-                    return { updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: this.resetString(), updatedImageToSend: this.resetImageToSend() };
+                    return { updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: formData.get('content') as string, updatedImageToSend: this.resetImageToSend() };
                 }
             }),
             catchError(() => {
                 this.sendPostError();
-                return of({ updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: this.resetString(), updatedImageToSend: this.resetImageToSend() });
+                return of({ updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: formData.get('content') as string, updatedImageToSend: this.resetImageToSend() });
             })
         );
     }
