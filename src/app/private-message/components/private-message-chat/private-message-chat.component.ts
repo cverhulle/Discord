@@ -204,25 +204,19 @@ export class PrivateMessageChatComponent implements OnInit{
         return;
       }
 
-      // On crée le post à envoyer au backend (sans l'id du post).
-      const postToSend = this.postService.createPostToSend(
-        this.currentUser.id, 
-        this.otherUser.id, 
-        this.currentUser.username, 
-        this.currentUser.image, 
-        this.messageContent
-      )
+      const formData = new FormData();
+      formData.append('currentUserId', this.currentUser.id);
+      formData.append('otherUserId', this.otherUser.id);
+      formData.append('username', this.currentUser.username);
+      formData.append('content', this.messageContent);
+      formData.append('image', this.currentUser.image)
+          
 
       if(this.imageToSend) {
-        // On crée un formData pour encapsuler postToSend et l'image.
-        const formData = new FormData();
-        formData.append('currentUserId', this.currentUser.id);
-        formData.append('otherUserId', this.otherUser.id);
-        formData.append('username', this.currentUser.username);
-        formData.append('content', this.messageContent);
-        formData.append('image', this.currentUser.image)
         formData.append('imageToSend', this.imageToSend, this.imageToSend.name)
-        this.postService.sendPostWithImage(formData, this.chat)
+      }
+
+      this.postService.sendPostWithOptionalImage(formData, this.chat)
           .subscribe((result) => {
             // Le chat mis à jour contient le dernier post avec son postId récupéré du backend.
             console.log(result)
@@ -233,17 +227,7 @@ export class PrivateMessageChatComponent implements OnInit{
             this.loading = false;
             this.scrollToBottom();
         });
-      } else {
-        this.postService.sendPost(postToSend, this.chat)
-          .subscribe( (result) => {
-            // Le chat mis à jour contient le dernier post avec son postId récupéré du backend.
-            this.chat= result.updatedChat;
-            this.chatIsEmpty = result.updatedChatIsEmpty;
-            this.messageContent = result.updatedMessageContent;
-            this.loading = false;
-            this.scrollToBottom();
-        })
-      }
+       
         
     } else {
       this.displayService.displayMessage('Le message ne peut pas être vide et doit contenir moins de 500 caractères.')

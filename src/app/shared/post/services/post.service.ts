@@ -252,5 +252,46 @@ export class PostService{
         const updatedImageToSend = null
         return { updatedChat, updatedChatIsEmpty, updatedMessageContent, updatedImageToSend };
     }
+
+    sendPostWithOptionalImage(formData: FormData, chat: Post[]): Observable<{ updatedChat: Post[], updatedChatIsEmpty: boolean, updatedMessageContent: string, updatedImageToSend: null }> {
+        return this.http.post<{ message: string, postId: string, imageInChat?: string }>(`${environment.apiUrl}/private-message/send-message-image-test`, formData).pipe(
+            map(response => {
+                const postId = response.postId;
+                if (postId) {
+                    // Ajouter le postId au FormData pour les traitements futurs
+                    formData.append('postId', postId);
+                    
+                    // Créer un message à partir des données du FormData
+                    const message: Post = {
+                        postId: formData.get('postId') ? formData.get('postId') as string : '',
+                        currentUserId: formData.get('currentUserId') as string,
+                        otherUserId: formData.get('otherUserId') as string,
+                        username: formData.get('username') as string,
+                        image: formData.get('image') as string,
+                        content: formData.get('content') as string,
+                        timestamp: new Date(),
+                        imageInChat: response.imageInChat || null
+                    };
+    
+                    return this.sendPostSuccessTest(message, chat);
+                } else {
+                    this.sendPostError();
+                    return { updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: '', updatedImageToSend: null };
+                }
+            }),
+            catchError(() => {
+                this.sendPostError();
+                return of({ updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: '', updatedImageToSend: null });
+            })
+        );
+    }
+
+    sendPostSuccessTest(message : Post, chat: Post[]): {updatedChat: Post[], updatedChatIsEmpty : boolean, updatedMessageContent : string, updatedImageToSend: null} {
+        const updatedChat = this.addPostToChat(message, chat);
+        const updatedChatIsEmpty = this.IsChatEmpty(updatedChat);
+        const updatedMessageContent = this.resetString();
+        const updatedImageToSend = null
+        return {updatedChat, updatedChatIsEmpty, updatedMessageContent, updatedImageToSend}
+    }
 }
 
