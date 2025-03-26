@@ -101,20 +101,19 @@
     </div>
 
     <!-- Affichage de l'icone de selection d'images ou de suppression -->
-    <div>
+    <ng-container matSuffix> 
         <ng-container *ngIf="imageToSend; else imageIcon">
             <!-- Affichage de l'icône pour supprimer l'image du message -->
-            <button (click)="onRemoveImage()">
-                <mat-icon>delete</mat-icon>
-            </button>
+            <mat-icon (click)="onRemoveImage()" >delete</mat-icon>
         </ng-container>
 
         <!-- Affichage de l'icone de selection du message-->
         <ng-template #imageIcon>
-            <mat-icon matSuffix (click)="fileInput.click()">image</mat-icon>
+            <mat-icon (click)="fileInput.click()">image</mat-icon>
             <input type="file" #fileInput accept=".jpg, .jpeg, .png" style="display: none;" (change)="onImageToSend($event)">
         </ng-template>
-    </div>
+    </ng-container>
+    
 
     <!-- Bouton pour envoyer le message -->
     <mat-icon matSuffix class="send-message-icon" (click)="onSendMessage()"> send </mat-icon>
