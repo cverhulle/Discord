@@ -100,16 +100,21 @@
         <emoji-mart (emojiClick)="onEmojiClick($event)" [exclude]="categoriesEmojisExcluded"> </emoji-mart>
     </div>
 
-    <!-- Envoi d'images -->
-    <mat-icon matSuffix (click)="fileInput.click()"> image </mat-icon>
-    <input type="file" #fileInput accept=".jpg, .jpeg, .png" style="display: none;" (change)="onImageToSend($event)">
+    <!-- Affichage de l'icone de selection d'images ou de suppression -->
+    <div>
+        <ng-container *ngIf="imageToSend; else imageIcon">
+            <!-- Affichage de l'icône pour supprimer l'image du message -->
+            <button (click)="onRemoveImage()">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </ng-container>
 
-    <!-- Affichage de l'icone pour supprimer l'image du message -->
-    <div *ngIf="imageToSend">
-        <button (click)="onRemoveImage()">
-            <mat-icon> delete </mat-icon>
-        </button>
-     </div>
+        <!-- Affichage de l'icone de selection du message-->
+        <ng-template #imageIcon>
+            <mat-icon matSuffix (click)="fileInput.click()">image</mat-icon>
+            <input type="file" #fileInput accept=".jpg, .jpeg, .png" style="display: none;" (change)="onImageToSend($event)">
+        </ng-template>
+    </div>
 
     <!-- Bouton pour envoyer le message -->
     <mat-icon matSuffix class="send-message-icon" (click)="onSendMessage()"> send </mat-icon>
