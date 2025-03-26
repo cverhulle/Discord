@@ -49,13 +49,18 @@ export class PostService{
         return chat.length === 0
     }
 
+    // Méthode pour remettre l'image par défaut dans un Post à null
+    resetImageToSend(): null {
+        return null
+    }
+
     // Méthode à appeler lors du succès de l'envoi du Post.
     // Cette méthode retourne le chat, le booléan pour savoir si le chat est vide, le nouveau contenu du formulaire et l'image dans le Post à jour.
     sendPostSuccess(message : Post, chat: Post[]): {updatedChat: Post[], updatedChatIsEmpty : boolean, updatedMessageContent : string, updatedImageToSend: null} {
         const updatedChat = this.addPostToChat(message, chat);
         const updatedChatIsEmpty = this.IsChatEmpty(updatedChat);
         const updatedMessageContent = this.resetString();
-        const updatedImageToSend = null
+        const updatedImageToSend = this.resetImageToSend()
         return {updatedChat, updatedChatIsEmpty, updatedMessageContent, updatedImageToSend}
     }
 
@@ -88,12 +93,12 @@ export class PostService{
                     return this.sendPostSuccess(message, chat);
                 } else {
                     this.sendPostError();
-                    return { updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: '', updatedImageToSend: null };
+                    return { updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: this.resetString(), updatedImageToSend: this.resetImageToSend() };
                 }
             }),
             catchError(() => {
                 this.sendPostError();
-                return of({ updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: '', updatedImageToSend: null });
+                return of({ updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: this.resetString(), updatedImageToSend: this.resetImageToSend() });
             })
         );
     }
