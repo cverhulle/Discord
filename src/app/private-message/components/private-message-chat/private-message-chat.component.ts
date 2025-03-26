@@ -17,6 +17,7 @@ import { TimeAgoPipe } from '../../../shared/post/pipe/time-ago.pipe';
 import { UserService } from '../../../shared/post/services/user.service';
 import { DisplayService } from '../../../shared/display/service/display.service';
 import { EmojisService } from '../../../shared/emojis/services/emojis.service';
+import { ImageService } from '../../../shared/image/services/image.services';
 
 
 
@@ -78,7 +79,8 @@ export class PrivateMessageChatComponent implements OnInit{
               private postService : PostService,
               private userService : UserService,
               private displayService : DisplayService,
-              private emojisService : EmojisService) {}
+              private emojisService : EmojisService,
+              private imageService : ImageService) {}
                 
                
                 
@@ -294,14 +296,7 @@ export class PrivateMessageChatComponent implements OnInit{
     
     // Méthode à déclencher au clic sur une image. 
     onImageToSend(event : Event): void {
-      // On récupère l'élément "target" de l'event.
-      const target = event.target as HTMLInputElement
-      if(target.files) {
-        // On récupère l'image dans l'attribut files de target.
-        this.imageToSend = target.files[0]
-        
-      }
-      
+      this.imageToSend = this.imageService.getImageInPost(event)      
     }
 
 
