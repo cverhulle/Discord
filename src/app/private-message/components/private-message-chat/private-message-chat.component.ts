@@ -198,12 +198,14 @@ export class PrivateMessageChatComponent implements OnInit{
     if (this.postService.messageValid(this.messageContent)) {
       this.loading = true
 
+      // Si l'on édite un post, on lance la méthode adaptée et on quitte la boucle.
       if (this.editedPost) {
         this.updateMessage(this.editedPost);
         this.loading = false;
         return;
       }
-
+      
+      // On crée le formData grâce au service
       const formData = this.postService.createFormDataToSend(
         this.currentUser.id,
         this.otherUser.id,
@@ -213,6 +215,7 @@ export class PrivateMessageChatComponent implements OnInit{
         this.imageToSend
       )
 
+      // On envoie le post grâce au service et au FormData
       this.postService.sendPost(formData, this.chat, this.imageToSend)
           .subscribe((result) => {
             // Mis à jour des éléments
