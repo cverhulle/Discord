@@ -21,7 +21,7 @@ export class PostService{
     }
 
     // Méthode pour créer le formData avec toutes les données pour l'envoi d'un post.
-    createFormDataToSend(currentUserId : string, otherUserId : string, username: string, messageContent: string, image: string, imageToSend : any): FormData {
+    createFormDataToSend(currentUserId : string, otherUserId : string, username: string, messageContent: string, image: string, imageToSend : any, postId? : string) : FormData {
         const formData = new FormData();
         formData.append('currentUserId', currentUserId);
         formData.append('otherUserId', otherUserId);
@@ -32,6 +32,10 @@ export class PostService{
 
         if(imageToSend) {
             formData.append('imageToSend', imageToSend, imageToSend.name)
+        }
+
+        if(postId) {
+            formData.append("postId", postId)
         }
 
         return formData
@@ -118,30 +122,38 @@ export class PostService{
     }
 
     // Méthode pour modifier un message dans le backend.
-    updatePostBackend(post: Post) : Observable<Post> {
-        return this.http.put<Post>(`${environment.apiUrl}/private-message/updatePost`, post).pipe(
+    updatePostBackend(formData : FormData) : Observable<Post> {
+        return this.http.put<Post>(`${environment.apiUrl}/private-message/updatePost`, formData).pipe(
             catchError( () => {
                 this.displayService.displayMessage('Erreur lors de la modification du message.')
-                return of(post)
+                return of()
             })
         )
     }
 
     // Méthode pour modifier un message
-    updatePost(editedPost : Post, newContent : string): Observable<Post>{
-        const updatedPost = {
-            postId : editedPost.postId,
-            currentUserId : editedPost.currentUserId,
-            otherUserId : editedPost.otherUserId,
-            username : editedPost.username,
-            image : editedPost.image,
-            content : newContent,
-            timestamp : editedPost.timestamp,
-            imageInChat : editedPost.imageInChat
-          };
-          
+    updatePost(editedPost : Post, newContent : string, newImage : File | null, deleteCurrentImage : boolean): Observable<Post>{
+        if (!newImage && !deleteCurrentImage) {
+            return of(editedPost)
+        }
         
-        return this.updatePostBackend(updatedPost).pipe(
+        const formData = this.createFormDataToSend(
+            editedPost.currentUserId,
+            editedPost.otherUserId,
+            editedPost.username,
+            newContent,
+            editedPost.image,
+            newImage,
+            editedPost.postId,
+            
+        );
+        
+        // Afficher le formData dans la console.
+        formData.forEach((value, key) => {
+            console.log(`${key}: ${value}`);
+        });
+        
+        return this.updatePostBackend(formData).pipe(
             map((post) => {
                 return post;
             }),
