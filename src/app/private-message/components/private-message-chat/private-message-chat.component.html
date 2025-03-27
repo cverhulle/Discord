@@ -71,8 +71,15 @@
 
             </div>
             
-            <!-- Affichage du contenu à modifier et la date de parution-->
+            <!-- Affichage du contenu à modifier-->
             <mat-card-content> {{editedPost.content}} </mat-card-content>
+
+            <!-- Affichage de l'image du message à modifier -->
+            <div class="post-image-container">
+                <img *ngIf="editedPost.imageInChat" [src]="editedPost.imageInChat" alt="image du post" class="post-image">
+            </div>
+
+            <!-- Affichage du timestamp du message à modifier -->
             <mat-card-footer class="timestamp"> {{editedPost.timestamp | timeAgo }} </mat-card-footer>
             
             
