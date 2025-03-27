@@ -78,9 +78,6 @@ export class PrivateMessageChatComponent implements OnInit{
   // Variable pour observer si l'mage dans un Post à modifier est supprimé
   deleteImageInModifiedPost : boolean = false
 
-  // Variable pour sauvegarder la nouvelle image à envoyer dans un Post modifié.
-  newImageInModifiedPost : File | null = null
-
   constructor(private avatarService : AvatarService,
               private postService : PostService,
               private userService : UserService,
@@ -196,7 +193,7 @@ export class PrivateMessageChatComponent implements OnInit{
       this.chat[messageIndex] = updatedPost;
       this.postService.setEditMessage(null)
       this.deleteImageInModifiedPost = false
-      this.newImageInModifiedPost = null
+      
     })
   }
 
