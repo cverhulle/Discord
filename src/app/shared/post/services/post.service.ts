@@ -136,7 +136,8 @@ export class PostService{
             username : editedPost.username,
             image : editedPost.image,
             content : newContent,
-            timestamp : editedPost.timestamp
+            timestamp : editedPost.timestamp,
+            imageInChat : editedPost.imageInChat
           };
           
         
