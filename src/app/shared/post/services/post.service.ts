@@ -148,11 +148,6 @@ export class PostService{
             
         );
         
-        // Afficher le formData dans la console.
-        formData.forEach((value, key) => {
-            console.log(`${key}: ${value}`);
-        });
-        
         return this.updatePostBackend(formData).pipe(
             map((post) => {
                 return post;
