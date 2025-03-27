@@ -196,7 +196,7 @@ export class PrivateMessageChatComponent implements OnInit{
       this.chat[messageIndex] = updatedPost;
       this.postService.setEditMessage(null)
       this.deleteImageInModifiedPost = false
-      
+      this.newImageInModifiedPost = null
     })
   }
 
