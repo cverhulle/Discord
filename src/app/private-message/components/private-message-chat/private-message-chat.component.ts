@@ -75,6 +75,9 @@ export class PrivateMessageChatComponent implements OnInit{
   // Variable pour stocker l'image à envoyer
   imageToSend : File | null = null;
 
+  // Variable pour observer si l'mage dans un Post à modifier est supprimé
+  deleteImageInModifiedPost : boolean = false
+
   constructor(private avatarService : AvatarService,
               private postService : PostService,
               private userService : UserService,
@@ -285,6 +288,9 @@ export class PrivateMessageChatComponent implements OnInit{
     // Méthode pour retirer l'image dans le Post
     onRemoveImage(): void {
       this.imageToSend = null
+      if(this.editedPost) {
+        this.deleteImageInModifiedPost = true
+      }
     }
 
 
