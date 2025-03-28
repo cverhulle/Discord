@@ -29,8 +29,8 @@ export class PostService{
         this.imageToSendSubject.next(file)
     }
 
-    getValueOfImageToSend(): void {
-        this.imageToSendSubject.getValue()
+    getValueOfImageToSend(): File | null {
+        return this.imageToSendSubject.getValue()
     }
 
 
