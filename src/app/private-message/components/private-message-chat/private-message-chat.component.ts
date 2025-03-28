@@ -198,7 +198,7 @@ export class PrivateMessageChatComponent implements OnInit{
       this.chat[messageIndex] = updatedPost;
       this.postService.setEditMessage(null)
       this.deleteImageInModifiedPost = false
-      this.imageToSend = null
+      this.postService.setImageToSend(null)
     })
   }
 
@@ -221,11 +221,11 @@ export class PrivateMessageChatComponent implements OnInit{
         this.currentUser.username,
         this.messageContent,
         this.currentUser.image,
-        this.imageToSend
+        this.postService.getValueOfImageToSend()
       )
 
       // On envoie le post grâce au service et au FormData
-      this.postService.sendPost(formData, this.chat, this.imageToSend)
+      this.postService.sendPost(formData, this.chat, this.postService.getValueOfImageToSend())
           .subscribe((result) => {
             // Mis à jour des éléments
             this.chat = result.updatedChat;
@@ -293,7 +293,7 @@ export class PrivateMessageChatComponent implements OnInit{
 
     // Méthode pour retirer l'image dans le Post
     onRemoveImage(): void {
-      this.imageToSend = null
+      this.postService.setImageToSend(null)
       if(this.editedPost) {
         this.deleteImageInModifiedPost = true
       }

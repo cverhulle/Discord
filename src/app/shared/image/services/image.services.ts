@@ -1,8 +1,22 @@
 import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable()
 
 export class ImageService {
+
+    // Observable pour gérer l'image à envoyer dans le post.
+    private imageToSendSubject = new BehaviorSubject<File | null>(null)
+    imageToSend$ = this.imageToSendSubject.asObservable();
+
+    // Méthode pour modifier le statut de l'observable imageToSend.
+    setImageToSend(file : File | null): void {
+        this.imageToSendSubject.next(file)
+    }
+
+    getValueOfImageToSend(): File | null {
+        return this.imageToSendSubject.getValue()
+    }
 
     // Cette méthode permet de sauvegarder l'image, en argument, dans le backend.
     private uploadImage(image: File): void {
