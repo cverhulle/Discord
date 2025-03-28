@@ -4,14 +4,12 @@ import { Post } from "../models/post.model";
 import { BehaviorSubject, catchError, map, Observable, of} from "rxjs";
 import { environment } from "../../../../environments/environment.development";
 import { DisplayService } from "../../display/service/display.service";
-import { ImageService } from "../../image/services/image.services";
 
 @Injectable() 
 
 export class PostService{
     constructor(private http: HttpClient,
-                private displayService: DisplayService,
-                private imageService : ImageService){}
+                private displayService: DisplayService){}
 
     // Observable pour réagir lorsque l'utilisateur modifie un message.
     private editMessageSubject = new BehaviorSubject<Post | null>(null);
