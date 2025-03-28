@@ -19,6 +19,18 @@ export class ImageService {
         return this.imageToSendSubject.getValue()
     }
 
+    // Cette méthode reçoit en argument l'event du clic sur une image dans les dossiers du PC. Elle en retourne le fichier de l'image ou null.
+    getImageToSend(event: Event): File | null{
+        // On récupère l'élément "target" de l'event.
+        const target = event.target as HTMLInputElement
+        if(target.files) {
+        // On récupère l'image dans l'attribut files de target.
+            return target.files[0]
+        }
+        // On retourne null s'il n'y a pas d'image trouvée.
+        return null
+    }
+
     // Cette méthode permet de sauvegarder l'image, en argument, dans le backend.
     private uploadImage(image: File): void {
 
@@ -52,15 +64,5 @@ export class ImageService {
         };
     }
 
-    // Cette méthode reçoit en argument l'event du clic sur une image dans les dossiers du PC. Elle en retourne le fichier de l'image ou null.
-    getImageToSend(event: Event): File | null{
-        // On récupère l'élément "target" de l'event.
-        const target = event.target as HTMLInputElement
-        if(target.files) {
-        // On récupère l'image dans l'attribut files de target.
-            return target.files[0]
-        }
-        // On retourne null s'il n'y a pas d'image trouvée.
-        return null
-    }
+
 }
