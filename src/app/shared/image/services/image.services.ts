@@ -20,16 +20,15 @@ export class ImageService {
     }
 
     // Cette méthode reçoit en argument l'event du clic sur une image dans les dossiers du PC. Elle en retourne le fichier de l'image ou null.
-    getImageToSend(event: Event): void {
+    getImageToSend(event: Event): File | null{
         // On récupère l'élément "target" de l'event.
         const target = event.target as HTMLInputElement
         if(target.files) {
         // On récupère l'image dans l'attribut files de target.
-            this.setImageToSend(target.files[0])
+            return target.files[0]
         }
-        // En cas de soucis lors de la récupération, on laisse imageToSend à null.
-        this.setImageToSend(null)
-        
+        // On retourne null s'il n'y a pas d'image trouvée.
+        return null
     }
 
     // Cette méthode permet de sauvegarder l'image, en argument, dans le backend.
