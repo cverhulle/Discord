@@ -179,6 +179,7 @@ export class PrivateMessageChatComponent implements OnInit{
   // Méthode pour annuler la modification d'un message
   onNotModify() : void{
     this.postService.setEditMessage(null)
+    this.deleteImageInModifiedPost = false
   }
 
   // Méthode pour mettre à jour le contenu d'un post.
