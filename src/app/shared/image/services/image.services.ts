@@ -14,6 +14,7 @@ export class ImageService {
         this.imageToSendSubject.next(file)
     }
 
+    // Méthode pour récupérer la dernière valeur émise par le subject liée à l'image du post.
     getValueOfImageToSend(): File | null {
         return this.imageToSendSubject.getValue()
     }
