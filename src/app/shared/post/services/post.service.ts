@@ -23,7 +23,12 @@ export class PostService{
     // Observable pour gérer l'image à envoyer dans le post.
     private imageToSendSubject = new BehaviorSubject<File | null>(null)
     imageToSend$ = this.imageToSendSubject.asObservable();
-    
+
+    // Méthode pour modifier le statut de l'observable imageToSend.
+    setImageToSend(file : File | null): void {
+        this.imageToSendSubject.next(file)
+    }
+
 
     // Méthode pour créer le formData avec toutes les données pour l'envoi d'un post.
     createFormDataToSend(currentUserId : string, otherUserId : string, username: string, messageContent: string, image: string, imageToSend : any, postId? : string) : FormData {
