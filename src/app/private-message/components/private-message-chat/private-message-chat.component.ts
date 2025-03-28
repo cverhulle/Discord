@@ -180,6 +180,7 @@ export class PrivateMessageChatComponent implements OnInit{
   onNotModify() : void{
     this.postService.setEditMessage(null)
     this.deleteImageInModifiedPost = false
+    this.imageToSend = null
   }
 
   // Méthode pour mettre à jour le contenu d'un post.
