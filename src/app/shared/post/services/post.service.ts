@@ -29,6 +29,10 @@ export class PostService{
         this.imageToSendSubject.next(file)
     }
 
+    getValueOfImageToSend(): void {
+        this.imageToSendSubject.getValue()
+    }
+
 
     // Méthode pour créer le formData avec toutes les données pour l'envoi d'un post.
     createFormDataToSend(currentUserId : string, otherUserId : string, username: string, messageContent: string, image: string, imageToSend : any, postId? : string) : FormData {

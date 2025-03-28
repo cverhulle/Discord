@@ -73,7 +73,7 @@ export class PrivateMessageChatComponent implements OnInit{
   categoriesEmojisExcluded!: [string] 
 
   // Variable pour stocker l'image à envoyer
-  imageToSend : File | null = null;
+  imageToSend$ : Observable<File | null>;
 
   // Variable pour observer si l'mage dans un Post à modifier est supprimé
   deleteImageInModifiedPost : boolean = false
@@ -164,6 +164,9 @@ export class PrivateMessageChatComponent implements OnInit{
 
     // On initialise l'Observable pour afficher le selecteur d'émotes.
     this.showEmojisList$= this.emojisService.showEmojisList$
+
+    // On initialise l'Observable pour la gestion de l'image à envoyer.
+    this.imageToSend$ = this.postService.imageToSend$
   }
 
   // Méthode pour initialiser les catégories d'émojis à ne pas charger.
@@ -180,7 +183,7 @@ export class PrivateMessageChatComponent implements OnInit{
   onNotModify() : void{
     this.postService.setEditMessage(null)
     this.deleteImageInModifiedPost = false
-    this.imageToSend = null
+    this.postService.setImageToSend(null)
   }
 
   // Méthode pour mettre à jour le contenu d'un post.
