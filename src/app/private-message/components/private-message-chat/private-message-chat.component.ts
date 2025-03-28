@@ -73,7 +73,7 @@ export class PrivateMessageChatComponent implements OnInit{
   categoriesEmojisExcluded!: [string] 
 
   // Variable pour stocker l'image à envoyer
-  imageToSend$ : Observable<File | null>;
+  imageToSend : File | null = null;
 
   // Variable pour observer si l'mage dans un Post à modifier est supprimé
   deleteImageInModifiedPost : boolean = false
@@ -164,9 +164,6 @@ export class PrivateMessageChatComponent implements OnInit{
 
     // On initialise l'Observable pour afficher le selecteur d'émotes.
     this.showEmojisList$= this.emojisService.showEmojisList$
-
-    // On initialise l'Observable pour la gestion de l'image à envoyer.
-    this.imageToSend$ = this.postService.imageToSend$
   }
 
   // Méthode pour initialiser les catégories d'émojis à ne pas charger.
@@ -183,7 +180,7 @@ export class PrivateMessageChatComponent implements OnInit{
   onNotModify() : void{
     this.postService.setEditMessage(null)
     this.deleteImageInModifiedPost = false
-    this.postService.setImageToSend(null)
+    this.imageToSend = null
   }
 
   // Méthode pour mettre à jour le contenu d'un post.
@@ -193,12 +190,12 @@ export class PrivateMessageChatComponent implements OnInit{
       return;
     }
 
-    this.postService.updatePost(editedPost, this.messageContent, this.postService.getValueOfImageToSend(), this.deleteImageInModifiedPost).subscribe( (updatedPost) => {
+    this.postService.updatePost(editedPost, this.messageContent, this.imageToSend, this.deleteImageInModifiedPost).subscribe( (updatedPost) => {
       const messageIndex = this.chat.findIndex(post => post.postId === updatedPost.postId);
       this.chat[messageIndex] = updatedPost;
       this.postService.setEditMessage(null)
       this.deleteImageInModifiedPost = false
-      this.postService.setImageToSend(null)
+      this.imageToSend = null
     })
   }
 
@@ -221,11 +218,11 @@ export class PrivateMessageChatComponent implements OnInit{
         this.currentUser.username,
         this.messageContent,
         this.currentUser.image,
-        this.postService.getValueOfImageToSend()
+        this.imageToSend
       )
 
       // On envoie le post grâce au service et au FormData
-      this.postService.sendPost(formData, this.chat, this.postService.getValueOfImageToSend())
+      this.postService.sendPost(formData, this.chat, this.imageToSend)
           .subscribe((result) => {
             // Mis à jour des éléments
             this.chat = result.updatedChat;
@@ -293,7 +290,7 @@ export class PrivateMessageChatComponent implements OnInit{
 
     // Méthode pour retirer l'image dans le Post
     onRemoveImage(): void {
-      this.postService.setImageToSend(null)
+      this.imageToSend = null
       if(this.editedPost) {
         this.deleteImageInModifiedPost = true
       }
