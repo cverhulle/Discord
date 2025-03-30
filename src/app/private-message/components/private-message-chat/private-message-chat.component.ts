@@ -75,6 +75,9 @@ export class PrivateMessageChatComponent implements OnInit{
   // Observable pour gérer si une photo est supprimé dans le Post à modifier.
   deleteImageInModifiedPost$!: Observable<boolean>
 
+  // Variable pour stocker la conversion en URL de l'image à envoyer
+  imageToSendUrl: string | null = null
+
   constructor(private avatarService : AvatarService,
               private postService : PostService,
               private userService : UserService,
@@ -93,6 +96,17 @@ export class PrivateMessageChatComponent implements OnInit{
       this.initChat(this.otherUser.id)
       this.initObservable()
       this.initEmojis()
+      this.imageService.imageToSend$.subscribe(file => {
+            if (file) {
+                this.imageService.getDataUrl(file).then(url => {
+                    this.imageToSendUrl = url;
+                }).catch(err => {
+                    console.error('Erreur lors de la conversion du fichier :', err);
+                });
+            } else {
+                this.imageToSendUrl = null;
+            }
+        });
     }
     
     
