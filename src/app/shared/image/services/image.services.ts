@@ -44,6 +44,7 @@ export class ImageService {
         return this.deleteImageInModifiedPostSubject.getValue()
     }
 
+    // Subject et Observable pour gérer l'affichage de l'image à envoyer dans la prévisualition.
     private imageToSendUrlSubject = new BehaviorSubject<string | null>(null)
     imageToSendUrl$ = this.imageToSendUrlSubject.asObservable()
 
