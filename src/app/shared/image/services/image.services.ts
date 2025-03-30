@@ -28,9 +28,11 @@ export class ImageService {
             this.setImageToSend(target.files[0])
             
         }
-
-        
     }
+
+    // Subject et Observable pour gérer si l'image, dans un Post en cours de modification, est supprimé
+    private deleteImageInModifiedPostSubject = new BehaviorSubject<boolean>(false)
+    deleteImageInModifiedPost$ = this.deleteImageInModifiedPostSubject.asObservable()
 
     // Cette méthode permet de sauvegarder l'image, en argument, dans le backend.
     private uploadImage(image: File): void {
