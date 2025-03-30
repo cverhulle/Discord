@@ -34,6 +34,11 @@ export class ImageService {
     private deleteImageInModifiedPostSubject = new BehaviorSubject<boolean>(false)
     deleteImageInModifiedPost$ = this.deleteImageInModifiedPostSubject.asObservable()
 
+    // Méthode pour modifier l'état du subject deleteImageInModifiedPostsubject
+    setDeleteImageInModifiedPost(state : boolean): void {
+        this.deleteImageInModifiedPostSubject.next(state)
+    }
+
     // Cette méthode permet de sauvegarder l'image, en argument, dans le backend.
     private uploadImage(image: File): void {
 
