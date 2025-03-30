@@ -19,7 +19,7 @@ export class PostService{
     editMessage$ = this.editMessageSubject.asObservable();
 
     // Méthode pour modifier le statut de l'observable editMessage.
-    setEditMessage(post : Post | null): void {
+    setValueOfEditMessage(post : Post | null): void {
         this.editMessageSubject.next(post)
     }
 
@@ -169,7 +169,7 @@ export class PostService{
 
     // Méthode pour réinitialiser les variables liés à la modification d'un post.
     resetModifiedPostStuff(): void {
-        this.setEditMessage(null)
+        this.setValueOfEditMessage(null)
         this.imageService.setDeleteImageInModifiedPost(false)
         this.imageService.setImageToSend(null)
     }

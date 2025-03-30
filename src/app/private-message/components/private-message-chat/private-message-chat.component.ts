@@ -179,7 +179,7 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Méthode pour éditer un message.
   onEditMessage(post : Post) {
-    this.postService.setEditMessage(post)
+    this.postService.setValueOfEditMessage(post)
   }
 
   // Méthode pour annuler la modification d'un message
