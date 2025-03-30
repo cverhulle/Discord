@@ -12,7 +12,7 @@
     </div>
 
     <!-- Affichage en cas chat non vide, pas de chargement et, si on ne modifie pas un message-->
-    <div *ngIf="!chatIsEmpty && !loading && editedPost=== null">
+    <div *ngIf="!chatIsEmpty && !loading && (editMessage$ | async) === null">
         <!-- Bouton pour charger plus de messages -->
         <mat-card-actions class="button-previous-post">
             <button mat-flat-button (click)="onLoadMoreMessages()" [disabled]="loading" > Charger les messages précédents </button>
@@ -56,34 +56,35 @@
     </div>
 
     <!-- Affichage en cas chat vide, pas de chargement et, si l'on modifie un message-->
-    <div *ngIf="!loading && !chatIsEmpty && editedPost!== null">
+    <div *ngIf="!loading && !chatIsEmpty && (editMessage$ | async)  as editMessage">
         <p class="modify-post"> Vous modifiez le message suivant : </p>
+        <div *ngIf="editMessage !==null">
+            <!-- On affiche le post que l'on modifie -->
+            <mat-card *class="mat-card-post" [ngStyle]="{'background-color': getPostCardColor(editMessage.currentUserId)}">
 
-        <!-- On affiche le post que l'on modifie -->
-        <mat-card class="mat-card-post" [ngStyle]="{'background-color': getPostCardColor(editedPost.currentUserId)}">
+                <!-- Affichage de l'en-tête du post : nom de l'utilisateur, photo etc... -->
+                <div class="avatar-username-menu"> 
+                    <div class="avatar-username">
+                        <img [src]="getProfileImage(editMessage)" (error)="setImageError(editMessage)" alt="Avatar de {{editMessage.username}}" class="avatar">
+                        <mat-card-header> {{editMessage.username}} </mat-card-header>
+                    </div>
 
-            <!-- Affichage de l'en-tête du post : nom de l'utilisateur, photo etc... -->
-            <div class="avatar-username-menu"> 
-                <div class="avatar-username">
-                    <img [src]="getProfileImage(editedPost)" (error)="setImageError(editedPost)" alt="Avatar de {{editedPost.username}}" class="avatar">
-                    <mat-card-header> {{editedPost.username}} </mat-card-header>
+                </div>
+                
+                <!-- Affichage du contenu à modifier-->
+                <mat-card-content> {{editMessage.content}} </mat-card-content>
+
+                <!-- Affichage de l'image du message à modifier -->
+                <div class="post-image-container">
+                    <img *ngIf="editMessage.imageInChat" [src]="editMessage.imageInChat" alt="image du post" class="post-image">
                 </div>
 
-            </div>
-            
-            <!-- Affichage du contenu à modifier-->
-            <mat-card-content> {{editedPost.content}} </mat-card-content>
-
-            <!-- Affichage de l'image du message à modifier -->
-            <div class="post-image-container">
-                <img *ngIf="editedPost.imageInChat" [src]="editedPost.imageInChat" alt="image du post" class="post-image">
-            </div>
-
-            <!-- Affichage du timestamp du message à modifier -->
-            <mat-card-footer class="timestamp"> {{editedPost.timestamp | timeAgo }} </mat-card-footer>
-            
-            
-        </mat-card>
+                <!-- Affichage du timestamp du message à modifier -->
+                <mat-card-footer class="timestamp"> {{editMessage.timestamp | timeAgo }} </mat-card-footer>
+                
+                
+            </mat-card>
+        </div>
 
         <!-- On affiche un bouton pour revenir en arrière -->
         <mat-card-actions class="button-previous-post">
@@ -110,7 +111,7 @@
     <!-- Affichage de l'icone de selection d'images ou de suppression -->
     <ng-container matSuffix> 
         <!-- Affichage de l'icone de selection du message-->
-        <ng-container *ngIf="!(imageToSend$ | async) && (!editedPost?.imageInChat || (deleteImageInModifiedPost$ | async)) ; else deleteImageIcon">
+        <ng-container *ngIf="!(imageToSend$ | async) && (!(editMessage$ | async)?.imageInChat || (deleteImageInModifiedPost$ | async)) ; else deleteImageIcon">
             <mat-icon (click)="fileInput.click()">image</mat-icon>
             <input type="file" #fileInput accept=".jpg, .jpeg, .png" style="display: none;" (change)="onImageToSend($event)">
         </ng-container>
