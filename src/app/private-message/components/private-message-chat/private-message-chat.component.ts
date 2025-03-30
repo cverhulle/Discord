@@ -60,9 +60,6 @@ export class PrivateMessageChatComponent implements OnInit{
   // Variable pour vérifier si l'historique de discussion entre deux utilisateurs est vide ou non
   chatIsEmpty!: boolean
 
-  // Variable pour stocker le post à modifier
-  editedPost: Post | null = null
-
   // Observable pour réagir lorsque l'utilisateur modifie un message.
   editMessage$!: Observable<Post | null>;
 
@@ -153,10 +150,10 @@ export class PrivateMessageChatComponent implements OnInit{
     this.editMessage$.subscribe( (post) => {
       if (post) {
         this.displayService.displayMessage('Vous modifiez un message')
-        this.editedPost = post
+        this.postService.setValueOfEditMessage(post)
         this.messageContent = post.content
       } else {
-        this.editedPost = null
+        this.postService.setValueOfEditMessage(null)
         this.messageContent = ''
         this.scrollToBottom()
       }
@@ -206,9 +203,10 @@ export class PrivateMessageChatComponent implements OnInit{
     if (this.postService.messageValid(this.messageContent)) {
       this.loading = true
 
+      const postToEdit = this.postService.getValueOfEditMessageSubject();
       // Si l'on édite un post, on lance la méthode adaptée et on quitte la boucle.
-      if (this.editedPost) {
-        this.updateMessage(this.editedPost);
+      if (postToEdit !== null) {
+        this.updateMessage(postToEdit);
         this.loading = false;
         return;
       }
@@ -294,7 +292,7 @@ export class PrivateMessageChatComponent implements OnInit{
     // Méthode pour retirer l'image dans le Post
     onRemoveImage(): void {
       this.imageService.setImageToSend(null)
-      if(this.editedPost) {
+      if(this.postService.getValueOfEditMessageSubject()) {
         this.imageService.setDeleteImageInModifiedPost(true)
       }
     }
