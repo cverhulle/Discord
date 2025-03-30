@@ -44,6 +44,16 @@ export class ImageService {
         return this.deleteImageInModifiedPostSubject.getValue()
     }
 
+    // Méthode pour convertir l'image à envoyer sous la forme d'une URL en retournant une promesse.
+    getDataUrl(file: File): Promise<string> {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result as string);
+            reader.onerror = (error) => reject(error);
+            reader.readAsDataURL(file);
+        });
+    }
+
     // Cette méthode permet de sauvegarder l'image, en argument, dans le backend.
     private uploadImage(image: File): void {
 
