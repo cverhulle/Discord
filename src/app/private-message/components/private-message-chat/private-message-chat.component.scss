@@ -109,6 +109,21 @@ html, body{
 
 
 
+// Style pour gérer la prévisualition de l'image dans le post à envoyer
+.post-image-preview-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-image-preview{
+    max-width: 20vh;
+    max-height: 20vh;
+    width: auto;
+    height: auto;
+}
+
+
 
 
 
