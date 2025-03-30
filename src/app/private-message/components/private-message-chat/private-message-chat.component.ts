@@ -76,7 +76,7 @@ export class PrivateMessageChatComponent implements OnInit{
   imageToSend$! : Observable<File | null>;
 
   // Variable pour observer si l'mage dans un Post à modifier est supprimé
-  deleteImageInModifiedPost : boolean = false
+  deleteImageInModifiedPost!: boolean 
 
   constructor(private avatarService : AvatarService,
               private postService : PostService,
@@ -182,7 +182,7 @@ export class PrivateMessageChatComponent implements OnInit{
   // Méthode pour annuler la modification d'un message
   onNotModify() : void{
     this.postService.setEditMessage(null)
-    this.deleteImageInModifiedPost = false
+    this.imageService.setDeleteImageInModifiedPost(false)
     this.imageService.setImageToSend(null)
   }
 
@@ -193,11 +193,11 @@ export class PrivateMessageChatComponent implements OnInit{
       return;
     }
 
-    this.postService.updatePost(editedPost, this.messageContent, this.imageService.getValueOfImageToSend(), this.deleteImageInModifiedPost).subscribe( (updatedPost) => {
+    this.postService.updatePost(editedPost, this.messageContent, this.imageService.getValueOfImageToSend(), this.imageService.getValueOfDeleteImageInModifiedPost()).subscribe( (updatedPost) => {
       const messageIndex = this.chat.findIndex(post => post.postId === updatedPost.postId);
       this.chat[messageIndex] = updatedPost;
       this.postService.setEditMessage(null)
-      this.deleteImageInModifiedPost = false
+      this.imageService.setDeleteImageInModifiedPost(false)
       this.imageService.setImageToSend(null)
     })
   }
@@ -296,7 +296,7 @@ export class PrivateMessageChatComponent implements OnInit{
     onRemoveImage(): void {
       this.imageService.setImageToSend(null)
       if(this.editedPost) {
-        this.deleteImageInModifiedPost = true
+        this.imageService.setDeleteImageInModifiedPost(true)
       }
     }
 
