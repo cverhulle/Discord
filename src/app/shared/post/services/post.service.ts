@@ -236,8 +236,8 @@ export class PostService{
 
     
     // Méthode pour gérer la couleur des cartes de messages.
-    getPostCardColor(postId: string, currentUserId: string) : string {
-        if(postId === currentUserId) {
+    getPostCardColor(postCurrentUserId: string, currentUserId: string) : string {
+        if(postCurrentUserId === currentUserId) {
             return 'rgb(48, 92, 70)'
         } else {
             return  'rgb(97, 18, 97)'

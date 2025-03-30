@@ -316,8 +316,8 @@ export class PrivateMessageChatComponent implements OnInit{
     }
 
     // Récupérer la couleur de la mat-card
-    getPostCardColor(postId: string) : string {
-      return this.postService.getPostCardColor(postId, this.currentUser.id)
+    getPostCardColor(postCurrentUserId: string) : string {
+      return this.postService.getPostCardColor(postCurrentUserId, this.currentUser.id)
     }
 
 
