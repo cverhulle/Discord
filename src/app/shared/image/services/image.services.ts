@@ -12,6 +12,7 @@ export class ImageService {
     // Méthode pour modifier le statut de l'observable imageToSend.
     setImageToSend(file : File | null): void {
         this.imageToSendSubject.next(file)
+        this.setValueOfImageToSendUrl()
     }
 
     // Méthode pour récupérer la dernière valeur émise par le subject liée à l'image du post.
@@ -76,7 +77,7 @@ export class ImageService {
         }
     }
 
-    
+
 
     // Cette méthode permet de sauvegarder l'image, en argument, dans le backend.
     private uploadImage(image: File): void {
