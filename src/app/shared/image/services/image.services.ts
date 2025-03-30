@@ -26,7 +26,7 @@ export class ImageService {
         if(target.files) {
         // On récupère l'image dans l'attribut files de target.
             this.setImageToSend(target.files[0])
-            console.log(this.getValueOfImageToSend())
+            
         }
 
         
