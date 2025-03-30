@@ -76,7 +76,7 @@ export class PrivateMessageChatComponent implements OnInit{
   deleteImageInModifiedPost$!: Observable<boolean>
 
   // Variable pour stocker la conversion en URL de l'image à envoyer
-  imageToSendUrl: string | null = null
+  imageToSendUrl$!: Observable<string | null>
 
   constructor(private avatarService : AvatarService,
               private postService : PostService,
@@ -96,17 +96,6 @@ export class PrivateMessageChatComponent implements OnInit{
       this.initChat(this.otherUser.id)
       this.initObservable()
       this.initEmojis()
-      this.imageService.imageToSend$.subscribe(file => {
-            if (file) {
-                this.imageService.getDataUrl(file).then(url => {
-                    this.imageToSendUrl = url;
-                }).catch(err => {
-                    console.error('Erreur lors de la conversion du fichier :', err);
-                });
-            } else {
-                this.imageToSendUrl = null;
-            }
-        });
     }
     
     
@@ -179,6 +168,9 @@ export class PrivateMessageChatComponent implements OnInit{
 
     // On initialise l'Observable pour la suppression d'une image dans un Post à modifier
     this.deleteImageInModifiedPost$ = this.imageService.deleteImageInModifiedPost$
+
+    // On initialise l'Observable pour la prévisualisation de l'image à envoyer.
+    this.imageToSendUrl$ = this.imageService.imageToSendUrl$
   }
 
   // Méthode pour initialiser les catégories d'émojis à ne pas charger.

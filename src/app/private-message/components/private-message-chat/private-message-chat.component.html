@@ -99,9 +99,9 @@
 
 
 <!-- Apercu de l'image que l'on souhaite envoyer. -->
-<mat-card *ngIf="imageToSendUrl" class="mat-card-image-preview">
+<mat-card *ngIf="(imageToSendUrl$ |async)" class="mat-card-image-preview">
     <mat-card-content> Prévisualisation de l'image à envoyer : </mat-card-content>
-    <img [src]="imageToSendUrl" alt="Aperçu de l'image" class="post-image-preview">
+    <img [src]="(imageToSendUrl$ |async)" alt="Aperçu de l'image" class="post-image-preview">
 </mat-card>
 
 <!-- Barre d'envoi de messages -->
