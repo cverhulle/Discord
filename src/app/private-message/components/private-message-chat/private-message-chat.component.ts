@@ -150,10 +150,8 @@ export class PrivateMessageChatComponent implements OnInit{
     this.editMessage$.subscribe( (post) => {
       if (post) {
         this.displayService.displayMessage('Vous modifiez un message')
-        this.postService.setValueOfEditMessage(post)
         this.messageContent = post.content
       } else {
-        this.postService.setValueOfEditMessage(null)
         this.messageContent = ''
         this.scrollToBottom()
       }
