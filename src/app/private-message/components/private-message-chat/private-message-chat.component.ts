@@ -184,9 +184,7 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Méthode pour annuler la modification d'un message
   onNotModify() : void{
-    this.postService.setEditMessage(null)
-    this.imageService.setDeleteImageInModifiedPost(false)
-    this.imageService.setImageToSend(null)
+    this.postService.resetModifiedPostStuff()
   }
 
   // Méthode pour mettre à jour le contenu d'un post.
@@ -199,9 +197,7 @@ export class PrivateMessageChatComponent implements OnInit{
     this.postService.updatePost(editedPost, this.messageContent, this.imageService.getValueOfImageToSend(), this.imageService.getValueOfDeleteImageInModifiedPost()).subscribe( (updatedPost) => {
       const messageIndex = this.chat.findIndex(post => post.postId === updatedPost.postId);
       this.chat[messageIndex] = updatedPost;
-      this.postService.setEditMessage(null)
-      this.imageService.setDeleteImageInModifiedPost(false)
-      this.imageService.setImageToSend(null)
+      this.postService.resetModifiedPostStuff()
     })
   }
 
