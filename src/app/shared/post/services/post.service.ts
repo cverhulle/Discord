@@ -149,7 +149,7 @@ export class PostService{
 
     // Méthode pour modifier un message
     updatePost(editedPost : Post, newContent : string, newImage : File | null, deleteCurrentImage : boolean): Observable<Post>{
-        if (!newImage && !deleteCurrentImage) {
+        if (!newImage && !deleteCurrentImage && (this.getValueOfEditMessageSubject()?.content === newContent)) {
             return of(editedPost)
         }
         
