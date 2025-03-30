@@ -44,6 +44,9 @@ export class ImageService {
         return this.deleteImageInModifiedPostSubject.getValue()
     }
 
+    private imageToSendUrlSubject = new BehaviorSubject<string | null>(null)
+    imageToSendUrl$ = this.imageToSendUrlSubject.asObservable()
+
     // Méthode pour convertir l'image à envoyer sous la forme d'une URL en retournant une promesse.
     getDataUrl(file: File): Promise<string> {
         return new Promise((resolve, reject) => {
