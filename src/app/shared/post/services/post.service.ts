@@ -163,7 +163,11 @@ export class PostService{
     }
 
     // Méthode pour réinitialiser les variables liés à la modification d'un post.
-
+    resetModifiedPostStuff(): void {
+        this.setEditMessage(null)
+        this.imageService.setDeleteImageInModifiedPost(false)
+        this.imageService.setImageToSend(null)
+    }
 
     // Méthode pour récupérer tous les posts entre l'utilisateur actuel et celui avec lequel il communique (à partir de son id).
     getAllPosts(otherUserId: string): Observable<Post[]> {
