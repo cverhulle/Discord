@@ -39,6 +39,11 @@ export class ImageService {
         this.deleteImageInModifiedPostSubject.next(state)
     }
 
+    // Méthode pour récupérer la valeur de deleteImageInModifiedPostSubject
+    getValueOfDeleteImageInModifiedPost(): boolean {
+        return this.deleteImageInModifiedPostSubject.getValue()
+    }
+
     // Cette méthode permet de sauvegarder l'image, en argument, dans le backend.
     private uploadImage(image: File): void {
 
