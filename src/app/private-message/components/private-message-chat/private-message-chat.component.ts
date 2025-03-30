@@ -66,17 +66,17 @@ export class PrivateMessageChatComponent implements OnInit{
   // Observable pour réagir lorsque l'utilisateur modifie un message.
   editMessage$!: Observable<Post | null>;
 
-  // Observable pour gérer l'affichage du selecteur d'émotes
+  // Observable pour gérer l'affichage du selecteur d'émotes.
   showEmojisList$!: Observable<boolean>
 
-  // Variable pour stocker les catégories d'émojis à ne pas charger
+  // Variable pour stocker les catégories d'émojis à ne pas charger.
   categoriesEmojisExcluded!: [string] 
 
-  // Variable pour stocker l'image à envoyer
+  // Observable pour gérer l'image à envoyer dans le Post.
   imageToSend$! : Observable<File | null>;
 
-  // Variable pour observer si l'mage dans un Post à modifier est supprimé
-  deleteImageInModifiedPost!: boolean 
+  // Observable pour gérer si une photo est supprimé dans le Post à modifier.
+  deleteImageInModifiedPost$!: Observable<boolean>
 
   constructor(private avatarService : AvatarService,
               private postService : PostService,
@@ -167,6 +167,9 @@ export class PrivateMessageChatComponent implements OnInit{
 
     // On initialise l'Observable pour l'envoi d'image
     this.imageToSend$ = this.imageService.imageToSend$
+
+    // On initialise l'Observable pour la suppression d'une image dans un Post à modifier
+    this.deleteImageInModifiedPost$ = this.imageService.deleteImageInModifiedPost$
   }
 
   // Méthode pour initialiser les catégories d'émojis à ne pas charger.

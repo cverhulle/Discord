@@ -110,7 +110,7 @@
     <!-- Affichage de l'icone de selection d'images ou de suppression -->
     <ng-container matSuffix> 
         <!-- Affichage de l'icone de selection du message-->
-        <ng-container *ngIf="!(imageToSend$ | async) && (!editedPost?.imageInChat || deleteImageInModifiedPost) ; else deleteImageIcon">
+        <ng-container *ngIf="!(imageToSend$ | async) && (!editedPost?.imageInChat || (deleteImageInModifiedPost$ | async)) ; else deleteImageIcon">
             <mat-icon (click)="fileInput.click()">image</mat-icon>
             <input type="file" #fileInput accept=".jpg, .jpeg, .png" style="display: none;" (change)="onImageToSend($event)">
         </ng-container>
