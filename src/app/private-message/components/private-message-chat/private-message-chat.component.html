@@ -97,6 +97,12 @@
     
 </div>
 
+
+<!-- Apercu de l'image que l'on souhaite envoyer. -->
+<div *ngIf="imageToSendUrl">
+    <img [src]="imageToSendUrl" alt="Aperçu de l'image" class="image-preview">
+</div>
+
 <!-- Barre d'envoi de messages -->
 <mat-form-field appearance="fill" class="send-message">
     <mat-label> Mon message </mat-label>
