@@ -28,6 +28,14 @@ export class PostService{
         return this.editMessageSubject.getValue()
     }
 
+    // Méthode pour retirer une image dans un post
+    removeImageInPost(): void { 
+        this.imageService.setImageToSend(null)
+        if(this.getValueOfEditMessageSubject()) {
+            this.imageService.setDeleteImageInModifiedPost(true)
+        }
+    }
+
     // Méthode pour créer le formData avec toutes les données pour l'envoi d'un post.
     createFormDataToSend(currentUserId : string, otherUserId : string, username: string, messageContent: string, image: string, imageToSend : any, postId? : string) : FormData {
         const formData = new FormData();
