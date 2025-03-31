@@ -218,8 +218,10 @@ export class PostService{
     initChat(otherUserId: string): Observable<{updatedChat: Post[]}> {
         return this.getPreviousPosts(otherUserId,0).pipe(
             map( (posts) => {
-                this.setIsChatEmpty(false)
                 const updatedChat = posts;
+                if (updatedChat.length > 0) {
+                    this.setIsChatEmpty(false)
+                }
                 return ({updatedChat})
             }),
             catchError( () => {
