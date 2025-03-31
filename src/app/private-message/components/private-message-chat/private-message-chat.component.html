@@ -7,12 +7,12 @@
     <mat-spinner *ngIf="loading"> </mat-spinner>
     
     <!-- Affichage en cas chat vide  et pas de chargement -->
-    <div *ngIf="chatIsEmpty && !loading" class="empty-chat">
+    <div *ngIf="(isChatEmpty$ | async)" class="empty-chat">
         <p> Vous n'avez pas encore échangé de messages avec {{otherUser.username}}. </p>
     </div>
 
     <!-- Affichage en cas chat non vide, pas de chargement et, si on ne modifie pas un message-->
-    <div *ngIf="!chatIsEmpty && !loading && (editMessage$ | async) === null">
+    <div *ngIf="!(isChatEmpty$ | async) && !loading && (editMessage$ | async) === null">
         <!-- Bouton pour charger plus de messages -->
         <mat-card-actions class="button-previous-post">
             <button mat-flat-button (click)="onLoadMoreMessages()" [disabled]="loading" > Charger les messages précédents </button>
@@ -55,8 +55,8 @@
         
     </div>
 
-    <!-- Affichage en cas chat vide, pas de chargement et, si l'on modifie un message-->
-    <div *ngIf="!loading && !chatIsEmpty && (editMessage$ | async)  as editMessage">
+    <!-- Affichage en cas de chat non vide, pas de chargement et, si l'on modifie un message-->
+    <div *ngIf="!loading && !(isChatEmpty$ | async) && (editMessage$ | async)  as editMessage">
 
         <div class="modify-post-header">
             <p class="modify-post"> Vous modifiez le message suivant : </p>
