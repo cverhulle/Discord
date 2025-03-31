@@ -248,6 +248,9 @@ export class PostService{
             map( () => {
                 const updatedChat = chat.filter( post => post.postId !== postId)
                 this.displayService.displayMessage('Message supprimé avec succès.')
+                if (updatedChat.length === 0) {
+                    this.setIsChatEmpty(true)
+                }
                 return updatedChat
         }),
             catchError( () => {
