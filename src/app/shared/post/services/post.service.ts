@@ -16,6 +16,10 @@ export class PostService{
                 private imageService : ImageService,
                 private emojiService : EmojisService){}
 
+    // Observable et Subject pour gérer le chargement
+    private loadingSubject = new BehaviorSubject<boolean>(false)
+    loading$ = this.loadingSubject.asObservable()
+
     // Observable pour réagir lorsque l'utilisateur modifie un message.
     private editMessageSubject = new BehaviorSubject<Post | null>(null);
     editMessage$ = this.editMessageSubject.asObservable();
