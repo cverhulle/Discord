@@ -77,6 +77,10 @@ export class ImageService {
         }
     }
 
+    // Subject et Observable pour gérer l'opacité du bandeau de prévisualisation de l'image
+    private opacitySubject = new BehaviorSubject<number>(1)
+    opacity$ = this.opacitySubject.asObservable()
+
 
 
     // Cette méthode permet de sauvegarder l'image, en argument, dans le backend.
