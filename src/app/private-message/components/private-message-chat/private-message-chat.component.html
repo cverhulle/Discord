@@ -99,7 +99,7 @@
 
 
 <!-- Apercu de l'image que l'on souhaite envoyer. -->
-<mat-card *ngIf="(imageToSendUrl$ |async)" class="mat-card-image-preview" [ngStyle]="{'opacity': opacity}">
+<mat-card *ngIf="(imageToSendUrl$ |async)" class="mat-card-image-preview" [ngStyle]="{'opacity': 1}">
     <mat-card-content> Prévisualisation de l'image à envoyer : </mat-card-content>
     <img [src]="(imageToSendUrl$ |async)" alt="Aperçu de l'image" class="post-image-preview">
     <mat-icon (click)="onSetOpacity()"> opacity </mat-icon>

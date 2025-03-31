@@ -273,9 +273,14 @@ export class PrivateMessageChatComponent implements OnInit{
         this.scrollToBottom()
       }
     )
-
-
   }
+
+  // Méthode pour gérer l'opacité du bandeau de prévisualisation
+  onSetOpacity(): void{
+    
+  }
+
+
 
     // Méthode pour ouvrir la roue d'émoticones
     onOpenEmojisList() : void{
