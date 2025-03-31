@@ -8,6 +8,7 @@ import { NgFor } from '@angular/common';
 import { Router } from '@angular/router';
 import { AvatarService } from '../../../shared/avatar/service/avatar.service';
 import { DisplayService } from '../../../shared/display/service/display.service';
+import { PostService } from '../../../shared/post/services/post.service';
 
 @Component({
   selector: 'app-private-message-homepage',
@@ -32,11 +33,11 @@ export class PrivateMessageHomepageComponent implements OnInit{
   private searchSubject: Subject<string> = new Subject();
 
 
-  constructor(
-    private privateMessage : PrivateMessageService,
-    private router: Router,
-    private avatarService: AvatarService,
-    private displayService : DisplayService) {}
+  constructor(private privateMessage : PrivateMessageService,
+              private router: Router,
+              private avatarService: AvatarService,
+              private displayService : DisplayService,
+              private postService: PostService) {}
 
   ngOnInit(): void {
     this.initSubjectQuery()
