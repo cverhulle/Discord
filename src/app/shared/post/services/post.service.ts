@@ -180,6 +180,7 @@ export class PostService{
         this.setValueOfEditMessage(null)
         this.imageService.setDeleteImageInModifiedPost(false)
         this.imageService.setImageToSend(null)
+        this.imageService.resetValueOfOpacity()
     }
 
     // Méthode pour récupérer tous les posts entre l'utilisateur actuel et celui avec lequel il communique (à partir de son id).

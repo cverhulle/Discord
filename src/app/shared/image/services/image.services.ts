@@ -88,6 +88,11 @@ export class ImageService {
         this.opacityPreviewSubject.next(newOpacity)
     }
 
+    // Méthode pour remettre l'opacité par défaut (donc à 1).
+    resetValueOfOpacity(): void {
+        this.opacityPreviewSubject.next(1)
+    }
+
 
 
     // Cette méthode permet de sauvegarder l'image, en argument, dans le backend.
