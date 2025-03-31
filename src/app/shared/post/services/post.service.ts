@@ -103,11 +103,6 @@ export class PostService{
         return ''
     }
     
-    // Méthode pour vérifier si le chat est vide ou non
-    IsChatEmpty(chat: Post[]): boolean {
-        return chat.length === 0
-    }
-
     // Méthode pour remettre l'image par défaut dans un Post à null
     resetImageToSend(): null {
         return null
