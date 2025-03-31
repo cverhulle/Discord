@@ -288,55 +288,50 @@ export class PrivateMessageChatComponent implements OnInit{
 
 
 
-    // Méthode pour ouvrir la roue d'émoticones
-    onOpenEmojisList() : void{
-      this.emojisService.openEmojisList()
-    }
-    
-    // Méthode pour ajouter l'émote dans le message de l'utilisateur.
-    onEmojiClick(event: any): void {
-      this.messageContent = this.emojisService.addEmojisToMessage(event, this.messageContent)
-    }
-
-    
-    // Méthode à déclencher au clic sur une image. 
-    onImageToSend(event : Event): void {
-      this.imageService.getImageToSend(event)      
-    }
-
-    // Méthode pour retirer l'image dans le Post
-    onRemoveImage(): void {
-      this.postService.removeImageInPost()
-    }
-
+  // Méthode pour ouvrir la roue d'émoticones
+  onOpenEmojisList() : void{
+    this.emojisService.openEmojisList()
+  }
+  
+  // Méthode pour ajouter l'émote dans le message de l'utilisateur.
+  onEmojiClick(event: any): void {
+    this.messageContent = this.emojisService.addEmojisToMessage(event, this.messageContent)
+  }
 
   
+  // Méthode à déclencher au clic sur une image. 
+  onImageToSend(event : Event): void {
+    this.imageService.getImageToSend(event)      
+  }
 
-    // Scroll de l'écran après l'envoi d'un nouveau message.
-    private scrollToBottom(): void {
-      setTimeout(() => {
-        this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
-      }, 200);
-    }
-
-    // Si l'image ne peut pas être chargée, on modifie l'Url du profil par l'Url par défaut.
-    getProfileImage(post: Post): string {
-      return this.avatarService.getProfileImage(post.image, post.username)
-    }
-
-    // Met l'imageError du service à true pour l'utilisateur.
-    setImageError(post: Post): void {
-      this.avatarService.updateImageError(post.username, true)
-    }
-
-    // Récupérer la couleur de la mat-card
-    getPostCardColor(postCurrentUserId: string) : string {
-      return this.postService.getPostCardColor(postCurrentUserId, this.currentUser.id)
-    }
+  // Méthode pour retirer l'image dans le Post
+  onRemoveImage(): void {
+    this.postService.removeImageInPost()
+  }
 
 
 
 
+  // Scroll de l'écran après l'envoi d'un nouveau message.
+  private scrollToBottom(): void {
+    setTimeout(() => {
+      this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
+    }, 200);
+  }
 
+  // Si l'image ne peut pas être chargée, on modifie l'Url du profil par l'Url par défaut.
+  getProfileImage(post: Post): string {
+    return this.avatarService.getProfileImage(post.image, post.username)
+  }
+
+  // Met l'imageError du service à true pour l'utilisateur.
+  setImageError(post: Post): void {
+    this.avatarService.updateImageError(post.username, true)
+  }
+
+  // Récupérer la couleur de la mat-card
+  getPostCardColor(postCurrentUserId: string) : string {
+    return this.postService.getPostCardColor(postCurrentUserId, this.currentUser.id)
+  }
 
 }
