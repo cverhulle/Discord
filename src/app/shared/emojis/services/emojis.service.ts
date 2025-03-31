@@ -30,6 +30,11 @@ export class EmojisService{
         this.showEmojisListSubject.next(!showEmojisList)
     }
 
+    // Méthode pour remettre l'affichage des émojis par défaut (donc à false)
+    resetEmojisDisplay(): void{
+        this.showEmojisListSubject.next(false)
+    }
+
 
 
 }
