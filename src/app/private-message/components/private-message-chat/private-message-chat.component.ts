@@ -75,10 +75,11 @@ export class PrivateMessageChatComponent implements OnInit{
   // Observable pour gérer si une photo est supprimé dans le Post à modifier.
   deleteImageInModifiedPost$!: Observable<boolean>
 
-  // Variable pour stocker la conversion en URL de l'image à envoyer
+  // Observable pour stocker la conversion en URL de l'image à envoyer
   imageToSendUrl$!: Observable<string | null>
 
   // Observable pour gérer l'opacité du bandeau de prévisualisation
+  opacityPreview$!: Observable<number>
 
   constructor(private avatarService : AvatarService,
               private postService : PostService,
@@ -173,6 +174,9 @@ export class PrivateMessageChatComponent implements OnInit{
 
     // On initialise l'Observable pour la prévisualisation de l'image à envoyer.
     this.imageToSendUrl$ = this.imageService.imageToSendUrl$
+
+    // On initialise l'Observable pour gérer l'opacité du bandeau de prévisualisation
+    this.opacityPreview$ = this.imageService.opacityPreview$
   }
 
   // Méthode pour initialiser les catégories d'émojis à ne pas charger.
