@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Post } from "../models/post.model";
-import { BehaviorSubject, catchError, map, Observable, of} from "rxjs";
+import { BehaviorSubject, catchError, map, Observable, of, Subject} from "rxjs";
 import { environment } from "../../../../environments/environment.development";
 import { DisplayService } from "../../display/service/display.service";
 import { ImageService } from "../../image/services/image.services";
@@ -42,6 +42,10 @@ export class PostService{
             this.imageService.setDeleteImageInModifiedPost(true)
         }
     }
+
+    // Subject et Observable pour gérer si le chat est vide ou non
+    private isChatEmptySubject = new Subject
+    isChatEmpty$ = this.isChatEmptySubject.asObservable()
 
     // Méthode pour créer le formData avec toutes les données pour l'envoi d'un post.
     createFormDataToSend(currentUserId : string, otherUserId : string, username: string, messageContent: string, image: string, imageToSend : any, postId? : string) : FormData {
