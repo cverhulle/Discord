@@ -78,14 +78,14 @@ export class ImageService {
     }
 
     // Subject et Observable pour gérer l'opacité du bandeau de prévisualisation de l'image
-    private opacitySubject = new BehaviorSubject<number>(1)
-    opacity$ = this.opacitySubject.asObservable()
+    private opacityPreviewSubject = new BehaviorSubject<number>(1)
+    opacityPreview$ = this.opacityPreviewSubject.asObservable()
 
     // Méthode pour modifier l'opacité du bandeau
     setValueOfOpacity(): void {
-        const currentOpacity = this.opacitySubject.getValue()
+        const currentOpacity = this.opacityPreviewSubject.getValue()
         const newOpacity = currentOpacity === 1 ? 0.5 : 1
-        this.opacitySubject.next(newOpacity)
+        this.opacityPreviewSubject.next(newOpacity)
     }
 
 

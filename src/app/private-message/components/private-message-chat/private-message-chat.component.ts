@@ -78,6 +78,8 @@ export class PrivateMessageChatComponent implements OnInit{
   // Variable pour stocker la conversion en URL de l'image à envoyer
   imageToSendUrl$!: Observable<string | null>
 
+  // Observable pour gérer l'opacité du bandeau de prévisualisation
+
   constructor(private avatarService : AvatarService,
               private postService : PostService,
               private userService : UserService,
@@ -277,7 +279,7 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Méthode pour gérer l'opacité du bandeau de prévisualisation
   onSetOpacity(): void{
-    
+
   }
 
 
