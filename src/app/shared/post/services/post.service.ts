@@ -181,15 +181,6 @@ export class PostService{
         )
     }
 
-    // Méthode pour réinitialiser les variables liés à la modification d'un post.
-    resetModifiedPostStuff(): void {
-        this.setValueOfEditMessage(null)
-        this.imageService.setDeleteImageInModifiedPost(false)
-        this.imageService.setImageToSend(null)
-        this.imageService.resetValueOfOpacity()
-        this.emojiService.resetEmojisDisplay()
-    }
-
     // Méthode pour récupérer tous les posts entre l'utilisateur actuel et celui avec lequel il communique (à partir de son id).
     getAllPosts(otherUserId: string): Observable<Post[]> {
         return this.http.get<Post[]>(`${environment.apiUrl}/private-message/getPosts`, {
@@ -265,6 +256,20 @@ export class PostService{
         
         // trim supprime les espaces au début et à la fin de message.
         return message.trim().length > 0 && message.length <= maxLenght;
+    }
+
+    // Méthode pour réinitialiser les variables liés à la modification d'un post.
+    resetModifiedPostStuff(): void {
+        this.setValueOfEditMessage(null)
+        this.imageService.setDeleteImageInModifiedPost(false)
+        this.imageService.setImageToSend(null)
+        this.resetStuffAfterChangingScreen()
+    }
+
+    // Méthode pour réinitialiser l'opacité du bandeau, l'affichage des émojis 
+    resetStuffAfterChangingScreen(): void{
+        this.imageService.resetValueOfOpacity()
+        this.emojiService.resetEmojisDisplay()
     }
 
 
