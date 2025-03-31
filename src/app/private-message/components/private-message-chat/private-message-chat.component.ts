@@ -235,7 +235,6 @@ export class PrivateMessageChatComponent implements OnInit{
             this.chat = result.updatedChat;
             this.chatIsEmpty = result.updatedChatIsEmpty;
             this.messageContent = result.updatedMessageContent;
-            this.imageService.setImageToSend(result.updatedImageToSend);
             this.loading = false;
             this.scrollToBottom();
         });

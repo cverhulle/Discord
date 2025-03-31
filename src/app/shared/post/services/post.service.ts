@@ -101,12 +101,11 @@ export class PostService{
 
     // Méthode à appeler lors du succès de l'envoi du Post.
     // Cette méthode retourne le chat, le booléan pour savoir si le chat est vide, le nouveau contenu du formulaire et l'image dans le Post à jour.
-    sendPostSuccess(message : Post, chat: Post[]): {updatedChat: Post[], updatedChatIsEmpty : boolean, updatedMessageContent : string, updatedImageToSend: null} {
+    sendPostSuccess(message : Post, chat: Post[]): {updatedChat: Post[], updatedChatIsEmpty : boolean, updatedMessageContent : string} {
         const updatedChat = this.addPostToChat(message, chat);
         const updatedChatIsEmpty = this.IsChatEmpty(updatedChat);
         const updatedMessageContent = this.resetString();
-        const updatedImageToSend = this.resetImageToSend()
-        return {updatedChat, updatedChatIsEmpty, updatedMessageContent, updatedImageToSend}
+        return {updatedChat, updatedChatIsEmpty, updatedMessageContent}
     }
 
     // Méthode à appeler lorsque l'envoi du post a échoué.
@@ -115,7 +114,7 @@ export class PostService{
     }
 
     // Méthode pour envoyer un post et l'enregistrer sur le serveur.
-    sendPost(formData: FormData, chat: Post[], currentImageToSend : any): Observable<{ updatedChat: Post[], updatedChatIsEmpty: boolean, updatedMessageContent: string, updatedImageToSend: null }> {
+    sendPost(formData: FormData, chat: Post[], currentImageToSend : any): Observable<{ updatedChat: Post[], updatedChatIsEmpty: boolean, updatedMessageContent: string}> {
         return this.http.post<{ message: string, postId: string, imageInChat?: string }>(`${environment.apiUrl}/private-message/send-message`, formData).pipe(
             map(response => {
                 const postId = response.postId;
@@ -128,18 +127,21 @@ export class PostService{
 
                     // On construit le Post dans le front-End pour l'afficher 
                     const message = this.createPostAfterSending(formData, imageInChat)
+
+                    // On remet à zéro les variables
+                    this.resetOpacityEmojisDisplayAndImageToSend(true)
                     
                     // Appelle la méthode pour mettre à jour l'affichage du chat
                     return this.sendPostSuccess(message, chat);
 
                 } else {
                     this.sendPostError();
-                    return { updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: formData.get('content') as string, updatedImageToSend: currentImageToSend };
+                    return { updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: formData.get('content') as string };
                 }
             }),
             catchError(() => {
                 this.sendPostError();
-                return of({ updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: formData.get('content') as string, updatedImageToSend: currentImageToSend });
+                return of({ updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: formData.get('content') as string});
             })
         );
     }
