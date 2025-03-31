@@ -24,6 +24,7 @@ export class PostService{
     setValueOfEditMessage(post : Post | null): void {
         this.editMessageSubject.next(post)
         if (post) {
+            this.resetStuffAfterChangingScreen()
             this.displayService.displayMessage('Vous modifiez un message')
             this.imageService.setValueOfImageToSendUrlWithPath(post.imageInChat)
         } 
