@@ -47,6 +47,16 @@ export class PostService{
     private isChatEmptySubject = new BehaviorSubject<boolean>(true)
     isChatEmpty$ = this.isChatEmptySubject.asObservable()
 
+    // Méthode pour gérer l'état de isChatEmptySubject
+    setIsChatEmpty(state: boolean): void{
+        this.isChatEmptySubject.next(state)
+    }
+
+    // Méthode pour récuperer la valeur de isChatEmptySubject
+    getValueOfIsChatEmpty(): boolean{
+        return this.isChatEmptySubject.getValue()
+    }
+
     // Méthode pour créer le formData avec toutes les données pour l'envoi d'un post.
     createFormDataToSend(currentUserId : string, otherUserId : string, username: string, messageContent: string, image: string, imageToSend : any, postId? : string) : FormData {
         const formData = new FormData();
