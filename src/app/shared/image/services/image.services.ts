@@ -81,6 +81,13 @@ export class ImageService {
     private opacitySubject = new BehaviorSubject<number>(1)
     opacity$ = this.opacitySubject.asObservable()
 
+    // Méthode pour modifier l'opacité du bandeau
+    setValueOfOpacity(): void {
+        const currentOpacity = this.opacitySubject.getValue()
+        const newOpacity = currentOpacity === 1 ? 0.5 : 1
+        this.opacitySubject.next(newOpacity)
+    }
+
 
 
     // Cette méthode permet de sauvegarder l'image, en argument, dans le backend.
