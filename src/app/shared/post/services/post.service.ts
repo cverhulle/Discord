@@ -115,11 +115,10 @@ export class PostService{
 
     // Méthode à appeler lors du succès de l'envoi du Post.
     // Cette méthode retourne le chat, le booléan pour savoir si le chat est vide, le nouveau contenu du formulaire et l'image dans le Post à jour.
-    sendPostSuccess(message : Post, chat: Post[]): {updatedChat: Post[], updatedChatIsEmpty : boolean, updatedMessageContent : string} {
+    sendPostSuccess(message : Post, chat: Post[]): {updatedChat: Post[], updatedMessageContent : string} {
         const updatedChat = this.addPostToChat(message, chat);
-        const updatedChatIsEmpty = this.IsChatEmpty(updatedChat);
         const updatedMessageContent = this.resetString();
-        return {updatedChat, updatedChatIsEmpty, updatedMessageContent}
+        return {updatedChat, updatedMessageContent}
     }
 
     // Méthode à appeler lorsque l'envoi du post a échoué.
@@ -128,7 +127,7 @@ export class PostService{
     }
 
     // Méthode pour envoyer un post et l'enregistrer sur le serveur.
-    sendPost(formData: FormData, chat: Post[], currentImageToSend : any): Observable<{ updatedChat: Post[], updatedChatIsEmpty: boolean, updatedMessageContent: string}> {
+    sendPost(formData: FormData, chat: Post[], currentImageToSend : any): Observable<{ updatedChat: Post[], updatedMessageContent: string}> {
         return this.http.post<{ message: string, postId: string, imageInChat?: string }>(`${environment.apiUrl}/private-message/send-message`, formData).pipe(
             map(response => {
                 const postId = response.postId;
@@ -144,18 +143,21 @@ export class PostService{
 
                     // On remet à zéro les variables
                     this.resetOpacityEmojisDisplayAndImageToSend(true)
+
+                    // On émet que le chat n'est pas vide
+                    this.setIsChatEmpty(false)
                     
                     // Appelle la méthode pour mettre à jour l'affichage du chat
                     return this.sendPostSuccess(message, chat);
 
                 } else {
                     this.sendPostError();
-                    return { updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: formData.get('content') as string };
+                    return { updatedChat: chat, updatedMessageContent: formData.get('content') as string };
                 }
             }),
             catchError(() => {
                 this.sendPostError();
-                return of({ updatedChat: chat, updatedChatIsEmpty: this.IsChatEmpty(chat), updatedMessageContent: formData.get('content') as string});
+                return of({ updatedChat: chat, updatedMessageContent: formData.get('content') as string});
             })
         );
     }
@@ -213,16 +215,16 @@ export class PostService{
     }
 
     // Méthode pour initialiser le chat en connaissant l'userId de l'autre utilisateur (10 messages cf backend pour changer).
-    initChat(otherUserId: string): Observable<{updatedChat: Post[], updatedChatIsEmpty: boolean}> {
+    initChat(otherUserId: string): Observable<{updatedChat: Post[]}> {
         return this.getPreviousPosts(otherUserId,0).pipe(
             map( (posts) => {
-              const updatedChat = posts;
-              const updatedChatIsEmpty = this.IsChatEmpty(updatedChat)
-              return ({updatedChat, updatedChatIsEmpty})
+                this.setIsChatEmpty(false)
+                const updatedChat = posts;
+                return ({updatedChat})
             }),
             catchError( () => {
               this.displayService.displayMessage('Erreur lors du chargement de la discussion.')
-              return of({updatedChat: [], updatedChatIsEmpty: true})
+              return of({updatedChat: []})
             })
         )
     }
