@@ -58,7 +58,7 @@ export class PrivateMessageChatComponent implements OnInit{
   chat: Post[] = []
 
   // Variable pour vérifier si l'historique de discussion entre deux utilisateurs est vide ou non
-  chatIsEmpty!: boolean
+  isChatEmpty$!: Observable<boolean>
 
   // Observable pour réagir lorsque l'utilisateur modifie un message.
   editMessage$!: Observable<Post | null>;
@@ -141,7 +141,6 @@ export class PrivateMessageChatComponent implements OnInit{
     this.postService.initChat(otherUserId).subscribe(
       (result) => {
         this.chat = result.updatedChat
-        this.chatIsEmpty = result.updatedChatIsEmpty
         this.loading = false
         this.scrollToBottom()
       }
@@ -173,6 +172,9 @@ export class PrivateMessageChatComponent implements OnInit{
 
     // On initialise l'Observable pour gérer l'opacité du bandeau de prévisualisation
     this.opacityPreview$ = this.imageService.opacityPreview$
+
+    // On initialise l'Observable pour vérifier si le chat est vide ou non
+    this.isChatEmpty$ = this.postService.isChatEmpty$
   }
 
   // Méthode pour initialiser les catégories d'émojis à ne pas charger.
@@ -233,7 +235,6 @@ export class PrivateMessageChatComponent implements OnInit{
           .subscribe((result) => {
             // Mis à jour des éléments
             this.chat = result.updatedChat;
-            this.chatIsEmpty = result.updatedChatIsEmpty;
             this.messageContent = result.updatedMessageContent;
             this.loading = false;
             this.scrollToBottom();
