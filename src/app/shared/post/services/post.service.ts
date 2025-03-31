@@ -19,8 +19,15 @@ export class PostService{
     editMessage$ = this.editMessageSubject.asObservable();
 
     // Méthode pour modifier le statut de l'observable editMessage.
-    setValueOfEditMessage(post : Post | null): void {
+    setValueOfEditMessage(post : Post | null): string {
         this.editMessageSubject.next(post)
+        if (post) {
+            this.displayService.displayMessage('Vous modifiez un message')
+            this.imageService.setValueOfImageToSendUrlWithPass(post.imageInChat)
+            return post.content
+        } else {
+            return ('')
+        }
     }
 
     // Méthode pour récupérer la valeur de editMessageSubject
