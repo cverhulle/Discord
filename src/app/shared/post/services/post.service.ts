@@ -44,7 +44,7 @@ export class PostService{
     }
 
     // Subject et Observable pour gérer si le chat est vide ou non
-    private isChatEmptySubject = new Subject
+    private isChatEmptySubject = new BehaviorSubject<boolean>(true)
     isChatEmpty$ = this.isChatEmptySubject.asObservable()
 
     // Méthode pour créer le formData avec toutes les données pour l'envoi d'un post.
