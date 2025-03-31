@@ -24,7 +24,7 @@ export class PostService{
     setValueOfEditMessage(post : Post | null): void {
         this.editMessageSubject.next(post)
         if (post) {
-            this.resetStuffAfterChangingScreen()
+            this.resetOpacityAndEmojisDisplay()
             this.displayService.displayMessage('Vous modifiez un message')
             this.imageService.setValueOfImageToSendUrlWithPath(post.imageInChat)
         } 
@@ -264,14 +264,15 @@ export class PostService{
         this.setValueOfEditMessage(null)
         this.imageService.setDeleteImageInModifiedPost(false)
         this.imageService.setImageToSend(null)
-        this.resetStuffAfterChangingScreen()
+        this.resetOpacityAndEmojisDisplay()
     }
 
     // Méthode pour réinitialiser l'opacité du bandeau, l'affichage des émojis 
-    resetStuffAfterChangingScreen(): void{
+    resetOpacityAndEmojisDisplay(): void{
         this.imageService.resetValueOfOpacity()
         this.emojiService.resetEmojisDisplay()
     }
+    
 
 
 }
