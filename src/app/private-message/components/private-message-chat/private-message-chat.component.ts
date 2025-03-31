@@ -154,14 +154,10 @@ export class PrivateMessageChatComponent implements OnInit{
     this.editMessage$ = this.postService.editMessage$
 
     this.editMessage$.subscribe( (post) => {
-      if (post) {
-        this.displayService.displayMessage('Vous modifiez un message')
-        this.messageContent = post.content
-      } else {
-        this.messageContent = ''
-        this.scrollToBottom()
-      }
-    })
+      this.messageContent = post?.content ? post?.content : ''
+      this.scrollToBottom()
+      })
+    
 
     // On initialise l'Observable pour afficher le selecteur d'émotes.
     this.showEmojisList$= this.emojisService.showEmojisList$
