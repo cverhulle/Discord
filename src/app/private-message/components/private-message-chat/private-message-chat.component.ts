@@ -156,7 +156,7 @@ export class PrivateMessageChatComponent implements OnInit{
     this.editMessage$.subscribe( (post) => {
       this.messageContent = post?.content ? post?.content : ''
       this.scrollToBottom()
-      })
+    })
     
 
     // On initialise l'Observable pour afficher le selecteur d'émotes.
