@@ -283,7 +283,7 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Méthode pour gérer l'opacité du bandeau de prévisualisation
   onSetOpacity(): void{
-
+    this.imageService.setValueOfOpacity()
   }
 
 
