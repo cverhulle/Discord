@@ -77,6 +77,14 @@ export class ImageService {
         }
     }
 
+    setValueOfImageToSendUrlWithPath(path: string | undefined | null): void{
+        if(path) {
+            this.imageToSendUrlSubject.next(path)
+        } else {
+            this.imageToSendUrlSubject.next(null)
+        }
+    }
+
     // Subject et Observable pour gérer l'opacité du bandeau de prévisualisation de l'image
     private opacityPreviewSubject = new BehaviorSubject<number>(1)
     opacityPreview$ = this.opacityPreviewSubject.asObservable()

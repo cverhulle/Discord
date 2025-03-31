@@ -23,7 +23,7 @@ export class PostService{
         this.editMessageSubject.next(post)
         if (post) {
             this.displayService.displayMessage('Vous modifiez un message')
-            this.imageService.setValueOfImageToSendUrlWithPass(post.imageInChat)
+            this.imageService.setValueOfImageToSendUrlWithPath(post.imageInChat)
             return post.content
         } else {
             return ('')
