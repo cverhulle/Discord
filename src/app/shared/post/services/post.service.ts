@@ -20,6 +20,11 @@ export class PostService{
     private loadingSubject = new BehaviorSubject<boolean>(false)
     loading$ = this.loadingSubject.asObservable()
 
+    // Méthode pour gérer l'état du chargement
+    setValueOfLoading(state : boolean): void {
+        this.loadingSubject.next(state)
+    }
+
     // Observable pour réagir lorsque l'utilisateur modifie un message.
     private editMessageSubject = new BehaviorSubject<Post | null>(null);
     editMessage$ = this.editMessageSubject.asObservable();
