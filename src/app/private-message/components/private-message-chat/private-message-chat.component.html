@@ -57,7 +57,16 @@
 
     <!-- Affichage en cas chat vide, pas de chargement et, si l'on modifie un message-->
     <div *ngIf="!loading && !chatIsEmpty && (editMessage$ | async)  as editMessage">
-        <p class="modify-post"> Vous modifiez le message suivant : </p>
+
+        <div class="modify-post-header">
+            <p class="modify-post"> Vous modifiez le message suivant : </p>
+
+            <!-- On affiche un bouton pour revenir en arrière -->
+            <mat-card-actions class="go-back-modify-post">
+                <button mat-flat-button (click)="onNotModify()" [disabled]="loading" > Revenir en arrière </button>
+            </mat-card-actions>
+        </div>
+
         <div *ngIf="editMessage !==null">
             <!-- On affiche le post que l'on modifie -->
             <mat-card class="mat-card-post" [ngStyle]="{'background-color': getPostCardColor(editMessage.currentUserId)}">
@@ -86,10 +95,7 @@
             </mat-card>
         </div>
 
-        <!-- On affiche un bouton pour revenir en arrière -->
-        <mat-card-actions class="button-previous-post">
-            <button mat-flat-button (click)="onNotModify()" [disabled]="loading" > Revenir en arrière </button>
-        </mat-card-actions>
+        
 
     </div>
 

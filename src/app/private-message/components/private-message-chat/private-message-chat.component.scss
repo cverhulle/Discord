@@ -138,6 +138,16 @@ html, body{
 
 
 // Style à appliquer lorsque l'utilisateur veut modifier un post.
+.modify-post-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.go-back-modify-post{
+    margin-right: 20vh;
+}
+
 .modify-post{
     color: white;
     font-size: 40px;
