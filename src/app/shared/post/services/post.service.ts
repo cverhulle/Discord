@@ -227,6 +227,8 @@ export class PostService{
                 const updatedChat = posts;
                 if (updatedChat.length > 0) {
                     this.setIsChatEmpty(false)
+                } else {
+                    this.setIsChatEmpty(true)
                 }
                 return ({updatedChat})
             }),
