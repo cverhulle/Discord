@@ -80,7 +80,6 @@ export class PrivateMessageHomepageComponent implements OnInit{
   }
 
   onChat(user: usernameImage): void {
-    this.postService.setIsChatEmpty(true)
     this.router.navigate(['/private-message/chat'], {state: {id: user.id, username: user.username, image: user.image} })
   }
 

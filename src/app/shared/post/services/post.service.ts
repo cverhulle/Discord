@@ -17,13 +17,15 @@ export class PostService{
                 private emojiService : EmojisService){}
 
     // Observable et Subject pour gérer le chargement
-    private loadingSubject = new BehaviorSubject<boolean>(false)
+    private loadingSubject = new Subject<boolean>
     loading$ = this.loadingSubject.asObservable()
 
     // Méthode pour gérer l'état du chargement
     setValueOfLoading(state : boolean): void {
         this.loadingSubject.next(state)
     }
+
+
 
     // Observable pour réagir lorsque l'utilisateur modifie un message.
     private editMessageSubject = new BehaviorSubject<Post | null>(null);
@@ -303,7 +305,11 @@ export class PostService{
     }
 
     
-    
+    // Méthode pour réinitialiser le loading et la variable de chat vide à l'ouverture du component
+    resetLoadingAndEmptyChat(): void {
+        this.isChatEmptySubject.next(true)
+        this.loadingSubject.next(false)
+    }
 
 
 }
