@@ -1,10 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { catchError, Observable, of, tap } from 'rxjs';
-
-
-
 import { FormsModule } from '@angular/forms';
 import { AsyncPipe, NgFor, NgIf, NgStyle } from '@angular/common';
+
 import { SharedModule } from '../../../shared/shared.module';
 
 import { usernameImage } from '../../models/username-image.models';
@@ -12,12 +10,12 @@ import { Post } from '../../../shared/post/models/post.model';
 
 import { AvatarService } from '../../../shared/avatar/service/avatar.service';
 import { PostService } from '../../../shared/post/services/post.service';
-
-import { TimeAgoPipe } from '../../../shared/post/pipe/time-ago.pipe';
 import { UserService } from '../../../shared/post/services/user.service';
 import { DisplayService } from '../../../shared/display/service/display.service';
 import { EmojisService } from '../../../shared/emojis/services/emojis.service';
 import { ImageService } from '../../../shared/image/services/image.services';
+
+import { TimeAgoPipe } from '../../../shared/post/pipe/time-ago.pipe';
 
 
 
@@ -42,9 +40,6 @@ export class PrivateMessageChatComponent implements OnInit{
   // Directive pour scroller el chat en bas après l'envoi d'un nouveau message.
   @ViewChild('chatContainer') chatContainer!: ElementRef
 
-  // Observable pour gérer le loading
-  loading$!: Observable<boolean>
-
   // Variable pour récupérer les données de l'utilisateur actuel.
   currentUser!: usernameImage;
 
@@ -56,6 +51,9 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Variable qui stocke la discussion entre les utilisateurs
   chat: Post[] = []
+
+  // Observable pour gérer le loading
+  loading$!: Observable<boolean>
 
   // Variable pour vérifier si l'historique de discussion entre deux utilisateurs est vide ou non
   isChatEmpty$!: Observable<boolean>
