@@ -281,24 +281,26 @@ export class PostService{
     }
 
     // Méthode pour supprimer un post.
-    deletePost(postId: string, chat: Post[]): Observable<Post[]> {
+    deletePost(postId: string): Observable<boolean> {
         this.setValueOfLoading(true)
         return this.http.delete(`${environment.apiUrl}/private-message/deletePost`, {
             params: {postId}
         }).pipe(
             map( () => {
+                const chat = this.getValueOfChat()
                 const updatedChat = chat.filter( post => post.postId !== postId)
+                this.setValueOfChat(updatedChat)
                 this.displayService.displayMessage('Message supprimé avec succès.')
                 if (updatedChat.length === 0) {
                     this.setIsChatEmpty(true)
                 }
                 this.setValueOfLoading(false)
-                return updatedChat
+                return true
         }),
             catchError( () => {
                 this.displayService.displayMessage('Erreur lors de la suppression du message.')
                 this.setValueOfLoading(false)
-                return of(chat)
+                return of(false)
         }) 
         )
     }
