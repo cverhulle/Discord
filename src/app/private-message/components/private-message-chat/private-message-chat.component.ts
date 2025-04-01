@@ -135,8 +135,7 @@ export class PrivateMessageChatComponent implements OnInit{
   // Cette méthode initialise l'historique de la discussion entre les utilisateurs : on ne récupère que les 10 derniers messages.
   private initChat(otherUserId: string): void {
     this.postService.initChat(otherUserId).subscribe(
-      (result) => {
-        this.chat = result.updatedChat
+      () => {
         this.postService.setValueOfLoading(false)
         this.scrollToBottom()
       }
