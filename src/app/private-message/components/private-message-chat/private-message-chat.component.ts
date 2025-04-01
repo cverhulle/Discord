@@ -243,11 +243,7 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Méthode pour charger plus de messages à l'appui du bouton.
   onLoadMoreMessages(): void {
-    this.postService.loadMoreMessages(this.otherUser.id, this.chat).subscribe(
-      ( (chat) => {
-        this.chat = chat
-      }),
-    )
+    this.postService.loadMoreMessages(this.otherUser.id).subscribe()
   } 
 
   // Méthode pour supprimer un message.

@@ -262,18 +262,20 @@ export class PostService{
     }
 
     // Méthode pour charger 10 messages de plus dans une discussion entre deux utilisateurs.
-    loadMoreMessages(otherUserId: string, chat: Post[]): Observable<Post[]> {
+    loadMoreMessages(otherUserId: string): Observable<boolean> {
         this.setValueOfLoading(true)
+        const chat = this.getValueOfChat()
         const skip = chat.length;
         return this.getPreviousPosts(otherUserId, skip).pipe(
             map( (posts) => {
+                this.setValueOfChat([...posts, ...chat])
                 this.setValueOfLoading(false)
-                return [...posts, ...chat]
+                return true
             }),
             catchError( () => {
                 this.displayService.displayMessage('Erreur lors du chargement des messages précédents.')
                 this.setValueOfLoading(false)
-                return of(chat)
+                return of(false)
             })
         )
     }
