@@ -4,11 +4,17 @@ import { environment } from "../../../environments/environment.development";
 import { catchError, map, Observable, of } from "rxjs";
 import { ModifyProfileForm } from "../models/modify-profile.models";
 import { RegisterForm } from "../../login/components/register/models/register-form.model";
+import { DisplayService } from "../../shared/display/service/display.service";
+import { Router } from "@angular/router";
+import { TokenService } from "../../interceptors/services/auth.service";
 
 @Injectable()
 
 export class ProfileService {
-    constructor( private http: HttpClient) {}
+    constructor( private http: HttpClient,
+                 private displayService : DisplayService,
+                 private router : Router,
+                 private tokenService : TokenService) {}
 
     // Cette méthode lance la requête pour récupérer les données sur un utilisteur dont l'id est donné en argument.
     getProfile(): Observable<any> {
@@ -46,5 +52,13 @@ export class ProfileService {
                 map( () => false),
                 catchError(() => of(true))
             );
-        }
+    }
+
+    // Cette méthode permet de supprimer le compte de l'utilisateur
+    deleteAccount(): void {
+        this.http.delete(`${environment.apiUrl}/profile/deleteAccount`)
+        this.tokenService.removeToken()
+        this.router.navigateByUrl('/homepage')
+        this.displayService.displayMessage("Votre compte a été supprimé")
+    }
 }
