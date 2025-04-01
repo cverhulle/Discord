@@ -52,7 +52,7 @@ export class ProfileHomepageComponent implements OnInit{
   }
 
   onDeleteAccount(): void{
-
+    
   }
   
 }
