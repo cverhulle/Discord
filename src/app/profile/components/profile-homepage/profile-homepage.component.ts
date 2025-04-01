@@ -4,6 +4,8 @@ import { ProfileService } from '../../service/profile.service';
 import { tap } from 'rxjs';
 import { SharedModule } from '../../../shared/shared.module';
 import { ShortenPipe } from '../../../shared/profil/pipe/shorten.pipe';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDeleteAccountComponent } from '../confirm-delete-account/confirm-delete-account.component';
 
 
 @Component({
@@ -27,7 +29,8 @@ export class ProfileHomepageComponent implements OnInit{
 
 
   constructor(private profilService : ProfileService,
-              private router : Router) {}
+              private router : Router,
+              private dialog: MatDialog) {}
 
 
   ngOnInit(): void {
@@ -52,7 +55,7 @@ export class ProfileHomepageComponent implements OnInit{
   }
 
   onDeleteAccount(): void{
-    
+    const confirmDelteAccount = this.dialog.open(ConfirmDeleteAccountComponent);
   }
   
 }
