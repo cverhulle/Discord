@@ -101,9 +101,6 @@ export class PrivateMessageChatComponent implements OnInit{
       this.initObservable()
       this.initEmojis()
     }
-    this.postService.setValueOfLoading(false)
-    
-    
   }
 
   // Cette méthode initialise les données des utilisateurs de la discussion.
@@ -142,6 +139,7 @@ export class PrivateMessageChatComponent implements OnInit{
     this.postService.initChat(otherUserId).subscribe(
       (result) => {
         this.chat = result.updatedChat
+        this.postService.setValueOfLoading(false)
         this.scrollToBottom()
       }
     )
