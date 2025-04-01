@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ProfileService } from '../../service/profile.service';
 import { tap } from 'rxjs';
 import { SharedModule } from '../../../shared/shared.module';
@@ -26,8 +26,7 @@ export class ProfileHomepageComponent implements OnInit{
   imageUrl!: string;
 
 
-  constructor(private route: ActivatedRoute,
-              private profilService : ProfileService,
+  constructor(private profilService : ProfileService,
               private router : Router) {}
 
 
