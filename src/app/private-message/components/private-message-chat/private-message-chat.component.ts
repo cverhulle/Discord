@@ -173,6 +173,9 @@ export class PrivateMessageChatComponent implements OnInit{
 
     // On initialise l'Observable pour le loading
     this.loading$ = this.postService.loading$
+
+    // On initialise l'Observable du chat
+    this.chat$ = this.postService.chat$
   }
 
   // Méthode pour initialiser les catégories d'émojis à ne pas charger.
