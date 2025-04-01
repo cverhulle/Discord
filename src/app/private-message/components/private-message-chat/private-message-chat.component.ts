@@ -45,6 +45,9 @@ export class PrivateMessageChatComponent implements OnInit{
   // Variable pour suivre l'état de chargement
   loading!: boolean
 
+  // Observable pour gérer le loading
+  loading$!: Observable<boolean>
+
   // Variable pour récupérer les données de l'utilisateur actuel.
   currentUser!: usernameImage;
 
@@ -175,6 +178,12 @@ export class PrivateMessageChatComponent implements OnInit{
 
     // On initialise l'Observable pour vérifier si le chat est vide ou non
     this.isChatEmpty$ = this.postService.isChatEmpty$
+
+    // On initialise l'Observable pour le loading
+    this.loading$ = this.postService.loading$
+
+    // On définit la valeur par défaut de loading et isChatEmpty
+    this.postService.resetLoadingAndEmptyChat()
   }
 
   // Méthode pour initialiser les catégories d'émojis à ne pas charger.
