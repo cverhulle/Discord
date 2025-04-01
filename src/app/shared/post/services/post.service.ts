@@ -191,9 +191,9 @@ export class PostService{
     }
 
     // Méthode pour modifier un message
-    updatePost(editedPost : Post, newContent : string, newImage : File | null, deleteCurrentImage : boolean): Observable<Post>{
+    updatePost(editedPost : Post, newContent : string, newImage : File | null, deleteCurrentImage : boolean): Observable<boolean> {
         if (!newImage && !deleteCurrentImage && (this.getValueOfEditMessageSubject()?.content === newContent)) {
-            return of(editedPost)
+            return of(false)
         }
         
         const formData = this.createFormDataToSend(
@@ -208,12 +208,18 @@ export class PostService{
         );
         
         return this.updatePostBackend(formData).pipe(
-            map((post) => {
-                return post;
+            map((updatedPost) => {
+                const chat = this.getValueOfChat()
+                const messageIndex = chat.findIndex(post => post.postId === updatedPost.postId);
+                chat[messageIndex] = updatedPost;
+                this.setValueOfChat(chat)
+                this.resetModifiedPostStuff()
+                return true
+                
             }),
             catchError( () => {
                 this.displayService.displayMessage('Erreur lors de la modification du message')
-                return of(editedPost)
+                return of(false)
             })
         )
     }

@@ -197,12 +197,10 @@ export class PrivateMessageChatComponent implements OnInit{
       return;
     }
 
-    this.postService.updatePost(editedPost, this.messageContent, this.imageService.getValueOfImageToSend(), this.imageService.getValueOfDeleteImageInModifiedPost()).subscribe( (updatedPost) => {
-      const messageIndex = this.chat.findIndex(post => post.postId === updatedPost.postId);
-      this.chat[messageIndex] = updatedPost;
-      this.postService.resetModifiedPostStuff()
-    })
-  }
+    this.postService.updatePost(editedPost, this.messageContent, this.imageService.getValueOfImageToSend(), this.imageService.getValueOfDeleteImageInModifiedPost()).subscribe()
+      
+    }
+  
 
   // Méthode au clic sur le bouton envoi.
   onSendMessage(): void{
