@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProfileService } from '../../service/profile.service';
-import { tap } from 'rxjs';
+import { catchError, map, of, tap } from 'rxjs';
 import { SharedModule } from '../../../shared/shared.module';
 import { ShortenPipe } from '../../../shared/profil/pipe/shorten.pipe';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDeleteAccountComponent } from '../confirm-delete-account/confirm-delete-account.component';
+import { DisplayService } from '../../../shared/display/service/display.service';
 
 
 @Component({
@@ -30,7 +31,8 @@ export class ProfileHomepageComponent implements OnInit{
 
   constructor(private profilService : ProfileService,
               private router : Router,
-              private dialog: MatDialog) {}
+              private dialog: MatDialog,
+              private displayService : DisplayService) {}
 
 
   ngOnInit(): void {
@@ -55,7 +57,20 @@ export class ProfileHomepageComponent implements OnInit{
   }
 
   onDeleteAccount(): void{
-    const confirmDelteAccount = this.dialog.open(ConfirmDeleteAccountComponent);
+    const confirmDeleteAccount = this.dialog.open(ConfirmDeleteAccountComponent);
+
+    confirmDeleteAccount.afterClosed().pipe(
+      tap( (confirm) => {
+        if (confirm) {
+          this.displayService.displayMessage("Votre compte a été supprimé (à venir...)")
+        } 
+      }),
+      catchError ( () => {
+        this.displayService.displayMessage("Une erreur est survenue lors de la suppression")
+        return of(null)
+      })
+      ).subscribe()
+    
   }
   
 }
