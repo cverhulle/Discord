@@ -29,6 +29,16 @@ export class PostService{
     private chatSubject = new  BehaviorSubject<Post[]>([])
     chat$ = this.chatSubject.asObservable()
 
+    // Méthode pour gérer l'état du chat.
+    setValueOfChat(post : Post[]): void {
+        this.chatSubject.next(post)
+    }
+
+    // Méthode pour récupérer la valeur du chat
+    getValueOfChat(): Post[] {
+        return this.chatSubject.getValue()
+    }
+
     // Observable pour réagir lorsque l'utilisateur modifie un message.
     private editMessageSubject = new BehaviorSubject<Post | null>(null);
     editMessage$ = this.editMessageSubject.asObservable();
