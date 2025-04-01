@@ -221,7 +221,6 @@ export class PrivateMessageChatComponent implements OnInit{
       }
       
       // On crée le formData grâce au service
-      console.log(this.imageService.getValueOfImageToSend())
       const formData = this.postService.createFormDataToSend(
         this.currentUser.id,
         this.otherUser.id,
