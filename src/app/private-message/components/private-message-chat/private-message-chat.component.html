@@ -19,7 +19,7 @@
         </mat-card-actions>
 
         <!-- Affichage des messages dans un chat à l'aide de mat-card -->
-        <mat-card *ngFor="let post of chat" class="mat-card-post" [ngStyle]="{'background-color': getPostCardColor(post.currentUserId)}">
+        <mat-card *ngFor="let post of (chat$ | async)" class="mat-card-post" [ngStyle]="{'background-color': getPostCardColor(post.currentUserId)}">
             <div class="avatar-username-menu"> 
                 <div class="avatar-username">
                     <img [src]="getProfileImage(post)" (error)="setImageError(post)" alt="Avatar de {{post.username}}" class="avatar">
