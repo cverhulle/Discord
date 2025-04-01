@@ -306,13 +306,5 @@ export class PostService{
         }
     }
 
-    
-    // Méthode pour réinitialiser le loading et la variable de chat vide à l'ouverture du component
-    resetLoadingAndEmptyChat(): void {
-        this.isChatEmptySubject.next(true)
-        this.loadingSubject.next(false)
-    }
-
-
 }
 
