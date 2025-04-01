@@ -13,10 +13,12 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class ConfirmDeleteAccountComponent {
   constructor(public dialogRef : MatDialogRef<ConfirmDeleteAccountComponent>) {}
   
+  // Méthode à déclencher si l'utilisateur annule la suppression.
   onCancel(): void {
     this.dialogRef.close(false)
   }
 
+  // Méthode à déclencher si l'utilisateur confirme la suppression.
   onConfirm(): void{
     this.dialogRef.close(true)
   }
