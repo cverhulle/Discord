@@ -247,8 +247,8 @@ export class PostService{
             }),
             catchError( () => {
                 this.setValueOfChat([])
-              this.displayService.displayMessage('Erreur lors du chargement de la discussion.')
-              return of(false)
+                this.displayService.displayMessage('Erreur lors du chargement de la discussion.')
+                return of(false)
             })
         )
     }
