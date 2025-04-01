@@ -263,12 +263,9 @@ export class PrivateMessageChatComponent implements OnInit{
       return; 
     }
 
-    this.postService.setValueOfLoading(true)
-
     this.postService.deletePost(post.postId, this.chat).subscribe(
       (updatedChat) => {
         this.chat = updatedChat
-        this.postService.setValueOfLoading(false)
         this.scrollToBottom()
       }
     )

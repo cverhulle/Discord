@@ -258,6 +258,7 @@ export class PostService{
 
     // Méthode pour supprimer un post.
     deletePost(postId: string, chat: Post[]): Observable<Post[]> {
+        this.setValueOfLoading(true)
         return this.http.delete(`${environment.apiUrl}/private-message/deletePost`, {
             params: {postId}
         }).pipe(
@@ -267,10 +268,12 @@ export class PostService{
                 if (updatedChat.length === 0) {
                     this.setIsChatEmpty(true)
                 }
+                this.setValueOfLoading(false)
                 return updatedChat
         }),
             catchError( () => {
                 this.displayService.displayMessage('Erreur lors de la suppression du message.')
+                this.setValueOfLoading(false)
                 return of(chat)
         }) 
         )
