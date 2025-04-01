@@ -17,7 +17,7 @@ export class PostService{
                 private emojiService : EmojisService){}
 
     // Observable et Subject pour gérer le chargement
-    private loadingSubject = new Subject<boolean>
+    private loadingSubject = new BehaviorSubject<boolean>(true)
     loading$ = this.loadingSubject.asObservable()
 
     // Méthode pour gérer l'état du chargement
