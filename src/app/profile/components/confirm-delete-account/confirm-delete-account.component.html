@@ -1,1 +1,6 @@
-<p>confirm-delete-account works!</p>
+<h1 mat-dialog-title> Êtes-vous sûr de vouloir supprimer votre compte ? </h1>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Annuler</button>
+  <button mat-button (click)="onConfirm()">Supprimer</button>
+</div>
