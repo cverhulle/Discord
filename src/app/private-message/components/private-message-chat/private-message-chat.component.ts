@@ -49,8 +49,8 @@ export class PrivateMessageChatComponent implements OnInit{
   // Variable pour récupérer le texte dans le message.
   messageContent: string = ''
 
-  // Variable qui stocke la discussion entre les utilisateurs
-  chat: Post[] = []
+  // Observable qui stocke la discussion entre les utilisateurs
+  chat$!: Observable<Post[]>
 
   // Observable pour gérer le loading
   loading$!: Observable<boolean>
