@@ -1,3 +1,4 @@
+// Style pour le titre de la page et l'icone de suppression
 .profile-title{
     color: white;
     text-align: center;
@@ -9,12 +10,13 @@
     align-items: center;
 }
 
+// Style pour placer l'icone de suppression de profil.
 .delete-profile{
     margin-left: 3vh;
 }
 
 
-
+//  Style pour placer les différents attributs du profil
 .display-row{
     display: grid;
     grid-template-columns: 20% 15% 20% 15%;
@@ -22,10 +24,12 @@
     margin-left: 1%;
 }
 
+// Style pour mettre du texte en blanc
 .white-color{
     color: white;
 }
 
+// Style pour centrer les boutons.
 .center{
     margin-top: 1%;
     display: grid;
