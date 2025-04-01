@@ -135,8 +135,8 @@ export class PostService{
 
     // Méthode à appeler lors du succès de l'envoi du Post.
     // Cette méthode retourne le chat, le booléan pour savoir si le chat est vide, le nouveau contenu du formulaire et l'image dans le Post à jour.
-    sendPostSuccess(message : Post, chat: Post[]): {updatedMessageContent : string} {
-        this.addPostToChat(message, chat);
+    sendPostSuccess(message : Post): {updatedMessageContent : string} {
+        this.addPostToChat(message);
         const updatedMessageContent = this.resetString();
         return {updatedMessageContent}
     }
@@ -168,7 +168,7 @@ export class PostService{
                     this.setIsChatEmpty(false)
                     
                     // Appelle la méthode pour mettre à jour l'affichage du chat
-                    return this.sendPostSuccess(message, this.getValueOfChat());
+                    return this.sendPostSuccess(message);
 
                 } else {
                     this.sendPostError();
