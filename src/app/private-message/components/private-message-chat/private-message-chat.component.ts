@@ -226,10 +226,9 @@ export class PrivateMessageChatComponent implements OnInit{
       )
 
       // On envoie le post grâce au service et au FormData
-      this.postService.sendPost(formData, this.chat, this.imageService.getValueOfImageToSend())
+      this.postService.sendPost(formData, this.imageService.getValueOfImageToSend())
           .subscribe((result) => {
             // Mis à jour des éléments
-            this.chat = result.updatedChat;
             this.messageContent = result.updatedMessageContent;
             this.postService.setValueOfLoading(false)
             this.scrollToBottom();

@@ -116,9 +116,11 @@ export class PostService{
     }
 
     // Méthode à appeler pour ajouter un message au chat.
-    addPostToChat(message : Post, chat: Post[]): Post[] {
+    addPostToChat(message : Post): void {
+        const chat = this.getValueOfChat()
         chat.push(message)
-        return chat
+        this.setValueOfChat(chat)
+        
     }
 
     // Méthode pour remettre un string à ''
@@ -133,10 +135,10 @@ export class PostService{
 
     // Méthode à appeler lors du succès de l'envoi du Post.
     // Cette méthode retourne le chat, le booléan pour savoir si le chat est vide, le nouveau contenu du formulaire et l'image dans le Post à jour.
-    sendPostSuccess(message : Post, chat: Post[]): {updatedChat: Post[], updatedMessageContent : string} {
-        const updatedChat = this.addPostToChat(message, chat);
+    sendPostSuccess(message : Post, chat: Post[]): {updatedMessageContent : string} {
+        this.addPostToChat(message, chat);
         const updatedMessageContent = this.resetString();
-        return {updatedChat, updatedMessageContent}
+        return {updatedMessageContent}
     }
 
     // Méthode à appeler lorsque l'envoi du post a échoué.
@@ -145,7 +147,7 @@ export class PostService{
     }
 
     // Méthode pour envoyer un post et l'enregistrer sur le serveur.
-    sendPost(formData: FormData, chat: Post[], currentImageToSend : any): Observable<{ updatedChat: Post[], updatedMessageContent: string}> {
+    sendPost(formData: FormData, currentImageToSend : any): Observable<{ updatedMessageContent: string}> {
         return this.http.post<{ message: string, postId: string, imageInChat?: string }>(`${environment.apiUrl}/private-message/send-message`, formData).pipe(
             map(response => {
                 const postId = response.postId;
@@ -166,16 +168,16 @@ export class PostService{
                     this.setIsChatEmpty(false)
                     
                     // Appelle la méthode pour mettre à jour l'affichage du chat
-                    return this.sendPostSuccess(message, chat);
+                    return this.sendPostSuccess(message, this.getValueOfChat());
 
                 } else {
                     this.sendPostError();
-                    return { updatedChat: chat, updatedMessageContent: formData.get('content') as string };
+                    return {updatedMessageContent: formData.get('content') as string };
                 }
             }),
             catchError(() => {
                 this.sendPostError();
-                return of({ updatedChat: chat, updatedMessageContent: formData.get('content') as string});
+                return of({ updatedMessageContent: formData.get('content') as string});
             })
         );
     }
