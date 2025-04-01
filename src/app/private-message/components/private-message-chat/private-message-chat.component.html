@@ -4,7 +4,7 @@
 
 <div class="discussion" #chatContainer>
     <!-- Affichage en cas de chargement -->
-    <mat-spinner *ngIf="loading"> </mat-spinner>
+    <mat-spinner *ngIf="(loading$ | async)"> </mat-spinner>
     
     <!-- Affichage en cas chat vide  et pas de chargement -->
     <div *ngIf="(isChatEmpty$ | async)" class="empty-chat">
@@ -12,10 +12,10 @@
     </div>
 
     <!-- Affichage en cas chat non vide, pas de chargement et, si on ne modifie pas un message-->
-    <div *ngIf="!(isChatEmpty$ | async) && !loading && (editMessage$ | async) === null">
+    <div *ngIf="!(isChatEmpty$ | async) && !(loading$ | async) && (editMessage$ | async) === null">
         <!-- Bouton pour charger plus de messages -->
         <mat-card-actions class="button-previous-post">
-            <button mat-flat-button (click)="onLoadMoreMessages()" [disabled]="loading" > Charger les messages précédents </button>
+            <button mat-flat-button (click)="onLoadMoreMessages()" [disabled]="(loading$ | async)" > Charger les messages précédents </button>
         </mat-card-actions>
 
         <!-- Affichage des messages dans un chat à l'aide de mat-card -->
@@ -56,14 +56,14 @@
     </div>
 
     <!-- Affichage en cas de chat non vide, pas de chargement et, si l'on modifie un message-->
-    <div *ngIf="!loading && !(isChatEmpty$ | async) && (editMessage$ | async)  as editMessage">
+    <div *ngIf="!(loading$ | async) && !(isChatEmpty$ | async) && (editMessage$ | async)  as editMessage">
 
         <div class="modify-post-header">
             <p class="modify-post"> Vous modifiez le message suivant : </p>
 
             <!-- On affiche un bouton pour revenir en arrière -->
             <mat-card-actions class="go-back-modify-post">
-                <button mat-flat-button (click)="onNotModify()" [disabled]="loading" > Revenir en arrière </button>
+                <button mat-flat-button (click)="onNotModify()" [disabled]="(loading$ | async)" > Revenir en arrière </button>
             </mat-card-actions>
         </div>
 
