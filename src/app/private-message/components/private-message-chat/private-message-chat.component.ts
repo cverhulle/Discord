@@ -42,9 +42,6 @@ export class PrivateMessageChatComponent implements OnInit{
   // Directive pour scroller el chat en bas après l'envoi d'un nouveau message.
   @ViewChild('chatContainer') chatContainer!: ElementRef
 
-  // Variable pour suivre l'état de chargement
-  loading!: boolean
-
   // Observable pour gérer le loading
   loading$!: Observable<boolean>
 
@@ -97,12 +94,14 @@ export class PrivateMessageChatComponent implements OnInit{
 
 
   ngOnInit(): void {
+    this.postService.setValueOfLoading(true)
     this.initUsers()
     if (this.otherUser.id !== '') {
       this.initChat(this.otherUser.id)
       this.initObservable()
       this.initEmojis()
     }
+    this.postService.setValueOfLoading(false)
     
     
   }
@@ -140,11 +139,9 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Cette méthode initialise l'historique de la discussion entre les utilisateurs : on ne récupère que les 10 derniers messages.
   private initChat(otherUserId: string): void {
-    this.loading = true
     this.postService.initChat(otherUserId).subscribe(
       (result) => {
         this.chat = result.updatedChat
-        this.loading = false
         this.scrollToBottom()
       }
     )
@@ -215,13 +212,13 @@ export class PrivateMessageChatComponent implements OnInit{
   // Méthode au clic sur le bouton envoi.
   onSendMessage(): void{
     if (this.postService.messageValid(this.messageContent)) {
-      this.loading = true
+      this.postService.setValueOfLoading(true)
 
       const postToEdit = this.postService.getValueOfEditMessageSubject();
       // Si l'on édite un post, on lance la méthode adaptée et on quitte la boucle.
       if (postToEdit !== null) {
         this.updateMessage(postToEdit);
-        this.loading = false;
+        this.postService.setValueOfLoading(false)
         return;
       }
       
@@ -242,7 +239,7 @@ export class PrivateMessageChatComponent implements OnInit{
             // Mis à jour des éléments
             this.chat = result.updatedChat;
             this.messageContent = result.updatedMessageContent;
-            this.loading = false;
+            this.postService.setValueOfLoading(false)
             this.scrollToBottom();
         });
        
@@ -255,12 +252,12 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Méthode pour charger plus de messages à l'appui du bouton.
   onLoadMoreMessages(): void {
-    this.loading = true;
+    this.postService.setValueOfLoading(true)
     
     this.postService.loadMoreMessages(this.otherUser.id, this.chat).subscribe(
       ( (chat) => {
         this.chat = chat
-        this.loading = false
+        this.postService.setValueOfLoading(false)
       }),
     )
   } 
@@ -272,12 +269,12 @@ export class PrivateMessageChatComponent implements OnInit{
       return; 
     }
 
-    this.loading = true
+    this.postService.setValueOfLoading(true)
 
     this.postService.deletePost(post.postId, this.chat).subscribe(
       (updatedChat) => {
         this.chat = updatedChat
-        this.loading = false
+        this.postService.setValueOfLoading(false)
         this.scrollToBottom()
       }
     )
