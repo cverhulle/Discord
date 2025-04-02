@@ -62,8 +62,7 @@ export class ProfileHomepageComponent implements OnInit{
     confirmDeleteAccount.afterClosed().pipe(
       tap( (confirm) => {
         if (confirm) {
-          // this.profilService.deleteAccount().subscribe()
-          this.displayService.displayMessage("Votre compte a été supprimé (à venir...)")
+          this.profilService.deleteAccount().subscribe()
         } 
       }),
       catchError ( () => {
