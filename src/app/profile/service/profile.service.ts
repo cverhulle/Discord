@@ -55,13 +55,15 @@ export class ProfileService {
     }
 
     // Cette méthode permet de supprimer le compte de l'utilisateur
-    deleteAccount(): Observable<any> {
+    deleteAccount(): Observable<boolean> {
         return this.http.delete(`${environment.apiUrl}/profile/deleteAccount`).pipe(
             tap( ()=> {
                     this.tokenService.removeToken()
                     this.router.navigateByUrl('/homepage')
                     this.displayService.displayMessage("Votre compte a été supprimé")
-            })
+            }),
+            map( ()=> true),
+            catchError( ()=> of(false))
         )
     }
 }
