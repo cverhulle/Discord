@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "../../../environments/environment.development";
-import { catchError, map, Observable, of } from "rxjs";
+import { catchError, map, Observable, of, tap } from "rxjs";
 import { ModifyProfileForm } from "../models/modify-profile.models";
 import { RegisterForm } from "../../login/components/register/models/register-form.model";
 import { DisplayService } from "../../shared/display/service/display.service";
@@ -55,10 +55,13 @@ export class ProfileService {
     }
 
     // Cette méthode permet de supprimer le compte de l'utilisateur
-    deleteAccount(): void {
-        this.http.delete(`${environment.apiUrl}/profile/deleteAccount`)
-        this.tokenService.removeToken()
-        this.router.navigateByUrl('/homepage')
-        this.displayService.displayMessage("Votre compte a été supprimé")
+    deleteAccount(): Observable<any> {
+        return this.http.delete(`${environment.apiUrl}/profile/deleteAccount`).pipe(
+            tap( ()=> {
+                    this.tokenService.removeToken()
+                    this.router.navigateByUrl('/homepage')
+                    this.displayService.displayMessage("Votre compte a été supprimé")
+            })
+        )
     }
 }
