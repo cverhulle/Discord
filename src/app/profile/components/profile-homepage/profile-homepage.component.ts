@@ -61,11 +61,17 @@ export class ProfileHomepageComponent implements OnInit{
 
   // On appelle cette méthode pour supprimer le compte de l'utilisateur.
   onDeleteAccount(): void{
+    // On lance la fenêtre de confirmation de suppression du compte
     const confirmDeleteAccount = this.dialog.open(ConfirmDeleteAccountComponent);
 
+    // On récupère la réponse sur la fenêtre de confirmation
     confirmDeleteAccount.afterClosed().pipe(
       tap( (confirm) => {
+
+        // Si l'utilisateur a confirmé la suppression
         if (confirm) {
+
+          // On supprime le compte grâce au service
           this.profilService.deleteAccount().subscribe()
         } 
       }),
