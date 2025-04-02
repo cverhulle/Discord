@@ -58,10 +58,16 @@ export class ProfileService {
     deleteAccount(): Observable<boolean> {
         return this.http.delete(`${environment.apiUrl}/profile/deleteAccount`).pipe(
             tap( ()=> {
+                    // On supprime le token
                     this.tokenService.removeToken()
+
+                    // On redirige vers la page d'accueil
                     this.router.navigateByUrl('/homepage')
+
+                    // On affiche un message à l'utilisateur
                     this.displayService.displayMessage("Votre compte a été supprimé")
             }),
+            // On retourne true en cas de succès et false sinon.
             map( ()=> true),
             catchError( ()=> of(false))
         )
