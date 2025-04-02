@@ -37,6 +37,7 @@ export class ProfileHomepageComponent implements OnInit{
 
   ngOnInit(): void {
 
+    // On récupère les données de profil de l'utilisateur
     this.profilService.getProfile().pipe(
       tap( (rep) => {
         this.firstName = rep['user']['personalInfo']['firstName'],
@@ -48,14 +49,17 @@ export class ProfileHomepageComponent implements OnInit{
     ).subscribe()
   }
   
+  // On appelle cette méthode pour modifier le profil de l'utilisateur (hors mot de passe)
   onModifyProfile(): void {
     this.router.navigateByUrl('/profile/modify')
   }
 
+  // On appelle cette méthode pour modifier le mot de passe de l'utilisateur
   onModifyPassword() : void {
     this.router.navigateByUrl('/profile/modifyPassword')
   }
 
+  // On appelle cette méthode pour supprimer le compte de l'utilisateur.
   onDeleteAccount(): void{
     const confirmDeleteAccount = this.dialog.open(ConfirmDeleteAccountComponent);
 
