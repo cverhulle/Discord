@@ -9,13 +9,21 @@
     justify-content: center; 
 }
 
-// Style pour les mat-card contenant les possiblités
+// Style pour le container des mat-card contenant les possiblités
 .mat-card-container{
     display: flex;
     justify-content: space-between;
+    
 }
-// Style pour afficher le texte en blanc
+
+// Style appliqué sur les mat-card
+mat-card{
+    background-color: rgb(119, 0, 255);
+}
+
+// Style pour gérer le texte sur les mat-card
 .white-color{
     color: white;
     margin-left: 1%;
+    
 }
