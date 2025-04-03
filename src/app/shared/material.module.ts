@@ -9,7 +9,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
-import {LayoutModule} from '@angular/cdk/layout'
+
 
 @NgModule({
   exports: [
@@ -23,8 +23,7 @@ import {LayoutModule} from '@angular/cdk/layout'
     MatSnackBarModule,
     MatMenuModule,
     MatDialogModule,
-    LayoutModule
- ]
+  ]
 })
 
 
