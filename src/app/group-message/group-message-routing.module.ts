@@ -4,7 +4,7 @@ import { HomepageGroupMessageComponent } from './components/homepage-group-messa
 import { AuthGuard } from '../guard/auth.guard';
 
 const routes: Routes = [
-  {path: 'homepage', component : HomepageGroupMessageComponent, canActivate : [AuthGuard]}
+  {path: '', component : HomepageGroupMessageComponent, canActivate : [AuthGuard]}
 ];
 
 @NgModule({
