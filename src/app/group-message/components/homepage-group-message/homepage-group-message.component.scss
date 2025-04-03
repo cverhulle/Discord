@@ -12,9 +12,7 @@
 // Style pour les mat-card contenant les possiblités
 .mat-card-container{
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 5vh;
+    justify-content: space-between;
 }
 // Style pour afficher le texte en blanc
 .white-color{
