@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomepageGroupMessageComponent } from './components/homepage-gropu-message/homepage-group-message.component';
+import { HomepageGroupMessageComponent } from './components/homepage-group-message/homepage-group-message.component';
 import { AuthGuard } from '../guard/auth.guard';
 
 const routes: Routes = [
