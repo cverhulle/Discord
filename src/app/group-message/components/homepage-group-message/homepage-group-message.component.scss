@@ -18,9 +18,13 @@
 
 // Style appliqué sur les mat-card
 mat-card{
-    background-color: rgba(139, 64, 64, 0.726);
     flex: 1;
     height: 80vh;
+}
+
+// Couleur de la 1ère mat card.
+.card1{
+    background-color: rgba(139, 64, 64, 0.726);
 }
 
 // Style pour gérer le texte sur les mat-card
