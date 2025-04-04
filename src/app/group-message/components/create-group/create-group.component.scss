@@ -3,6 +3,17 @@ mat-form-field, mat-card{
     background-color: rgb(74,35,90);
 }
 
+// Style pour gérer la taille et la position des mat-form-field
+mat-form-field{
+    width: 40%;
+    margin-left: 1%;
+}
+
+// Style pour gérer les positions des noms des champs à remplir
+.subtitle-name{
+    margin-left: 1%;
+}
+
 // Style pour le titre de la page
 .form-title{
     color: white;
@@ -11,3 +22,4 @@ mat-form-field, mat-card{
     margin-top: 3vh;
     margin-bottom: 2vh;
 }
+
