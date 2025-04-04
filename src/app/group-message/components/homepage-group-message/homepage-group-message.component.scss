@@ -35,6 +35,13 @@ mat-card{
     margin-bottom: 3vh;
 }
 
+.image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
 // Style pour gérer l'affichage des images
 .image{
     width: 100%;
