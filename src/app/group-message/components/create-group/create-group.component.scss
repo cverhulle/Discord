@@ -9,6 +9,12 @@ mat-form-field{
     margin-left: 1%;
 }
 
+// Style pour la taille des boutons
+button{
+    width : 20%;
+    margin-left: 1%;
+}
+
 // Gestion de la taille des mat-from-field contenant un text-area.
 .mat-form-field-text-area{
     width: 80%
