@@ -24,6 +24,10 @@ export class CreateGroupComponent implements OnInit{
       this.chipsCategories = this.chipService.chipsCategories
   }
 
+  onHandleCategories(category: string): void {
+    this.chipService.handleSelection(category)
+  }
+
 
 }
  
