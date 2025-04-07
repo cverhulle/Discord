@@ -28,6 +28,10 @@ export class CreateGroupComponent implements OnInit{
     this.chipService.handleCategories(category)
   }
 
+  // Méthode pour savoir si une catégorie est déjà selectionnée
+  isCategorySelected(category: string): boolean {
+    return this.chipService.isSelected(category)
+  }
 
 }
  
