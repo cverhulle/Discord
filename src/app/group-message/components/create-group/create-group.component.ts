@@ -13,14 +13,11 @@ import { ChipService } from '../../services/chip.service';
   styleUrl: './create-group.component.scss'
 })
 export class CreateGroupComponent {
-  // Variable pour stocker les catégories possibles
-  categories = ['Animé', 'Art', 'Cuisine', 'Éducation',
-    'Films et Séries', 'Jeux vidéos', 'Langues Étrangères',
-    'Manga', 'Musique', 'Photographie', 'Programmation',
-    'Sport', 'Travail', 'Voyage'
-  ];
-
+  
   constructor(private chipService : ChipService) {}
+
+  // Variable pour stocker les catégories possibles
+  categories = this.chipService.chipsCategories
 
 }
  
