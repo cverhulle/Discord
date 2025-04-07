@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedModule } from '../../../shared/shared.module';
-import { NgFor } from '@angular/common';
+import { NgClass, NgFor } from '@angular/common';
 import { ChipService } from '../../services/chip.service';
 
 @Component({
   selector: 'app-create-group',
   imports: [
     SharedModule,
-    NgFor
+    NgFor,
+    NgClass
   ],
   templateUrl: './create-group.component.html',
   styleUrl: './create-group.component.scss'
