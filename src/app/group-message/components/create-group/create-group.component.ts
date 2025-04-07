@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SharedModule } from '../../../shared/shared.module';
 import { NgFor } from '@angular/common';
 import { ChipService } from '../../services/chip.service';
@@ -12,12 +12,18 @@ import { ChipService } from '../../services/chip.service';
   templateUrl: './create-group.component.html',
   styleUrl: './create-group.component.scss'
 })
-export class CreateGroupComponent {
-  
-  constructor(private chipService : ChipService) {}
+export class CreateGroupComponent implements OnInit{
 
   // Variable pour stocker les catégories possibles
-  categories = this.chipService.chipsCategories
+  chipsCategories !: string[]
+
+  constructor(private chipService : ChipService) {}
+
+  ngOnInit(): void {
+      // Variable pour stocker les catégories possibles
+      this.chipsCategories = this.chipService.chipsCategories
+  }
+
 
 }
  
