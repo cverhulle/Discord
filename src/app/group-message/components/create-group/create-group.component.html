@@ -1,9 +1,11 @@
 <mat-card>
+    <!-- Titre de la page -->
     <mat-card-title class="form-title">
         Création d'un groupe de discussion
     </mat-card-title>
 
 
+    <!-- Nom du groupe -->
     <mat-card-subtitle class="subtitle-name"> Nom du groupe </mat-card-subtitle>
     <mat-form-field>
         <mat-label> Nom du groupe </mat-label>
@@ -11,8 +13,7 @@
     </mat-form-field>
 
 
-    
-
+    <!-- Description du groupe -->
     <mat-card-subtitle class="subtitle-name"> Description du groupe </mat-card-subtitle>
     <mat-form-field class="mat-form-field-text-area">
         <mat-label> Description </mat-label>
@@ -20,12 +21,13 @@
     </mat-form-field>
 
 
+    <!-- Logo du groupe -->
     <mat-card-subtitle class="subtitle-name"> Logo du groupe </mat-card-subtitle>
     <button mat-flat-button (click)="fileInput.click()"> Choisissez une image pour votre groupe </button>
     <input #fileInput type="file" accept=".jpg, .jpeg, .png" style="display: none;">
 
 
-        
+    <!-- Type de groupe -->        
     <mat-card-subtitle class="subtitle-name"> Type de groupe </mat-card-subtitle>
     <mat-form-field> 
         <mat-label> Type de groupe </mat-label>
@@ -37,6 +39,7 @@
     </mat-form-field>
 
 
+    <!-- Langue du groupe -->
     <section class="margin-bottom">
         <mat-card-subtitle class="subtitle-name"> Langue du groupe </mat-card-subtitle>
         <mat-checkbox class="margin-left"> Français </mat-checkbox>
@@ -46,7 +49,7 @@
     </section>
 
     
-
+    <!-- Catégories du groupe -->
     <mat-card-subtitle class="subtitle-name"> Catégories du groupe </mat-card-subtitle>
     <mat-chip-set>
         <mat-chip> Animé </mat-chip>
@@ -65,6 +68,8 @@
         <mat-chip> Voyage </mat-chip>
     </mat-chip-set>
 
+
+    <!-- Bouton d'envoi-->
     <mat-card-actions>
         <button mat-flat-button> Enregistrer </button>
     </mat-card-actions>
