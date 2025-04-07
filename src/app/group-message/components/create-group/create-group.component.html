@@ -53,7 +53,7 @@
     <mat-card-subtitle class="subtitle-name margin-bottom" > Catégories du groupe </mat-card-subtitle>
     <div class="margin-left-chip">
         <mat-chip-set>
-            <mat-chip *ngFor="let category of chipsCategories" (click)="onHandleCategories(category)" [ngClass]="{'selected': isCategorySelected(category)}"> {{category}} </mat-chip>
+            <mat-chip *ngFor="let category of chipsCategories" (click)="onHandleCategories(category)" [ngClass]="{'chip-selected': isCategorySelected(category)}"> {{category}} </mat-chip>
         </mat-chip-set>
     </div>
 
