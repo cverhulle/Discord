@@ -29,11 +29,13 @@
     <mat-card>
         <mat-card-subtitle class="subtitle-name"> Informations diverses </mat-card-subtitle>
         
-        <mat-label> Type de groupe </mat-label>
-        <mat-radio-group>
-            <mat-radio-button value="Prive">Privé</mat-radio-button>
-            <mat-radio-button value="Public">Public</mat-radio-button>
-        </mat-radio-group>
+        <mat-form-field> 
+            <mat-label> Type de groupe </mat-label>
+            <mat-select>
+                <mat-option value="Prive">Privé</mat-option>
+                <mat-option value="Public">Public</mat-option>
+            </mat-select>
+        </mat-form-field>
         
 
         <mat-form-field>
