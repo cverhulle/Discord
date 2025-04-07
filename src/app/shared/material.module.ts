@@ -9,6 +9,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatRadioModule} from '@angular/material/radio'
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatSnackBarModule,
     MatMenuModule,
     MatDialogModule,
+    MatRadioModule
   ]
 })
 
