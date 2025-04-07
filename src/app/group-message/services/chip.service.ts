@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { categories } from "@ctrl/ngx-emoji-mart/ngx-emoji";
 import { BehaviorSubject } from "rxjs";
 
 @Injectable()
@@ -25,5 +26,19 @@ export class ChipService{
     isSelected(category: string): boolean{
         const selectedCategories = this.getValueOfSelectedCategories()
         return selectedCategories.includes(category)
+    }
+
+    // Méthode pour ajouter ou retirer une catégorie
+    handleSelection(category: string): void {
+        const selectedCategories = this.getValueOfSelectedCategories()
+
+        if(this.isSelected(category)) {
+            const updatedCategories = selectedCategories.filter(categories => categories !== category)
+            this.selectedCategoriesSubject.next(updatedCategories)
+        } else {
+            const updatedCategories = [...selectedCategories, category]
+            this.selectedCategoriesSubject.next(updatedCategories)
+        }
+
     }
 }
