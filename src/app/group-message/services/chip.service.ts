@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable()
 
@@ -9,5 +10,9 @@ export class ChipService{
         'Jeux vidéos', 'Langues Étrangères', 'Manga', 'Musique', 
         'Photographie', 'Programmation', 'Sport', 'Travail', 
         'Voyage'
-      ];
+    ];
+
+    //Subject pour stocker les catégories sélectionnées
+    private selectedCategoriesSubject = new BehaviorSubject<string[]>([])
+    selectedCategories$ = this.selectedCategoriesSubject.asObservable()
 }
