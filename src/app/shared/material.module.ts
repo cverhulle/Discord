@@ -12,6 +12,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox'
+import {MatChipsModule} from '@angular/material/chips'
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox'
     MatDialogModule,
     MatRadioModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatChipsModule,
   ]
 })
 
