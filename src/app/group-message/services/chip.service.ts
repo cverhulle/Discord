@@ -20,4 +20,10 @@ export class ChipService{
     getValueOfSelectedCategories(): string[] {
         return this.selectedCategoriesSubject.getValue()
     }
+
+    // Méthode pour savoir si une catégorie est déjà sélectionnée 
+    isSelected(category: string): boolean{
+        const selectedCategories = this.getValueOfSelectedCategories()
+        return selectedCategories.includes(category)
+    }
 }
