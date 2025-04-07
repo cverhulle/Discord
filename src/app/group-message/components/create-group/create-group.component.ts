@@ -22,6 +22,7 @@ export class CreateGroupComponent implements OnInit{
 
   ngOnInit(): void {
       this.chipsCategories = this.chipService.chipsCategories
+      this.chipService.resetSelectedCategoriesSubject()
   }
 
   // Méthode pour selectionner ou désectionner une catégorie.
