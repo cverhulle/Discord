@@ -41,4 +41,9 @@ export class ChipService{
         }
 
     }
+
+    // Méthode pour réinitialiser selectedCategoriesSubject
+    resetSelectedCategoriesSubject(): void{
+        this.selectedCategoriesSubject.next([])
+    }
 }
