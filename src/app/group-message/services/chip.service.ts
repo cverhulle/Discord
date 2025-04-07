@@ -29,7 +29,7 @@ export class ChipService{
     }
 
     // Méthode pour ajouter ou retirer une catégorie
-    handleSelection(category: string): void {
+    handleCategories(category: string): void {
         const selectedCategories = this.getValueOfSelectedCategories()
 
         if(this.isSelected(category)) {
