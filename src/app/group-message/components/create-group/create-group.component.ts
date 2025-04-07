@@ -20,10 +20,10 @@ export class CreateGroupComponent implements OnInit{
   constructor(private chipService : ChipService) {}
 
   ngOnInit(): void {
-      // Variable pour stocker les catégories possibles
       this.chipsCategories = this.chipService.chipsCategories
   }
 
+  // Méthode pour selectionner ou désectionner une catégorie.
   onHandleCategories(category: string): void {
     this.chipService.handleCategories(category)
   }
