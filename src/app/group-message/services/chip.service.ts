@@ -15,4 +15,9 @@ export class ChipService{
     //Subject pour stocker les catégories sélectionnées
     private selectedCategoriesSubject = new BehaviorSubject<string[]>([])
     selectedCategories$ = this.selectedCategoriesSubject.asObservable()
+
+    // Méthode pour obtenir la valeur du subject
+    getValueOfSelectedCategories(): string[] {
+        return this.selectedCategoriesSubject.getValue()
+    }
 }
