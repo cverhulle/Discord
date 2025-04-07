@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SharedModule } from '../../../shared/shared.module';
 import { NgFor } from '@angular/common';
+import { ChipService } from '../../services/chip.service';
 
 @Component({
   selector: 'app-create-group',
@@ -18,6 +19,8 @@ export class CreateGroupComponent {
     'Manga', 'Musique', 'Photographie', 'Programmation',
     'Sport', 'Travail', 'Voyage'
   ];
+
+  constructor(private chipService : ChipService) {}
 
 }
  
