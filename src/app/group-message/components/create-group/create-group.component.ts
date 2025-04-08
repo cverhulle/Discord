@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SharedModule } from '../../../shared/shared.module';
 import { NgClass, NgFor } from '@angular/common';
 import { ChipService } from '../../services/chip.service';
-import { Form, FormArray, FormControl, FormGroup } from '@angular/forms';
+import { Form, FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-create-group',
@@ -29,16 +29,23 @@ export class CreateGroupComponent implements OnInit{
   groupCategories!: FormArray;
   
 
-  constructor(private chipService : ChipService) {}
+  constructor(private chipService : ChipService,
+              private formBuilder : FormBuilder) {}
 
   ngOnInit(): void {
     this.initChipsCategoriesAndSubject()
+    this.initFormControls()
   }
 
   // Méthode pour initialiser les catégories disponibles et le subject lié.
   private initChipsCategoriesAndSubject(): void{
     this.chipsCategories = this.chipService.chipsCategories
     this.chipService.resetSelectedCategoriesSubject()
+  }
+
+  // Méthode pour initialiser tous les FormControl
+  initFormControls(): void{
+    
   }
 
   // Méthode pour selectionner ou désectionner une catégorie.
