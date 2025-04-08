@@ -26,7 +26,7 @@
     <!-- Logo du groupe -->
     <mat-card-subtitle class="subtitle-name"> Logo du groupe </mat-card-subtitle>
     <button mat-flat-button (click)="fileInput.click()"> Choisissez une image pour votre groupe </button>
-    <input #fileInput type="file" accept=".jpg, .jpeg, .png" style="display: none;">
+    <input #fileInput type="file" accept=".jpg, .jpeg, .png" style="display: none;" (change)="onLogoToSend($event)">
 
 
     <!-- Type de groupe -->        

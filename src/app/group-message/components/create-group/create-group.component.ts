@@ -78,6 +78,12 @@ export class CreateGroupComponent implements OnInit{
     this.logoToSend$ = this.imageService.imageToSend$
   }
 
+  // Méthode à déclencher au clic sur une image. 
+  onLogoToSend(event : Event): void {
+    this.imageService.getImageToSend(event)   
+    console.log(this.imageService.getValueOfImageToSend())   
+  }
+
   // Méthode pour selectionner ou désectionner une catégorie.
   onHandleCategories(category: string): void {
     this.chipService.handleCategories(category)
