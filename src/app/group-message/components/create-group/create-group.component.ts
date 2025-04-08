@@ -21,8 +21,13 @@ export class CreateGroupComponent implements OnInit{
   constructor(private chipService : ChipService) {}
 
   ngOnInit(): void {
-      this.chipsCategories = this.chipService.chipsCategories
-      this.chipService.resetSelectedCategoriesSubject()
+    this.initChipsCategoriesAndSubject()
+  }
+
+  // Méthode pour initialiser les catégories disponibles et le subject lié.
+  private initChipsCategoriesAndSubject(): void{
+    this.chipsCategories = this.chipService.chipsCategories
+    this.chipService.resetSelectedCategoriesSubject()
   }
 
   // Méthode pour selectionner ou désectionner une catégorie.
