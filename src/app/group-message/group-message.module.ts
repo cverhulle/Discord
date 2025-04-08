@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { GroupMessageRoutingModule } from './group-message-routing.module';
 import { ChipService } from './services/chip.service';
+import { FormCreateGroupMessage } from './services/form-create-group-message.service';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { ChipService } from './services/chip.service';
     GroupMessageRoutingModule
   ],
   providers: [
-    ChipService
+    ChipService,
+    FormCreateGroupMessage
   ]
 })
 export class GroupMessageModule { }
