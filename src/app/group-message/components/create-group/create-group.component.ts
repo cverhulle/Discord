@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SharedModule } from '../../../shared/shared.module';
 import { NgClass, NgFor } from '@angular/common';
 import { ChipService } from '../../services/chip.service';
-import { Form, FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Form, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-group',
@@ -45,7 +45,25 @@ export class CreateGroupComponent implements OnInit{
 
   // Méthode pour initialiser tous les FormControl
   initFormControls(): void{
-    
+
+    // Initialisation du nom du groupe.
+    this.groupName = this.formBuilder.control('', Validators.required)
+
+    // Initialisation de la description du groupe.
+    this.groupDescription = this.formBuilder.control('', Validators.required)
+
+    // Initialisation du logo du groupe.
+    this.groupLogo = this.formBuilder.control(null)
+
+    // Initialisation du type de groupe.
+    this.groupType = this.formBuilder.control('Public', Validators.required);
+
+    // Initialisation des langues du groupe.
+    this.groupLanguages = this.formBuilder.array([], Validators.required);
+
+    // Initialisation des catégories du groupe.
+    this.groupCategories = this.formBuilder.array([], Validators.required);
+
   }
 
   // Méthode pour selectionner ou désectionner une catégorie.
