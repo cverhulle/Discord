@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SharedModule } from '../../../shared/shared.module';
 import { NgClass, NgFor } from '@angular/common';
 import { ChipService } from '../../services/chip.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Form, FormArray, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-create-group',
@@ -23,10 +23,10 @@ export class CreateGroupComponent implements OnInit{
   registerForm!: FormGroup;
   groupName!: FormControl;
   groupDescription!: FormControl;
-  groupLogo!: File;
-  groupType!: string;
-  groupLanguages!: string[];
-  groupCategories!: string[];
+  groupLogo!: FormControl;
+  groupType!: FormControl;
+  groupLanguages!: FormArray;
+  groupCategories!: FormArray;
   
 
   constructor(private chipService : ChipService) {}
