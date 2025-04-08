@@ -25,8 +25,16 @@
 
     <!-- Logo du groupe -->
     <mat-card-subtitle class="subtitle-name"> Logo du groupe </mat-card-subtitle>
-    <button mat-flat-button (click)="fileInput.click()"> Choisissez une image pour votre groupe </button>
-    <input #fileInput type="file" accept=".jpg, .jpeg, .png" style="display: none;" (change)="onLogoToSend($event)">
+    <ng-container>
+        <ng-container *ngIf="!(logoToSend$ | async) ; else deleteLogo">
+            <button mat-flat-button (click)="fileInput.click()"> Choisissez une image pour votre groupe </button>
+            <input #fileInput type="file" accept=".jpg, .jpeg, .png" style="display: none;" (change)="onLogoToSend($event)">
+        </ng-container>
+
+        <ng-template #deleteLogo>
+            <p> Autre choix </p>
+        </ng-template>
+    </ng-container>
 
 
     <!-- Type de groupe -->        

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedModule } from '../../../shared/shared.module';
-import {NgFor, NgStyle } from '@angular/common';
+import {AsyncPipe, NgFor, NgIf, NgStyle } from '@angular/common';
 import { ChipService } from '../../services/chip.service';
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormCreateGroupMessage } from '../../services/form-create-group-message.service';
@@ -14,7 +14,9 @@ import { ImageService } from '../../../shared/image/services/image.services';
     SharedModule,
     NgFor,
     NgStyle,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgIf,
+    AsyncPipe
   ],
   templateUrl: './create-group.component.html',
   styleUrl: './create-group.component.scss'
