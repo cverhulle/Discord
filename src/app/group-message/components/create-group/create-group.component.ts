@@ -35,6 +35,9 @@ export class CreateGroupComponent implements OnInit{
   // Observable pour gérer l'image du logo du groupe
   logoToSend$!: Observable<File | null>
 
+  // Observable pour gérer la prévisualisation de l'image
+  logoToSendUrl$!: Observable<string | null>
+
   constructor(private chipService : ChipService,
               private formBuilder : FormBuilder,
               private formCreateGroupMessage : FormCreateGroupMessage,
