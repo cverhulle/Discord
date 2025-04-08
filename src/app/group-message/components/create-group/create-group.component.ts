@@ -3,6 +3,7 @@ import { SharedModule } from '../../../shared/shared.module';
 import {NgFor, NgStyle } from '@angular/common';
 import { ChipService } from '../../services/chip.service';
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormCreateGroupMessage } from '../../services/form-create-group-message.service';
 
 
 @Component({
@@ -28,7 +29,8 @@ export class CreateGroupComponent implements OnInit{
   groupType!: FormControl;
 
   constructor(private chipService : ChipService,
-              private formBuilder : FormBuilder) {}
+              private formBuilder : FormBuilder,
+              private formCreateGroupMessage : FormCreateGroupMessage) {}
 
   ngOnInit(): void {
     this.initChipsCategoriesAndSubject()
@@ -76,7 +78,7 @@ export class CreateGroupComponent implements OnInit{
 
   // Méthode à appeler pour envoyer le formulaire au backend.
   onSubmit(): void{
-    
+    this.formCreateGroupMessage.createFormDataToSend(this.registerForm)
   }
 
 }
