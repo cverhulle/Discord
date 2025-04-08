@@ -4,6 +4,7 @@ import {NgFor, NgStyle } from '@angular/common';
 import { ChipService } from '../../services/chip.service';
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormCreateGroupMessage } from '../../services/form-create-group-message.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -27,6 +28,9 @@ export class CreateGroupComponent implements OnInit{
   groupName!: FormControl;
   groupDescription!: FormControl;
   groupType!: FormControl;
+
+  // Observable pour gérer l'image du logo du groupe
+  logoToSend$!: Observable<File | null>
 
   constructor(private chipService : ChipService,
               private formBuilder : FormBuilder,
