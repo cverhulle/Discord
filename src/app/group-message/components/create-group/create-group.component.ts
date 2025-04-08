@@ -35,6 +35,7 @@ export class CreateGroupComponent implements OnInit{
   ngOnInit(): void {
     this.initChipsCategoriesAndSubject()
     this.initFormControls()
+    this.initRegisterForm()
   }
 
   // Méthode pour initialiser les catégories disponibles et le subject lié.
@@ -64,6 +65,18 @@ export class CreateGroupComponent implements OnInit{
     // Initialisation des catégories du groupe.
     this.groupCategories = this.formBuilder.array([], Validators.required);
 
+  }
+
+  // Méthode pour initialiser le formulaire complet
+  initRegisterForm(): void{
+    this.registerForm = this.formBuilder.group({
+      groupName: this.groupName,
+      groupDescription: this.groupDescription,
+      groupLogo: this.groupLogo,
+      groupType: this.groupType,
+      groupLanguages: this.groupLanguages,
+      groupCategories: this.groupCategories
+    })
   }
 
   // Méthode pour selectionner ou désectionner une catégorie.
