@@ -77,7 +77,7 @@ export class ImageService {
         }
     }
 
-    // Méthode pour faire émettrer à imageToSendUrlSubject le le path de l'image lorsqu'elle vient du bakcend.
+    // Méthode pour faire émettrre à imageToSendUrlSubject le path de l'image lorsqu'elle vient du bakcend.
     setValueOfImageToSendUrlWithPath(path: string | undefined | null): void{
         if(path) {
             this.imageToSendUrlSubject.next(path)
