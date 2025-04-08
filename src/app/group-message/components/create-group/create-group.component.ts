@@ -86,6 +86,11 @@ export class CreateGroupComponent implements OnInit{
     console.log(this.imageService.getValueOfImageToSend())   
   }
 
+  // Méthode pour supprimer le logo au clic sur l'icone delete
+  onRemoveLogo(): void {
+    
+  }
+
   // Méthode pour selectionner ou désectionner une catégorie.
   onHandleCategories(category: string): void {
     this.chipService.handleCategories(category)
