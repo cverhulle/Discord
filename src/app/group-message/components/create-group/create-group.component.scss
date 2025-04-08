@@ -26,25 +26,6 @@ button{
     margin-left: 1%;
 }
 
-// Style pour le titre de la page
-.form-title{
-    color: white;
-    text-align: center;
-    font-size: 6vh;
-    margin-top: 3vh;
-    margin-bottom: 2vh;
-}
-
-// Style pour décaler la première case à cocher
-.margin-left{
-    margin-left: 0.5%;
-}
-
-// Style pour décaler la première catégorie
-.margin-left-chip{
-    margin-left: 1%;
-}
-
 // Style pour ajouter une marge en dessous d'un élément
 .margin-bottom{
     margin-bottom: 0.5%;
@@ -55,8 +36,67 @@ button{
     margin-top: 1.5%;
 }
 
+// Style pour décaler la première case à cocher
+.margin-left{
+    margin-left: 0.5%;
+}
+
+
+
+
+
+
+
+
+
+
+// Style pour le titre de la page
+.form-title{
+    color: white;
+    text-align: center;
+    font-size: 6vh;
+    margin-top: 3vh;
+    margin-bottom: 2vh;
+}
+
+
+
+
+
+
+
+
+
 // Style pour gérer l'icone de suppression du logo
 .deleteLogo{
     margin-left: 1%;
     color: rgb(201, 26, 26)
 }
+
+
+// Style pour gérer la prévisualition de l'image dans le post à envoyer
+.post-image-preview{
+    max-width: 20vh;
+    max-height: 20vh;
+    width: auto;
+    height: auto;
+}
+
+.mat-card-image-preview{
+    background-color: rgb(114, 83, 172);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+// Style pour décaler la première catégorie
+.margin-left-chip{
+    margin-left: 1%;
+}
+
+
