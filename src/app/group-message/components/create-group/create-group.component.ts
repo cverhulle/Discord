@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SharedModule } from '../../../shared/shared.module';
 import {NgFor, NgStyle } from '@angular/common';
 import { ChipService } from '../../services/chip.service';
-import {FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { categories } from '@ctrl/ngx-emoji-mart/ngx-emoji';
+import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-create-group',
