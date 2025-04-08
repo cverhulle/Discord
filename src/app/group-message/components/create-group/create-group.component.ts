@@ -3,6 +3,7 @@ import { SharedModule } from '../../../shared/shared.module';
 import {NgFor, NgStyle } from '@angular/common';
 import { ChipService } from '../../services/chip.service';
 import {FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { categories } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 
 @Component({
   selector: 'app-create-group',
@@ -75,7 +76,12 @@ export class CreateGroupComponent implements OnInit{
 
   // Méthode à appeler pour envoyer le formulaire au backend.
   onSubmit(): void{
-    console.log(this.registerForm.value)
+    const selectedCategories = this.chipService.getValueOfSelectedCategories()
+    const formData = {
+      ...this.registerForm.value,
+      categories : selectedCategories
+    }
+    console.log(formData)
   }
 
 }
