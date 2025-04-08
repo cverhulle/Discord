@@ -68,9 +68,13 @@ export class CreateGroupComponent implements OnInit{
     this.chipService.handleCategories(category)
   }
 
-  // Méthode pour savoir si une catégorie est déjà selectionnée
+  // Méthode pour savoir si une catégorie est déjà selectionnée.
   isCategorySelected(category: string): boolean {
     return this.chipService.isSelected(category)
+  }
+
+  onSubmit(): void{
+    console.log(this.registerForm.value)
   }
 
 }
