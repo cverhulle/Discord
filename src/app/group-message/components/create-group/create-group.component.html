@@ -9,7 +9,7 @@
     <mat-card-subtitle class="subtitle-name"> Nom du groupe </mat-card-subtitle>
     <mat-form-field>
         <mat-label> Nom du groupe </mat-label>
-        <input type="text" matInput>
+        <input type="text" matInput formControlName="groupName">
     </mat-form-field>
 
 
@@ -17,7 +17,7 @@
     <mat-card-subtitle class="subtitle-name"> Description du groupe </mat-card-subtitle>
     <mat-form-field class="mat-form-field-text-area">
         <mat-label> Description </mat-label>
-        <textarea matInput placeholder="Entrez votre description..."></textarea>
+        <textarea matInput placeholder="Entrez votre description..." formControlName="groupDescription"></textarea>
     </mat-form-field>
 
 
@@ -31,7 +31,7 @@
     <mat-card-subtitle class="subtitle-name"> Type de groupe </mat-card-subtitle>
     <mat-form-field> 
         <mat-label> Type de groupe </mat-label>
-        <mat-select>
+        <mat-select formControlName="groupType">
             <mat-option value="Public">Public</mat-option>
             <mat-option value="Restreint">Restreint</mat-option>
             <mat-option value="Privé">Privé</mat-option>
@@ -40,7 +40,7 @@
 
 
     <!-- Langue du groupe -->
-    <section class="margin-bottom">
+    <section class="margin-bottom"> 
         <mat-card-subtitle class="subtitle-name"> Langue du groupe </mat-card-subtitle>
         <mat-checkbox class="margin-left"> Français </mat-checkbox>
         <mat-checkbox> Anglais </mat-checkbox>
