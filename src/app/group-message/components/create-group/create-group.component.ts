@@ -2,14 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { SharedModule } from '../../../shared/shared.module';
 import { NgClass, NgFor } from '@angular/common';
 import { ChipService } from '../../services/chip.service';
-import { Form, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Form, FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-group',
   imports: [
     SharedModule,
     NgFor,
-    NgClass
+    NgClass,
+    ReactiveFormsModule
   ],
   templateUrl: './create-group.component.html',
   styleUrl: './create-group.component.scss'
