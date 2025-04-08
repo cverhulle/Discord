@@ -73,6 +73,7 @@ export class CreateGroupComponent implements OnInit{
     return this.chipService.isSelected(category)
   }
 
+  // Méthode à appeler pour envoyer le formulaire au backend.
   onSubmit(): void{
     console.log(this.registerForm.value)
   }
