@@ -34,7 +34,7 @@
         <ng-template #deleteLogo>
             <!-- Apercu de l'image que l'on souhaite envoyer. -->
             <mat-card *ngIf="(logoToSendUrl$ |async)" class="mat-card-image-preview">
-                <mat-card-content> Prévisualisation de l'image à envoyer : </mat-card-content>
+                <mat-card-content> Prévisualisation du logo : </mat-card-content>
                 <img [src]="(logoToSendUrl$ |async)" alt="Aperçu de l'image" class="image-preview">
                 <mat-icon class="deleteLogo" (click)="onRemoveLogo()"> delete </mat-icon>
             </mat-card>
