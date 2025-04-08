@@ -80,7 +80,11 @@ export class CreateGroupComponent implements OnInit{
 
   // Méthode pour initialiser les Observables
   initObservables():void{
+    // On initialise l'Observable pour gérer le logo à envoyer
     this.logoToSend$ = this.imageService.imageToSend$
+
+    // On initialise l'Observable pour la prévisualisation de l'image à envoyer.
+    this.logoToSendUrl$ = this.imageService.imageToSendUrl$
   }
 
   // Méthode à déclencher au clic sur une image. 
