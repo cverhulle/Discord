@@ -5,6 +5,7 @@ import { ChipService } from '../../services/chip.service';
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormCreateGroupMessage } from '../../services/form-create-group-message.service';
 import { Observable } from 'rxjs';
+import { ImageService } from '../../../shared/image/services/image.services';
 
 
 @Component({
@@ -34,12 +35,14 @@ export class CreateGroupComponent implements OnInit{
 
   constructor(private chipService : ChipService,
               private formBuilder : FormBuilder,
-              private formCreateGroupMessage : FormCreateGroupMessage) {}
+              private formCreateGroupMessage : FormCreateGroupMessage,
+              private imageService : ImageService) {}
 
   ngOnInit(): void {
     this.initChipsCategoriesAndSubject()
     this.initFormControls()
     this.initRegisterForm()
+    this.initObservables()
   }
 
   // Méthode pour initialiser les catégories disponibles et le subject lié.
@@ -69,6 +72,9 @@ export class CreateGroupComponent implements OnInit{
       groupType: this.groupType
     })
   }
+
+  // Méthode pour initialiser les Observables
+  this.logoToSend$ = this.imageService.imageToSend$
 
   // Méthode pour selectionner ou désectionner une catégorie.
   onHandleCategories(category: string): void {
