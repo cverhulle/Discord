@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedModule } from '../../../shared/shared.module';
-import { NgClass, NgFor } from '@angular/common';
+import { NgClass, NgFor, NgStyle } from '@angular/common';
 import { ChipService } from '../../services/chip.service';
 import { Form, FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
@@ -9,7 +9,7 @@ import { Form, FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModu
   imports: [
     SharedModule,
     NgFor,
-    NgClass,
+    NgStyle,
     ReactiveFormsModule
   ],
   templateUrl: './create-group.component.html',
