@@ -10,6 +10,7 @@
     <mat-form-field>
         <mat-label> Nom du groupe </mat-label>
         <input type="text" matInput formControlName="groupName">
+        <mat-error> Ce champ est requis </mat-error>
     </mat-form-field>
 
 
@@ -18,6 +19,7 @@
     <mat-form-field class="mat-form-field-text-area">
         <mat-label> Description </mat-label>
         <textarea matInput placeholder="Entrez votre description..." formControlName="groupDescription"></textarea>
+        <mat-error> Ce champ est requis </mat-error>
     </mat-form-field>
 
 
@@ -36,6 +38,7 @@
             <mat-option value="Restreint">Restreint</mat-option>
             <mat-option value="Privé">Privé</mat-option>
         </mat-select>
+        <mat-error> Ce champ est requis </mat-error>
     </mat-form-field>
 
 
