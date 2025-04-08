@@ -24,11 +24,7 @@ export class CreateGroupComponent implements OnInit{
   registerForm!: FormGroup;
   groupName!: FormControl;
   groupDescription!: FormControl;
-  groupLogo!: FormControl;
   groupType!: FormControl;
-  groupLanguages!: FormArray;
-  groupCategories!: FormArray;
-  
 
   constructor(private chipService : ChipService,
               private formBuilder : FormBuilder) {}
@@ -54,18 +50,8 @@ export class CreateGroupComponent implements OnInit{
     // Initialisation de la description du groupe.
     this.groupDescription = this.formBuilder.control('', Validators.required)
 
-    // Initialisation du logo du groupe.
-    this.groupLogo = this.formBuilder.control(null)
-
     // Initialisation du type de groupe.
     this.groupType = this.formBuilder.control('Public', Validators.required);
-
-    // Initialisation des langues du groupe.
-    this.groupLanguages = this.formBuilder.array([], Validators.required);
-
-    // Initialisation des catégories du groupe.
-    this.groupCategories = this.formBuilder.array([], Validators.required);
-
   }
 
   // Méthode pour initialiser le formulaire complet
@@ -73,10 +59,7 @@ export class CreateGroupComponent implements OnInit{
     this.registerForm = this.formBuilder.group({
       groupName: this.groupName,
       groupDescription: this.groupDescription,
-      groupLogo: this.groupLogo,
-      groupType: this.groupType,
-      groupLanguages: this.groupLanguages,
-      groupCategories: this.groupCategories
+      groupType: this.groupType
     })
   }
 
