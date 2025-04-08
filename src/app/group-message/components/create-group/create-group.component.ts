@@ -88,7 +88,7 @@ export class CreateGroupComponent implements OnInit{
 
   // Méthode pour supprimer le logo au clic sur l'icone delete
   onRemoveLogo(): void {
-    
+    this.imageService.setImageToSend(null)
   }
 
   // Méthode pour selectionner ou désectionner une catégorie.
