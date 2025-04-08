@@ -74,7 +74,9 @@ export class CreateGroupComponent implements OnInit{
   }
 
   // Méthode pour initialiser les Observables
-  this.logoToSend$ = this.imageService.imageToSend$
+  initObservables():void{
+    this.logoToSend$ = this.imageService.imageToSend$
+  }
 
   // Méthode pour selectionner ou désectionner une catégorie.
   onHandleCategories(category: string): void {
