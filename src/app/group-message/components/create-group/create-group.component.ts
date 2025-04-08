@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SharedModule } from '../../../shared/shared.module';
 import { NgClass, NgFor } from '@angular/common';
 import { ChipService } from '../../services/chip.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-create-group',
@@ -17,6 +18,9 @@ export class CreateGroupComponent implements OnInit{
 
   // Variable pour stocker les catégories possibles
   chipsCategories !: string[]
+
+  // Variables liées au formulaire
+  registerForm!: FormGroup
 
   constructor(private chipService : ChipService) {}
 
