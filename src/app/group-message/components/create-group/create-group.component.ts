@@ -6,6 +6,7 @@ import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } f
 import { FormCreateGroupMessageService } from '../../services/form-create-group-message.service';
 import { Observable } from 'rxjs';
 import { ImageService } from '../../../shared/image/services/image.services';
+import { LanguageService } from '../../services/language.service';
 
 
 @Component({
@@ -26,6 +27,9 @@ export class CreateGroupComponent implements OnInit{
   // Variable pour stocker les catégories possibles
   chipsCategories !: string[]
 
+  // Variable pour stocker les languages disponibles
+  availableLanguages!: string[]
+
   // Variables liées au formulaire
   registerForm!: FormGroup;
   groupName!: FormControl;
@@ -41,7 +45,8 @@ export class CreateGroupComponent implements OnInit{
   constructor(private chipService : ChipService,
               private formBuilder : FormBuilder,
               private formCreateGroupMessage : FormCreateGroupMessageService,
-              private imageService : ImageService) {}
+              private imageService : ImageService,
+              private languageService : LanguageService) {}
 
   ngOnInit(): void {
     this.initChipsCategoriesAndSubject()
@@ -53,6 +58,7 @@ export class CreateGroupComponent implements OnInit{
   // Méthode pour initialiser les catégories disponibles et le subject lié.
   private initChipsCategoriesAndSubject(): void{
     this.chipsCategories = this.chipService.chipsCategories
+    this.availableLanguages = this.languageService.availableLanguages
     this.chipService.resetSelectedCategoriesSubject()
   }
 
