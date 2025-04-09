@@ -21,4 +21,18 @@ export class LanguageService{
         const selectedLanguages = this.getValueOfSelectedLanguages()
         return selectedLanguages.includes(language)
     }
+
+    // Méthode pour ajouter ou retirer un language
+    handleLanguages(language: string): void {
+        const selectedLanguages = this.getValueOfSelectedLanguages()
+
+        if(this.isSelected(language)) {
+            const updatedLanguages = selectedLanguages.filter(languages => languages !== language)
+            this.selectedLanguagesSubject.next(updatedLanguages)
+        } else {
+            const updatedLanguages = [...selectedLanguages, language]
+            this.selectedLanguagesSubject.next(updatedLanguages)
+        }
+
+    }
 }
