@@ -13,10 +13,10 @@ export class FormCreateGroupMessageService {
     createFormDataToSend(registerForm: FormGroup): void{
         const selectedCategories = this.chipService.getValueOfSelectedCategories()
         const logoToSend = this.imageService.getValueOfImageToSend()
-        console.log(logoToSend)
         const formData = {
           ...registerForm.value,
-          categories : selectedCategories
+          categories : selectedCategories,
+          logo: logoToSend
         }
         console.log(formData)
     }
