@@ -90,7 +90,6 @@ export class CreateGroupComponent implements OnInit{
   // Méthode à déclencher au clic sur une image. 
   onLogoToSend(event : Event): void {
     this.imageService.getImageToSend(event)   
-    console.log(this.imageService.getValueOfImageToSend())   
   }
 
   // Méthode pour supprimer le logo au clic sur l'icone delete
