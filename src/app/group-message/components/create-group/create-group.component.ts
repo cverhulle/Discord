@@ -49,17 +49,23 @@ export class CreateGroupComponent implements OnInit{
               private languageService : LanguageService) {}
 
   ngOnInit(): void {
-    this.initChipsCategoriesAndResetSubjectAndAvailableLanguages()
+    this.initChipsCategoriesAndAvailableLanguages()
+    this.resetSubjects()
     this.initFormControls()
     this.initRegisterForm()
     this.initObservables()
   }
 
   // Méthode pour initialiser les catégories disponibles et le subject lié.
-  private initChipsCategoriesAndResetSubjectAndAvailableLanguages(): void{
+  private initChipsCategoriesAndAvailableLanguages(): void{
     this.chipsCategories = this.chipService.chipsCategories
     this.availableLanguages = this.languageService.availableLanguages
+  }
+
+  // Méthode pour réinitialiser les subjects dans le service
+  private resetSubjects(): void{
     this.chipService.resetSelectedCategoriesSubject()
+    this.languageService.resetSelectedLanguagesSubject()
   }
 
   // Méthode pour initialiser tous les FormControl
