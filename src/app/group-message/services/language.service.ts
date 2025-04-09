@@ -33,6 +33,10 @@ export class LanguageService{
             const updatedLanguages = [...selectedLanguages, language]
             this.selectedLanguagesSubject.next(updatedLanguages)
         }
+    }
 
+    // Méthode pour réinitialiser selectedLanguagesSubject
+    resetSelectedLanguagesSubject(): void{
+        this.selectedLanguagesSubject.next([])
     }
 }
