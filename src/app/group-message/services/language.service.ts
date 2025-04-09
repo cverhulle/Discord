@@ -15,4 +15,10 @@ export class LanguageService{
     getValueOfSelectedLanguages(): string[] {
         return this.selectedLanguagesSubject.getValue()
     }
+
+    // Méthode pour savoir si un language est sélectionné
+    isSelected(language : string): boolean {
+        const selectedLanguages = this.getValueOfSelectedLanguages()
+        return selectedLanguages.includes(language)
+    }
 }
