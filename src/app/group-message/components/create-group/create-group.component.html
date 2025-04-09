@@ -58,7 +58,7 @@
     <!-- Langue du groupe -->
     <section class="margin-bottom"> 
         <mat-card-subtitle class="subtitle-name"> Langue du groupe </mat-card-subtitle>
-        <mat-checkbox class="margin-left" *ngFor="let language of availableLanguages"> {{language}} </mat-checkbox>
+        <mat-checkbox class="margin-left" *ngFor="let language of availableLanguages" (click)="onHandleLanguages(language)"> {{language}} </mat-checkbox>
     </section>
 
     
