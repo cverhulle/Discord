@@ -5,6 +5,7 @@ import { GroupMessageRoutingModule } from './group-message-routing.module';
 import { ChipService } from './services/chip.service';
 import { FormCreateGroupMessageService } from './services/form-create-group-message.service';
 import { ImageService } from '../shared/image/services/image.services';
+import { LanguageService } from './services/language.service';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ImageService } from '../shared/image/services/image.services';
   providers: [
     ChipService,
     FormCreateGroupMessageService,
-    ImageService
+    ImageService,
+    LanguageService
   ]
 })
 export class GroupMessageModule { }
