@@ -31,6 +31,11 @@ export class ImageService {
         }
     }
 
+    // Cette métohde permet de réinitialiser l'image à envoyer dans le post
+    resetImageToSendSubject(): void {
+        this.setImageToSend(null)
+    }
+
     // Subject et Observable pour gérer si l'image, dans un Post en cours de modification, est supprimé
     private deleteImageInModifiedPostSubject = new BehaviorSubject<boolean>(false)
     deleteImageInModifiedPost$ = this.deleteImageInModifiedPostSubject.asObservable()
