@@ -119,6 +119,11 @@ export class CreateGroupComponent implements OnInit{
     return this.chipService.isSelected(category)
   }
 
+  // Méthode pour selectionner ou déselectionner un language.
+  onHandleLanguages(language: string): void {
+    this.languageService.handleLanguages(language)
+  }
+
   // Méthode à appeler pour envoyer le formulaire au backend.
   onSubmit(): void{
     this.formCreateGroupMessage.createFormDataToSend(this.registerForm)
