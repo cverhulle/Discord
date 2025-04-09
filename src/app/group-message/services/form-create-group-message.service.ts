@@ -12,6 +12,8 @@ export class FormCreateGroupMessageService {
     // Cette méthode permet de créer le formData à envoyer au backend en prenant le formGroup en argument.
     createFormDataToSend(registerForm: FormGroup): void{
         const selectedCategories = this.chipService.getValueOfSelectedCategories()
+        const logoToSend = this.imageService.getValueOfImageToSend()
+        console.log(logoToSend)
         const formData = {
           ...registerForm.value,
           categories : selectedCategories
