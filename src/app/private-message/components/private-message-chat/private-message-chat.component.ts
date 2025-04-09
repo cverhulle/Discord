@@ -98,7 +98,7 @@ export class PrivateMessageChatComponent implements OnInit{
       this.initChat(this.otherUser.id)
       this.initObservable()
       this.initEmojis()
-      this.resetImageToSend()
+      this.resetAllSubject()
     }
   }
 
@@ -185,7 +185,7 @@ export class PrivateMessageChatComponent implements OnInit{
   }
 
   // Méthode pour réinitialiser l'image à envoyer
-  private resetImageToSend(): void {
+  private resetAllSubject(): void {
     this.imageService.resetImageToSendSubject()
   }
 
