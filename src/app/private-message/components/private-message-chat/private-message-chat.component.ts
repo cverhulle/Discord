@@ -98,6 +98,7 @@ export class PrivateMessageChatComponent implements OnInit{
       this.initChat(this.otherUser.id)
       this.initObservable()
       this.initEmojis()
+      this.resetImageToSend()
     }
   }
 
@@ -181,6 +182,11 @@ export class PrivateMessageChatComponent implements OnInit{
   // Méthode pour initialiser les catégories d'émojis à ne pas charger.
   private initEmojis(): void {
     this.categoriesEmojisExcluded = this.emojisService.categoryExcluded()
+  }
+
+  // Méthode pour réinitialiser l'image à envoyer
+  private resetImageToSend(): void {
+    this.imageService.resetImageToSendSubject()
   }
 
   // Méthode pour éditer un message.
