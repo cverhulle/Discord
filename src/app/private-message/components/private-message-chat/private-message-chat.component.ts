@@ -186,7 +186,8 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Méthode pour réinitialiser l'image à envoyer
   private resetAllSubject(): void {
-    this.imageService.resetImageToSendSubject()
+    this.postService.resetModifiedPostStuff()
+    this.postService.resetOpacityEmojisDisplayAndImageToSend(true)
   }
 
   // Méthode pour éditer un message.
