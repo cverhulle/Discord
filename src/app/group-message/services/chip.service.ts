@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { categories } from "@ctrl/ngx-emoji-mart/ngx-emoji";
 import { BehaviorSubject } from "rxjs";
 
 @Injectable()
