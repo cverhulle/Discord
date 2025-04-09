@@ -3,7 +3,7 @@ import { SharedModule } from '../../../shared/shared.module';
 import {AsyncPipe, NgFor, NgIf, NgStyle } from '@angular/common';
 import { ChipService } from '../../services/chip.service';
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { FormCreateGroupMessage } from '../../services/form-create-group-message.service';
+import { FormCreateGroupMessageService } from '../../services/form-create-group-message.service';
 import { Observable } from 'rxjs';
 import { ImageService } from '../../../shared/image/services/image.services';
 
@@ -40,7 +40,7 @@ export class CreateGroupComponent implements OnInit{
 
   constructor(private chipService : ChipService,
               private formBuilder : FormBuilder,
-              private formCreateGroupMessage : FormCreateGroupMessage,
+              private formCreateGroupMessage : FormCreateGroupMessageService,
               private imageService : ImageService) {}
 
   ngOnInit(): void {

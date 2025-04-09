@@ -4,7 +4,7 @@ import { FormGroup } from "@angular/forms";
 
 @Injectable()
 
-export class FormCreateGroupMessage {
+export class FormCreateGroupMessageService {
     constructor(private chipService : ChipService) {}
 
     // Cette méthode permet de créer le formData à envoyer au backend en prenant le formGroup en argument.
