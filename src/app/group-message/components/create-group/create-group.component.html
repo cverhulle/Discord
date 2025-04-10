@@ -59,7 +59,7 @@
     <section class="margin-bottom"> 
         <mat-card-subtitle class="subtitle-name"> Langue du groupe </mat-card-subtitle>
         <mat-checkbox class="margin-left" *ngFor="let language of availableLanguages" (click)="onHandleLanguages(language)"> {{language}} </mat-checkbox>
-        <mat-error *ngIf="groupLanguages.hasError('arrayEmpty') && groupLanguages.touched">
+        <mat-error *ngIf="groupLanguages.hasError('arrayEmpty') && groupLanguages.touched" class="mat-error-language">
             Veuillez sélectionner au moins une langue.
         </mat-error>
     </section>
@@ -71,7 +71,7 @@
         <mat-chip-set>
             <mat-chip *ngFor="let category of chipsCategories" (click)="onHandleCategories(category)" [ngStyle]="{'background-color': isCategorySelected(category) ? 'green' : 'transparent'}"> {{category}} </mat-chip>
         </mat-chip-set>
-        <mat-error *ngIf="groupCategories.hasError('arrayEmpty') && groupCategories.touched">
+        <mat-error *ngIf="groupCategories.hasError('arrayEmpty') && groupCategories.touched" >
             Veuillez sélectionner au moins une catégorie.
         </mat-error>
     </div>
