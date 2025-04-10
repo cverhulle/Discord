@@ -117,7 +117,6 @@ export class CreateGroupComponent implements OnInit{
     // Lors de l'émission du subject pour le logo, on met à jour le formControl du formulaire
     this.logoToSend$.subscribe((logo) => {
       this.groupLogo.setValue(logo);
-      this.groupLogo.markAsTouched();
       this.groupLogo.updateValueAndValidity();
     });
 
@@ -133,6 +132,8 @@ export class CreateGroupComponent implements OnInit{
   // Méthode pour supprimer le logo au clic sur l'icone delete
   onRemoveLogo(): void {
     this.imageService.setImageToSend(null)
+    this.groupLogo.markAsTouched()
+    this.groupLogo.updateValueAndValidity();
   }
 
   // Méthode pour selectionner ou désectionner une catégorie.

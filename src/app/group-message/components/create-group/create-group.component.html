@@ -39,6 +39,10 @@
         </ng-template>
     </ng-container>
 
+    <mat-error *ngIf="registerForm.get('groupLogo')?.hasError('logoRequired') && registerForm.get('groupLogo')?.touched">
+        Le logo est requis.
+    </mat-error>
+
 
     <!-- Type de groupe -->        
     <mat-card-subtitle class="subtitle-name"> Type de groupe </mat-card-subtitle>
