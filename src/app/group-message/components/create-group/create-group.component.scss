@@ -94,24 +94,14 @@ button{
 
 
 
-
-
-// Style pour gérer le message d'erreur pour les languages
-.mat-error-language{
-    margin-left: 0.5%;
+// Style pour les mat-error
+mat-error{
     font-size: 3vh;
     color: rgb(228, 10, 10);
     margin-bottom: 1%;
     margin-top: 1%;
 }
 
-// Style pour gérer le message d'erreur pour les catégories
-.mat-error-category{
-    font-size: 3vh;
-    color: rgb(228, 10, 10);
-    margin-bottom: 1%;
-    margin-top: 1%;
-}
 
 
 
