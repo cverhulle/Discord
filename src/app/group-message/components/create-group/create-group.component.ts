@@ -95,7 +95,9 @@ export class CreateGroupComponent implements OnInit{
     this.registerForm = this.formBuilder.group({
       groupName: this.groupName,
       groupDescription: this.groupDescription,
-      groupType: this.groupType
+      groupType: this.groupType,
+      groupLanguages : this.groupLanguages,
+      groupCategories : this.groupCategories
     })
   }
 
