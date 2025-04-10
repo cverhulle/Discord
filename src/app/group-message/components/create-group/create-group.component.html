@@ -11,7 +11,7 @@
         <mat-label> Nom du groupe </mat-label>
         <input type="text" matInput formControlName="groupName">
     </mat-form-field>
-    <mat-error> Ce champ est requis </mat-error>
+    <mat-error class="required-fields"> Ce champ est requis </mat-error>
 
     <!-- Description du groupe -->
     <mat-card-subtitle class="subtitle-name"> Description du groupe </mat-card-subtitle>
@@ -19,7 +19,7 @@
         <mat-label> Description </mat-label>
         <textarea matInput placeholder="Entrez votre description..." formControlName="groupDescription"></textarea>
     </mat-form-field>
-    <mat-error> Ce champ est requis </mat-error>
+    <mat-error class="required-fields"> Ce champ est requis </mat-error>
 
     <!-- Logo du groupe -->
     <mat-card-subtitle class="subtitle-name"> Logo du groupe </mat-card-subtitle>
