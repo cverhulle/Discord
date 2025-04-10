@@ -132,7 +132,15 @@ export class CreateGroupComponent implements OnInit{
 
   // Méthode pour selectionner ou déselectionner un language.
   onHandleLanguages(language: string): void {
-    this.languageService.handleLanguages(language)
+    this.languageService.handleLanguages(language);
+    this.updateLanguagesFormControl();
+  }
+
+  // Méthode pour mettre à jour le formControl lié aux languages
+  private updateLanguagesFormControl(): void{
+    const selectedLanguages = this.languageService.getValueOfSelectedLanguages();
+    this.groupLanguages.setValue(selectedLanguages);
+    this.groupLanguages.updateValueAndValidity();
   }
 
   // Méthode à appeler pour envoyer le formulaire au backend.
