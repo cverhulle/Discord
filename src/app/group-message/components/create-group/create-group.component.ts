@@ -122,7 +122,15 @@ export class CreateGroupComponent implements OnInit{
 
   // Méthode pour selectionner ou désectionner une catégorie.
   onHandleCategories(category: string): void {
-    this.chipService.handleCategories(category)
+    this.chipService.handleCategories(category);
+    this.updateCategoriesFormControl();
+  }
+
+  // Méthode pour mettre à jour le formControl lié aux catégories
+  private updateCategoriesFormControl(): void{
+    const selectedCatégories = this.chipService.getValueOfSelectedCategories();
+    this.groupCategories.setValue(selectedCatégories);
+    this.groupCategories.updateValueAndValidity();
   }
 
   // Méthode pour savoir si une catégorie est déjà selectionnée.
