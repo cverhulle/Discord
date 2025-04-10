@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { ImageService } from '../../../shared/image/services/image.services';
 import { LanguageService } from '../../services/language.service';
 import { ArrayNotEmpty } from '../../../shared/validators/array-not-empty.validator';
+import { DisplayService } from '../../../shared/display/service/display.service';
 
 
 @Component({
@@ -49,7 +50,8 @@ export class CreateGroupComponent implements OnInit{
               private formBuilder : FormBuilder,
               private formCreateGroupMessage : FormCreateGroupMessageService,
               private imageService : ImageService,
-              private languageService : LanguageService) {}
+              private languageService : LanguageService,
+              private displayService : DisplayService) {}
 
   ngOnInit(): void {
     this.initChipsCategoriesAndAvailableLanguages()
@@ -159,7 +161,7 @@ export class CreateGroupComponent implements OnInit{
       this.formCreateGroupMessage.createFormDataToSend(this.registerForm)
     } else {
       this.registerForm.markAllAsTouched();
-      console.log('Erreur')
+      this.displayService.displayMessage("Erreur de l'envoi du formulaire")
     }
   }
 
