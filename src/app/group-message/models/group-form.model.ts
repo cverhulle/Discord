@@ -1,4 +1,4 @@
-export class GroupForm {
+export class CreateGroupForm {
     groupName!: string;
     groupDescription!: string;
     groupType!: string;

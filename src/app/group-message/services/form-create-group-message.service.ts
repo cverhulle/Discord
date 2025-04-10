@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { GroupForm } from "../models/group-form.model";
+import { CreateGroupForm } from "../models/group-form.model";
 import { FormGroup } from "@angular/forms";
 
 
@@ -11,7 +11,7 @@ export class FormCreateGroupMessageService {
     // Cette méthode permet de créer le formData à envoyer au backend en prenant le formGroup en argument.
     createFormDataToSend(registerForm: FormGroup): FormData{
      
-      const formValues = registerForm.value as GroupForm
+      const formValues = registerForm.value as CreateGroupForm
 
       const formData = new FormData();
     
