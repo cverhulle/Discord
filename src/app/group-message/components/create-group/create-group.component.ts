@@ -35,6 +35,8 @@ export class CreateGroupComponent implements OnInit{
   groupName!: FormControl;
   groupDescription!: FormControl;
   groupType!: FormControl;
+  groupLanguages!: FormControl;
+  groupCategories!: FormControl;
 
   // Observable pour gérer l'image du logo du groupe
   logoToSend$!: Observable<File | null>
