@@ -73,6 +73,7 @@ export class CreateGroupComponent implements OnInit{
   private resetSubjects(): void{
     this.chipService.resetSelectedCategoriesSubject()
     this.languageService.resetSelectedLanguagesSubject()
+    this.imageService.resetImageToSendSubject()
   }
 
   // Méthode pour initialiser tous les FormControl
@@ -169,11 +170,18 @@ export class CreateGroupComponent implements OnInit{
     this.groupLanguages.updateValueAndValidity();
   }
 
+
+  // Méthode pour réinitialiser le formulaire
+  private resetForm(): void{
+    this.registerForm.reset()
+    this.resetSubjects()
+  }
+
   // Méthode à appeler pour envoyer le formulaire au backend.
   onSubmit(): void{
     if (this.registerForm.valid) {
       this.formCreateGroupMessage.sendForm(this.registerForm)
-      this.registerForm.reset()
+      this.resetForm()
       this.displayService.displayMessage('Backend en cours d\'implémentation')
     } else {
       this.registerForm.markAllAsTouched();
