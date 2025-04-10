@@ -9,6 +9,7 @@ import { ImageService } from '../../../shared/image/services/image.services';
 import { LanguageService } from '../../services/language.service';
 import { ArrayNotEmpty } from '../../../shared/validators/array-not-empty.validator';
 import { DisplayService } from '../../../shared/display/service/display.service';
+import { LogoRequiredValidator } from '../../../shared/validators/logo-required.validator';
 
 
 @Component({
@@ -91,6 +92,9 @@ export class CreateGroupComponent implements OnInit{
 
     // Initialisation des catégories
     this.groupCategories = this.formBuilder.control([], ArrayNotEmpty());
+
+    // Initialisation du logo
+    this.groupLogo = this.formBuilder.control(null, LogoRequiredValidator())
   }
 
   // Méthode pour initialiser le formulaire complet
@@ -100,7 +104,8 @@ export class CreateGroupComponent implements OnInit{
       groupDescription: this.groupDescription,
       groupType: this.groupType,
       groupLanguages : this.groupLanguages,
-      groupCategories : this.groupCategories
+      groupCategories : this.groupCategories,
+      groupLogo : this.groupLogo
     })
   }
 
