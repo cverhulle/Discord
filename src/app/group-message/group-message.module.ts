@@ -6,6 +6,7 @@ import { ChipService } from './services/chip.service';
 import { FormCreateGroupMessageService } from './services/form-create-group-message.service';
 import { ImageService } from '../shared/image/services/image.services';
 import { LanguageService } from './services/language.service';
+import { DisplayService } from '../shared/display/service/display.service';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { LanguageService } from './services/language.service';
     ChipService,
     FormCreateGroupMessageService,
     ImageService,
-    LanguageService
+    LanguageService,
+    DisplayService
   ]
 })
 export class GroupMessageModule { }
