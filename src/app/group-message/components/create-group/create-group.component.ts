@@ -7,6 +7,7 @@ import { FormCreateGroupMessageService } from '../../services/form-create-group-
 import { Observable } from 'rxjs';
 import { ImageService } from '../../../shared/image/services/image.services';
 import { LanguageService } from '../../services/language.service';
+import { ArrayNotEmpty } from '../../../shared/validators/array-not-empty.validator';
 
 
 @Component({
@@ -81,6 +82,12 @@ export class CreateGroupComponent implements OnInit{
 
     // Initialisation du type de groupe.
     this.groupType = this.formBuilder.control('Public', Validators.required);
+
+    // Initialisation du language
+    this.groupLanguages = this.formBuilder.control([], ArrayNotEmpty());
+
+    // Initialisation des catégories
+    this.groupCategories = this.formBuilder.control([], ArrayNotEmpty());
   }
 
   // Méthode pour initialiser le formulaire complet
