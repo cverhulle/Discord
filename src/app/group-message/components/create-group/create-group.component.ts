@@ -172,8 +172,8 @@ export class CreateGroupComponent implements OnInit{
   // Méthode à appeler pour envoyer le formulaire au backend.
   onSubmit(): void{
     if (this.registerForm.valid) {
-      this.formCreateGroupMessage.createFormDataToSend(this.registerForm)
-      // this.registerForm.reset()
+      this.formCreateGroupMessage.sendForm(this.registerForm)
+      this.registerForm.reset()
     } else {
       this.registerForm.markAllAsTouched();
       this.displayService.displayMessage("Erreur de l'envoi du formulaire")
