@@ -1,12 +1,15 @@
 import { Injectable } from "@angular/core";
 import { CreateGroupForm } from "../models/group-form.model";
 import { FormGroup } from "@angular/forms";
+import { HttpClient } from "@angular/common/http";
+import { catchError, map, Observable, of } from "rxjs";
+import { environment } from "../../../environments/environment.development";
 
 
 @Injectable()
 
 export class FormCreateGroupMessageService {
-    constructor() {}
+    constructor(private http: HttpClient) {}
 
     // Cette méthode permet de créer le formData à envoyer au backend en prenant le formGroup en argument.
     createFormDataToSend(registerForm: FormGroup): FormData{
@@ -37,5 +40,14 @@ export class FormCreateGroupMessageService {
       }
     
       return formData;
+    }
+
+    // Cette méthode permet d'envoyer le formulaire au backend
+    sendForm(registerForm : FormGroup): Observable<boolean>{
+      const formData = this.createFormDataToSend(registerForm)
+      return this.http.post(`${environment.apiUrl}/group-message/create-group`, formData).pipe(
+        map( () => true),
+        catchError( () => of(false))
+      )
     }
 }
