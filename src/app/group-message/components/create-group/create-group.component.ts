@@ -174,6 +174,7 @@ export class CreateGroupComponent implements OnInit{
     if (this.registerForm.valid) {
       this.formCreateGroupMessage.sendForm(this.registerForm)
       this.registerForm.reset()
+      this.displayService.displayMessage('Backend en cours d\'implémentation')
     } else {
       this.registerForm.markAllAsTouched();
       this.displayService.displayMessage("Erreur de l'envoi du formulaire")
