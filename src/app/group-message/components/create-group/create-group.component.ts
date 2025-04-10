@@ -158,6 +158,7 @@ export class CreateGroupComponent implements OnInit{
     if (this.registerForm.valid) {
       this.formCreateGroupMessage.createFormDataToSend(this.registerForm)
     } else {
+      this.registerForm.markAllAsTouched();
       console.log('Erreur')
     }
   }
