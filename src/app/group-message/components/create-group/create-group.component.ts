@@ -114,6 +114,13 @@ export class CreateGroupComponent implements OnInit{
     // On initialise l'Observable pour gérer le logo à envoyer
     this.logoToSend$ = this.imageService.imageToSend$
 
+    // Lors de l'émission du subject pour le logo, on met à jour le formControl du formulaire
+    this.logoToSend$.subscribe((logo) => {
+      this.groupLogo.setValue(logo);
+      this.groupLogo.markAsTouched();
+      this.groupLogo.updateValueAndValidity();
+    });
+
     // On initialise l'Observable pour la prévisualisation de l'image à envoyer.
     this.logoToSendUrl$ = this.imageService.imageToSendUrl$
   }
