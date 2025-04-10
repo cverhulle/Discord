@@ -130,6 +130,7 @@ export class CreateGroupComponent implements OnInit{
   private updateCategoriesFormControl(): void{
     const selectedCatégories = this.chipService.getValueOfSelectedCategories();
     this.groupCategories.setValue(selectedCatégories);
+    this.groupCategories.markAsTouched();
     this.groupCategories.updateValueAndValidity();
   }
 
@@ -148,6 +149,7 @@ export class CreateGroupComponent implements OnInit{
   private updateLanguagesFormControl(): void{
     const selectedLanguages = this.languageService.getValueOfSelectedLanguages();
     this.groupLanguages.setValue(selectedLanguages);
+    this.groupLanguages.markAsTouched();
     this.groupLanguages.updateValueAndValidity();
   }
 
