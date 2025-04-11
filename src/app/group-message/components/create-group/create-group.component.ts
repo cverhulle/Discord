@@ -131,6 +131,7 @@ export class CreateGroupComponent implements OnInit{
         // Sinon, on retire le validator et on reset le contenu du champ
         this.groupPassword.clearValidators();
         this.groupPassword.setValue('');
+        this.groupPassword.markAsUntouched(); 
       }
 
       // On met à jour le controlleur
