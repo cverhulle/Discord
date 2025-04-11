@@ -132,7 +132,7 @@ export class CreateGroupComponent implements OnInit{
         this.groupPassword.clearValidators();
         this.groupPassword.setValue('');
       }
-      
+
       // On met à jour le controlleur
       this.groupPassword.updateValueAndValidity();
     });
@@ -151,6 +151,9 @@ export class CreateGroupComponent implements OnInit{
 
     // On initialise l'Observable pour la prévisualisation de l'image à envoyer.
     this.logoToSendUrl$ = this.imageService.imageToSendUrl$
+
+    // On initialise l'Observable valuechanges sur groupType
+    this.activateOrDisableGroupPassword()
   }
 
   // Méthode à déclencher au clic sur une image. 
