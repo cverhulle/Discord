@@ -115,6 +115,19 @@ export class CreateGroupComponent implements OnInit{
     })
   }
 
+  // Méthode pour activer ou désactiver le champ de mot de passe selon si le type de groupe est restreint ou non.
+  activateOrDisableGroupPassword(): void{
+    this.groupType.valueChanges.subscribe((type: string) => {
+      if (type === 'Restreint') {
+        this.groupPassword.setValidators(Validators.required);
+      } else {
+        this.groupPassword.clearValidators();
+        this.groupPassword.setValue('');
+      }
+      this.groupPassword.updateValueAndValidity();
+    });
+  }
+
   // Méthode pour initialiser les Observables
   initObservables():void{
     // On initialise l'Observable pour gérer le logo à envoyer
