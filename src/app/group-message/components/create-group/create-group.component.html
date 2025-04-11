@@ -13,6 +13,8 @@
     </mat-form-field>
     <mat-error class="required-fields" *ngIf="registerForm.get('groupName')?.hasError('required') && registerForm.get('groupName')?.touched"> Ce champ est requis </mat-error>
 
+
+
     <!-- Description du groupe -->
     <mat-card-subtitle class="subtitle-name"> Description du groupe </mat-card-subtitle>
     <mat-form-field class="mat-form-field-text-area">
@@ -21,16 +23,20 @@
     </mat-form-field>
     <mat-error class="required-fields" *ngIf="registerForm.get('groupDescription')?.hasError('required') && registerForm.get('groupDescription')?.touched"> Ce champ est requis </mat-error>
 
+
+
     <!-- Logo du groupe -->
     <mat-card-subtitle class="subtitle-name"> Logo du groupe </mat-card-subtitle>
     <ng-container>
+
+        <!-- S'il n'y a pas encore d'image choisie, on affiche le bouton pour en ajouter une -->
         <ng-container *ngIf="!(logoToSend$ | async) ; else deleteLogo">
             <button mat-flat-button (click)="fileInput.click()"> Choisissez une image pour votre groupe </button>
             <input #fileInput type="file" accept=".jpg, .jpeg, .png" style="display: none;" (change)="onLogoToSend($event)">
         </ng-container>
 
         <ng-template #deleteLogo>
-            <!-- Apercu de l'image que l'on souhaite envoyer. -->
+            <!-- Apercu de l'image que l'on souhaite envoyer ; bouton pour supprimer l'image -->
             <mat-card *ngIf="(logoToSendUrl$ |async)" class="mat-card-image-preview">
                 <mat-card-content> Prévisualisation du logo : </mat-card-content>
                 <img [src]="(logoToSendUrl$ |async)" alt="Aperçu de l'image" class="image-preview">
@@ -42,6 +48,7 @@
     <mat-error *ngIf="registerForm.get('groupLogo')?.hasError('logoRequired') && registerForm.get('groupLogo')?.touched">
         Le logo est requis.
     </mat-error>
+
 
 
     <!-- Type de groupe -->        
@@ -57,6 +64,8 @@
     </mat-form-field>
 
 
+
+
     <!-- Langue du groupe -->
     <section class="margin-bottom"> 
         <mat-card-subtitle class="subtitle-name"> Langue du groupe </mat-card-subtitle>
@@ -65,6 +74,8 @@
             Veuillez sélectionner au moins une langue.
         </mat-error>
     </section>
+
+
 
     
     <!-- Catégories du groupe -->
@@ -77,6 +88,8 @@
             Veuillez sélectionner au moins une catégorie.
         </mat-error>
     </div>
+
+
 
 
     <!-- Bouton d'envoi-->
