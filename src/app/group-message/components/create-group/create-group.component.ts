@@ -170,6 +170,11 @@ export class CreateGroupComponent implements OnInit{
     this.groupLanguages.updateValueAndValidity();
   }
 
+  // Méthode pour savoir si une langue est sélectionnée.
+  isLanguageSelected(language: string): boolean {
+    return this.languageService.isSelected(language);
+  }
+
 
   // Méthode pour réinitialiser le formulaire
   private resetForm(): void{
