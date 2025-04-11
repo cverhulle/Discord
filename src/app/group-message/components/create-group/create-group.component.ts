@@ -10,6 +10,7 @@ import { LanguageService } from '../../services/language.service';
 import { ArrayNotEmpty } from '../../../shared/validators/array-not-empty.validator';
 import { DisplayService } from '../../../shared/display/service/display.service';
 import { LogoRequiredValidator } from '../../../shared/validators/logo-required.validator';
+import { strongPasswordValidator } from '../../../shared/validators/strong-password.validator';
 
 
 @Component({
@@ -125,7 +126,10 @@ export class CreateGroupComponent implements OnInit{
       if (type === 'Restreint') {
 
         // On place le validator
-        this.groupPassword.setValidators(Validators.required);
+        this.groupPassword.setValidators([
+          Validators.required,
+          strongPasswordValidator()
+        ]);
 
       } else {
         // Sinon, on retire le validator et on reset le contenu du champ
