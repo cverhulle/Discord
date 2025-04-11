@@ -24,6 +24,11 @@ export class FormCreateGroupMessageService {
       formData.append('groupName', formValues.groupName);
       formData.append('groupDescription', formValues.groupDescription);
       formData.append('groupType', formValues.groupType);
+
+      // On ajoute le mot de passe si le groupe est de type restreint et qu'il n'est pas vide (ou rempli d'espaces).
+      if (formValues.groupType === 'Restreint' && formValues.groupPassword.trim()) {
+        formData.append('groupPassword', formValues.groupPassword);
+      }
       
       // Pour les languages et les catégories, on s'adapte au fait que ce sont des arrays
       formValues.groupLanguages.forEach((lang: string) => {
