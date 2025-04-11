@@ -63,6 +63,18 @@
         <mat-error> Ce champ est requis </mat-error>
     </mat-form-field>
 
+    <!-- Champ du mot de passe à afficher si le groupe est de type restreint.-->
+    <div *ngIf="groupType.value === 'Restreint'">
+        <mat-card-subtitle class="subtitle-name">Mot de passe du groupe</mat-card-subtitle>
+        <mat-form-field>
+          <mat-label>Mot de passe</mat-label>
+          <input matInput type="password" formControlName="groupPassword">
+        </mat-form-field>
+        <mat-error *ngIf="groupPassword.hasError('required') && groupPassword.touched">
+          Le mot de passe est requis pour un groupe restreint.
+        </mat-error>
+    </div>
+
 
 
 
