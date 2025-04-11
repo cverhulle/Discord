@@ -117,13 +117,23 @@ export class CreateGroupComponent implements OnInit{
 
   // Méthode pour activer ou désactiver le champ de mot de passe selon si le type de groupe est restreint ou non.
   activateOrDisableGroupPassword(): void{
+
+    // On réagit aux modifications du champ groupType
     this.groupType.valueChanges.subscribe((type: string) => {
+
+      // Si le champ passe à restreint
       if (type === 'Restreint') {
+
+        // On place le validator
         this.groupPassword.setValidators(Validators.required);
+
       } else {
+        // Sinon, on retire le validator et on reset le contenu du champ
         this.groupPassword.clearValidators();
         this.groupPassword.setValue('');
       }
+      
+      // On met à jour le controlleur
       this.groupPassword.updateValueAndValidity();
     });
   }
