@@ -73,6 +73,10 @@
         <mat-error *ngIf="groupPassword.hasError('required') && groupPassword.touched" class="margin-left">
           Le mot de passe est requis pour un groupe restreint.
         </mat-error>
+
+        <mat-error *ngIf="groupPassword.hasError('weakPassword') && groupPassword.touched">
+            Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.
+        </mat-error>
     </div>
 
 
