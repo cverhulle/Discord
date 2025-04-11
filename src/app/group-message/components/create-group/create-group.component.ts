@@ -89,6 +89,9 @@ export class CreateGroupComponent implements OnInit{
     // Initialisation du type de groupe.
     this.groupType = this.formBuilder.control('Public', Validators.required);
 
+    // Initialisation du mot de passe (à utiliser si le groupe est de type restreint).
+    this.groupPassword = this.formBuilder.control('')
+
     // Initialisation du language
     this.groupLanguages = this.formBuilder.control([], ArrayNotEmpty());
 
@@ -105,6 +108,7 @@ export class CreateGroupComponent implements OnInit{
       groupName: this.groupName,
       groupDescription: this.groupDescription,
       groupType: this.groupType,
+      groupPassword : this.groupPassword,
       groupLanguages : this.groupLanguages,
       groupCategories : this.groupCategories,
       groupLogo : this.groupLogo
