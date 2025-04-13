@@ -71,8 +71,8 @@
             <input matInput type="password" formControlName="groupPassword">
 
             <!-- Bouton "oeil" pour afficher ou masquer le mot de passe-->
-            <button mat-icon-button matSuffix type="button">
-            <mat-icon> visibility </mat-icon>
+            <button mat-icon-button matSuffix type="button" (click)="onTogglePasswordVisibility()">
+            <mat-icon> {{ hidePassword ? 'visibility_off' : 'visibility' }} </mat-icon>
             </button>
 
         </mat-form-field>
