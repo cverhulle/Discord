@@ -77,6 +77,17 @@
 
         </mat-form-field>
 
+        <mat-form-field>
+            <mat-label>Confirmation du mot de passe</mat-label>
+            <input matInput [type]="(hidePassword$ | async) ? 'password' : 'text'" formControlName="groupConfirmPassword">
+
+            <!-- Bouton "oeil" pour afficher ou masquer le mot de passe-->
+            <button mat-icon-button matSuffix type="button" (click)="onTogglePasswordVisibility()">
+            <mat-icon> {{ (hidePassword$ | async) ? 'visibility_off' : 'visibility' }} </mat-icon>
+            </button>
+
+        </mat-form-field>
+
         <!-- Message d'erreurs -->
         <mat-error *ngIf="groupPassword.hasError('required') && groupPassword.touched" class="margin-left">
           Le mot de passe est requis pour un groupe restreint.
