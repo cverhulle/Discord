@@ -68,7 +68,7 @@
         <mat-card-subtitle class="subtitle-name">Mot de passe du groupe</mat-card-subtitle>
         <mat-form-field>
             <mat-label>Mot de passe</mat-label>
-            <input matInput type="password" formControlName="groupPassword">
+            <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="groupPassword">
 
             <!-- Bouton "oeil" pour afficher ou masquer le mot de passe-->
             <button mat-icon-button matSuffix type="button" (click)="onTogglePasswordVisibility()">
