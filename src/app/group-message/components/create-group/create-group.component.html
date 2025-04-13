@@ -69,10 +69,15 @@
         <mat-form-field>
             <mat-label>Mot de passe</mat-label>
             <input matInput type="password" formControlName="groupPassword">
+
+            <!-- Bouton "oeil" pour afficher ou masquer le mot de passe-->
             <button mat-icon-button matSuffix type="button">
-            <mat-icon> visibility</mat-icon>
+            <mat-icon> visibility </mat-icon>
             </button>
+
         </mat-form-field>
+
+        <!-- Message d'erreurs -->
         <mat-error *ngIf="groupPassword.hasError('required') && groupPassword.touched" class="margin-left">
           Le mot de passe est requis pour un groupe restreint.
         </mat-error>
