@@ -14,5 +14,11 @@ export class PasswordService{
         return this.hidePasswordSubject.getValue()
     }
 
-    
+    // Méthode pour modifier l'état du mot de passe (visible ou caché)
+    togglePasswordVisibility(): void{
+        const state = this.hidePasswordSubject.value;
+        this.hidePasswordSubject.next(!state);
+    }
+
+
 }
