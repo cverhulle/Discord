@@ -7,6 +7,7 @@ import { FormCreateGroupMessageService } from './services/form-create-group-mess
 import { ImageService } from '../shared/image/services/image.services';
 import { LanguageService } from './services/language.service';
 import { DisplayService } from '../shared/display/service/display.service';
+import { PasswordService } from '../shared/password/service/password.service';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { DisplayService } from '../shared/display/service/display.service';
     FormCreateGroupMessageService,
     ImageService,
     LanguageService,
-    DisplayService
+    DisplayService,
+    PasswordService
   ]
 })
 export class GroupMessageModule { }
