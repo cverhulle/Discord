@@ -66,6 +66,8 @@
     <!-- Champ du mot de passe à afficher si le groupe est de type restreint.-->
     <div *ngIf="groupType.value === 'Restreint'">
         <mat-card-subtitle class="subtitle-name">Mot de passe du groupe</mat-card-subtitle>
+
+        <!-- Gestion du champ pour choisir le mot de passe -->
         <mat-form-field>
             <mat-label>Mot de passe</mat-label>
             <input matInput [type]="(hidePassword$ | async) ? 'password' : 'text'" formControlName="groupPassword">
@@ -77,6 +79,7 @@
 
         </mat-form-field>
 
+        <!-- Gestion du champ pour confirmer le mot de passe-->
         <mat-form-field>
             <mat-label>Confirmation du mot de passe</mat-label>
             <input matInput [type]="(hidePassword$ | async) ? 'password' : 'text'" formControlName="groupConfirmPassword">
@@ -88,7 +91,8 @@
 
         </mat-form-field>
 
-        <!-- Message d'erreurs -->
+
+        <!-- Message d'erreurs pour le champ de mot de passe -->
         <mat-error *ngIf="groupPassword.hasError('required') && groupPassword.touched" class="margin-left">
           Le mot de passe est requis pour un groupe restreint.
         </mat-error>
@@ -96,6 +100,7 @@
         <mat-error *ngIf="groupPassword.hasError('weakPassword') && groupPassword.touched && !groupPassword.hasError('required')" class="margin-left">
             Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.
         </mat-error>
+
     </div>
 
 
