@@ -43,7 +43,8 @@ export class CreateGroupComponent implements OnInit{
   groupName!: FormControl;
   groupDescription!: FormControl;
   groupType!: FormControl;
-  groupPassword!: FormControl
+  groupPassword!: FormControl;
+  groupConfirmPassword! : FormControl;
   groupLanguages!: FormControl;
   groupCategories!: FormControl;
   groupLogo!: FormControl;
