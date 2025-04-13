@@ -11,6 +11,7 @@ import { ArrayNotEmpty } from '../../../shared/validators/array-not-empty.valida
 import { DisplayService } from '../../../shared/display/service/display.service';
 import { LogoRequiredValidator } from '../../../shared/validators/logo-required.validator';
 import { strongPasswordValidator } from '../../../shared/validators/strong-password.validator';
+import { PasswordService } from '../../../shared/password/service/password.service';
 
 
 @Component({
@@ -58,7 +59,8 @@ export class CreateGroupComponent implements OnInit{
               private formCreateGroupMessage : FormCreateGroupMessageService,
               private imageService : ImageService,
               private languageService : LanguageService,
-              private displayService : DisplayService) {}
+              private displayService : DisplayService,
+              private passwordService : PasswordService) {}
 
   ngOnInit(): void {
     this.initChipsCategoriesAndAvailableLanguages()
