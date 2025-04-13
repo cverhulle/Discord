@@ -29,14 +29,14 @@ import { PasswordService } from '../../../shared/password/service/password.servi
 })
 export class CreateGroupComponent implements OnInit{
 
-  // Variable pour stocker les catégories possibles
+  // Variable pour stocker les catégories possibles.
   chipsCategories !: string[]
 
-  // Variable pour stocker les languages disponibles
+  // Variable pour stocker les languages disponibles.
   availableLanguages!: string[]
 
-  // Variable pour gérer la visibilité du mot de passe
-  hidePassword : boolean = true
+  // Observable pour gérer la visibilité du mot de passe.
+  hidePassword$! : Observable<boolean>
 
   // Variables liées au formulaire
   registerForm!: FormGroup;
@@ -164,6 +164,9 @@ export class CreateGroupComponent implements OnInit{
 
     // On initialise l'Observable valuechanges sur groupType
     this.activateOrDisableGroupPassword()
+
+    // On initialise l'Observable pour gérer l'affichage du mot de passe
+    this.hidePassword$ = this.passwordService.hidePassword$
   }
 
   // Méthode à déclencher au clic sur une image. 
@@ -218,7 +221,7 @@ export class CreateGroupComponent implements OnInit{
 
   // Méthode pour gérer la visibilité du mot de passe
   onTogglePasswordVisibility(): void {
-    this.hidePassword = !this.hidePassword;
+    this.passwordService.togglePasswordVisibility()
   }
 
 
