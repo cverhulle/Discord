@@ -135,21 +135,35 @@ export class CreateGroupComponent implements OnInit{
       // Si le champ passe à restreint
       if (type === 'Restreint') {
 
-        // On place le validator
+        // On place les validators sur le champ de mot de passe
         this.groupPassword.setValidators([
           Validators.required,
           strongPasswordValidator()
         ]);
 
+        // On place les validators sur le champ de confirmation de mot de passe
+        this.groupConfirmPassword.setValidators([
+          Validators.required,
+          strongPasswordValidator()
+        ]);
+
       } else {
-        // Sinon, on retire le validator et on reset le contenu du champ
+        // Sinon, on retire les validators et on reset le contenu du champ
         this.groupPassword.clearValidators();
         this.groupPassword.setValue('');
         this.groupPassword.markAsUntouched(); 
+
+        // Sinon, on retire les validators et on reset le contenu du champ
+        this.groupConfirmPassword.clearValidators();
+        this.groupConfirmPassword.setValue('');
+        this.groupConfirmPassword.markAsUntouched(); 
       }
 
       // On met à jour le controlleur
       this.groupPassword.updateValueAndValidity();
+
+      // On met à jour le controlleur
+      this.groupConfirmPassword.updateValueAndValidity();
     });
   }
 
