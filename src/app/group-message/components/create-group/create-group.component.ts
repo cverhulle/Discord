@@ -34,6 +34,9 @@ export class CreateGroupComponent implements OnInit{
   // Variable pour stocker les languages disponibles
   availableLanguages!: string[]
 
+  // Variable pour gérer la visibilité du mot de passe
+  hidePassword : boolean = true
+
   // Variables liées au formulaire
   registerForm!: FormGroup;
   groupName!: FormControl;
