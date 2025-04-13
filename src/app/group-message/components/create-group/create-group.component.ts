@@ -130,6 +130,9 @@ export class CreateGroupComponent implements OnInit{
   activateOrDisableGroupPassword(): void{
     // On applique les validators pour le champ de mot de passe.
     this.passwordService.managePasswordValidators(this.groupType, this.groupPassword)
+
+    // On applique les validators pour le champ de confirmation de mot de passe
+    this.passwordService.managePasswordValidators(this.groupType, this.groupConfirmPassword)
   }
 
   // Méthode pour initialiser les Observables
