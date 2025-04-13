@@ -214,6 +214,11 @@ export class CreateGroupComponent implements OnInit{
     return this.languageService.isSelected(language);
   }
 
+  // Méthode pour gérer la visibilité du mot de passe
+  onTogglePasswordVisibility(): void {
+    this.hidePassword = !this.hidePassword;
+  }
+
 
   // Méthode pour réinitialiser le formulaire
   private resetForm(): void{
