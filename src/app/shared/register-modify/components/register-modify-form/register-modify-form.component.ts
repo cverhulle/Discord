@@ -279,6 +279,11 @@ export class RegisterModifyFormComponent implements OnInit{
   onHideEmailErrorMessage(): void {
     this.registerModifyService.setErrorEmail(false)
   }
+
+  // Méthode pour gérer la visibilité du mot de passe
+  onTogglePasswordVisibility(): void {
+    this.passwordService.togglePasswordVisibility()
+  }
   
 
   private initSubmitForm(): void{
