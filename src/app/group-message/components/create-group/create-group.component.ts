@@ -224,8 +224,11 @@ export class CreateGroupComponent implements OnInit{
   onSubmit(): void{
     if (this.registerForm.valid) {
 
+      // On envoie le formulaire au backend
       this.formCreateGroupMessage.sendForm(this.registerForm).subscribe((success: boolean) => {
         if (success) {
+
+          // En cas de succès, on reset le formulaire.
           this.resetForm();
           this.displayService.displayMessage("Le groupe a bien été créé !");
         } else {
