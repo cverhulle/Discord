@@ -78,7 +78,7 @@
                 <!-- Champ pour le mot de passe -->
                 <mat-form-field appearance="fill" class="form-row-margin">
                     <mat-label> Mot de passe </mat-label>
-                    <input type="text" matInput formControlName="password"> 
+                    <input [type]="(hidePassword$ | async) ? 'password' : 'text'" matInput formControlName="password"> 
                     <mat-error> {{ getFormControlErrorText(password) }} </mat-error>
 
                     <!-- Bouton "oeil" pour afficher ou masquer le mot de passe-->
@@ -91,7 +91,7 @@
                 <!-- Champ pour confirmer le mot de passe-->
                 <mat-form-field appearance="fill">
                     <mat-label> Confirmer le mot de passe </mat-label>
-                    <input type="text" matInput formControlName="confirmPassword"> 
+                    <input [type]="(hidePassword$ | async) ? 'password' : 'text'" matInput formControlName="confirmPassword"> 
                     <mat-error> {{ getFormControlErrorText(confirmPassword) }} </mat-error>
 
                     <!-- Bouton "oeil" pour afficher ou masquer le mot de passe-->
