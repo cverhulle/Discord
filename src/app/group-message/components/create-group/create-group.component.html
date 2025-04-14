@@ -92,13 +92,19 @@
         </mat-form-field>
 
 
-        <!-- Message d'erreurs pour le champ de mot de passe -->
+        <!-- Message d'erreur (champ requis) pour le champ de mot de passe -->
         <mat-error *ngIf="groupPassword.hasError('required') && groupPassword.touched" class="margin-left">
           Le mot de passe est requis pour un groupe restreint.
         </mat-error>
 
+        <!-- Message d'erreur (forme du champ) pour le champ de mot de passe -->
         <mat-error *ngIf="groupPassword.hasError('weakPassword') && groupPassword.touched && !groupPassword.hasError('required')" class="margin-left">
             Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.
+        </mat-error>
+
+        <!-- Message d'erreur : les champs ne correspondent pas -->
+        <mat-error *ngIf="registerForm.hasError('confirmEqual') && groupConfirmPassword.touched">
+            Les mots de passe ne correspondent pas.
         </mat-error>
 
     </div>
