@@ -256,6 +256,8 @@ export class RegisterModifyFormComponent implements OnInit{
       return "Ceci n'est pas un email valide";
     } else if (ctrl.hasError('minlength')) {
       return 'Ce champ doit contenir au moins 7 caractères';
+    } else if (ctrl.hasError('weakPassword')) {
+      return "Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial."
     } else {
       return 'Ce champ contient une erreur'
     }
