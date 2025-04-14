@@ -12,6 +12,7 @@ import { DisplayService } from '../../../shared/display/service/display.service'
 import { LogoRequiredValidator } from '../../../shared/validators/logo-required.validator';
 import { strongPasswordValidator } from '../../../shared/validators/strong-password.validator';
 import { PasswordService } from '../../../shared/password/service/password.service';
+import { confirmEqualValidator } from '../../../login/components/register/validators/confirm-equal.validators';
 
 
 @Component({
@@ -123,8 +124,9 @@ export class CreateGroupComponent implements OnInit{
       groupLanguages : this.groupLanguages,
       groupCategories : this.groupCategories,
       groupLogo : this.groupLogo
-    })
-  }
+    },
+    {validators: [confirmEqualValidator('groupPassword', 'groupConfirmPassword')]}
+  )};
 
   // Méthode pour activer ou désactiver le champ de mot de passe selon si le type de groupe est restreint ou non.
   activateOrDisableGroupPassword(): void{
