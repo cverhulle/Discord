@@ -7,6 +7,7 @@ import { ModifyProfileComponent } from "./components/modify-profile/modify-profi
 import { RegisterFormService } from "../login/components/register/services/register-form.service";
 import { ModifyPasswordComponent } from "./components/modify-password/modify-password.component";
 import { DisplayService } from "../shared/display/service/display.service";
+import { PasswordService } from "../shared/password/service/password.service";
 
 
 
@@ -28,7 +29,8 @@ const routes: Routes = [
   providers:[
     ProfileService,
     RegisterFormService,
-    DisplayService
+    DisplayService,
+    PasswordService
   ]
 })
 

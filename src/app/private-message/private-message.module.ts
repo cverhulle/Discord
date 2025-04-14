@@ -10,6 +10,7 @@ import { UserService } from '../shared/post/services/user.service';
 import { DisplayService } from '../shared/display/service/display.service';
 import { EmojisService } from '../shared/emojis/services/emojis.service';
 import { ImageService } from '../shared/image/services/image.services';
+import { PasswordService } from '../shared/password/service/password.service';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ImageService } from '../shared/image/services/image.services';
     UserService,
     DisplayService,
     EmojisService,
-    ImageService
+    ImageService,
+    PasswordService
   ]
 })
 export class PrivateMessageModule { }
