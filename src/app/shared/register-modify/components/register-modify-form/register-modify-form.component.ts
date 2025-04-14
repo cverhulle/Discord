@@ -201,6 +201,9 @@ export class RegisterModifyFormComponent implements OnInit{
     this.showImage$ = this.image.valueChanges.pipe(
       map(status => this.image.value !== '')
     )
+
+    // On initialise l'Observable pour gérer l'affichage du mot de passe
+    this.hidePassword$ = this.passwordService.hidePassword$
   }
 
 
