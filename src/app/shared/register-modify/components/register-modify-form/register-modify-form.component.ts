@@ -142,7 +142,7 @@ export class RegisterModifyFormComponent implements OnInit{
     })
 
     // Initialisation du login (username et password).
-    this.username = this.formBuilder.control(this.initForm['loginInfo']['username'], [Validators.required, Validators.minLength(7), strongPasswordValidator()]);
+    this.username = this.formBuilder.control(this.initForm['loginInfo']['username'], [Validators.required, strongPasswordValidator()]);
     this.password = this.formBuilder.control('', [Validators.required, strongPasswordValidator()]);
     this.confirmPassword = this.formBuilder.control('', [Validators.required]);
     this.loginForm = this.formBuilder.group({
@@ -254,8 +254,6 @@ export class RegisterModifyFormComponent implements OnInit{
       return 'Ce champ est requis';
     } else if (ctrl.hasError('correctEmail')) {
       return "Ceci n'est pas un email valide";
-    } else if (ctrl.hasError('minlength')) {
-      return 'Ce champ doit contenir au moins 7 caractères';
     } else if (ctrl.hasError('weakPassword')) {
       return "Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial."
     } else {
