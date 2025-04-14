@@ -70,6 +70,8 @@ export class RegisterModifyFormComponent implements OnInit{
   //Variable pour afficher l'image de profil
   showImage$!: Observable<boolean>
 
+  // Observable pour masquer ou afficher les mots de passe
+  hidePassword$! : Observable<boolean>
   
 
 
