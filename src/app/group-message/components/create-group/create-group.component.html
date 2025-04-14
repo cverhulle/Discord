@@ -103,7 +103,7 @@
         </mat-error>
 
         <!-- Message d'erreur : les champs ne correspondent pas -->
-        <mat-error *ngIf="registerForm.hasError('confirmEqual') && groupConfirmPassword.touched">
+        <mat-error *ngIf="registerForm.hasError('confirmEqual') && groupConfirmPassword.touched" class="margin-left">
             Les mots de passe ne correspondent pas.
         </mat-error>
 
