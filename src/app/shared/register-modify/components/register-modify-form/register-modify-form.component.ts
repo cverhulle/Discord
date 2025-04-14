@@ -10,6 +10,7 @@ import { RegisterForm } from '../../../../login/components/register/models/regis
 import { ModifyProfileForm } from '../../../../profile/models/modify-profile.models';
 import { RegisterModifyService } from '../../services/register-modify.service';
 import { strongPasswordValidator } from '../../../validators/strong-password.validator';
+import { PasswordService } from '../../../password/service/password.service';
 
 @Component({
   selector: 'app-register-modify-form',
@@ -77,7 +78,7 @@ export class RegisterModifyFormComponent implements OnInit{
 
 
   constructor(private formBuilder : FormBuilder,
-              private registerFormService : RegisterFormService,
+              private passwordService : PasswordService,
               private registerModifyService : RegisterModifyService) 
               
               {
