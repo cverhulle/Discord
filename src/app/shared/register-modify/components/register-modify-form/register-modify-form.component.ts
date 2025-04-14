@@ -9,6 +9,7 @@ import { correctEmailValidator } from '../../../../login/components/register/val
 import { RegisterForm } from '../../../../login/components/register/models/register-form.model';
 import { ModifyProfileForm } from '../../../../profile/models/modify-profile.models';
 import { RegisterModifyService } from '../../services/register-modify.service';
+import { strongPasswordValidator } from '../../../validators/strong-password.validator';
 
 @Component({
   selector: 'app-register-modify-form',
@@ -141,8 +142,8 @@ export class RegisterModifyFormComponent implements OnInit{
     })
 
     // Initialisation du login (username et password).
-    this.username = this.formBuilder.control(this.initForm['loginInfo']['username'], [Validators.required, Validators.minLength(7)]);
-    this.password = this.formBuilder.control('', [Validators.required]);
+    this.username = this.formBuilder.control(this.initForm['loginInfo']['username'], [Validators.required, Validators.minLength(7), strongPasswordValidator()]);
+    this.password = this.formBuilder.control('', [Validators.required, strongPasswordValidator()]);
     this.confirmPassword = this.formBuilder.control('', [Validators.required]);
     this.loginForm = this.formBuilder.group({
       username: this.username,
