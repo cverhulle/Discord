@@ -80,6 +80,11 @@
                     <mat-label> Mot de passe </mat-label>
                     <input type="text" matInput formControlName="password"> 
                     <mat-error> {{ getFormControlErrorText(password) }} </mat-error>
+
+                    <!-- Bouton "oeil" pour afficher ou masquer le mot de passe-->
+                    <button mat-icon-button matSuffix type="button" (click)="onTogglePasswordVisibility()">
+                    <mat-icon> {{ (hidePassword$ | async) ? 'visibility_off' : 'visibility' }} </mat-icon>
+                    </button>
                     
                 </mat-form-field>
             
@@ -88,6 +93,11 @@
                     <mat-label> Confirmer le mot de passe </mat-label>
                     <input type="text" matInput formControlName="confirmPassword"> 
                     <mat-error> {{ getFormControlErrorText(confirmPassword) }} </mat-error>
+
+                    <!-- Bouton "oeil" pour afficher ou masquer le mot de passe-->
+                    <button mat-icon-button matSuffix type="button" (click)="onTogglePasswordVisibility()">
+                    <mat-icon> {{ (hidePassword$ | async) ? 'visibility_off' : 'visibility' }} </mat-icon>
+                    </button>
                 </mat-form-field>
             </div>
 
