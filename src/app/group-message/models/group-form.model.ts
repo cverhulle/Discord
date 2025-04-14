@@ -3,6 +3,7 @@ export class CreateGroupForm {
     groupDescription!: string;
     groupType!: string;
     groupPassword!: string;
+    groupConfirmPassword!: string;
     groupLanguages!: string[];
     groupCategories!: string[];
     groupLogo!: File | null;
