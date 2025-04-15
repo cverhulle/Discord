@@ -21,3 +21,8 @@ h1,h2{
     width: auto;
     max-width: 100vh;
 }
+
+// Style au passage de la souris sur l'image
+.presentation-chat:hover {
+    transform: scale(1.40) translate(14vh,5vh);
+}
