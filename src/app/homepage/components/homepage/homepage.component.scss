@@ -1,9 +1,11 @@
+// Style sur les textes importants
 h1,h2{
     color: white;
     display: flex;
     justify-content: center;
 }
 
+// Style pour les "sous-titres" de la page
 .subtitle{
     font-weight: bold; 
     font-size: 3vh; 
