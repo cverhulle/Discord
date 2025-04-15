@@ -232,6 +232,7 @@ export class CreateGroupComponent implements OnInit{
           // En cas de succès, on reset le formulaire et on affiche un message à l'utilisateur.
           this.resetForm();
           this.displayService.displayMessage("Le groupe a bien été créé !");
+          this.router.navigateByUrl('/group-message/my-group')
         } else {
           this.displayService.displayMessage("Une erreur est survenue lors de la création du groupe.");
         }
