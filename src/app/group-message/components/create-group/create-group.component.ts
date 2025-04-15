@@ -10,9 +10,9 @@ import { LanguageService } from '../../services/language.service';
 import { ArrayNotEmpty } from '../../../shared/validators/array-not-empty.validator';
 import { DisplayService } from '../../../shared/display/service/display.service';
 import { LogoRequiredValidator } from '../../../shared/validators/logo-required.validator';
-import { strongPasswordValidator } from '../../../shared/validators/strong-password.validator';
 import { PasswordService } from '../../../shared/password/service/password.service';
 import { confirmEqualValidator } from '../../../login/components/register/validators/confirm-equal.validators';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -62,7 +62,8 @@ export class CreateGroupComponent implements OnInit{
               private imageService : ImageService,
               private languageService : LanguageService,
               private displayService : DisplayService,
-              private passwordService : PasswordService) {}
+              private passwordService : PasswordService,
+              private router : Router) {}
 
   ngOnInit(): void {
     this.initChipsCategoriesAndAvailableLanguages()
