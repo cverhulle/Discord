@@ -7,6 +7,7 @@ h1,h2{
 
 // Style pour les "sous-titres" de la page
 .subtitle{
+    // Texte en gras
     font-weight: bold; 
     font-size: 3vh; 
     margin-bottom: 1vh;
@@ -20,6 +21,7 @@ h1,h2{
     border: 3px solid #2ECC71;
     width: auto;
     max-width: 100vh;
+    // Animation lors du passage de la souris
     transition: transform 0.4s ease-in-out, box-shadow 0.4s ease;
 }
 
