@@ -37,7 +37,7 @@ h1,h2{
 
 
 // Style pour l'image de présentation d'un chat
-.presentation-chat{
+.private-message-picture{
     border-radius: 3vh; 
     border: 3px solid #2ECC71;
     width: auto;
@@ -48,7 +48,7 @@ h1,h2{
 }
 
 // Style au passage de la souris sur l'image
-.presentation-chat:hover {
+.private-message-picture:hover {
     transform: scale(1.40) translate(14vh,5vh);
     // Effet ombre autour de l'image
     box-shadow: 0 10vh 10vh rgba(0, 0, 0, 0.3);
