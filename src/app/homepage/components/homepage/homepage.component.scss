@@ -52,3 +52,9 @@ h1,h2{
     color: #2ECC71;
     font-size: 4.5vh;
 }
+
+// Style à appliquer sur les paragraphes p dans le private-message-preview
+.private-message-text p {
+    max-width: 20ch;
+    word-wrap: break-word;
+  }
