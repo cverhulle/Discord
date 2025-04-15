@@ -31,6 +31,8 @@ h1,h2{
 }
 
 
+
+
 // Style pour la div de private-message-preview (photo et texte)
 .private-message-preview{
     display: flex;
@@ -74,6 +76,7 @@ h1,h2{
 .private-message-text{
     color: #2ECC71;
     font-size: 4.5vh;
+    font-weight: bold;
 }
 
 // Style à appliquer sur les paragraphes p dans le private-message-preview
