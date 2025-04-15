@@ -18,13 +18,20 @@ h1,h2{
 
 
 
+
+
+
 // Style pour la div de private-message-preview
 .private-message-preview{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4vh;
+    gap: 6vh;
+    background-color: rgba(45, 184, 103, 0.5)
 }
+
+
+
 
 
 
@@ -46,6 +53,13 @@ h1,h2{
     // Effet ombre autour de l'image
     box-shadow: 0 10vh 10vh rgba(0, 0, 0, 0.3);
 }
+
+
+
+
+
+
+
 
 //Style pour le texte sur la photo de private-message-preview
 .private-message-text{
