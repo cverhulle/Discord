@@ -20,6 +20,7 @@ h1,h2{
     border: 3px solid #2ECC71;
     width: auto;
     max-width: 100vh;
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease;
 }
 
 // Style au passage de la souris sur l'image
