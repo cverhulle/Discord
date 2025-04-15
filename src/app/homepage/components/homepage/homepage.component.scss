@@ -13,3 +13,11 @@ h1,h2{
     margin-left: 1%;
     color: #2ECC71;
 }
+
+// Style pour l'image de présentation d'un chat
+.presentation-chat{
+    border-radius: 3vh; 
+    border: 3px solid #2ECC71;
+    width: auto;
+    max-width: 100vh;
+}
