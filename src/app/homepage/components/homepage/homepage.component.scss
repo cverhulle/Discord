@@ -28,4 +28,6 @@ h1,h2{
 // Style au passage de la souris sur l'image
 .presentation-chat:hover {
     transform: scale(1.40) translate(14vh,5vh);
+    // Effet ombre autour de l'image
+    box-shadow: 0 10vh 10vh rgba(0, 0, 0, 0.3);
 }
