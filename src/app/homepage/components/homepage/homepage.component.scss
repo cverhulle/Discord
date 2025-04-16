@@ -111,7 +111,7 @@ h1,h2{
     align-items: center;
 }
 
-.create-account-button{
+.create-account-button[mat-flat-button]{
     background-color: #e67e22;
     color: white;
     font-size: 2.5vh;
