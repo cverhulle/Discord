@@ -43,16 +43,14 @@ h1,h2{
 
 
 
-.image-size {
-    transition: transform 0.4s ease-in-out;
-}
 
+// Style pour transformer la taille de l'image au passage de la souris.
 .image-size:hover .private-message-picture {
     transform: scale(1.15) translateX(-4vh);
 }
 
 
-// Style pour l'image de présentation d'un chat
+// Style pour l'image de présentation d'un chat.
 .private-message-picture{
     border-radius: 3vh; 
     border: 3px solid #2ECC71;
