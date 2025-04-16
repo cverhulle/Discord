@@ -10,5 +10,8 @@ import { SharedModule } from '../../../shared/shared.module';
   styleUrl: './homepage.component.scss'
 })
 export class HomepageComponent {
-
+  // Méthode redirigeant vers la page pour créer un compte
+  onCreateAccount(): void{
+    
+  }
 }
