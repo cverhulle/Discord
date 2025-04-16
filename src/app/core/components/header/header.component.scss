@@ -1,8 +1,7 @@
+// Style pour déplacer les choix de navigation à droite de la barre.
 mat-toolbar{
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
 }
 
 
