@@ -81,4 +81,32 @@ h1,h2{
 .private-message-text p {
     max-width: 20ch;
     word-wrap: break-word;
-  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Style pour la zone de création de compte
+.create-account{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
