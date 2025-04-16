@@ -4,6 +4,7 @@
     color: white;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 1vh 2vh;
 }
 
@@ -55,4 +56,16 @@
 // Couleur au passage de la souris
 .nav-links li a:hover, .logout-button:hover {
     color: #ffd700; 
+}
+
+
+
+@media (max-width: 768px) {
+    .nav-links li a {
+      font-size: 1.2vh;
+    }
+  
+    .title {
+      font-size: 1.5vh;
+    }
 }
