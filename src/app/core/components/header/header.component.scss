@@ -7,6 +7,12 @@
     padding: 1vh 2vh;
 }
 
+
+
+
+
+
+
 // Style le titre "Discord" de la page
 .title {
     font-family: 'Orbitron', sans-serif;
@@ -14,7 +20,13 @@
     color: #7289da;
 }
 
-// Style sur les noms des parties de l'application
+
+
+
+
+
+
+// Style sur la div entourant les parties de l'application
 .nav-links {
     // Supprime les "ronds" devant les éléments
     list-style: none;
@@ -22,6 +34,13 @@
     gap: 3vh;
 }
 
+
+
+
+
+
+
+// Style pour l'affichage des noms des parties
 .nav-links li a, .logout-button {
     color: white;
     text-decoration: none;
@@ -32,6 +51,7 @@
     cursor: pointer;
 }
 
+// Couleur au passage de la souris
 .nav-links li a:hover, .logout-button:hover {
     color: #ffd700; 
 }
