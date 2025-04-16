@@ -1,14 +1,16 @@
 <mat-toolbar color="primary">
-    <span> Discord </span>
-    <ul>
-        <li> <a routerLink="/homepage"> <mat-icon> home </mat-icon> </a> </li>
-        <li> <a routerLink="/login"> <mat-icon> login </mat-icon> </a> </li>
-        <li> <a routerLink="/profile"> <mat-icon> person </mat-icon> </a> </li>
-        <li> <a routerLink="/private-message"> <mat-icon> chat </mat-icon> </a> </li>
-        <li> <a routerLink="/group-message"> <mat-icon> group </mat-icon></a> </li>
-        <li> <mat-icon class="logout" (click)="onLogout()"> logout </mat-icon></li>
-        
+
+    <span class="title">Discord</span>
+
+    <ul class="nav-links">
+
+      <li><a routerLink="/homepage">Accueil</a></li>
+      <li><a routerLink="/login">Connexion</a></li>
+      <li><a routerLink="/profile">Profil</a></li>
+      <li><a routerLink="/private-message">Messages Privés</a></li>
+      <li><a routerLink="/group-message">Groupes</a></li>
+      <li><button (click)="onLogout()" class="logout-button">Déconnexion</button></li>
+
     </ul>
 
-
-</mat-toolbar>
+  </mat-toolbar>
