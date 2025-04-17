@@ -78,11 +78,14 @@ mat-form-field{
 
 
 
-
-
 // Style pour les messages d'erreurs.
 .error-text{
     color: red;
     font-size: 2vh;
     margin-left: 1%;
+}
+
+// Style pour gérer l'espace pour le message d'erreur de strongValidator
+.password-error{
+    margin-bottom: 1vh;
 }
