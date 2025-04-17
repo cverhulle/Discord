@@ -111,3 +111,10 @@ mat-form-field{
 
 
 
+// Style pour les petits écrans
+@media (max-width: 800px) {
+    // On déplace tous les champs de façon vertical
+    .form-row{
+        flex-direction: column;
+    }
+}
