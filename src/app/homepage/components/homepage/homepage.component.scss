@@ -137,7 +137,13 @@ h1,h2{
 
 // Style à appliquer dès que la taille de l'écran est plus petite que 990px
 @media(max-width: 990px) {
+    // Taille du texte de private-message
     .private-message-text{
         font-size : 2vh;
+    }
+
+    // Taille de l'image
+    .private-message-picture{
+        max-width: 70vh;
     }
 }
