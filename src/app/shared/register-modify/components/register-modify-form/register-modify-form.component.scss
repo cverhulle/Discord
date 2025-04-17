@@ -94,7 +94,10 @@ mat-form-field{
 
 
 
-
+.picture{
+    display: flex;
+    
+}
 
 
 // Affichage de la preview de l'image
@@ -106,4 +109,4 @@ mat-form-field{
     margin-left: 1%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     border: 1px solid #ddd; 
-  }
+}

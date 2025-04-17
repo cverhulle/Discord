@@ -112,16 +112,18 @@
       <mat-card>
 
         <mat-card-subtitle> URL de l'image de profil </mat-card-subtitle>
+        <div class="picture">
             <mat-form-field appearance="fill">
                 <mat-label> Image </mat-label>
                 <input type="text" matInput formControlName="image"> 
                 <mat-error> Ce champ est requis </mat-error>
             </mat-form-field>
+                
             
-        
-        <!-- On affiche l'image de profil sur l'écran de création de compte -->
-        <div *ngIf="showImage$ | async" > 
-            <img [(src)]="image.value" alt="image de profil" class="image-preview">
+            <!-- On affiche l'image de profil sur l'écran de création de compte -->
+            <div *ngIf="showImage$ | async" > 
+                <img [(src)]="image.value" alt="image de profil" class="image-preview">
+            </div>
         </div>
         
       </mat-card>
