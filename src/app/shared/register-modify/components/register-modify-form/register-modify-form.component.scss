@@ -87,7 +87,7 @@ mat-form-field{
 
 // Style pour gérer l'espace pour le message d'erreur de strongValidator
 .password-error{
-    margin-bottom: 1vh;
+    margin-bottom: 3.5vh;
 }
 
 
@@ -112,9 +112,19 @@ mat-form-field{
 
 
 // Style pour les petits écrans
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
     // On déplace tous les champs de façon vertical
     .form-row{
         flex-direction: column;
+    }
+
+    // On agrandit les mat-form-field
+    mat-form-field{
+        width: 50%;
+    }
+
+    // On retire l'espace pour password error
+    .password-error{
+        margin-bottom: 0vh;
     }
 }
