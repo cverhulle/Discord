@@ -25,22 +25,20 @@
 }
 
 
-// Style pour l'image de login
-.login-picture{
-    max-width: 50vh;
-    max-height: 50vh;
+
+
+
+
+
+
+
+
+
+// Style pour la div appliquée sur le login form.
+.login-form-div{
+    width: 100%;
+    max-width: 80vh;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Style pour l'apparence de la mat-card
@@ -52,6 +50,16 @@
     width: 80vh;
     max-width: 80vh;
     margin: 10vh auto;
+ 
+}
+
+
+
+// Style pour l'image de login
+.login-picture{
+    max-width: 50vh;
+    max-height: 50vh;
+    margin-left: 10vh;
 }
 
 
