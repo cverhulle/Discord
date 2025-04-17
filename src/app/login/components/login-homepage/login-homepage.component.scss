@@ -107,8 +107,20 @@ button[mat-flat-button]:hover {
 
 
 
+// Style à appliquer pour les écrans plus petits
+@media (max-width: 990px) {
+    // On modifie l'affichage des éléments (affichage en colonne et plus en ligne)
+    .login-container {
+        flex-direction: column;
+        gap: 0vh;
+    }
+
+    // On retire la marge à gauche
+    .login-picture{
+        margin-left: 0vh;    
+    }
 
 
 
 
-
+}
