@@ -121,7 +121,7 @@
         
         <!-- On affiche l'image de profil sur l'écran de création de compte -->
         <div *ngIf="showImage$ | async" > 
-            <img [(src)]="image.value" alt="image de profil">
+            <img [(src)]="image.value" alt="image de profil" class="image-preview">
         </div>
         
       </mat-card>

@@ -89,3 +89,21 @@ mat-form-field{
 .password-error{
     margin-bottom: 1vh;
 }
+
+
+
+
+
+
+
+
+// Affichage de la preview de l'image
+.image-preview {
+    max-width: 100%;
+    max-height: 20vh;
+    border-radius: 1vh;
+    margin-bottom: 1vh;
+    margin-left: 1%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid #ddd; 
+  }
