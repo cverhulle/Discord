@@ -1,34 +1,42 @@
-<mat-card [formGroup]="loginForm" class="login-form">
+<div class="login-container">
 
-    <!-- Titre de la page -->
-    <mat-card-title>
-        <h2 class="blue-text police"> Connexion à Discord</h2>
-    </mat-card-title>
+    <mat-card [formGroup]="loginForm" class="login-form">
 
-    <!-- Champ du nom de l'utilisateur -->
-    <mat-form-field>
-        <mat-label>Username</mat-label>
-        <input type="text" matInput formControlName="username">
-    </mat-form-field>
+        <!-- Titre de la page -->
+        <mat-card-title>
+            <h2 class="blue-text police"> Connexion à Discord</h2>
+        </mat-card-title>
 
-    <!-- Champ du mot de passe -->
-    <mat-form-field>
-        <mat-label>Mot de passe</mat-label>
-        <input type="password" matInput formControlName="password">
-    </mat-form-field>
+        <!-- Champ du nom de l'utilisateur -->
+        <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input type="text" matInput formControlName="username">
+        </mat-form-field>
 
-    <!-- Bouton pour envoyer le formulaire -->
-    <mat-card-actions>
-        <button mat-flat-button (click)="onSubmitForm()" [disabled]="loginForm.invalid"> Connexion </button>
-    </mat-card-actions>
+        <!-- Champ du mot de passe -->
+        <mat-form-field>
+            <mat-label>Mot de passe</mat-label>
+            <input type="password" matInput formControlName="password">
+        </mat-form-field>
 
-    <!-- Lien pour s'inscrire (si pas encore de compte) -->
-    <mat-card-content class="blue-text police margin-top">
-        Pas encore inscrit ? <a routerLink="register"> Inscrivez-vous !</a>
-    </mat-card-content>
+        <!-- Bouton pour envoyer le formulaire -->
+        <mat-card-actions>
+            <button mat-flat-button (click)="onSubmitForm()" [disabled]="loginForm.invalid"> Connexion </button>
+        </mat-card-actions>
 
-    <!-- Spinner pendant le chargement -->
-    <mat-spinner *ngIf="loading"></mat-spinner>
+        <!-- Lien pour s'inscrire (si pas encore de compte) -->
+        <mat-card-content class="blue-text police margin-top">
+            Pas encore inscrit ? <a routerLink="register"> Inscrivez-vous !</a>
+        </mat-card-content>
 
-</mat-card>
+        <!-- Spinner pendant le chargement -->
+        <mat-spinner *ngIf="loading"></mat-spinner>
+
+    </mat-card>
+
+    <div>
+
+    </div>
+
+</div>
 
