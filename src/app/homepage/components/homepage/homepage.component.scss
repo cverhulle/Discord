@@ -124,3 +124,20 @@ h1,h2{
 .create-account-button:hover {
     background-color: #d35400;
 }
+
+
+
+
+
+
+
+
+
+
+
+// Style à appliquer dès que la taille de l'écran est plus petite que 990px
+@media(max-width: 990px) {
+    .private-message-text{
+        font-size : 2vh;
+    }
+}
