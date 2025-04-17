@@ -21,12 +21,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5vh 2vh;
     gap: 5vh;
 }
 
 
-
+// Style pour l'image de login
+.login-picture{
+    max-width: 40vh;
+    max-height: 40vh;
+}
 
 
 
@@ -50,6 +53,7 @@
     max-width: 80vh;
     margin: 10vh auto;
 }
+
 
 
 
@@ -99,9 +103,3 @@ button[mat-flat-button]:hover {
 
 
 
-// Style pour l'image de login
-.login-picture{
-    max-width: 45vh;
-    border-radius: 1.5vh;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-}
