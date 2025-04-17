@@ -152,4 +152,9 @@ h1,h2{
         flex-direction: column;
         gap: 3vh;
     }
+
+    // Modification de l'effet d'agrandissement de l'image
+    .image-size:hover .private-message-picture {
+        transform: scale(1.05);
+    }
 }
