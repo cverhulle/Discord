@@ -115,9 +115,10 @@ button[mat-flat-button]:hover {
         gap: 0vh;
     }
 
-    // On retire la marge à gauche
+    // On retire la marge à gauche ; On gère la marge en hauteur
     .login-picture{
         margin-left: 0vh;    
+        margin-top: -5vh;
     }
 
 
