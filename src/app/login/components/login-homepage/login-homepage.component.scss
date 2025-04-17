@@ -8,6 +8,9 @@
     font-family: 'Poppins', sans-serif;
 }
 
+
+
+
 // Style pour l'apparence de la mat-card
 .login-form{
     background-color: rgb(74,35,90);
@@ -19,3 +22,21 @@
     margin: 10vh auto;
 }
 
+
+
+
+
+// Style pour le bouton
+button[mat-flat-button] {
+    background-color: #9b59b6;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    padding: 1vh;
+    transition: background-color 0.3s ease;
+}
+
+button[mat-flat-button]:hover {
+    cursor: pointer;
+    background-color: #8e44ad;
+}
