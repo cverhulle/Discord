@@ -108,7 +108,7 @@ button[mat-flat-button]:hover {
 
 
 // Style à appliquer pour les écrans plus petits
-@media (max-width: 990px) {
+@media (max-width: 1300px) {
     // On modifie l'affichage des éléments (affichage en colonne et plus en ligne)
     .login-container {
         flex-direction: column;
