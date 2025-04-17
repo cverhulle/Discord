@@ -5,16 +5,18 @@ mat-form-field, mat-card{
 
 // Style pour le titre de la page
 .form-title{
-    color: white;
+    color: #7289da;
     text-align: center;
-    font-size: 50px;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    font-family: "Poppins";
+    font-size: 5vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
  
 }
 
 // Style pour les sous-titres
 mat-card-subtitle{
+    color: #7289da;
     margin-left: 1%;
 }
 
