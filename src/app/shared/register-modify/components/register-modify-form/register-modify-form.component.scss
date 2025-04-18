@@ -60,6 +60,25 @@ mat-card mat-card {
 
 
 
+// Style pour gérer la mise en colonne des champs d'un côté et l'image de l'autre
+.card-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+// Style pour que les champs occupent 80% de l'espace
+.form-fields {
+    flex: 0 0 80%;
+}
+  
+// Style pour gérer la div contenant l'image
+.image-container {
+    flex: 0 0 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 
