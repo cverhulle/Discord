@@ -30,6 +30,11 @@ mat-form-field{
     margin-bottom: 1vh;
 }
 
+// On retire les bordures des mat-card situés dans la mat-card principale
+mat-card mat-card {
+    box-shadow: none;
+    border: none;
+}
 
 
 
