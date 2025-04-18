@@ -142,6 +142,37 @@ mat-card mat-card {
 
 
 
+// Style lorsque le bouton est désactivé
+button[mat-flat-button][disabled] {
+    background-color: #bfa6d2; 
+    color: white;
+    opacity: 0.1;
+    cursor: not-allowed;
+}
+
+// Style lorsque le bouton est activé
+button[mat-flat-button] {
+    background-color: #9b59b6;
+    color: white;
+    font-weight: bold;
+    width: 50vh;
+    padding: 1vh;
+    transition: background-color 0.3s ease;
+}
+
+// Style au passage de la souris sur le bouton activé
+button[mat-flat-button]:hover {
+    cursor: pointer;
+    background-color: #8e44ad;
+}
+
+
+
+
+
+
+
+
 
 
 // Style pour les petits écrans
