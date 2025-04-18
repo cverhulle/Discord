@@ -131,7 +131,7 @@
 
     
     <!-- Bouton d'envoi-->
-    <mat-card-actions *ngIf="loadingInverse$ |async">
+    <mat-card-actions *ngIf="loadingInverse$ |async" class="button-container">
         <button mat-flat-button (click)="onSubmitForm()" [disabled]="registerForm.invalid"> Enregistrer </button>
     </mat-card-actions>
 

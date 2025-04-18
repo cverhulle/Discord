@@ -142,6 +142,29 @@ mat-card mat-card {
 
 
 
+
+
+
+
+// Style sur la mat-card-actions contenant le bouton pour le centrer.
+.button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Style lorsque le bouton est désactivé
 button[mat-flat-button][disabled] {
     background-color: #bfa6d2; 
