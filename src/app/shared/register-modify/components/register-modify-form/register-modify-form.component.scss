@@ -40,9 +40,15 @@ mat-form-field{
 
 
 
-
+// Style à appliquer sur la mat-card global
 .global-container{
+    margin: auto;
     margin-top: 3vh;
+    max-width: 160vh;
+    padding: 2vh;
+    border-radius: 2vh;
+    box-shadow: 0 2vh 3vh rgba(0, 0, 0, 0.2);
+
 }
 
 
