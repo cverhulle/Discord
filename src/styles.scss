@@ -1,8 +1,10 @@
+// On charge les styles pour les émojis
 @use '@ctrl/ngx-emoji-mart/picker';
 
+// On gère la taille du body
 html, body { height: 100%; }
 
-
+// Style du body : image de fond, police
 body { 
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif; 
@@ -13,11 +15,12 @@ body {
 
 }
 
-
+// On souligne tous les liens a au survol
 a:hover{
     text-decoration: underline;
 }
 
+// Tous les liens sont en violet
 a{
     color: blueviolet;
 }
