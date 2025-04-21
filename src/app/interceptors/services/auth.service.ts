@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
     providedIn: 'root'
 })
 
+// Ce service permet de gérer le token de connexion
 export class TokenService {
     constructor(private router: Router) {}
 
