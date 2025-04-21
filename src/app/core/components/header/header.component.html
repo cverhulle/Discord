@@ -6,11 +6,22 @@
     <!-- On crée une liste contenant toutes les options de l'application-->
     <ul class="nav-links">
 
+      <!-- Lien vers la homepage-->
       <li><a routerLink="/homepage">Accueil</a></li>
+
+      <!-- Lien pour se connecter ou créer un compte-->
       <li><a routerLink="/login">Connexion</a></li>
+
+      <!-- Lien pour modifier ou supprimer son profil-->
       <li><a routerLink="/profile">Mon profil</a></li>
+
+      <!-- Lien vers les messages privés (2 personnes)-->
       <li><a routerLink="/private-message">Messages privés</a></li>
+
+      <!-- Lien vers les groupes de discussion (maximum 10 personnes)-->
       <li><a routerLink="/group-message">Groupes de discussion</a></li>
+
+      <!-- Lien pour se déconnecter-->
       <li><a (click)="onLogout()">Déconnexion</a></li>
 
     </ul>
