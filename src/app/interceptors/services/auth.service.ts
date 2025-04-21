@@ -9,6 +9,7 @@ import { Router } from "@angular/router";
 export class TokenService {
     constructor(private router: Router) {}
 
+    // Cette méthode permet de sauvegarder le token sur le localStorage du navigateur
     saveToken(token: string): void {
         localStorage.setItem('token', token)
     }
@@ -25,12 +26,13 @@ export class TokenService {
     //    return localStorage.getItem('userId')
     // }
 
+    // Cette méthode permet de savoir si un utilisateur est connecté
     isLogged(): boolean {
         const token = this.getToken()
         return !!token
-
     }
 
+    // Cette méthode permet de supprimer un token
     removeToken(): void {
         localStorage.removeItem('token')
         this.router.navigateByUrl('/homepage')
