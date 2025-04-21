@@ -1,3 +1,4 @@
+// Ce modèle est utilisé pour créer un groupe de discussion
 export class CreateGroupForm {
     groupName!: string;
     groupDescription!: string;
