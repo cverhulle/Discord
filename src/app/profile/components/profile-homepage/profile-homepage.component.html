@@ -1,8 +1,10 @@
+<!-- Titre de la page-->
 <h1 class="profile-title">
     Mon profil
     <mat-icon class="delete-profile" (click)="onDeleteAccount()"> delete </mat-icon>
 </h1>
 
+<!-- Affichage des éléments du profil-->
 <div class="display-row">   
     <h2>
         Prénom
@@ -56,10 +58,12 @@
     
 </div>
 
+<!-- Bouton pour modifier le profil -->
 <mat-card-actions class="center">
     <button mat-flat-button (click)="onModifyProfile()"> Modifier mon profil </button>
 </mat-card-actions>
 
+<!-- Bouton pour modifier le mot de passe -->
 <mat-card-actions class="center">
     <button mat-flat-button (click)="onModifyPassword()"> Modifier mon mot de passe </button>
 </mat-card-actions>
