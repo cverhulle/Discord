@@ -3,6 +3,7 @@ import { BehaviorSubject } from "rxjs";
 
 @Injectable()
 
+// Ce service permet de gérer la roue des émojis.
 export class EmojisService{
     // Création d'un BehaviourSubject pour gérer l'affichage du selecteur d'émotes.
     showEmojisListSubject = new BehaviorSubject<boolean>(false);
