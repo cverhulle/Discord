@@ -1,3 +1,4 @@
+// Ce modèle permet de créer un Post
 export class Post{
     postId?: string;
     currentUserId!: string;
