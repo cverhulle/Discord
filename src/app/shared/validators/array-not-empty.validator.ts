@@ -1,5 +1,6 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 
+// Ce Validator permet de vérifier qu'un champ (de type FormArray) ne contient pas une liste vide
 export function ArrayNotEmpty(): ValidatorFn{
     return (ctrl: AbstractControl): null | ValidationErrors => {
 
