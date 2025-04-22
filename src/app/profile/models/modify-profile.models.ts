@@ -1,3 +1,4 @@
+// Ce modèle permet de modifier le profil (hors mot de passe)
 export class ModifyProfileForm {
     personalInfo!: {
       firstName: string,
