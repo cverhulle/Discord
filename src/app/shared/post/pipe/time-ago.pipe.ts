@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'timeAgo'
 })
 
-
+// Ce pipe permet d'afficher un message adapté en fonction de l'ancienneté d'un Post.
 export class TimeAgoPipe implements PipeTransform {
   timeDiffs = {
     minute: 60 * 1000,
