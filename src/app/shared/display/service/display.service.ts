@@ -3,6 +3,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Injectable()
 
+// Ce service permet d'afficher des éléments
 export class DisplayService {
     constructor(private matSnackBar: MatSnackBar) {}
 
