@@ -1,5 +1,6 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 
+// Ce validator permet de vérifier la fiabilité d'un mot de passe.
 export function strongPasswordValidator(): ValidatorFn {
     return (ctrl: AbstractControl): ValidationErrors | null => {
 
