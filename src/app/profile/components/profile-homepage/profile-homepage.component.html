@@ -1,22 +1,29 @@
 <!-- Titre de la page-->
 <h1 class="profile-title">
     Mon profil
+
+    <!-- Menu burger -->
     <button mat-icon-button [matMenuTriggerFor]="burgerMenu">
         <mat-icon>menu</mat-icon>
     </button>
 </h1>
 
+<!-- Options du menu burger-->
 <mat-menu #burgerMenu="matMenu">
+
+    <!-- Option 1 : Modifier mon profil-->
     <button mat-menu-item (click)="onModifyProfile()">
         <mat-icon>edit</mat-icon>
         <span>Modifier mes informations </span>
     </button>
 
+    <!-- Option 2 : Modifier le mot de passe -->
     <button mat-menu-item (click)="onModifyPassword()">
         <mat-icon>lock</mat-icon>
         <span>Modifier mon mot de passe</span>
     </button>
 
+    <!-- Option 3 : Supprimer le compte-->
     <button mat-menu-item (click)="onDeleteAccount()">
         <mat-icon>delete</mat-icon>
         <span>Supprimer le compte</span>
