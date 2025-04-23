@@ -91,10 +91,12 @@
 
 .profile-card-right{
     width: 40vw;
-    text-align: center;
-    justify-content: center;
     height: 80vh;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 
