@@ -38,16 +38,6 @@
 
 
 
-
-
-//  Style pour placer les différents attributs du profil
-.display-row{
-    display: grid;
-    grid-template-columns: 20% 15% 20% 15%;
-    gap: 1%;
-    margin-left: 1%;
-}
-
 // Style pour mettre du texte en bleu
 .text-color{
     color: #7289da;
@@ -71,10 +61,3 @@
 
 
 
-
-// Style pour centrer les boutons.
-.center{
-    margin-top: 1%;
-    display: grid;
-    justify-content: center;
-}
