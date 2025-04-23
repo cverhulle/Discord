@@ -88,6 +88,14 @@
 }
 
 
+.profile-image{
+    width: 100%;
+    height: 50%;
+    border-radius: 10%;
+    box-shadow: 0 0 10px rgba(255, 193, 227, 0.4);
+}
+
+
 // Style à appliquer sur la div contenant les éléments de la partie droite.
 .profile-card-right{
     width: 40vw;
