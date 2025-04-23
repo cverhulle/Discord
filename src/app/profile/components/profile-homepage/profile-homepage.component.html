@@ -6,6 +6,25 @@
     </button>
 </h1>
 
+<mat-menu #burgerMenu="matMenu">
+    <button mat-menu-item (click)="onModifyProfile()">
+        <mat-icon>edit</mat-icon>
+        <span>Modifier mon profil</span>
+    </button>
+
+    <button mat-menu-item (click)="onModifyPassword()">
+        <mat-icon>lock</mat-icon>
+        <span>Modifier mon mot de passe</span>
+    </button>
+
+    <button mat-menu-item (click)="onDeleteAccount()">
+        <mat-icon>delete</mat-icon>
+        <span>Supprimer le compte</span>
+    </button>
+</mat-menu>
+
+
+
 <!-- Affichage des éléments du profil-->
 <div class="display-row">   
     <h2>
