@@ -31,17 +31,17 @@
 </mat-menu>
 
 
+<!-- Div contenant les informations de l'utilisateur-->
 <div>
   
-    
+    <!-- Partie gauche : Image et username-->
     <mat-card class="profile-card-left">
         <img alt="Image de profil" class="profile-image">
         <h2 class="profile-username">{{ username }}</h2>
     </mat-card>
 
-    
+    <!-- Partie droite : Informations de l'utilisateur -->
     <div>
-        <div>
         <h2 class="attribute-color">Prénom</h2>
         <h2 class="text-color">{{ firstName }}</h2>
 
@@ -50,9 +50,7 @@
 
         <h2 class="attribute-color">Email</h2>
         <h2 class="text-color">{{ email | shorten:20 }}</h2>
-
-
-        </div>
+        
 
     </div>
 
