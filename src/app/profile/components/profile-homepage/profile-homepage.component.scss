@@ -16,8 +16,10 @@
     margin-left: 1vw;
 }
 
-
-
+// Style pour gérer la couleur du menu burger (le ::ng-deep permet à Angular d'aller dans un style encapsuler)
+::ng-deep .menu-burger-icon {
+    color: #ffc1e3;
+}
 
 
 
