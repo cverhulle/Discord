@@ -1,20 +1,19 @@
 // Style pour le titre de la page et l'icone de suppression
 .profile-title{
     color: #7289da;
-    text-align: center;
     font-size: 2.5vw;
     margin-top: 1vh;
     margin-bottom: 1vh;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: auto;
+    text-align: center;
+    justify-content: center;
 }
 
-
 // Style à appliquer sur le logo du menu burger
-.burger{
-    margin-left: 1vw;
+.burger {
+    position: absolute; 
+    right: 1vw; 
 }
 
 // Style pour gérer la couleur du menu burger (le ::ng-deep permet à Angular d'aller dans un style encapsuler)
