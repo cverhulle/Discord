@@ -45,6 +45,7 @@
 // Style sur la div permettant d'afficher les éléments en deux parties : gauche et droite
 .profile-container{
     display: flex;
+    flex-direction: row;
     gap: 3vw;
     margin-top: 3vh;
     margin-left: 2vw;
