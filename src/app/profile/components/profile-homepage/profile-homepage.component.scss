@@ -89,7 +89,7 @@
 
 // Style à appliquer aux attributs du profil.
 .attribute-color{
-    color: 	#ffc1e3
+    color: 	#ffc1e3;
 }
 
 
@@ -145,7 +145,7 @@
 
 
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
 
     // On fait descendre le container de la mat-card global
     .profile-container-wrapper{
