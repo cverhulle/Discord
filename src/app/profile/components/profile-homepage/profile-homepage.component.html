@@ -32,30 +32,32 @@
 
 
 <!-- Div contenant les informations de l'utilisateur-->
-<mat-card class="profile-container">
-  
-    <!-- Partie gauche : Image et username-->
-    <mat-card class="profile-card-left">
-        <img src="{{imageUrl}}" alt="Image de profil" class="profile-image">
-        <h2 class="attribute-color">{{ username }}</h2>
+<div class="profile-container-wrapper">
+    <mat-card class="profile-container">
+    
+        <!-- Partie gauche : Image et username-->
+        <mat-card class="profile-card-left">
+            <img src="{{imageUrl}}" alt="Image de profil" class="profile-image">
+            <h2 class="attribute-color">{{ username }}</h2>
+        </mat-card>
+
+        <!-- Partie droite : Informations de l'utilisateur -->
+        <div class="profile-card-right">
+            <h2 class="attribute-color">Prénom</h2>
+            <h2 class="text-color">{{ firstName }}</h2>
+
+            <h2 class="attribute-color">Nom</h2>
+            <h2 class="text-color">{{ lastName }}</h2>
+
+            <h2 class="attribute-color">Email</h2>
+            <h2 class="text-color">{{ email | shorten:20 }}</h2>
+            
+
+        </div>
+
     </mat-card>
 
-    <!-- Partie droite : Informations de l'utilisateur -->
-    <div class="profile-card-right">
-        <h2 class="attribute-color">Prénom</h2>
-        <h2 class="text-color">{{ firstName }}</h2>
-
-        <h2 class="attribute-color">Nom</h2>
-        <h2 class="text-color">{{ lastName }}</h2>
-
-        <h2 class="attribute-color">Email</h2>
-        <h2 class="text-color">{{ email | shorten:20 }}</h2>
-        
-
-    </div>
-
-</mat-card>
-
+</div>
 
 
 
