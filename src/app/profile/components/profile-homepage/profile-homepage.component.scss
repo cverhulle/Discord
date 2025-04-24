@@ -145,3 +145,23 @@
 
 
 
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column; 
+        width: 90vw;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .profile-card-left,
+    .profile-card-right {
+        width: 100%; 
+        height: auto; 
+        margin-bottom: 2vh;
+        border-radius: 20%;
+    }
+
+    .profile-image {
+        width: 60%;
+    }
+}
