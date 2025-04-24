@@ -145,7 +145,11 @@
 
 
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+    .profile-container-wrapper{
+        margin-top: 12vh;
+    }
+
     .profile-container {
         flex-direction: column; 
         width: 90vw;
