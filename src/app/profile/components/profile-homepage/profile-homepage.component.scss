@@ -146,10 +146,13 @@
 
 
 @media (max-width: 900px) {
+
+    // On fait descendre le container de la mat-card global
     .profile-container-wrapper{
         margin-top: 12vh;
     }
 
+    // On affiche les éléments en colonne ; on ajuste la taille du container
     .profile-container {
         flex-direction: column; 
         width: 90vw;
@@ -157,6 +160,7 @@
         padding: 1rem;
     }
 
+    // On ajuste la taille des deux divs contenus dans la mat-card principale
     .profile-card-left,
     .profile-card-right {
         width: 100%; 
@@ -165,6 +169,7 @@
         border-radius: 20%;
     }
 
+    // On diminue la taille de l'image
     .profile-image {
         width: 60%;
     }
