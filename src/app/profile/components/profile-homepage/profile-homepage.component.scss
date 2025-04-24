@@ -104,15 +104,15 @@
 // Style sur la div de gauche contenat l'image et l'username
 .profile-card-left{
     display: flex;
-    width: 50vw;
     text-align: center;
     justify-content: center;
     align-items: center;
-    height: 75vh;
+    width: 50%;
+    height: 60%;
     gap: 3vh;
     padding: 1rem;
     color: #ffc1e3;
-    border-radius: 10px;
+    border-radius: 20%;;
     background-color: rgba(30, 60, 100, 0.5);
 }
 
