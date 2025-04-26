@@ -183,7 +183,20 @@
 
     // Couleur des textes et du fond
     color: #ffc1e3;
-    background-color: rgba(30, 60, 100, 0.5);
+    background: linear-gradient(
+        135deg, 
+        rgba(50, 25, 70, 0.8),  /* Violet plus foncé */
+        rgba(60, 80, 120, 0.8),  /* Bleu foncé */
+        rgba(20, 30, 50, 0.8)    /* Bleu nuit foncé */
+    );
+    background-size: 400% 400%;
+    animation: moveBackground 5s ease infinite;
+}
+
+@keyframes moveBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 // Style sur l'image de profil.
