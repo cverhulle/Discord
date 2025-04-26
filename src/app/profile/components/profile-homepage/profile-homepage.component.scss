@@ -77,9 +77,14 @@
     padding: 2rem; 
     width: 60vw;
     height: 70vh;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 
+.profile-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(255, 193, 227, 0.4);
+}
 
 
 
