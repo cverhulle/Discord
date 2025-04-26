@@ -184,13 +184,14 @@
     // Couleur des textes et du fond
     color: #ffc1e3;
     background: linear-gradient(
-        135deg, 
-        rgba(85, 35, 115, 0.9),  
-        rgba(110, 80, 150, 0.85), 
-        rgba(60, 105, 150, 0.75)  
+        120deg,
+        rgba(85, 35, 115, 0.9) 20%,
+        rgba(110, 80, 150, 0.85) 47.5%,
+        rgba(110, 80, 150, 0.85) 48.5%,
+        rgba(60, 105, 150, 0.75) 80%
     );
     background-size: 400% 400%;
-    animation: moveLeftBackground 5s ease infinite;
+    animation: moveLeftBackground 6s ease infinite;
 }
 
 // Animation de la carte de gauche
@@ -199,6 +200,7 @@
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
+
 
 // Style sur l'image de profil.
 .profile-image{
