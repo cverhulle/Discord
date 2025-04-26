@@ -166,14 +166,22 @@
 
 // Style sur la div de gauche contenat l'image et l'username
 .profile-card-left{
+
+    // Disposition des éléments
     display: flex;
     text-align: center;
     justify-content: center;
     align-items: center;
+
+    // Taille de la mat-card
     width: 100%;
     height: 90%;
+
+    // Marges, padding etc..
     gap: 3vh;
     padding: 1rem;
+
+    // Couleur des textes et du fond
     color: #ffc1e3;
     background-color: rgba(30, 60, 100, 0.5);
 }
