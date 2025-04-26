@@ -65,22 +65,32 @@
 
 // Style sur la mat-card permettant d'afficher les éléments en deux parties : gauche et droite
 .profile-container{
+    
+    // Disposition des éléments
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+
+    // Marges, effet sur les bords de la carte
     margin-top: 3vh;
     margin-left: 2vw;
     border-radius: 10%; 
+    box-shadow: 0 4vh 8vw rgba(0, 0, 0, 0.1);
+    padding: 2rem; 
+
+    // Couleur de la carte
     background: linear-gradient(
         90deg,
         rgba(74, 35, 90, 0.9) 50%, 
         rgba(114, 137, 218, 0.9) 100% 
     );
-    box-shadow: 0 4vh 8vw rgba(0, 0, 0, 0.1);
-    padding: 2rem; 
+
+    // Taille de la carte
     width: 60vw;
     height: 70vh;
+
+    // Effets d'animations
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
