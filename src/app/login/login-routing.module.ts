@@ -5,7 +5,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AlreadyConnectedGuard } from '../guard/already-connected.guard';
 
 const routes: Routes = [
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent, canActivate : [AlreadyConnectedGuard]},
   { path: '', component: LoginHomepageComponent, canActivate : [AlreadyConnectedGuard] }
 ];
 
