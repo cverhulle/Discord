@@ -97,7 +97,24 @@
 }
 
 
+@keyframes pulseGlow {
+    0% {
+        text-shadow: 0 0 5px rgba(255, 193, 227, 0.6);
+    }
+    50% {
+        text-shadow: 0 0 15px rgba(255, 193, 227, 1);
+    }
+    100% {
+        text-shadow: 0 0 5px rgba(255, 193, 227, 0.6);
+    }
+}
 
+.profile-card-right h2:hover,
+.profile-card-left h2:hover {
+    color: #fff;
+    animation: pulseGlow 2s infinite ease-in-out;
+    transition: color 0.3s ease;
+}
 
 
 
