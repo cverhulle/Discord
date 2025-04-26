@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProfileService } from '../../service/profile.service';
-import { catchError, map, of, tap } from 'rxjs';
+import { catchError, of, tap } from 'rxjs';
 import { SharedModule } from '../../../shared/shared.module';
 import { ShortenPipe } from '../../../shared/profil/pipe/shorten.pipe';
 import { MatDialog } from '@angular/material/dialog';
