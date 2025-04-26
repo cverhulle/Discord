@@ -72,7 +72,11 @@
     margin-top: 3vh;
     margin-left: 2vw;
     border-radius: 10%; 
-    background-color: rgb(74,35,90); 
+    background: linear-gradient(
+        90deg,
+        rgba(74, 35, 90, 0.9) 50%, 
+        rgba(114, 137, 218, 0.9) 100% 
+    );
     box-shadow: 0 4vh 8vw rgba(0, 0, 0, 0.1);
     padding: 2rem; 
     width: 60vw;
