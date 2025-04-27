@@ -59,9 +59,12 @@
 
 // Style à appliquer sur les avatars des photos
 .avatar{
-    width: auto;
-    max-width: 7vh;
-    max-height: 7vh;
+    width: 7vh;
+    height: 7vh;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(255, 193, 227, 0.4);
 }
 
 // Style à appliquer sur les mat card des utilisateurs
