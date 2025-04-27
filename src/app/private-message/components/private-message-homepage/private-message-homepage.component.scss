@@ -91,10 +91,15 @@
     background-color: #7289da;
     color: white;
     border-radius: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 
-
+// Effet au survol du bouton //
+.button:hover {
+    background-color: #5b6eae;
+    transform: scale(1.05);
+}
 
 
 
