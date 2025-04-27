@@ -68,20 +68,27 @@
 
 // Style à appliquer sur les mat card des utilisateurs
 .mat-card-users{
+
+    // Taille et bordure de la carte
     width: 35%;
     margin: 2vh auto;
-    background: linear-gradient(135deg, rgba(97,18,97,0.9), rgba(60, 60, 110, 0.8));
-    border-radius: 15px;
-    font-size: 1.5vw;
     padding: 1rem 2rem;
     box-shadow: 0 4px 20px rgba(114, 137, 218, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px;
+    font-size: 1.5vw;
+    gap: 1rem; 
 
+    // Couleur de la carte
+    background: linear-gradient(135deg, rgba(97,18,97,0.9), rgba(60, 60, 110, 0.8));
+
+    // Disposition des éléments
     display: flex;
     flex-direction: row;
     align-items: center; 
     justify-content: space-between; 
-    gap: 1rem; 
+
+    // Animation de la carte
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 // Effet au survol de la carte //
