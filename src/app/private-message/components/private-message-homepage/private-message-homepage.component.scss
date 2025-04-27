@@ -138,13 +138,12 @@
 // Style à appliquer sur le bouton pour lancer le chat
 .button{
     margin: 0;
-    background-color: #7289da;
-    color: white;
+    background-color: #7289da !important;
+    color: white !important;
     border-radius: 20px;
     padding: 0.8rem 1.5rem; 
     font-size: 1.2vw; 
     transition: background-color 0.3s ease, transform 0.3s ease;
-    z-index: 1;
 }
 
 
