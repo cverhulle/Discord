@@ -69,10 +69,13 @@
 
 // Style à appliquer sur les mat card des utilisateurs
 .mat-card-users{
-    width: 30%;
-    margin-left: 1%;
-    background-color: rgb(97, 18, 97);
-    font-size: 150%;
+    width: 40%;
+    margin: 2vh auto;
+    background: linear-gradient(135deg, rgba(97,18,97,0.9), rgba(60, 60, 110, 0.8));
+    border-radius: 15px;
+    font-size: 1.5vw;
+    padding: 1rem;
+    
     margin-bottom: 1%;
     display: grid;
     grid-template-columns: 20% 55% 25%;
