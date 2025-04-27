@@ -1,3 +1,4 @@
+// Style à appliquer sur le titre de la page
 .title{
     color: white;
     text-align: center;
@@ -8,23 +9,27 @@
     justify-content: center; 
 }
 
+// Style à appliquer sur la question (sous-titre)
 .white-color{
     color: white;
     margin-left: 1%;
 }
 
+// Style à appliquer sur la barre de recherche
 .searchQuery{
     margin-left: 1%;
     width: 40%
 }
 
+
+// Style à appliquer sur les avatars des photos
 .avatar{
     width: auto;
     max-width: 7vh;
     max-height: 7vh;
 }
 
-
+// Style à appliquer sur les mat card des utilisateurs
 .mat-card-users{
     width: 30%;
     margin-left: 1%;
@@ -36,6 +41,7 @@
       
 }
 
+// Style à appliquer sur le bouton pour lancer le chat
 .button{
     margin: auto;
 }
