@@ -16,6 +16,8 @@ import { CoreModule } from '../../core.module';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit{
+  // Variable pour afficher le menu quand on clique sur le burger
+  openMenu: boolean = false
   
   constructor(private tokenService : TokenService,
               private displayService : DisplayService) {}
@@ -33,7 +35,7 @@ export class HeaderComponent implements OnInit{
   }
 
   toggleMenu() {
-    
+
   }
 
   
