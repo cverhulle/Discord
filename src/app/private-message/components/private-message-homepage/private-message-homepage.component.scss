@@ -158,6 +158,11 @@
 @media (max-width: 1000px) {
     // Taille des mat card des utilisateurs.
     .mat-card-users{
-        width: 60vw;;
+        width: 60vw;
+    }
+
+    // Taille de la police des usernames
+    .username{
+        font-size: 2.5vw;
     }
 }
