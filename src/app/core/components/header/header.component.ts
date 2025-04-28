@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SharedModule } from '../../../shared/shared.module';
 import { TokenService } from '../../../interceptors/services/auth.service';
@@ -20,7 +20,8 @@ export class HeaderComponent implements OnInit{
   openMenu: boolean = false
   
   constructor(private tokenService : TokenService,
-              private displayService : DisplayService) {}
+              private displayService : DisplayService,
+              private elementRef: ElementRef) {}
 
   ngOnInit(): void {
   
@@ -44,6 +45,12 @@ export class HeaderComponent implements OnInit{
     this.openMenu = false
   }
 
-  
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: MouseEvent) {
+    const clickedInside = this.elementRef.nativeElement.contains(event.target);
+    if (!clickedInside) {
+      this.closeMenu();
+    }
+  }  
 
 }
