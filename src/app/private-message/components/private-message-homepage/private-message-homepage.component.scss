@@ -154,3 +154,10 @@
 
 
 
+// Affichage lorsque l'écran est plus petit
+@media (max-width: 1000px) {
+    // Taille des mat card des utilisateurs.
+    .mat-card-users{
+        width: 60vw;;
+    }
+}
