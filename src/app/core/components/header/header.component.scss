@@ -90,3 +90,10 @@
 
 
 // Quand l'écran est très petit, on affiche un menu burger
+@media (max-width: 750px) {
+
+    // On affichige le bouton burger
+    .burger{
+        display: block;
+    }
+}
