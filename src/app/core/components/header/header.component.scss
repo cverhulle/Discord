@@ -75,7 +75,7 @@
 
 
 
-
+// On gère la taille de la police quand l'écran rétrécit
 @media (max-width: 1400px) {
     // Style à appliquer sur les options de la barre de navigation
     .nav-links li a {
@@ -87,3 +87,6 @@
       font-size: 2.5vw;
     }
 }
+
+
+// Quand l'écran est très petit, on affiche un menu burger
