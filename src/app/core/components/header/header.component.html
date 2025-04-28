@@ -11,22 +11,22 @@
     <ul class="nav-links" [class.show]="openMenu">
 
       <!-- Lien vers la homepage-->
-      <li><a routerLink="/homepage">Accueil</a></li>
+      <li><a routerLink="/homepage" (click)="closeMenu()">Accueil</a></li>
 
       <!-- Lien pour se connecter ou créer un compte-->
-      <li><a routerLink="/login">Connexion</a></li>
+      <li><a routerLink="/login" (click)="closeMenu()">Connexion</a></li>
 
       <!-- Lien pour modifier ou supprimer son profil-->
-      <li><a routerLink="/profile">Mon profil</a></li>
+      <li><a routerLink="/profile" (click)="closeMenu()">Mon profil</a></li>
 
       <!-- Lien vers les messages privés (2 personnes)-->
-      <li><a routerLink="/private-message">Messages privés</a></li>
+      <li><a routerLink="/private-message" (click)="closeMenu()">Messages privés</a></li>
 
       <!-- Lien vers les groupes de discussion (maximum 10 personnes)-->
-      <li><a routerLink="/group-message">Groupes de discussion</a></li>
+      <li><a routerLink="/group-message" (click)="closeMenu()">Groupes de discussion</a></li>
 
       <!-- Lien pour se déconnecter-->
-      <li><a (click)="onLogout()">Déconnexion</a></li>
+      <li><a (click)="onLogout(); closeMenu()">Déconnexion</a></li>
 
     </ul>
 
