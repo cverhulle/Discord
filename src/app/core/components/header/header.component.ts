@@ -32,6 +32,10 @@ export class HeaderComponent implements OnInit{
     }
   }
 
+  toggleMenu() {
+    
+  }
+
   
 
 }
