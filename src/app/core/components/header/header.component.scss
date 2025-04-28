@@ -62,6 +62,19 @@
 
 
 
+// Style à appliquer sur le bouton burger
+.burger{
+    display: none;
+    background: none;
+    border: none;
+    color: #7289da;
+    cursor: pointer;
+}
+
+
+
+
+
 
 @media (max-width: 1400px) {
     // Style à appliquer sur les options de la barre de navigation
