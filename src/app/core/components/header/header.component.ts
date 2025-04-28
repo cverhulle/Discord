@@ -45,10 +45,15 @@ export class HeaderComponent implements OnInit{
     this.openMenu = false
   }
 
+  // On ferme le menu si on clique en dehors du menu
   @HostListener('document:click', ['$event'])
   onClickOutside(event: MouseEvent) {
+    
+    // On regarde si le clic est sur le menu ou pas
     const clickedInside = this.elementRef.nativeElement.contains(event.target);
+    // S'il est en dehors...
     if (!clickedInside) {
+      // ... on ferme le menu
       this.closeMenu();
     }
   }  
