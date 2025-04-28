@@ -61,11 +61,13 @@
 
 
 @media (max-width: 990px) {
+    // Style à appliquer sur les options de la barre de navigation
     .nav-links li a {
-      font-size: 1.2vh;
+      font-size: 1.5vw;
     }
-  
+    
+    // Style à appliquer sur le titre
     .title {
-      font-size: 1.5vh;
+      font-size: 2.5vw;
     }
 }
