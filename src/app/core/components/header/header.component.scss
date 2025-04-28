@@ -119,10 +119,14 @@
         top: 100%; 
         left: 0;
         box-sizing: border-box; 
-        gap: 1.5vh;
+        gap: 2vh;
 
         // Priorité d'affichage sur le reste du component
         z-index: 10;        
+    }
+
+    .nav-links.show li a{
+        font-size: 2.5vw;
     }
 
 }
