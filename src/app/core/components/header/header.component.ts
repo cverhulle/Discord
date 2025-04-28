@@ -39,6 +39,11 @@ export class HeaderComponent implements OnInit{
     this.openMenu = !this.openMenu;
   }
 
+  // Méthode pour fermer le menu après un clic sur une option
+  closeMenu() {
+    this.openMenu = false
+  }
+
   
 
 }
