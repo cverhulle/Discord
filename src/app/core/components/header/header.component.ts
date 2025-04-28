@@ -34,6 +34,7 @@ export class HeaderComponent implements OnInit{
     }
   }
 
+  // Méthode permettant d'afficher le menu des options ou de la cacher
   toggleMenu() {
     this.openMenu = !this.openMenu;
   }
