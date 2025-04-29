@@ -7,16 +7,22 @@
         <mat-icon>menu</mat-icon> 
     </button>
 
-    <!-- On crée une liste contenant toutes les options de l'application-->
+    <!-- On affiche toutes les options de l'application (le .show ne rentre en compte que pour les petits écrans)-->
     <ul class="nav-links" [class.show]="(openMenu$ | async)">
+
+      <!-- Pour chaque route existante... -->
       <li *ngFor="let link of navLinks">
+
+        <!-- Si c'est une route de navigation, on redirige vers celle-ci et, on ferme le menu burger-->
         <a *ngIf="link.action === 'navigate'" 
            [routerLink]="link.route" 
            (click)="closeMenu()">{{ link.label }}</a>
-    
+        
+           <!-- Si c'est la deconnexion, on appelle en plus la méthode Logout-->
         <a *ngIf="link.action === 'logout'" 
            (click)="onLogout(); closeMenu()">{{ link.label }}</a>
       </li>
+
     </ul>
 
 </mat-toolbar>
