@@ -7,12 +7,25 @@ import { NavigationLink } from "../models/navigation-links.model";
 // Service lié au header.
 export class HeaderService{
 
+    // Cette variable contient les routes de navigation 
     navLinks: NavigationLink[] = [
+
+        // Route vers la page d'accueil
         { label: 'Accueil', route: '/homepage', action: 'navigate' },
+
+        // Route pour le login
         { label: 'Connexion', route: '/login', action: 'navigate' },
+
+        // Route vers le profil
         { label: 'Mon profil', route: '/profile', action: 'navigate' },
+
+        // Route vers les messages privés (entre deux utilisateurs)
         { label: 'Messages privés', route: '/private-message', action: 'navigate' },
+
+        // Route vers les groupes de discussion (maximum 10 personnes)
         { label: 'Groupes de discussion', route: '/group-message', action: 'navigate' },
+
+        // Route pour se déconnecter
         { label: 'Déconnexion', action: 'logout' }
     ];
 
