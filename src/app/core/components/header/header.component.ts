@@ -6,13 +6,15 @@ import { DisplayService } from '../../../shared/display/service/display.service'
 import { CoreModule } from '../../core.module';
 import { HeaderService } from '../../services/header.Service';
 import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   imports: [
     SharedModule,
     RouterLink,
-    CoreModule
+    CoreModule,
+    AsyncPipe
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'

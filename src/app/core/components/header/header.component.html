@@ -8,7 +8,7 @@
     </button>
 
     <!-- On crée une liste contenant toutes les options de l'application-->
-    <ul class="nav-links" [class.show]="openMenu">
+    <ul class="nav-links" [class.show]="(openMenu$ | async)">
 
       <!-- Lien vers la homepage-->
       <li><a routerLink="/homepage" (click)="closeMenu()">Accueil</a></li>
