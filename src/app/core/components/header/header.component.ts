@@ -5,6 +5,7 @@ import { TokenService } from '../../../interceptors/services/auth.service';
 import { DisplayService } from '../../../shared/display/service/display.service';
 import { CoreModule } from '../../core.module';
 import { HeaderService } from '../../services/header.Service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -18,7 +19,7 @@ import { HeaderService } from '../../services/header.Service';
 })
 export class HeaderComponent implements OnInit{
   // Variable pour afficher le menu quand on clique sur le burger
-  openMenu: boolean = false
+  openMenu$!: Observable<boolean>
   
   constructor(private tokenService : TokenService,
               private displayService : DisplayService,
@@ -26,7 +27,7 @@ export class HeaderComponent implements OnInit{
               private headerService : HeaderService) {}
 
   ngOnInit(): void {
-  
+    this.openMenu$ = this.headerService.openMenu$
   }
 
   // Méthode pour supprimer le token en cas de déconnexion.
