@@ -40,12 +40,12 @@ export class HeaderComponent implements OnInit{
 
   // Méthode permettant d'afficher le menu des options ou de la cacher
   toggleMenu() {
-    this.openMenu = !this.openMenu;
+    this.headerService.reverseOpenMenuSubject()
   }
 
   // Méthode pour fermer le menu après un clic sur une option
   closeMenu() {
-    this.openMenu = false
+    this.headerService.setValueOfOpenMenuSubject(false)
   }
 
   // On ferme le menu si on clique en dehors du menu
