@@ -6,7 +6,7 @@ import { DisplayService } from '../../../shared/display/service/display.service'
 import { CoreModule } from '../../core.module';
 import { HeaderService } from '../../services/header.Service';
 import { Observable } from 'rxjs';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +14,9 @@ import { AsyncPipe } from '@angular/common';
     SharedModule,
     RouterLink,
     CoreModule,
-    AsyncPipe
+    AsyncPipe,
+    NgFor,
+    NgIf
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
@@ -22,6 +24,15 @@ import { AsyncPipe } from '@angular/common';
 export class HeaderComponent implements OnInit{
   // Variable pour afficher le menu quand on clique sur le burger
   openMenu$!: Observable<boolean>
+
+  navLinks = [
+    { label: 'Accueil', route: '/homepage', action: 'navigate' },
+    { label: 'Connexion', route: '/login', action: 'navigate' },
+    { label: 'Mon profil', route: '/profile', action: 'navigate' },
+    { label: 'Messages privés', route: '/private-message', action: 'navigate' },
+    { label: 'Groupes de discussion', route: '/group-message', action: 'navigate' },
+    { label: 'Déconnexion', action: 'logout' }
+  ];
   
   constructor(private tokenService : TokenService,
               private displayService : DisplayService,
