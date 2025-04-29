@@ -24,7 +24,8 @@ import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 export class HeaderComponent implements OnInit{
   // Variable pour afficher le menu quand on clique sur le burger
   openMenu$!: Observable<boolean>
-
+  
+  // Variable pour stocker les routes de navigation
   navLinks = [
     { label: 'Accueil', route: '/homepage', action: 'navigate' },
     { label: 'Connexion', route: '/login', action: 'navigate' },
