@@ -3,4 +3,4 @@ export class NavigationLink {
     label!: string;
     action!: 'navigate' | 'logout';  
     route?: string; 
-  }
+}
