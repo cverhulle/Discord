@@ -4,7 +4,7 @@ import { SharedModule } from '../../../shared/shared.module';
 import { TokenService } from '../../../interceptors/services/auth.service';
 import { DisplayService } from '../../../shared/display/service/display.service';
 import { CoreModule } from '../../core.module';
-import { HeaderService } from '../../services/header.Service';
+import { HeaderService } from '../../services/header.service';
 import { Observable } from 'rxjs';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { NavigationLink } from '../../models/navigation-links.model';
@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit{
               private headerService : HeaderService) {}
 
   ngOnInit(): void {
-    
+
     // On récupère les routes de navigation dans le service
     this.navLinks = this.headerService.navLinks
 

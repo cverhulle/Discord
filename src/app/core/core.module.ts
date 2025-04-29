@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { DisplayService } from '../shared/display/service/display.service';
-import { HeaderService } from './services/header.Service';
+import { HeaderService } from './services/header.service';
 
 
 
