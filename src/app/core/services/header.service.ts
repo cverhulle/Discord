@@ -19,4 +19,10 @@ export class HeaderService{
     getValueOfOpenMenuSubject() {
         return this.openMenuSubject.getValue()
     }
+
+    // Méthode permettant d'émettre l'inverse de la dernière émission du subject openMenu
+    reverseOpenMenuSubject() {
+        const currentState = this.getValueOfOpenMenuSubject()
+        this.openMenuSubject.next(!currentState)
+    }
 }
