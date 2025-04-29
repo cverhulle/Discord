@@ -14,4 +14,9 @@ export class HeaderService{
     setValueOfOpenMenuSubject(state : boolean) {
         this.openMenuSubject.next(state)
     }
+
+    // Méthode permettant de récupérer la dernière émission du subject openMenu
+    getValueOfOpenMenuSubject() {
+        return this.openMenuSubject.getValue()
+    }
 }
