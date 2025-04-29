@@ -43,6 +43,7 @@ export class PrivateMessageHomepageComponent implements OnInit{
     
   }
 
+  // Cette méthode permet d'initialiser la barre de recherche
   private initSubjectQuery(): void {
     this.searchSubject.pipe(
       debounceTime(1000),
@@ -78,6 +79,7 @@ export class PrivateMessageHomepageComponent implements OnInit{
     return this.avatarService.getProfileImage(user.image, user.username)
   }
 
+  // Cette méthode permet d'être rediriger vers le chat privé correspondant
   onChat(user: usernameImage): void {
     this.router.navigate(['/private-message/chat'], {state: {id: user.id, username: user.username, image: user.image} })
   }
