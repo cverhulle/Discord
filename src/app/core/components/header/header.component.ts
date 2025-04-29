@@ -7,6 +7,7 @@ import { CoreModule } from '../../core.module';
 import { HeaderService } from '../../services/header.Service';
 import { Observable } from 'rxjs';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { NavigationLink } from '../../models/navigation-links.model';
 
 @Component({
   selector: 'app-header',
@@ -26,14 +27,7 @@ export class HeaderComponent implements OnInit{
   openMenu$!: Observable<boolean>
   
   // Variable pour stocker les routes de navigation
-  navLinks = [
-    { label: 'Accueil', route: '/homepage', action: 'navigate' },
-    { label: 'Connexion', route: '/login', action: 'navigate' },
-    { label: 'Mon profil', route: '/profile', action: 'navigate' },
-    { label: 'Messages privés', route: '/private-message', action: 'navigate' },
-    { label: 'Groupes de discussion', route: '/group-message', action: 'navigate' },
-    { label: 'Déconnexion', action: 'logout' }
-  ];
+  navLinks!: NavigationLink[]
   
   constructor(private tokenService : TokenService,
               private displayService : DisplayService,
@@ -41,6 +35,7 @@ export class HeaderComponent implements OnInit{
               private headerService : HeaderService) {}
 
   ngOnInit(): void {
+    this.navLinks = this.headerService.navLinks
     this.openMenu$ = this.headerService.openMenu$
   }
 
