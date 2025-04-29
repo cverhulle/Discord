@@ -1,17 +1,21 @@
+<!-- Titre de la page-->
 <h1 class="title">
     Mes messages privés
 </h1>
 
+<!-- Sous titre de la page-->
 <h2 class="subtitle"> 
     À qui souhaitez-vous envoyer un message ?
 </h2>
 
+<!-- Cette div contient la barre de recherche et les mat card des utilisateurs correspondant à la recherche-->
 <div>
+    <!-- Barre de recherche -->
     <mat-form-field appearance="fill" class="searchQuery">
         <input matInput [(ngModel)]="searchQuery" (input)="onInputChange()" placeholder="Rechercher des utilisateurs">
     </mat-form-field>
 
-    
+    <!-- Mat card des utilisateurs correspondant à la recherche -->
     <mat-card   *ngFor = "let user of users, let i = index" 
                 class="mat-card-users appear-animation"
                 [style.animation-delay]="(i * 100) + 'ms'"
@@ -19,10 +23,6 @@
         <img [src]="getProfileImage(user)" (error)="setImageError(user)" alt="Avatar de {{user.username}}" class="avatar">
         <div class="username"> {{user.username}} </div>
         <button mat-flat-button class="button" (click)="onChat(user)"> Message </button>
-        
-        
     </mat-card>
-    
-    
     
 </div>
