@@ -4,6 +4,7 @@ import { SharedModule } from '../../../shared/shared.module';
 import { TokenService } from '../../../interceptors/services/auth.service';
 import { DisplayService } from '../../../shared/display/service/display.service';
 import { CoreModule } from '../../core.module';
+import { HeaderService } from '../../services/header.Service';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +22,8 @@ export class HeaderComponent implements OnInit{
   
   constructor(private tokenService : TokenService,
               private displayService : DisplayService,
-              private elementRef: ElementRef) {}
+              private elementRef: ElementRef,
+              private headerService : HeaderService) {}
 
   ngOnInit(): void {
   
