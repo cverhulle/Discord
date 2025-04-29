@@ -35,7 +35,11 @@ export class HeaderComponent implements OnInit{
               private headerService : HeaderService) {}
 
   ngOnInit(): void {
+    
+    // On récupère les routes de navigation dans le service
     this.navLinks = this.headerService.navLinks
+
+    // On initialise l'Observable pour ouvrir ou fermer le menu
     this.openMenu$ = this.headerService.openMenu$
   }
 
