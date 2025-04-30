@@ -20,6 +20,7 @@
                 class="mat-card-users appear-animation"
                 [style.animation-delay]="(i * 100) + 'ms'"
     >
+        <!-- On affiche l'image de profil, l'username et le message du post -->
         <img [src]="getProfileImage(user)" (error)="setImageError(user)" alt="Avatar de {{user.username}}" class="avatar">
         <div class="username"> {{user.username}} </div>
         <button mat-flat-button class="button" (click)="onChat(user)"> Message </button>
