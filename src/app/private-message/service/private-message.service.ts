@@ -6,6 +6,7 @@ import { environment } from "../../../environments/environment.development";
 
 @Injectable()
 
+// Service du module private-message
 export class PrivateMessageService {
     constructor(private http: HttpClient) {}
 
