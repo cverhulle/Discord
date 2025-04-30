@@ -14,7 +14,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox'
 import {MatChipsModule} from '@angular/material/chips'
 
-
+// Ce fichier s'occupe de référencer tous les composants Angular Matérial du projet
 @NgModule({
   exports: [
     MatToolbarModule,
