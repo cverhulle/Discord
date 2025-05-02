@@ -41,7 +41,7 @@ export class PrivateMessageHomepageComponent implements OnInit{
 
   ngOnInit(): void {
     this.initObservables()
-    this.initsearchQuery()
+    this.initSearchQuery()
   }
 
   // Initialisation des Observables
@@ -55,7 +55,7 @@ export class PrivateMessageHomepageComponent implements OnInit{
   }
 
   // Cette méthode permet de mettre à jour la liste des utilisateurs à l'émission de searchSubject
-  private initsearchQuery(): void{
+  private initSearchQuery(): void{
     this.searchSubject.pipe(
       debounceTime(1000),
       switchMap(query => this.privateMessage.searchQueryUsers(query).pipe(
