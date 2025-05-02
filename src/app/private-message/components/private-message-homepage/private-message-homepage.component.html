@@ -16,7 +16,7 @@
     </mat-form-field>
 
     <!-- Mat card des utilisateurs correspondant à la recherche -->
-    <mat-card   *ngFor = "let user of users, let i = index" 
+    <mat-card   *ngFor = "let user of users | async, let i = index" 
                 class="mat-card-users appear-animation"
                 [style.animation-delay]="(i * 100) + 'ms'"
     >

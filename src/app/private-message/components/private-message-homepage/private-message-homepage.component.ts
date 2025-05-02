@@ -4,7 +4,7 @@ import { SharedModule } from '../../../shared/shared.module';
 import { usernameImage } from '../../models/username-image.models';
 import { catchError, debounceTime, Observable, of, Subject, switchMap, tap } from 'rxjs';
 import { PrivateMessageService } from '../../service/private-message.service';
-import { NgFor } from '@angular/common';
+import { AsyncPipe, NgFor } from '@angular/common';
 import { Router } from '@angular/router';
 import { AvatarService } from '../../../shared/avatar/service/avatar.service';
 import { DisplayService } from '../../../shared/display/service/display.service';
@@ -15,7 +15,8 @@ import { DisplayService } from '../../../shared/display/service/display.service'
   imports: [
     FormsModule,
     SharedModule,
-    NgFor
+    NgFor,
+    AsyncPipe
   ],
   templateUrl: './private-message-homepage.component.html',
   styleUrl: './private-message-homepage.component.scss'
