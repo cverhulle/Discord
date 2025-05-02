@@ -39,31 +39,13 @@ export class PrivateMessageHomepageComponent implements OnInit{
               private displayService : DisplayService) {}
 
   ngOnInit(): void {
-    this.initSubjectQuery()
+    this.users = this.privateMessage.users$
+    this.searchSubject = this.privateMessage.searchSubject$
+
+    this.privateMessage.initSearch()
     
   }
 
-  // Cette méthode permet d'initialiser la barre de recherche
-  private initSubjectQuery(): void {
-    this.searchSubject.pipe(
-      debounceTime(1000),
-      switchMap(query => this.privateMessage.searchQueryUsers(query).pipe(
-        catchError( () => {
-          this.displayService.displayMessage('Erreur lors de la recherche des utilisateurs.');
-          this.users = [];
-          return of([]);      
-        }),
-        tap(users => {
-          this.users = users
-          this.users.forEach(user => {
-            this.avatarService.updateImageError(user.username, false)
-          })
-        })
-      ))
-    ).subscribe()
-  }
-
-  
   // Au changement dans le champ de recherche, on lance cette méthode
   onInputChange(): void {
     this.privateMessage.updateSearchQuery(this.searchQuery)
