@@ -13,6 +13,10 @@ export class PrivateMessageService {
     // Subject et Observable pour récupérer la liste des utilisateurs sur la page d'accueil
     usersSubject = new BehaviorSubject<usernameImage[]>([])
     users$ = this.usersSubject.asObservable()
+
+    // Subject et observable pour émettre l'entrée de l'utilisateur dans la barre de recherche
+    private searchSubject = new BehaviorSubject<string> ('')
+    searchSubject$ = this.searchSubject.asObservable()
     
 
     // Cette méthode permet de retourner la liste des utilisateurs correspondant à la recherche en argument
