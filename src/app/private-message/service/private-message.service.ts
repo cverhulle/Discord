@@ -47,6 +47,11 @@ export class PrivateMessageService {
     updateSearchQuery(query: string): void{
         this.searchSubject.next(query)
     }
+
+    // Cette méthode permet de mettre à jour le subject des utilisateurs
+    setValueOfUsersSubject(state: usernameImage[]): void{
+        this.usersSubject.next(state)
+    }
     
     // Cette méthode permet de retourner la liste des utilisateurs correspondant à la recherche en argument
     searchQueryUsers(query: string) : Observable<usernameImage[]> {

@@ -48,7 +48,7 @@ export class PrivateMessageHomepageComponent implements OnInit{
   initsearchQuery(): void{
     this.searchSubject.pipe(
       debounceTime(1000),
-      switchMap(query => this.searchQueryUsers(query).pipe(
+      switchMap(query => this.privateMessage.searchQueryUsers(query).pipe(
         catchError(() => {
           this.displayService.displayMessage('Erreur lors de la recherche des utilisateurs.');
           this.usersSubject.next([]);
