@@ -58,17 +58,7 @@ export class PrivateMessageHomepageComponent implements OnInit{
   private initSearchQuery(): void{
     this.searchSubject.pipe(
       debounceTime(1000),
-      switchMap(query => this.privateMessage.searchQueryUsers(query).pipe(
-        catchError(() => {
-          this.displayService.displayMessage('Erreur lors de la recherche des utilisateurs.');
-          this.privateMessage.setValueOfUsersSubject([])
-          return of([]);
-        }),
-        tap(users => {
-          users.forEach(user => this.avatarService.updateImageError(user.username, false));
-          this.privateMessage.setValueOfUsersSubject(users)
-        })
-      ))
+      switchMap(query => this.privateMessage.searchQueryUsers(query))
     ).subscribe();
   }
 
