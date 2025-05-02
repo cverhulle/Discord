@@ -41,7 +41,7 @@ export class PrivateMessageService {
             })
           ))
         ).subscribe();
-      }
+    }
 
     // Cette méthode permet de mettre à jour la dernière entrée de l'utilisateur dans la barre de recherche.
     updateSearchQuery(query: string): void{

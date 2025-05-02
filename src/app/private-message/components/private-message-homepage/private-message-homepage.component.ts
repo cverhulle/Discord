@@ -42,9 +42,24 @@ export class PrivateMessageHomepageComponent implements OnInit{
   ngOnInit(): void {
     this.users = this.privateMessage.users$
     this.searchSubject = this.privateMessage.searchSubject$
+    this.initsearchQuery()
+  }
 
-    this.privateMessage.initSearch()
-    
+  initsearchQuery(): void{
+    this.searchSubject.pipe(
+      debounceTime(1000),
+      switchMap(query => this.searchQueryUsers(query).pipe(
+        catchError(() => {
+          this.displayService.displayMessage('Erreur lors de la recherche des utilisateurs.');
+          this.usersSubject.next([]);
+          return of([]);
+        }),
+        tap(users => {
+          users.forEach(user => this.avatarService.updateImageError(user.username, false));
+          this.usersSubject.next(users);
+        })
+      ))
+    ).subscribe();
   }
 
   // Au changement dans le champ de recherche, on lance cette méthode
