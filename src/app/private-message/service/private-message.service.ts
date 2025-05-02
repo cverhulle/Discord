@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject, catchError, debounceTime, Observable, of, switchMap, tap } from "rxjs";
 import { usernameImage } from "../models/username-image.models";
 import { environment } from "../../../environments/environment.development";
 import { AvatarService } from "../../shared/avatar/service/avatar.service";
@@ -21,6 +21,23 @@ export class PrivateMessageService {
     // Subject et observable pour émettre l'entrée de l'utilisateur dans la barre de recherche
     private searchSubject = new BehaviorSubject<string> ('')
     searchSubject$ = this.searchSubject.asObservable()
+
+    initSearch(): void {
+        this.searchSubject.pipe(
+          debounceTime(1000),
+          switchMap(query => this.searchQueryUsers(query).pipe(
+            catchError(() => {
+              this.displayService.displayMessage('Erreur lors de la recherche des utilisateurs.');
+              this.usersSubject.next([]);
+              return of([]);
+            }),
+            tap(users => {
+              users.forEach(user => this.avatarService.updateImageError(user.username, false));
+              this.usersSubject.next(users);
+            })
+          ))
+        ).subscribe();
+      }
 
     // Cette méthode permet de mettre à jour la dernière entrée de l'utilisateur dans la barre de recherche.
     updateSearchQuery(query: string): void{
