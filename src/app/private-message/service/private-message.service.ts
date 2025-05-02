@@ -21,6 +21,8 @@ export class PrivateMessageService {
     // Subject et observable pour émettre l'entrée de l'utilisateur dans la barre de recherche
     private searchSubject = new BehaviorSubject<string> ('');
     searchSubject$ = this.searchSubject.asObservable();
+
+    // Variable pour gérer le désabonnement à la mort du service
     private searchSub?: Subscription;
 
     // Cette méthode permet de réagir aux émissions
@@ -51,6 +53,7 @@ export class PrivateMessageService {
         return this.http.get<usernameImage[]>(`${environment.apiUrl}/private-message/queryUsers?search=${query}`)
     }
 
+    // On unsubscribe du Subject à la mort du service
     ngOnDestroy(): void {
         this.searchSub?.unsubscribe();
     }
