@@ -44,11 +44,16 @@ export class PrivateMessageHomepageComponent implements OnInit{
     this.initsearchQuery()
   }
 
+  // Initialisation des Observables
   private initObservables(): void{
+
+    // Initialisation de l'Observable contenant les utilisateurs correspondant à la recherche
     this.users = this.privateMessage.users$
+
+    // Initialisation de l'Observable pour réaliser la recherche
     this.searchSubject = this.privateMessage.searchSubject$
   }
-  
+
   // Cette méthode permet de mettre à jour la liste des utilisateurs à l'émission de searchSubject
   private initsearchQuery(): void{
     this.searchSubject.pipe(
