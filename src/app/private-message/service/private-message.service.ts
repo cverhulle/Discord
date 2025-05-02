@@ -22,27 +22,6 @@ export class PrivateMessageService {
     private searchSubject = new Subject<string>;
     searchSubject$ = this.searchSubject.asObservable();
 
-    // Variable pour gérer le désabonnement à la mort du service
-    private searchSub?: Subscription;
-
-    // Cette méthode permet de réagir aux émissions
-    initSearch(): void {
-        this.searchSub = this.searchSubject.pipe(
-          debounceTime(1000),
-          switchMap(query => this.searchQueryUsers(query).pipe(
-            catchError(() => {
-              this.displayService.displayMessage('Erreur lors de la recherche des utilisateurs.');
-              this.usersSubject.next([]);
-              return of([]);
-            }),
-            tap(users => {
-              users.forEach(user => this.avatarService.updateImageError(user.username, false));
-              this.usersSubject.next(users);
-            })
-          ))
-        ).subscribe();
-    }
-
     // Cette méthode permet de mettre à jour la dernière entrée de l'utilisateur dans la barre de recherche.
     updateSearchQuery(query: string): void{
         this.searchSubject.next(query)
@@ -56,10 +35,5 @@ export class PrivateMessageService {
     // Cette méthode permet de retourner la liste des utilisateurs correspondant à la recherche en argument
     searchQueryUsers(query: string) : Observable<usernameImage[]> {
         return this.http.get<usernameImage[]>(`${environment.apiUrl}/private-message/queryUsers?search=${query}`)
-    }
-
-    // On unsubscribe du Subject à la mort du service
-    ngOnDestroy(): void {
-        this.searchSub?.unsubscribe();
     }
 }
