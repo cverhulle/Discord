@@ -22,6 +22,7 @@ export class PrivateMessageService {
     private searchSubject = new BehaviorSubject<string> ('')
     searchSubject$ = this.searchSubject.asObservable()
 
+    // Cette méthode permet de réagir aux émissions
     initSearch(): void {
         this.searchSubject.pipe(
           debounceTime(1000),
