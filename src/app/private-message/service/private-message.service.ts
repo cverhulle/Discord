@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, catchError, debounceTime, Observable, of, Subscription, switchMap, tap } from "rxjs";
+import { BehaviorSubject, catchError, debounceTime, Observable, of, Subject, Subscription, switchMap, tap } from "rxjs";
 import { usernameImage } from "../models/username-image.models";
 import { environment } from "../../../environments/environment.development";
 import { AvatarService } from "../../shared/avatar/service/avatar.service";
@@ -19,7 +19,7 @@ export class PrivateMessageService {
     users$ = this.usersSubject.asObservable();
 
     // Subject et observable pour émettre l'entrée de l'utilisateur dans la barre de recherche
-    private searchSubject = new BehaviorSubject<string> ('');
+    private searchSubject = new Subject<string>;
     searchSubject$ = this.searchSubject.asObservable();
 
     // Variable pour gérer le désabonnement à la mort du service
