@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, catchError, debounceTime, Observable, of, switchMap, tap } from "rxjs";
+import { BehaviorSubject, catchError, debounceTime, Observable, of, Subscription, switchMap, tap } from "rxjs";
 import { usernameImage } from "../models/username-image.models";
 import { environment } from "../../../environments/environment.development";
 import { AvatarService } from "../../shared/avatar/service/avatar.service";
@@ -15,16 +15,17 @@ export class PrivateMessageService {
                 private displayService : DisplayService) {}
 
     // Subject et Observable pour récupérer la liste des utilisateurs sur la page d'accueil
-    usersSubject = new BehaviorSubject<usernameImage[]>([])
-    users$ = this.usersSubject.asObservable()
+    usersSubject = new BehaviorSubject<usernameImage[]>([]);
+    users$ = this.usersSubject.asObservable();
 
     // Subject et observable pour émettre l'entrée de l'utilisateur dans la barre de recherche
-    private searchSubject = new BehaviorSubject<string> ('')
-    searchSubject$ = this.searchSubject.asObservable()
+    private searchSubject = new BehaviorSubject<string> ('');
+    searchSubject$ = this.searchSubject.asObservable();
+    private searchSub?: Subscription;
 
     // Cette méthode permet de réagir aux émissions
     initSearch(): void {
-        this.searchSubject.pipe(
+        this.searchSub = this.searchSubject.pipe(
           debounceTime(1000),
           switchMap(query => this.searchQueryUsers(query).pipe(
             catchError(() => {
@@ -48,5 +49,9 @@ export class PrivateMessageService {
     // Cette méthode permet de retourner la liste des utilisateurs correspondant à la recherche en argument
     searchQueryUsers(query: string) : Observable<usernameImage[]> {
         return this.http.get<usernameImage[]>(`${environment.apiUrl}/private-message/queryUsers?search=${query}`)
+    }
+
+    ngOnDestroy(): void {
+        this.searchSub?.unsubscribe();
     }
 }
