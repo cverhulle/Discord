@@ -17,8 +17,12 @@ export class PrivateMessageService {
     // Subject et observable pour émettre l'entrée de l'utilisateur dans la barre de recherche
     private searchSubject = new BehaviorSubject<string> ('')
     searchSubject$ = this.searchSubject.asObservable()
-    
 
+    
+    updateSearchQuery(query: string): void{
+        this.searchSubject.next(query)
+    }
+    
     // Cette méthode permet de retourner la liste des utilisateurs correspondant à la recherche en argument
     searchQueryUsers(query: string) : Observable<usernameImage[]> {
         return this.http.get<usernameImage[]>(`${environment.apiUrl}/private-message/queryUsers?search=${query}`)
