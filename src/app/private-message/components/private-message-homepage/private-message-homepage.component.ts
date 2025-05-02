@@ -66,7 +66,7 @@ export class PrivateMessageHomepageComponent implements OnInit{
   
   // Au changement dans le champ de recherche, on lance cette méthode
   onInputChange(): void {
-    this.searchSubject.next(this.searchQuery)
+    this.privateMessage.updateSearchQuery(this.searchQuery)
   }
 
   // Met l'imageError du service à true pour l'utilisateur.
