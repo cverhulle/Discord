@@ -3,12 +3,16 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 import { usernameImage } from "../models/username-image.models";
 import { environment } from "../../../environments/environment.development";
+import { AvatarService } from "../../shared/avatar/service/avatar.service";
+import { DisplayService } from "../../shared/display/service/display.service";
 
 @Injectable()
 
 // Service du module private-message
 export class PrivateMessageService {
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient,
+                private avatarService : AvatarService,
+                private displayService : DisplayService) {}
 
     // Subject et Observable pour récupérer la liste des utilisateurs sur la page d'accueil
     usersSubject = new BehaviorSubject<usernameImage[]>([])
