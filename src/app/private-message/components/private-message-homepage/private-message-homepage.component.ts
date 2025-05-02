@@ -40,11 +40,15 @@ export class PrivateMessageHomepageComponent implements OnInit{
               private displayService : DisplayService) {}
 
   ngOnInit(): void {
-    this.users = this.privateMessage.users$
-    this.searchSubject = this.privateMessage.searchSubject$
+    this.initObservables()
     this.initsearchQuery()
   }
 
+  private initObservables(): void{
+    this.users = this.privateMessage.users$
+    this.searchSubject = this.privateMessage.searchSubject$
+  }
+  
   // Cette méthode permet de mettre à jour la liste des utilisateurs à l'émission de searchSubject
   private initsearchQuery(): void{
     this.searchSubject.pipe(
