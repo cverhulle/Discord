@@ -15,7 +15,7 @@
     <div *ngIf="!(isChatEmpty$ | async) && !(loading$ | async) && (editMessage$ | async) === null">
         <!-- Bouton pour charger plus de messages -->
         <mat-card-actions class="button-previous-post-container">
-            <button mat-flat-button (click)="onLoadMoreMessages()" [disabled]="(loading$ | async)" > Charger les messages précédents </button>
+            <button mat-flat-button (click)="onLoadMoreMessages()" [disabled]="(loading$ | async)" class="button-previous-post"> Charger les messages précédents </button>
         </mat-card-actions>
 
         <!-- Affichage des messages dans un chat à l'aide de mat-card -->
