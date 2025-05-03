@@ -181,15 +181,7 @@ html, body{
 
 
 
-
-// Style pour gérer la prévisualition de l'image dans le post à envoyer
-.post-image-preview{
-    max-width: 20vh;
-    max-height: 20vh;
-    width: auto;
-    height: auto;
-}
-
+// Style à appliquer sur la mat-card contenant la prévisualisation de l'image
 .mat-card-image-preview{
     background-color: rgb(114, 83, 172);
     bottom: 8vh; 
@@ -199,12 +191,29 @@ html, body{
     justify-content: center;
 }
 
+
+
+// Style pour gérer l'image dans la prévisualition du post à envoyer
+.post-image-preview{
+    max-width: 20vh;
+    max-height: 20vh;
+    width: auto;
+    height: auto;
+}
+
+
+
 // Style pour gérer la position du logo d'opacité
 .opacity-icon{
     position: absolute;
     right: 2vh;
     cursor: pointer;
 }
+
+
+
+
+
 
 
 
