@@ -63,6 +63,14 @@ html, body{
     border-radius: 20px;
     padding: 0.8rem 1.5rem; 
     font-size: 1vw; 
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+// Effet au survol du bouton 
+.button-previous-post:hover {
+    background-color: #5b6eae;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 
