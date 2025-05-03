@@ -80,8 +80,12 @@ html, body{
 
 
 
-
-
+// Style à appliquer au container de mat-card-post
+.mat-card-post-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 
 // Style pour la mat-card de chaque post
@@ -90,6 +94,7 @@ html, body{
     margin-left: 1%;
     margin-bottom: 1%;
     font-size: 1.2vw;
+
 
     padding: 10px;
     border-radius: 12px;
