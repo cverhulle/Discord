@@ -11,7 +11,6 @@ import { DisplayService } from '../shared/display/service/display.service';
 import { EmojisService } from '../shared/emojis/services/emojis.service';
 import { ImageService } from '../shared/image/services/image.services';
 import { PasswordService } from '../shared/password/service/password.service';
-import { SearchQueryService } from '../shared/searchQuery/services/searchQuery.service';
 
 
 @NgModule({
@@ -30,7 +29,6 @@ import { SearchQueryService } from '../shared/searchQuery/services/searchQuery.s
     EmojisService,
     ImageService,
     PasswordService,
-    SearchQueryService
   ]
 })
 export class PrivateMessageModule { }
