@@ -254,7 +254,10 @@ html, body{
 
 
 
-
+// Style à appliquer sur l'icone des émojis
+.emoji-icon{
+    cursor: pointer;
+}
 
 // Style pour afficher l'émote des émojis
 .emoji-list{

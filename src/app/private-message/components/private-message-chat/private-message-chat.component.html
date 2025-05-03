@@ -119,7 +119,7 @@
     <textarea matInput placeholder="Entrez votre message ici..." [(ngModel)]="messageContent"> </textarea>
 
     <!-- Envoi d'émotes -->
-    <mat-icon matSuffix (click)="onOpenEmojisList()"> mood </mat-icon>
+    <mat-icon matSuffix (click)="onOpenEmojisList()" class="emoji-icon"> mood </mat-icon>
     <div *ngIf="showEmojisList$ | async" class="emoji-list">
         <emoji-mart (emojiClick)="onEmojiClick($event)" [exclude]="categoriesEmojisExcluded"> </emoji-mart>
     </div>
