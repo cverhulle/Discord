@@ -124,7 +124,10 @@ html, body{
 
 // Style pour l'image de profil
 .avatar{
-    width: 5%;
+    width: 6vh;
+    height: 6vh;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 
