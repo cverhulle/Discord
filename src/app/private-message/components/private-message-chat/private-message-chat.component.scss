@@ -182,7 +182,7 @@ html, body{
 .mat-card-image-preview-container{
     position: relative;
     bottom: 8vh;
-    height: 10%;
+    height: 12vh;
     border: 2px solid #7289da;
     
 }
@@ -191,11 +191,11 @@ html, body{
 // Style à appliquer sur la mat-card contenant la prévisualisation de l'image
 .mat-card-image-preview{
     background-color: rgb(114, 83, 172);
-    bottom: 8vh; 
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    height: 100%;
 }
 
 // Style à appliquer sur le texte lors de la prévisualisation de l'image
@@ -207,8 +207,8 @@ html, body{
 
 // Style pour gérer l'image dans la prévisualition du post à envoyer
 .post-image-preview{
-    max-width: 14vh;
-    max-height: 14vh;
+    max-width: 12vh;
+    max-height: 12vh;
     width: auto;
     height: auto;
 }
