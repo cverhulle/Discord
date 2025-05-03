@@ -254,6 +254,28 @@ html, body{
 
 
 
+// Style pour la mat-card d'envoi d'un message
+.send-message{
+    height: 15%;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    
+}
+
+
+// Style pour gérer la taille du text-area pour l'envoi d'un message
+.send-message textarea {
+    resize: none; 
+    min-height: 5em; 
+
+}
+
+
+
+
+
+
 // Style à appliquer sur l'icone des émojis
 .emoji-icon{
     cursor: pointer;
@@ -283,26 +305,27 @@ html, body{
 
 
 
-// Style pour la mat-card d'envoi d'un message
-.send-message{
-    height: 15%;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    
-}
-
 // Style pour le bouton d'envoi d'un message
 .send-message-icon{
     cursor: pointer;
 }
 
-// Style pour gérer la taille du text-area pour l'envoi d'un message
-.send-message textarea {
-    resize: none; 
-    min-height: 5em; 
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @media (max-width: 1000px) {
