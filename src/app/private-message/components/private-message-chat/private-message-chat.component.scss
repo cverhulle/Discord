@@ -189,14 +189,21 @@ html, body{
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    text-align: center;
+}
+
+.mat-card-image-preview p {
+    height: 100%;
+    margin: 0;
+    white-space: nowrap;
 }
 
 
 
 // Style pour gérer l'image dans la prévisualition du post à envoyer
 .post-image-preview{
-    max-width: 20vh;
-    max-height: 20vh;
+    max-width: 14vh;
+    max-height: 14vh;
     width: auto;
     height: auto;
 }
