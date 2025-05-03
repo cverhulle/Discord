@@ -204,3 +204,16 @@ html, body{
     min-height: 5em; 
 
 }
+
+
+@media (max-width: 1000px) {
+    // Style à appliquer sur le texte quand le chat est vide.
+    .empty-chat{
+        font-size: 3vh;
+    }
+
+    // Style à appliquer sur le titre.
+    .title{
+        font-size: 5vh;
+    }
+}
