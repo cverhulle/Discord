@@ -288,4 +288,18 @@ html, body{
     .button-previous-post{
         font-size: 2vh;
     }
+
+    // Style à appliquer aux mat-cards contenant les posts
+    .mat-card-post{
+        font-size: 2.5vw;
+    }
+
+
+}
+
+@media (min-width: 1000px) and  (max-width: 1350px) {
+    // Style à appliquer aux mat-cards contenant les posts
+    .mat-card-post{
+        font-size: 2vw;
+    }
 }
