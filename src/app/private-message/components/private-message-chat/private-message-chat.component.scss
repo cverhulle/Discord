@@ -198,9 +198,7 @@ html, body{
     position: fixed;
     bottom: 13vh;
     height: 12vh;
-    width: 100%;
-    border: 2px solid #7289da;
-    
+    width: 100%;    
 }
 
 
@@ -277,7 +275,6 @@ html, body{
 // Style à appliquer sur la div contenant la mat card d'envoi de message
 .send-message-container{
     position: fixed;
-    border: 2px solid red; 
     height: 13vh;
     width: 100%;
     bottom: 0;
@@ -297,7 +294,7 @@ html, body{
 .send-message textarea {
     resize: none; 
     min-height: 8vh; 
-    margin-bottom: 1vh;
+    margin-bottom: 1.5vh;
 
 }
 
