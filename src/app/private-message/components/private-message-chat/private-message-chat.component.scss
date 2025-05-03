@@ -79,10 +79,10 @@ html, body{
 
 
 
-// Style pour l'image de profil
-.avatar{
-    width: 5%;
-}
+
+
+
+
 
 // Style pour la mat-card de chaque post
 .mat-card-post{
@@ -91,6 +91,15 @@ html, body{
     margin-bottom: 1%;
     font-size: 150%;
 }
+
+
+
+
+
+
+
+
+
 
 // Style pour le menu déroulant
 .avatar-username-menu{
@@ -106,6 +115,20 @@ html, body{
     align-items: center;
 }
 
+// Style pour l'image de profil
+.avatar{
+    width: 5%;
+}
+
+
+
+
+
+
+
+
+
+
 // Style pour gérer l'image dans le post
 .post-image-container{
     display: flex;
@@ -119,6 +142,16 @@ html, body{
     width: auto;
     height: auto;
 }
+
+
+
+
+
+
+
+
+
+
 
 // Style pour afficher la date du post.
 .timestamp{
