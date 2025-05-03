@@ -139,8 +139,8 @@ html, body{
 
 // Style pour l'image de profil
 .avatar{
-    width: 6vh;
-    height: 6vh;
+    width: 5%;
+    height: 5%;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -277,13 +277,14 @@ html, body{
 .send-message-container{
     border: 2px solid red; 
     height: 15vh;
-    bottom: 0;
+    position: relative;
 }
 
 // Style pour la mat-card d'envoi d'un message
 .send-message{
     height: 100%;
     width: 100%;    
+    bottom: 0;
 }
 
 
