@@ -281,11 +281,14 @@ html, body{
     height: 15vh;
     width: 100%;
     bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    box-sizing: border-box;
 }
 
 // Style pour la mat-card d'envoi d'un message
 .send-message{
-    height: 100%;
     width: 100%;    
 }
 
@@ -293,7 +296,7 @@ html, body{
 // Style pour gérer la taille du text-area pour l'envoi d'un message
 .send-message textarea {
     resize: none; 
-    min-height: 10vh; 
+    min-height: 11vh; 
 
 }
 
