@@ -189,13 +189,11 @@ html, body{
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    text-align: center;
 }
 
+// Style à appliquer sur le texte lors de la prévisualisation de l'image
 .mat-card-image-preview p {
-    height: 100%;
-    margin: 0;
-    white-space: nowrap;
+    margin-right: 1vw;
 }
 
 
