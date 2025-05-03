@@ -258,7 +258,10 @@ html, body{
 
 
 
-
+// Style à appliquer sur la div contenant la mat card d'envoi de message
+.send-message-container{
+    border: 2px solid red; 
+}
 
 // Style pour la mat-card d'envoi d'un message
 .send-message{
