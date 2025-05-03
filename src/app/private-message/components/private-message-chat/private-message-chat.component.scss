@@ -274,6 +274,15 @@ html, body{
 
 
 
+// Style à appliquer sur l'icone d'ajout ou de suppression d'image
+.image-icon{
+    cursor: pointer;
+}
+
+
+
+
+
 // Style pour la mat-card d'envoi d'un message
 .send-message{
     height: 15%;
