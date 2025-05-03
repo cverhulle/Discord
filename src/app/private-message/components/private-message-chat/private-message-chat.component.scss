@@ -178,8 +178,14 @@ html, body{
 
 
 
-
-
+// Style à appliquer sur la div contenant la mat card de la prévisualisation d'image
+.mat-card-image-preview-container{
+    position: relative;
+    bottom: 8vh;
+    height: 10%;
+    border: 2px solid #7289da;
+    
+}
 
 
 // Style à appliquer sur la mat-card contenant la prévisualisation de l'image
