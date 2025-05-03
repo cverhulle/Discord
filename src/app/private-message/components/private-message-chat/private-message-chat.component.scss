@@ -86,10 +86,14 @@ html, body{
 
 // Style pour la mat-card de chaque post
 .mat-card-post{
-    width: 90%;
+    width: 80%;
     margin-left: 1%;
     margin-bottom: 1%;
     font-size: 150%;
+
+    padding: 10px;
+    border-radius: 12px;
+    word-wrap: break-word;
 }
 
 
