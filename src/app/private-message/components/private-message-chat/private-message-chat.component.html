@@ -14,7 +14,7 @@
     <!-- Affichage en cas chat non vide, pas de chargement et, si on ne modifie pas un message-->
     <div *ngIf="!(isChatEmpty$ | async) && !(loading$ | async) && (editMessage$ | async) === null">
         <!-- Bouton pour charger plus de messages -->
-        <mat-card-actions class="button-previous-post">
+        <mat-card-actions class="button-previous-post-container">
             <button mat-flat-button (click)="onLoadMoreMessages()" [disabled]="(loading$ | async)" > Charger les messages précédents </button>
         </mat-card-actions>
 
