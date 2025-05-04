@@ -403,11 +403,6 @@ html, body{
 
 
 @media (max-width: 1000px) {
-    // Style à appliquer sur le texte quand le chat est vide.
-    .empty-chat{
-        font-size: 3vh;
-    }
-
     // Style à appliquer sur le titre.
     .title{
         font-size: 5vh;
@@ -416,6 +411,11 @@ html, body{
     // Style à appliquer sur le bouton previous post
     .button-previous-post{
         font-size: 2vh;
+    }
+
+    // Style à appliquer sur le texte quand le chat est vide.
+    .empty-chat{
+        font-size: 3vh;
     }
 
     // Style à appliquer aux mat-cards contenant les posts
