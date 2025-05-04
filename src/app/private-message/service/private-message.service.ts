@@ -19,7 +19,7 @@ export class PrivateMessageService {
     users$ = this.usersSubject.asObservable();
 
     // Subject et observable pour émettre l'entrée de l'utilisateur dans la barre de recherche
-    private searchSubject = new Subject<string>;
+    private searchSubject = new Subject<string>();
     searchSubject$ = this.searchSubject.asObservable();
 
     // Cette méthode permet de mettre à jour la dernière entrée de l'utilisateur dans la barre de recherche.
