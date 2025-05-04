@@ -69,7 +69,7 @@
             </mat-card-actions>
         </div>
 
-        <div *ngIf="editMessage !==null">
+        <div *ngIf="editMessage !==null" class="mat-card-post-modify-container">
             <!-- On affiche le post que l'on modifie -->
             <mat-card class="mat-card-post" [ngStyle]="{'background-color': getPostCardColor(editMessage.currentUserId)}">
 
