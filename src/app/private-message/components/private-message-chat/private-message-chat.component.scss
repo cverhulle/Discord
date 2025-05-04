@@ -281,16 +281,18 @@ html, body{
     align-items: center;
 }
 
+// Style à appliquer sur le message de modification de psot
+.modify-post-header-text{
+    color: #7289da;
+    font-size: 2.5vw;
+}
+
 // Style à appliquer sur le container du bouton pour revenir en arrière lors de la modification d'un post
 .go-back-button-modify-post-container{
     margin-right: 20vh;
 }
 
-// Style à appliquer sur le message de modification de psot
-.modify-post{
-    color: #7289da;
-    font-size: 2.5vw;
-}
+
 
 
 
