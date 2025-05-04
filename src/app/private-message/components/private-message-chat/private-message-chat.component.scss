@@ -433,6 +433,11 @@ html, body{
         font-size: 3vw;
     }
 
+    // Style à appliquer aux mat-cards d'édition de posts
+    .mat-card-post.editing{
+        width: 80%;
+    }
+
 
 }
 
