@@ -186,6 +186,7 @@ html, body{
     color: black;
 }
 
+// Style à appliquer au passage de la souris sur l'icone burger
 .burger-icon:hover {
     transform: scale(1.5);
     transition: transform 0.2s ease-in-out;
