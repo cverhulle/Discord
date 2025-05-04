@@ -83,7 +83,7 @@ export class PrivateMessageHomepageComponent implements OnInit, OnDestroy{
     this.router.navigate(['/private-message/chat'], {state: {id: user.id, username: user.username, image: user.image} })
   }
 
-  // On gère le désabonnement à la mort du component
+  // On gère le désabonnement et la réinitialisation des Subjects à la mort du component
   ngOnDestroy(): void {
     if (this.subscriptionSearchSubject) {
       this.subscriptionSearchSubject.unsubscribe();
