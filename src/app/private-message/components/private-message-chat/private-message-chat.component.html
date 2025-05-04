@@ -30,7 +30,7 @@
                     <!-- Menu déroulant pour modifier ou supprimer un message -->
                     <mat-card-actions *ngIf="post.currentUserId === currentUser.id">
                         <button mat-icon-button [matMenuTriggerFor]="menu">
-                            <mat-icon> more_vert </mat-icon>
+                            <mat-icon class="burger-icon"> more_vert </mat-icon>
                         </button>
                         <mat-menu #menu="matMenu">
                             <button mat-menu-item (click)="onEditMessage(post)"> Modifier </button>
