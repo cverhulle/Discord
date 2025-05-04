@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule} from '@angular/forms';
 import { SharedModule } from '../../../shared/shared.module';
 import { usernameImage } from '../../models/username-image.models';
-import { debounceTime, Observable, switchMap} from 'rxjs';
+import { debounceTime, Observable, Subscription, switchMap} from 'rxjs';
 import { PrivateMessageService } from '../../service/private-message.service';
 import { AsyncPipe, NgFor } from '@angular/common';
 import { Router } from '@angular/router';
@@ -31,6 +31,9 @@ export class PrivateMessageHomepageComponent implements OnInit{
 
   // On crée un Observable pour réagir aux changements sur le formulaire
   searchSubject!: Observable<string>
+
+  // Variable pour gérer le désabonnement au Subject de recherche
+  subscriptionSearchSubject!: Subscription;
 
 
   constructor(private privateMessage : PrivateMessageService,
