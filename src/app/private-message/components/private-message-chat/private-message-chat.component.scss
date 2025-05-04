@@ -394,6 +394,22 @@ html, body{
 
 
 
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+
+::-webkit-scrollbar-thumb {
+    background: #809fff;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
 
 
 
@@ -452,3 +468,5 @@ html, body{
         font-size: 1.5vw;
     }
 }
+
+
