@@ -311,7 +311,7 @@ export class PostService{
         if(postCurrentUserId === currentUserId) {
             return '#283e6e'
         } else {
-            return  'rgb(97, 18, 97)'
+            return  '#5e3a8c'
         }
     }
 
