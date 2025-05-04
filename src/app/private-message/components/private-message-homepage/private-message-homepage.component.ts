@@ -87,6 +87,7 @@ export class PrivateMessageHomepageComponent implements OnInit, OnDestroy{
   ngOnDestroy(): void {
     if (this.subscriptionSearchSubject) {
       this.subscriptionSearchSubject.unsubscribe();
+      this.privateMessage.resetAllSubjects();
     }
   }
 
