@@ -423,6 +423,11 @@ html, body{
         font-size: 2.5vw;
     }
 
+    // Style à appliquer sur le titre lors de l'édition d'un message
+    .title.editing{
+        margin-bottom: 2vh;
+    }
+
 
 }
 
