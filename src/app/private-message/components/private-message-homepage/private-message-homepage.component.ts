@@ -57,7 +57,7 @@ export class PrivateMessageHomepageComponent implements OnInit{
 
   // Cette méthode permet de mettre à jour la liste des utilisateurs à l'émission de searchSubject
   private initSearchQuery(): void{
-    this.searchSubject.pipe(
+    this.subscriptionSearchSubject = this.searchSubject.pipe(
       debounceTime(1000),
       switchMap(query => this.privateMessage.searchQueryUsers(query))
     ).subscribe();
