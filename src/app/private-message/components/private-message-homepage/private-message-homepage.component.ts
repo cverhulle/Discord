@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule} from '@angular/forms';
 import { SharedModule } from '../../../shared/shared.module';
 import { usernameImage } from '../../models/username-image.models';
@@ -22,7 +22,7 @@ import { AvatarService } from '../../../shared/avatar/service/avatar.service';
 })
 
 
-export class PrivateMessageHomepageComponent implements OnInit{
+export class PrivateMessageHomepageComponent implements OnInit, OnDestroy{
   // Contient la requete de l'utilisateur
   searchQuery: string = ''
   
@@ -81,6 +81,13 @@ export class PrivateMessageHomepageComponent implements OnInit{
   // Cette méthode permet d'être rediriger vers le chat privé correspondant
   onChat(user: usernameImage): void {
     this.router.navigate(['/private-message/chat'], {state: {id: user.id, username: user.username, image: user.image} })
+  }
+
+  // On gère le désabonnement à la mort du component
+  ngOnDestroy(): void {
+    if (this.subscriptionSearchSubject) {
+      this.subscriptionSearchSubject.unsubscribe();
+    }
   }
 
 }
