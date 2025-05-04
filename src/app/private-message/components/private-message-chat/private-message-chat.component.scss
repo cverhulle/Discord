@@ -186,6 +186,10 @@ html, body{
     color: black;
 }
 
+.burger-icon:hover {
+    transform: scale(1.5);
+    transition: transform 0.2s ease-in-out;
+}
 
 
 
