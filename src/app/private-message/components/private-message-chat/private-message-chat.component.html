@@ -64,8 +64,8 @@
             <p class="modify-post"> Vous modifiez le message suivant : </p>
 
             <!-- On affiche un bouton pour revenir en arrière -->
-            <mat-card-actions class="go-back-modify-post">
-                <button mat-flat-button (click)="onNotModify()" [disabled]="(loading$ | async)" > Revenir en arrière </button>
+            <mat-card-actions class="go-back-button-modify-post-container">
+                <button mat-flat-button (click)="onNotModify()" [disabled]="(loading$ | async)" class="go-back-button-modify-post"> Revenir en arrière </button>
             </mat-card-actions>
         </div>
 
