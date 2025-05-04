@@ -393,19 +393,19 @@ html, body{
 
 
 
-
+// Gestion de la taille de la scroolbar
 ::-webkit-scrollbar {
     width: 8px;
   }
   
-
+// Gestion de la couleur de la scroolbar
 ::-webkit-scrollbar-thumb {
     background: #809fff;
     border-radius: 10px;
     transition: background 0.3s ease;
 }
 
-
+// Gestion du survol de la scroolbar
 ::-webkit-scrollbar-thumb:hover {
     background: #a3b5f7;
 }
