@@ -303,6 +303,11 @@ html, body{
     margin-bottom: -2vh;
 }
 
+// Style à appliquer sur la mat-card lors de l'édition d'un message
+.mat-card-post.editing{
+    width: 50%;
+}
+
 
 
 

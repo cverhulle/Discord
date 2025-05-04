@@ -71,7 +71,7 @@
 
         <div *ngIf="editMessage !==null" class="mat-card-post-modify-container">
             <!-- On affiche le post que l'on modifie -->
-            <mat-card class="mat-card-post" [ngStyle]="{'background-color': getPostCardColor(editMessage.currentUserId)}">
+            <mat-card class="mat-card-post" [ngStyle]="{'background-color': getPostCardColor(editMessage.currentUserId)}" [class.editing]="editMessage$ | async">
 
                 <!-- Affichage de l'en-tête du post : nom de l'utilisateur, photo etc... -->
                 <div class="avatar-username-menu"> 
