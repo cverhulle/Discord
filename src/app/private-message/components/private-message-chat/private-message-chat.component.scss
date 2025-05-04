@@ -402,10 +402,13 @@ html, body{
 ::-webkit-scrollbar-thumb {
     background: #809fff;
     border-radius: 10px;
+    transition: background 0.3s ease;
 }
 
 
-
+::-webkit-scrollbar-thumb:hover {
+    background: #a3b5f7;
+}
 
 
 
