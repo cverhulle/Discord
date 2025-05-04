@@ -46,4 +46,10 @@ export class PrivateMessageService {
             })
         )
     }
+
+    // Cette méthode permet de réinitialiser tous les Subjects
+    resetAllSubjects(): void {
+        this.updateSearchQuery('');
+        this.setValueOfUsersSubject([]);
+    }
 }
