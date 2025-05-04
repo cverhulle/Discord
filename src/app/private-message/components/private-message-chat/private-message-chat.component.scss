@@ -111,9 +111,14 @@ html, body{
     padding: 10px;
     border-radius: 12px;
     word-wrap: break-word;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-
+// Style à appliquer au survol de la mat card
+.mat-card-post:hover {
+    box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.6);
+    transform: scale(1.05); 
+}
 
 
 
