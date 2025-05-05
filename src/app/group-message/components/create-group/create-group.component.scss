@@ -1,3 +1,22 @@
+// Style à appliquer à la div contenant la mat card global
+.form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Couleur de la mat-card du formulaire
 mat-form-field, mat-card{
     background-color: rgb(74,35,90);
@@ -21,10 +40,34 @@ button{
     width: 80%
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Style pour gérer les positions des noms des champs à remplir
 .subtitle-name{
     margin-left: 1%;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 // Style pour ajouter une marge en dessous d'un élément
 .margin-bottom{
