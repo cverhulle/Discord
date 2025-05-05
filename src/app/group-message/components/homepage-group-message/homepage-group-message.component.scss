@@ -202,4 +202,12 @@ mat-card:hover {
         width: 80vw;
         height: auto;
     }    
+
+    // Style à appliquer à l'image
+    .image{
+        max-width: 80vw;
+        max-height: 30vh;
+        margin-bottom: 3vh;
+        margin-top: 2vh;
+    }
 }
