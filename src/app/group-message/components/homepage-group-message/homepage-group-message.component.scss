@@ -158,7 +158,7 @@ mat-card:hover {
 
 
 // Style pour positionner les boutons
-.bouton{
+.button{
     margin-top: auto;
     min-width: 20vw;
     min-height: 5vh;
@@ -171,7 +171,7 @@ mat-card:hover {
 }
 
 // Style à appliquer au survol du bouton
-.bouton:hover {
+.button:hover {
     background-color: #5b6eae;
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -211,8 +211,8 @@ mat-card:hover {
         margin-top: 2vh;
     }
 
-    // Style à appliquer au bouton
-    .bouton{
+    // Style à appliquer au button
+    .button{
         font-size: 2vw;
     }
 }
