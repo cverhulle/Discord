@@ -124,9 +124,13 @@ mat-card:hover {
     max-width: 60vh;
     height: auto;
     max-height: 60vh;
-
+    transition: transform 0.3s ease;
 }
 
+// Ajout d'un effet au survol de l'image
+.image:hover{
+    transform: scale(1.03);
+}
 
 
 
