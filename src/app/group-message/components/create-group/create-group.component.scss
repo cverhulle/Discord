@@ -33,17 +33,43 @@ mat-form-field{
     margin-left: 1%;
 }
 
-// Style pour la taille des boutons
-button{
-    width : 20%;
-    margin-left: 1%;
-    margin-bottom: 2vh;
-}
-
 // Gestion de la taille des mat-from-field contenant un text-area.
 .mat-form-field-text-area{
     width: 80%
 }
+
+
+
+
+
+
+
+
+
+// Style pour la taille des boutons
+button{
+    width : 15vw;
+    margin-left: 1%;
+    margin-bottom: 2vh;
+    background-color: #7289da !important;
+    color: white !important;
+    border-radius: 20px;
+    padding: 0.8rem 1.5rem; 
+    font-size: 0.8vw; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
