@@ -23,12 +23,20 @@ html, body {
 
 // Style à appliquer sur la mat-card global
 .form-card{
+
+    // Taille de la mat-card
     width: 90%;
     max-height: 80vh;
+
+    // Barre en cas de dépassement
     overflow-y: auto;
+
+    // Marge, padding, ...
     padding: 2vh 2vw;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
+
+    // Animation
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -111,14 +119,21 @@ mat-form-field{
 
 // Style pour la taille des boutons
 button{
+    // Taille du bouton
     width : 15vw;
+
+    // Marges, padding, etc...
     margin-left: 1%;
     margin-bottom: 2vh;
-    background-color: #7289da !important;
-    color: white !important;
     border-radius: 20px;
     padding: 0.8rem 1.5rem; 
     font-size: 0.8vw; 
+
+    // Couleur du bouton et des textes 
+    background-color: #7289da !important;
+    color: white !important;
+
+    // Animation
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
