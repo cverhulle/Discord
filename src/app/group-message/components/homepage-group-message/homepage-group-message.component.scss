@@ -9,12 +9,23 @@
     justify-content: center; 
 }
 
+
+
+
 // Style pour le container des mat-card contenant les possiblités
 .mat-card-container{
     display: flex;
     justify-content: space-between;
     
 }
+
+
+
+
+
+
+
+
 
 // Style appliqué sur les mat-card
 mat-card{
@@ -37,6 +48,12 @@ mat-card{
     background-color: rgba(77, 158, 57, 0.726);
 }
 
+
+
+
+
+
+
 // Style pour gérer le texte sur les mat-card
 .content{
     color: white;
@@ -48,6 +65,12 @@ mat-card{
     height: 100%;
     margin-bottom: 3vh;
 }
+
+
+
+
+
+
 
 // Style pour placer les images au même endroit
 .image-container{
@@ -65,6 +88,11 @@ mat-card{
     max-height: 60vh;
 
 }
+
+
+
+
+
 
 // Style pour positionner les boutons
 .bouton{
