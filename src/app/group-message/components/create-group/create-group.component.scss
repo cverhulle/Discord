@@ -27,6 +27,8 @@ html, body {
     max-height: 80vh;
     overflow-y: auto;
     padding: 2vh 2vw;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
 }
 
 
@@ -212,6 +214,10 @@ button:hover {
 
 
 
+
+
+
+
 // Style pour les mat-error
 mat-error{
     font-size: 2.5vh;
@@ -259,3 +265,5 @@ mat-error{
     transform: none;
     box-shadow: none;
 }
+
+
