@@ -27,6 +27,34 @@ mat-form-field, mat-card{
     background-color: rgb(74,35,90);
 }
 
+
+
+
+
+
+
+
+
+// Style pour le titre de la page
+.form-title{
+    color: #7289da;
+    text-align: center;
+    font-size: 5vh;
+    margin-top: 3vh;
+    margin-bottom: 2vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 // Style pour gérer la taille et la position des mat-form-field
 mat-form-field{
     width: 40%;
@@ -37,6 +65,9 @@ mat-form-field{
 .mat-form-field-text-area{
     width: 80%
 }
+
+
+
 
 
 
@@ -65,8 +96,6 @@ button:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
-
-
 
 
 
@@ -132,14 +161,6 @@ button:hover {
 
 
 
-// Style pour le titre de la page
-.form-title{
-    color: white;
-    text-align: center;
-    font-size: 6vh;
-    margin-top: 3vh;
-    margin-bottom: 2vh;
-}
 
 
 
