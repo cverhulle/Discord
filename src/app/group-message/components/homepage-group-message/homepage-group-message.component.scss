@@ -77,13 +77,14 @@ mat-card:hover {
 // Style pour gérer le texte sur les mat-card
 .content{
     color: white;
-    margin-left: 1%;
     font-size: 2.5vw;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     height: 100%;
     margin-bottom: 3vh;
+    padding: 2vh 1vw;
 }
 
 
