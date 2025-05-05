@@ -244,9 +244,18 @@ mat-error{
 
 
 
-// Style à appliquer au bouton enregistrer
-.save-button{
+// Style à appliquer sur le contenair du bouton enregistrer
+.save-button-container{
     margin-top: 2vh;
     display: flex;
     justify-content: center;
+}
+
+// Style à appliquer quand le bouton enregistrer est invalide
+.save-button[mat-flat-button][disabled]{
+    background-color: #cccccc !important;
+    color: #666666 !important;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
