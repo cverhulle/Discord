@@ -52,14 +52,31 @@ mat-card:hover {
 // Animation d'apparition des cartes
 @keyframes appearMatCard {
     from {
-        transform: translateY(-20px);
         opacity: 0;
     }
     to {
-        transform: translateY(0);
         opacity: 1;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Couleur de la 1ère mat card.
 .card1{
