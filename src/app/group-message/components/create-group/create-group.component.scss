@@ -253,8 +253,8 @@ mat-error{
 
 // Style à appliquer quand le bouton enregistrer est invalide
 .save-button[mat-flat-button][disabled]{
-    background-color: #cccccc !important;
-    color: #666666 !important;
+    background-color: rgba(114, 137, 218, 0.3) !important;
+    color: rgba(255, 255, 255, 0.5) !important;
     cursor: not-allowed;
     transform: none;
     box-shadow: none;
