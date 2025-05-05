@@ -39,6 +39,13 @@ mat-card{
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
     margin: 1vw;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+// Style à appliqué au survol d'une mat card
+mat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 // Couleur de la 1ère mat card.
