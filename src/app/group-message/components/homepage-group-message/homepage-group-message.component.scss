@@ -190,9 +190,16 @@ mat-card:hover {
 
     // Style à appliquer sur le container global des mat-card
     .mat-card-container{
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
     }
+
+    // Style à appliquer aux mat-card
+    mat-card{
+        width: 80vw;
+        height: auto;
+    }    
 }
