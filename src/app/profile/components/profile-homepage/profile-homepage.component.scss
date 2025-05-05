@@ -94,7 +94,7 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-// Effet lumineux et leger mouvement de la amt-card au survol.
+// Effet lumineux et leger mouvement de la mat-card au survol.
 .profile-container:hover {
     transform: translateY(-5px);
     box-shadow: 0 0 20px rgba(255, 193, 227, 0.4);
