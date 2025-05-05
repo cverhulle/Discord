@@ -187,4 +187,12 @@ mat-card:hover {
     .title{
         font-size: 4vw;
     }
+
+    // Style à appliquer sur le container global des mat-card
+    .mat-card-container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
 }
