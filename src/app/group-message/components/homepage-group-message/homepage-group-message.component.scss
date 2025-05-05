@@ -12,6 +12,11 @@
 
 
 
+
+
+
+
+
 // Style pour le container des mat-card contenant les possiblités
 .mat-card-container{
     display: flex;
@@ -31,6 +36,9 @@
 mat-card{
     flex: 1;
     height: 80vh;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    margin: 1vw;
 }
 
 // Couleur de la 1ère mat card.
@@ -47,6 +55,11 @@ mat-card{
 .card3{
     background-color: rgba(77, 158, 57, 0.726);
 }
+
+
+
+
+
 
 
 
@@ -72,6 +85,10 @@ mat-card{
 
 
 
+
+
+
+
 // Style pour placer les images au même endroit
 .image-container{
     display: flex;
@@ -88,6 +105,10 @@ mat-card{
     max-height: 60vh;
 
 }
+
+
+
+
 
 
 
