@@ -1,3 +1,8 @@
+// On règle la taille du document
+html, body, .form-container {
+    height: 90vh;
+}
+
 // Style à appliquer à la div contenant la mat card global
 .form-container{
     display: flex;
