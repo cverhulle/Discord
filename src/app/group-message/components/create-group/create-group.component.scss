@@ -1,6 +1,8 @@
 // On règle la taille du document
-html, body, .form-container {
-    height: 90vh;
+html, body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 // Style à appliquer à la div contenant la mat card global
@@ -8,6 +10,8 @@ html, body, .form-container {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-y: auto;
+    height: 90vh;
 }
 
 
