@@ -289,3 +289,11 @@ mat-error{
 }
 
 
+
+@media (max-width: 1200px) {
+    // Style à appliquer sur les 2 boutons
+    button{
+        font-size: 1.5vw;
+        width: 25vw;
+    }
+}
