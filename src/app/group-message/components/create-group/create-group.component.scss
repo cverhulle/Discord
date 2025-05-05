@@ -100,7 +100,6 @@ mat-form-field{
 
 
 
-
 // Style pour la taille des boutons
 button{
     width : 15vw;
@@ -160,11 +159,6 @@ button:hover {
 // Style pour ajouter une marge en dessous d'un élément
 .margin-bottom{
     margin-bottom: 0.5%;
-}
-
-// Style pour ajouter un espace au-dessus du bouton d'envoi
-.margin-top{
-    margin-top: 1.5%;
 }
 
 // Style pour décaler la première case à cocher
@@ -242,3 +236,17 @@ mat-error{
 }
 
 
+
+
+
+
+
+
+
+
+// Style à appliquer au bouton enregistrer
+.save-button{
+    margin-top: 2vh;
+    display: flex;
+    justify-content: center;
+}
