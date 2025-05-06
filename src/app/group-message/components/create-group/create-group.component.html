@@ -40,7 +40,7 @@
 
                     <!-- S'il n'y a pas encore d'image choisie, on affiche le bouton pour en ajouter une -->
                     <ng-container *ngIf="!(logoToSend$ | async) ; else deleteLogo">
-                        <button mat-flat-button (click)="fileInput.click()"> Choisissez une image pour votre groupe </button>
+                        <button mat-flat-button (click)="fileInput.click()" class="button-to-style"> Choisissez une image pour votre groupe </button>
                         <input #fileInput type="file" accept=".jpg, .jpeg, .png" style="display: none;" (change)="onLogoToSend($event)">
                     </ng-container>
 
@@ -157,7 +157,7 @@
 
 
         <!-- Bouton d'envoi-->
-        <mat-card-actions class="save-button-container">
+        <mat-card-actions class="button-to-style save-button-container">
             <button mat-flat-button type="submit" (click)="onSubmit()" [disabled]="registerForm.invalid" class="save-button"> Enregistrer </button>
         </mat-card-actions>
 
