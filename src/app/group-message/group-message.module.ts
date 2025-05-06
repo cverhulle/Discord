@@ -8,6 +8,7 @@ import { ImageService } from '../shared/image/services/image.services';
 import { LanguageService } from './services/language.service';
 import { DisplayService } from '../shared/display/service/display.service';
 import { PasswordService } from '../shared/password/service/password.service';
+import { SearchAGroupService } from './services/search-a-group.service';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { PasswordService } from '../shared/password/service/password.service';
     ImageService,
     LanguageService,
     DisplayService,
-    PasswordService
+    PasswordService,
+    SearchAGroupService
   ]
 })
 export class GroupMessageModule { }
