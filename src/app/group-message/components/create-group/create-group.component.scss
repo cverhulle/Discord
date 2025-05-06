@@ -53,14 +53,6 @@ html, body {
 
 
 
-// Couleur de la mat-card du formulaire
-mat-form-field, mat-card{
-    background-color: rgb(74,35,90);
-}
-
-
-
-
 
 
 
@@ -86,6 +78,14 @@ mat-form-field, mat-card{
 
 
 
+// Style à appliquer sur la div contenant le formulaire et l'image
+.form-content-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+}
 
 
 
@@ -95,6 +95,15 @@ mat-form-field, mat-card{
 
 
 
+
+
+
+
+
+// Couleur de la mat-card du formulaire
+mat-form-field, mat-card{
+    background-color: rgb(74,35,90);
+}
 
 // Style pour gérer la taille et la position des mat-form-field
 mat-form-field{
@@ -106,6 +115,17 @@ mat-form-field{
 .mat-form-field-text-area{
     width: 80%
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
