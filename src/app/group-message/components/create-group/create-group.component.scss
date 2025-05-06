@@ -29,9 +29,6 @@ html, body {
     height: 100%;
     max-height: 80vh;
 
-    // Barre en cas de dépassement
-    overflow-y: auto;
-
     // Marge, padding, ...
     padding: 1vh 2vw;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
@@ -89,6 +86,8 @@ html, body {
     height: 100%;
     min-height: 60vh;
     gap: 1vw;
+    // Barre en cas de dépassement
+    overflow-y: auto;
 }
 
 
