@@ -347,4 +347,9 @@ mat-error{
         font-size: 1.5vw;
         width: 25vw;
     }
+
+    // Style à appliquer sur la div contenant l'image
+    .image{
+        display: none;
+    }
 }
