@@ -113,6 +113,14 @@ html, body {
     align-items: center;
 }
 
+// Style à appliquer sur l'image
+.image{
+    max-width: 25vw;
+    max-height: 25vh;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
 
 
 
