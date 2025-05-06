@@ -325,7 +325,6 @@ mat-error{
 
 // Style à appliquer sur le contenair du bouton enregistrer
 .save-button-container{
-    margin-top: 2vh;
     display: flex;
     justify-content: center;
 }
@@ -344,7 +343,8 @@ mat-error{
 @media (max-width: 1200px) {
     // Style à appliquer sur le titre
     .form-title{
-        line-height: 1.1;
+        line-height: 1;
+        margin-top: 1.5vh;
     }
 
     // Style à appliquer sur les 2 boutons
