@@ -354,3 +354,9 @@ mat-error{
         display: none;
     }
 }
+
+@media (max-width: 800px) {
+    .save-button-container{
+        margin-top: 10vh;
+    }
+}
