@@ -343,6 +343,11 @@ mat-error{
 
 
 @media (max-width: 1200px) {
+    // Style à appliquer sur le titre
+    .form-title{
+        line-height: 1.2;
+    }
+
     // Style à appliquer sur les 2 boutons
     button{
         font-size: 1.5vw;
