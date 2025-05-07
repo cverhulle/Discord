@@ -102,8 +102,9 @@ button[mat-flat-button] {
 
 // Style au passage de la souris sur le bouton activé
 button[mat-flat-button]:hover {
-    cursor: pointer;
-    background-color: #8e44ad;
+    background-color: #5b6eae;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 
