@@ -75,10 +75,11 @@
 
 // Style lorsque le bouton est désactivé
 button[mat-flat-button][disabled] {
-    background-color: #bfa6d2; 
-    color: white;
-    opacity: 0.1;
+    background-color: rgba(114, 137, 218, 0.3) !important;
+    color: rgba(255, 255, 255, 0.5) !important;
     cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
 
 // Style lorsque le bouton est activé
