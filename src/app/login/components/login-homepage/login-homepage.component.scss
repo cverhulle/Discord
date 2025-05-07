@@ -84,12 +84,20 @@ button[mat-flat-button][disabled] {
 
 // Style lorsque le bouton est activé
 button[mat-flat-button] {
-    background-color: #9b59b6;
-    color: white;
-    font-weight: bold;
-    width: 100%;
-    padding: 1vh;
-    transition: background-color 0.3s ease;
+    // Taille du bouton
+    width : 100%;
+
+    // Marges, padding, etc...
+    border-radius: 20px;
+    padding: 0.8rem 1.5rem; 
+    font-size: 0.8vw; 
+
+    // Couleur du bouton et des textes 
+    background-color: #7289da !important;
+    color: white !important;
+
+    // Animation
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 // Style au passage de la souris sur le bouton activé
