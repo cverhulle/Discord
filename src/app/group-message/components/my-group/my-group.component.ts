@@ -11,11 +11,11 @@ import { Observable } from 'rxjs';
 })
 export class MyGroupComponent implements OnInit {
   // Observable pour stocker les différents groupes de l'utilisateur
-  groups!: Observable<GroupFormInfo[]>
+  groups$!: Observable<GroupFormInfo[]>
 
   constructor(private searchAGroupService : SearchAGroupService) {}
 
   ngOnInit(): void {
-    
+    this.groups$ = this.searchAGroupService.currentUserGroup
   }
 }
