@@ -33,7 +33,11 @@ export class SearchAGroupService{
                 this.setValueOfCurrentUserGroupSubject(groupList)
             }),
             map( () => true),
-            catchError( () => of(false))
+            catchError( () => {
+                this.displayService.displayMessage('Erreur lors de la recherche des groupes.');
+                this.setValueOfCurrentUserGroupSubject([])
+                return of(false)
+            })
         )
     }
 }
