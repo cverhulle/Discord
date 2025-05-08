@@ -19,18 +19,6 @@ export class TokenService {
         return localStorage.getItem('token')
     }
 
-    // Cette méthode permet de savoir si un utilisateur est connecté
-    isLogged(): boolean {
-        const token = this.getToken()
-        return !!token
-    }
-
-    // Cette méthode permet de supprimer un token
-    removeToken(): void {
-        localStorage.removeItem('token')
-        this.router.navigateByUrl('/homepage')
-    }
-
     // Cette méthode permet de vérifier si le token de connexion à expirer ou non
     private isTokenExpired(token: string): boolean {
         try {
@@ -52,5 +40,21 @@ export class TokenService {
             return true; 
         }
     }
+
+    // Cette méthode permet de supprimer un token
+    removeToken(): void {
+        localStorage.removeItem('token')
+        this.router.navigateByUrl('/homepage')
+    }
+
+    // Cette méthode permet de savoir si un utilisateur est connecté
+    isLogged(): boolean {
+        const token = this.getToken()
+        return !!token
+    }
+
+
+
+
     
 }
