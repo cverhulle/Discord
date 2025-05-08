@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, map, Observable, of } from "rxjs";
+import { BehaviorSubject, catchError, map, Observable, of } from "rxjs";
 import { GroupFormInfo } from "../models/group-info.model";
 import { environment } from "../../../environments/environment.development";
 
@@ -9,6 +9,10 @@ import { environment } from "../../../environments/environment.development";
 // Ce service permet de récupérer les groupes de l'utilisateur
 export class SearchAGroupService{
     constructor(private http: HttpClient) {}
+
+    // Subject et Observable pour stocker les groups de l'utilisateur
+    currentUserGroupsSubject = new BehaviorSubject<GroupFormInfo[]>([])
+    currentUserGroup = this.currentUserGroupsSubject.asObservable()
 
     // Cette méthode permet de récupérer tous les groupes dans lesquels l'utilisateur est un membre.
     getUsersGroups(): Observable<boolean> {
