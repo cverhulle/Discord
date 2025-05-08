@@ -14,6 +14,11 @@ export class SearchAGroupService{
     currentUserGroupsSubject = new BehaviorSubject<GroupFormInfo[]>([])
     currentUserGroup = this.currentUserGroupsSubject.asObservable()
 
+    // Méthode permettant de modifier la valeur du subject currentUserGroupSubject
+    setValueOfCurrentUserGroupSubject(groupList : GroupFormInfo[]) {
+        this.currentUserGroupsSubject.next(groupList)
+    }
+
     // Cette méthode permet de récupérer tous les groupes dans lesquels l'utilisateur est un membre.
     getUsersGroups(): Observable<boolean> {
         return this.http.get<GroupFormInfo>(`${environment.apiUrl}/group-message/my-group`).pipe(
