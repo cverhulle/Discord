@@ -3,7 +3,7 @@ export class GroupFormInfo {
     _id!: string;
     groupName!: string;
     groupDescription!: string;
-    groupType!: string;
+    groupType!: "Public" | "Privé" | "Restreint";
     groupLanguages!: string[];
     groupCategories!: string[];
     groupLogo!: File | null;
