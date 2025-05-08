@@ -10,6 +10,7 @@ import { environment } from "../../../environments/environment.development";
 export class SearchAGroupService{
     constructor(private http: HttpClient) {}
 
+    // Cette méthode permet de récupérer tous les groupes dans lesquels l'utilisateur est un membre.
     getUsersGroups(): Observable<boolean> {
         return this.http.get<GroupFormInfo>(`${environment.apiUrl}/group-message/my-group`).pipe(
             map( () => true),
