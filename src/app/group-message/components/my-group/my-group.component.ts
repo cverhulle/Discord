@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GroupFormInfo } from '../../models/group-info.model';
 import { SearchAGroupService } from '../../services/search-a-group.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-my-group',
@@ -9,8 +10,8 @@ import { SearchAGroupService } from '../../services/search-a-group.service';
   styleUrl: './my-group.component.scss'
 })
 export class MyGroupComponent implements OnInit {
-  // Variable pour stocker les différents groupes de l'utilisateur
-  groups!: GroupFormInfo[]
+  // Observable pour stocker les différents groupes de l'utilisateur
+  groups!: Observable<GroupFormInfo[]>
 
   constructor(private searchAGroupService : SearchAGroupService) {}
 
