@@ -12,7 +12,7 @@ export class SearchAGroupService{
 
     // Subject et Observable pour stocker les groups de l'utilisateur
     currentUserGroupsSubject = new BehaviorSubject<GroupFormInfo[]>([])
-    currentUserGroup = this.currentUserGroupsSubject.asObservable()
+    currentUserGroup$ = this.currentUserGroupsSubject.asObservable()
 
     // Méthode permettant de modifier la valeur du subject currentUserGroupSubject
     setValueOfCurrentUserGroupSubject(groupList : GroupFormInfo[]) {
