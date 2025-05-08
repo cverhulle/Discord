@@ -31,7 +31,7 @@ export class TokenService {
         return !!token
     }
 
-        // Cette méthode permet de vérifier si le token de connexion à expirer ou non
+    // Cette méthode permet de vérifier si le token de connexion à expirer ou non
     private isTokenExpired(token: string): boolean {
         try {
             // On récupère la partie du token qui nous intéresse dans token.split(...)
@@ -54,7 +54,7 @@ export class TokenService {
     }
 
     // Vérifie s'il y a un token ou si le token stocké est expiré, et le supprime si c'est le cas
-    checkTokenValidity(): void {
+    handleTokenValidity(): void {
         const token = this.getToken();
         
         if (!token || this.isTokenExpired(token)) {
