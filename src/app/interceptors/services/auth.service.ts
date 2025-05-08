@@ -31,6 +31,7 @@ export class TokenService {
         this.router.navigateByUrl('/homepage')
     }
 
+    // Cette méthode permet de vérifier si le token de connexion à expirer ou non
     private isTokenExpired(token: string): boolean {
         try {
             // On récupère la partie du token qui nous intéresse dans token.split(...)
