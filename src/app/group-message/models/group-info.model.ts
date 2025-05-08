@@ -7,4 +7,7 @@ export class GroupFormInfo {
     groupLanguages!: string[];
     groupCategories!: string[];
     groupLogoPath!: string;
+    createdAt!: string;
+    creator! : string;
+    members!: string[];
 }
