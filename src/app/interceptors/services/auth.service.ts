@@ -19,7 +19,19 @@ export class TokenService {
         return localStorage.getItem('token')
     }
 
-    // Cette méthode permet de vérifier si le token de connexion à expirer ou non
+    // Cette méthode permet de supprimer un token
+    removeToken(): void {
+        localStorage.removeItem('token')
+        this.router.navigateByUrl('/homepage')
+    }
+
+    // Cette méthode permet de savoir si un utilisateur est connecté
+    isLogged(): boolean {
+        const token = this.getToken()
+        return !!token
+    }
+
+        // Cette méthode permet de vérifier si le token de connexion à expirer ou non
     private isTokenExpired(token: string): boolean {
         try {
             // On récupère la partie du token qui nous intéresse dans token.split(...)
@@ -41,20 +53,14 @@ export class TokenService {
         }
     }
 
-    // Cette méthode permet de supprimer un token
-    removeToken(): void {
-        localStorage.removeItem('token')
-        this.router.navigateByUrl('/homepage')
+    // Vérifie s'il y a un token ou si le token stocké est expiré, et le supprime si c'est le cas
+    checkTokenValidity(): void {
+        const token = this.getToken();
+        
+        if (!token || this.isTokenExpired(token)) {
+            this.removeToken(); 
+        }
     }
-
-    // Cette méthode permet de savoir si un utilisateur est connecté
-    isLogged(): boolean {
-        const token = this.getToken()
-        return !!token
-    }
-
-
-
 
     
 }
