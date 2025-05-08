@@ -14,6 +14,10 @@ export class AuthGuard implements CanActivate{
 
     // Cette méthode permet de bloquer une route si l'utilisateur n'a pas de token
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+
+        // On supprime le token s'il a expiré
+        this.tokenService.handleTokenValidity()
+
         const token = this.tokenService.getToken();
         if (token) {
             return true
