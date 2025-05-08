@@ -8,4 +8,4 @@ export class CreateGroupForm {
     groupLanguages!: string[];
     groupCategories!: string[];
     groupLogo!: File | null;
-  }
+}
