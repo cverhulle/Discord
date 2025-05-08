@@ -18,8 +18,7 @@ export class AuthGuard implements CanActivate{
         // On supprime le token s'il a expiré
         this.tokenService.handleTokenValidity()
 
-        const token = this.tokenService.getToken();
-        if (token) {
+        if (this.tokenService.isLogged()) {
             return true
         } else {
             this.router.navigateByUrl('/login');
