@@ -14,6 +14,7 @@ export class TokenService {
         localStorage.setItem('token', token)
     }
 
+    // Cette méthode permet de récupérer le token de connexion dans le localStorage
     getToken() : string | null {
         return localStorage.getItem('token')
     }
