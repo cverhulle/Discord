@@ -3,12 +3,14 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, catchError, map, Observable, of, tap } from "rxjs";
 import { GroupFormInfo } from "../models/group-info.model";
 import { environment } from "../../../environments/environment.development";
+import { DisplayService } from "../../shared/display/service/display.service";
 
 @Injectable() 
 
 // Ce service permet de récupérer les groupes de l'utilisateur
 export class SearchAGroupService{
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient,
+                private displayService : DisplayService) {}
 
     // Subject et Observable pour stocker les groups de l'utilisateur
     currentUserGroupsSubject = new BehaviorSubject<GroupFormInfo[]>([])
