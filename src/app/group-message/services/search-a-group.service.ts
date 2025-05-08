@@ -19,6 +19,11 @@ export class SearchAGroupService{
         this.currentUserGroupsSubject.next(groupList)
     }
 
+    // Méthode permettant de récupérer la dernière émission de currentUserGroupSubject
+    getValueOfCurrentUserGroupSubject() : GroupFormInfo[] {
+        return this.currentUserGroupsSubject.getValue()
+    }
+
     // Cette méthode permet de récupérer tous les groupes dans lesquels l'utilisateur est un membre.
     getUsersGroups(): Observable<boolean> {
         return this.http.get<GroupFormInfo>(`${environment.apiUrl}/group-message/my-group`).pipe(
