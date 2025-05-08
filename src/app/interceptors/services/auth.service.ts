@@ -14,10 +14,6 @@ export class TokenService {
         localStorage.setItem('token', token)
     }
 
-    // saveUserId(id: string): void {
-    //    localStorage.setItem('userId', id)
-    // }
-
     getToken() : string | null {
         return localStorage.getItem('token')
     }
