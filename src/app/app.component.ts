@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./core/components/header/header.component";
+import { TokenService } from './interceptors/services/auth.service';
 
 
 @Component({
@@ -13,6 +14,12 @@ import { HeaderComponent } from "./core/components/header/header.component";
   styleUrl: './app.component.scss'
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'Discord';
+
+  constructor(private tokenService: TokenService) {}
+
+  ngOnInit(): void {
+      this.tokenService.handleTokenValidity();
+  }
 }
