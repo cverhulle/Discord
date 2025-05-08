@@ -10,9 +10,9 @@ import { TokenService } from "../interceptors/services/auth.service";
 export class AuthGuard implements CanActivate{
 
     constructor(private tokenService : TokenService,
-                private router : Router
-            )   {}
+                private router : Router)   {}
 
+    // Cette méthode permet de bloquer une route si l'utilisateur n'a pas de token
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         const token = this.tokenService.getToken();
         if (token) {
