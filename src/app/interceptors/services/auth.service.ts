@@ -33,13 +33,22 @@ export class TokenService {
 
     private isTokenExpired(token: string): boolean {
         try {
-            
+            // On récupère la partie du token qui nous intéresse dans token.split(...)
+            // Le atob(...) permet de décoder la chaine
+            // On parse l'objet obtenu avec JSON.parse
             const payload = JSON.parse(atob(token.split('.')[1]));
+
+            // On récupère la date d'expiration du token
             const exp = payload.exp;
+
+            // On récupère la date actuelle en secondes
             const now = Math.floor(Date.now() / 1000);
+
+            // On retourne true si le token a expiré et false sinon
             return exp < now;
         } catch (e) {
-        return true; 
+            // En cas d'erreur, on retourne true
+            return true; 
         }
     }
     
