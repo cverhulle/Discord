@@ -6,5 +6,5 @@ export class GroupFormInfo {
     groupType!: "Public" | "Privé" | "Restreint";
     groupLanguages!: string[];
     groupCategories!: string[];
-    groupLogo!: File | null;
+    groupLogoPath!: string;
 }
