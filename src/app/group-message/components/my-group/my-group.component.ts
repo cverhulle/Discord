@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GroupFormInfo } from '../../models/group-info.model';
 
 @Component({
   selector: 'app-my-group',
@@ -7,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './my-group.component.scss'
 })
 export class MyGroupComponent {
-
+  // Variable pour stocker les différents groupes de l'utilisateur
+  groups!: GroupFormInfo[]
 }
