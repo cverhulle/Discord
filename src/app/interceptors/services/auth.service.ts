@@ -18,10 +18,6 @@ export class TokenService {
         return localStorage.getItem('token')
     }
 
-    // getUserId(): string | null {
-    //    return localStorage.getItem('userId')
-    // }
-
     // Cette méthode permet de savoir si un utilisateur est connecté
     isLogged(): boolean {
         const token = this.getToken()
