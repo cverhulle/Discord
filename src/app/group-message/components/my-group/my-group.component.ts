@@ -17,5 +17,6 @@ export class MyGroupComponent implements OnInit {
 
   ngOnInit(): void {
     this.groups$ = this.searchAGroupService.currentUserGroup$
+    // this.searchAGroupService.getUsersGroups().subscribe()
   }
 }
