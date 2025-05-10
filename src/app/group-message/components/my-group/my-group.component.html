@@ -22,7 +22,9 @@
                 <p class="group-name">{{ group.groupName }}</p>
 
                 <!-- Type de groupe -->
-                <p> {{ group.groupType }} </p>
+                <mat-icon *ngIf="group.groupType === 'Public'" color="primary">public</mat-icon>
+                <mat-icon *ngIf="group.groupType === 'Privé'" color="warn">lock</mat-icon>
+                <mat-icon *ngIf="group.groupType === 'Restreint'" color="accent">vpn_key</mat-icon>
 
             </mat-card>
 
