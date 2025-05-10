@@ -4,6 +4,7 @@ import { SearchAGroupService } from '../../services/search-a-group.service';
 import { Observable } from 'rxjs';
 import { SharedModule } from '../../../shared/shared.module';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { DisplayService } from '../../../shared/display/service/display.service';
 
 @Component({
   selector: 'app-my-group',
@@ -20,7 +21,8 @@ export class MyGroupComponent implements OnInit {
   // Observable pour stocker les différents groupes de l'utilisateur
   groups$!: Observable<GroupFormInfo[]>
 
-  constructor(private searchAGroupService : SearchAGroupService) {}
+  constructor(private searchAGroupService : SearchAGroupService,
+              private displayService : DisplayService) {}
 
   ngOnInit(): void {
     this.groups$ = this.searchAGroupService.currentUserGroup$
@@ -28,6 +30,6 @@ export class MyGroupComponent implements OnInit {
   }
 
   onChat() {
-    
+    this.displayService.displayMessage("À venir")
   }
 }
