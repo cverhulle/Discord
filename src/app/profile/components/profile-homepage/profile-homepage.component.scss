@@ -123,33 +123,6 @@
     color: 	#ffc1e3;
 }
 
-// Ajout du style pour "faire respirer les champs de texte"
-// Définit l'animation : alternance entre petit et grand halo
-@keyframes pulseGlow {
-    0% {
-        // Petit halo
-        text-shadow: 0 0 5px rgba(255, 193, 227, 0.6);
-    }
-    50% {
-        // Grand halo
-        text-shadow: 0 0 15px rgba(255, 193, 227, 1);
-    }
-    100% {
-        // Petit halo
-        text-shadow: 0 0 5px rgba(255, 193, 227, 0.6);
-    }
-}
-
-// On applique l'animation sur les champs de texte
-.profile-card-right h2:hover,
-.profile-card-left h2:hover {
-    color: #fff;
-    animation: pulseGlow 2s infinite ease-in-out;
-    transition: color 0.3s ease;
-}
-
-
-
 
 
 
@@ -231,6 +204,31 @@
 
 
 
+
+// On applique l'animation sur les champs de texte
+.profile-card-right h2:hover,
+.profile-card-left h2:hover {
+    color: #fff;
+    animation: pulseGlow 2s infinite ease-in-out;
+    transition: color 0.3s ease;
+}
+
+// Ajout du style pour "faire respirer les champs de texte"
+// Définit l'animation : alternance entre petit et grand halo
+@keyframes pulseGlow {
+    0% {
+        // Petit halo
+        text-shadow: 0 0 5px rgba(255, 193, 227, 0.6);
+    }
+    50% {
+        // Grand halo
+        text-shadow: 0 0 15px rgba(255, 193, 227, 1);
+    }
+    100% {
+        // Petit halo
+        text-shadow: 0 0 5px rgba(255, 193, 227, 0.6);
+    }
+}
 
 
 
