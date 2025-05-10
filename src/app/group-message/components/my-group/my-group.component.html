@@ -12,11 +12,18 @@
         <!-- Pour chaque groupe, on affiche sa mat-card-->
         <div *ngFor="let group of groups">
 
-
+            <!-- Mat card pour afficher chaque groupe -->
             <mat-card class="group-mat-card appear-animation">
+
+                <!-- Logo du groupe-->
                 <img [src]="group.groupLogoPath" alt="Logo du groupe" class="group-logo">
+
+                <!-- Nom du groupe -->
                 <p>{{ group.groupName }}</p>
+
+                <!-- Type de groupe -->
                 <p> {{ group.groupType }} </p>
+                
             </mat-card>
 
 
