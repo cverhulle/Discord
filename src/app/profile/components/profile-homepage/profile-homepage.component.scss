@@ -264,6 +264,9 @@
 
     // On diminue la taille de l'image
     .profile-image {
-        width: 60%;
+        width: auto;
+        height: auto;
+        max-width: 300px;
+        max-height: 300px;
     }
 }
