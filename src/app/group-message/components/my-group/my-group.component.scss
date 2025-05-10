@@ -9,17 +9,11 @@
     justify-content: center; 
 }
 
-// Style à appliquer au container contenant le message lorsqu'aucun groupe n'est trouvé
-.no-group-container{
-    height: 100%;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-}
-
 // Style à appliquer sur la div quand aucun groupe n'est trouvé
 .no-group{
+    display: flex;
+    justify-content: center;
     color: #ffc1e3;
-    font-size: 2vw;
+    font-size: 2.5vw;
+    margin-top: 5vh;
 }
