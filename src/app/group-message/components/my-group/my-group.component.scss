@@ -18,3 +18,23 @@
     margin-top: 5vh;
 }
 
+// Style à appliquer sur la mat-card de chaque groupe
+.group-mat-card{
+    // Taille et bordure de la carte
+    width: 60%;
+    margin: 2vh auto;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 20px rgba(114, 137, 218, 0.2);
+    border-radius: 15px;
+    font-size: 1.5vw;
+    gap: 1rem; 
+
+    // Couleur de la carte
+    background: linear-gradient(135deg, rgba(97,18,97,0.9), rgba(60, 60, 110, 0.8));
+
+    // Disposition des éléments
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: space-between; 
+}
