@@ -3,10 +3,18 @@
     Mes groupes
 </h1>
 
+<!-- On récupère les groupes dans l'Observable. On les "renomme" groups -->
 <div *ngIf="groups$ | async as groups"> 
+
+    <!-- S'il y a au moins un groupe, on affiche cette div -->
     <div *ngIf="groups.length > 0"> 
+
+        <!-- Pour chaque groupe, on affiche sa mat-card-->
         <div *ngFor="let group of groups">
+
             <h2>{{ group.groupName }}</h2>
+
+
         </div>
     </div>
 
