@@ -7,7 +7,7 @@
 <div *ngIf="groups$ | async as groups"> 
 
     <!-- S'il y a au moins un groupe, on affiche cette div -->
-    <div *ngIf="groups.length > 0"> 
+    <div *ngIf="groups.length > 0; else noGroup"> 
 
         <!-- Pour chaque groupe, on affiche sa mat-card-->
         <div *ngFor="let group of groups">
@@ -18,4 +18,10 @@
         </div>
     </div>
 
+    <ng-template #noGroup>
+        <p>Aucun groupe trouvé.</p>
+    </ng-template>
+
+
 </div> 
+
