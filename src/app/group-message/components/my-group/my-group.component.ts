@@ -29,6 +29,7 @@ export class MyGroupComponent implements OnInit {
     this.searchAGroupService.getUsersGroups().subscribe()
   }
 
+  // Cette méthode permet d'afficher le chat après appui sur le bouton "Message"
   onChat() {
     this.displayService.displayMessage("À venir")
   }
