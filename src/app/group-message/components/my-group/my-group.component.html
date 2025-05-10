@@ -30,6 +30,17 @@
                     <button mat-flat-button class="button-chat" (click)="onChat()"> Message </button>
                 </mat-card-actions>
 
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Informations supplémentaires</mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <p><strong>Description :</strong> {{ group.groupDescription }}</p>
+                    <p><strong>Langues :</strong> {{ group.groupLanguages.join(', ') }}</p>
+                    <p><strong>Catégories :</strong> {{ group.groupCategories.join(', ') }}</p>
+
+                </mat-expansion-panel>
+
             </mat-card>
 
 
