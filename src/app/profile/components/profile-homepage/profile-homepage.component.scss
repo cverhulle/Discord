@@ -177,8 +177,10 @@
 
 // Style sur l'image de profil.
 .profile-image{
-    width: 100%;
+    width: auto;
     height: auto;
+    max-width: 250px;
+    max-height: 250px;
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(255, 193, 227, 0.4);
 }
