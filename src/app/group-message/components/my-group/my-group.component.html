@@ -27,7 +27,7 @@
                 <mat-icon *ngIf="group.groupType === 'Restreint'" class="group-type-icon">vpn_key</mat-icon>
 
                 <mat-card-actions>
-                    <button mat-flat-button class="button-chat"> Message </button>
+                    <button mat-flat-button class="button-chat" (click)="onChat()"> Message </button>
                 </mat-card-actions>
 
             </mat-card>

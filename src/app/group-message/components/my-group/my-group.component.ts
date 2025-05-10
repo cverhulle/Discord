@@ -26,4 +26,8 @@ export class MyGroupComponent implements OnInit {
     this.groups$ = this.searchAGroupService.currentUserGroup$
     this.searchAGroupService.getUsersGroups().subscribe()
   }
+
+  onChat() {
+    
+  }
 }
