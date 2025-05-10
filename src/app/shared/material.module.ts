@@ -13,6 +13,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox'
 import {MatChipsModule} from '@angular/material/chips'
+import { MatExpansionModule } from '@angular/material/expansion';
 
 // Ce fichier s'occupe de référencer tous les composants Angular Matérial du projet
 @NgModule({
@@ -31,6 +32,7 @@ import {MatChipsModule} from '@angular/material/chips'
     MatSelectModule,
     MatCheckboxModule,
     MatChipsModule,
+    MatExpansionModule
   ]
 })
 
