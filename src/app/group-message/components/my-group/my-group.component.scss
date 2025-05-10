@@ -18,6 +18,14 @@
     margin-top: 5vh;
 }
 
+
+
+
+
+
+
+
+
 // Style à appliquer sur la mat-card de chaque groupe
 .group-mat-card{
     // Taille et bordure de la carte
@@ -37,4 +45,16 @@
     flex-direction: row;
     align-items: center; 
     justify-content: space-between; 
+}
+
+
+
+
+// Style à appliquer sur le logo du groupe
+.group-logo{
+    width: 7vh;
+    height: 7vh;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(255, 193, 227, 0.4);
 }
