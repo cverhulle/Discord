@@ -9,6 +9,15 @@
     justify-content: center; 
 }
 
+
+
+
+
+
+
+
+
+
 // Style à appliquer sur la div quand aucun groupe n'est trouvé
 .no-group{
     display: flex;
@@ -17,6 +26,9 @@
     font-size: 2.5vw;
     margin-top: 5vh;
 }
+
+
+
 
 
 
@@ -45,7 +57,42 @@
     flex-direction: row;
     align-items: center; 
     justify-content: space-between; 
+
+    // Animation de la carte
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+// Effet au survol de la carte 
+.group-mat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(114, 137, 218, 0.4);
+}
+
+// Animation d'apparition fluide 
+.appear-animation {
+    opacity: 0;
+    animation: appearFade 0.6s ease forwards;
+}
+
+// Définition de l'animation 
+@keyframes appearFade {
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
