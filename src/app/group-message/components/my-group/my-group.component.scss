@@ -280,6 +280,16 @@
     .description{
         font-size: 2vw;
     }
+
+    // Gestion du bouton
+    .button-chat{
+        font-size: 1.3vw;
+    }
+
+    // Gestion du texte en titre du panel
+    ::ng-deep mat-expansion-panel mat-expansion-panel-header .mat-content mat-panel-title{
+        font-size: 1.3vw; 
+    }
 }
 
 // Gestion lorsque la taille est sous les 1000px
