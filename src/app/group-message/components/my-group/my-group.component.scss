@@ -168,6 +168,27 @@
 
 
 
+
+
+
+
+// Style à appliquer à la div contenant le bouton et le panel
+.button-panel-container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
 // Style à appliquer au bouton pour rejoindre la discussion
 .button-chat{
     background-color: #7289da !important;
