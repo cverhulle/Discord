@@ -29,6 +29,11 @@
                     <mat-icon *ngIf="group.groupType === 'Restreint'" class="group-type-icon">vpn_key</mat-icon>
                 </div>
 
+                <!-- Description du groupe -->
+                <div>
+                    <span>{{  group.groupDescription }}</span>
+                </div>
+                
                 <!-- Bouton pour rejoindre la discussion -->
                 <mat-card-actions>
                     <button mat-flat-button class="button-chat" (click)="onChat()"> Message </button>
@@ -41,9 +46,6 @@
                     <mat-expansion-panel-header>
                         <mat-panel-title>Informations supplémentaires</mat-panel-title>
                     </mat-expansion-panel-header>
-
-                    <!-- Description du groupe-->
-                    <p><strong>Description :</strong> {{ group.groupDescription }}</p>
 
                     <!-- Langues du groupe -->
                     <p><strong>Langues :</strong> {{ group.groupLanguages.join(', ') }}</p>
