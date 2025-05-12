@@ -33,20 +33,28 @@
 
                 <!-- Onglet déroulant pour afficher les informations supplémentaires -->
                 <mat-expansion-panel>
+
+                    <!-- Titre du panel -->
                     <mat-expansion-panel-header>
                         <mat-panel-title>Informations supplémentaires</mat-panel-title>
                     </mat-expansion-panel-header>
 
+                    <!-- Description du groupe-->
                     <p><strong>Description :</strong> {{ group.groupDescription }}</p>
+
+                    <!-- Langues du groupe -->
                     <p><strong>Langues :</strong> {{ group.groupLanguages.join(', ') }}</p>
+
+                    <!-- Catégories du groupe -->
                     <p><strong>Catégories :</strong> {{ group.groupCategories.join(', ') }}</p>
 
-
+                    <!-- Créateur du groupe -->
                     <p><strong>Créateur :</strong> 
                         <img [src]="group.creator.image" alt="Avatar du créateur"  width="30" height="30"/>
                         {{ group.creator.loginInfo.username }}
                     </p>
                     
+                    <!-- Membres du groupe -->
                     <p><strong>Membres :</strong></p>
                     <ul>
                         <li *ngFor="let member of group.members">
