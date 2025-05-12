@@ -21,8 +21,9 @@
                     <img [src]="group.groupLogoPath" alt="Logo du groupe" class="group-logo">
 
                     <!-- Nom du groupe -->
-                    <p class="group-name">{{ group.groupName }}</p>
-
+                    <div>
+                        <p class="group-name">{{ group.groupName }}</p>
+                    </div>
                     <!-- Type de groupe -->
                     <mat-icon *ngIf="group.groupType === 'Public'" class="group-type-icon">public</mat-icon>
                     <mat-icon *ngIf="group.groupType === 'Privé'" class="group-type-icon">lock</mat-icon>
@@ -31,7 +32,7 @@
 
                 <!-- Description du groupe -->
                 <div class="description-container">
-                    <span>{{  group.groupDescription }}</span>
+                    <span class="description">{{  group.groupDescription }}</span>
                 </div>
 
                 <!-- Bouton pour rejoindre la discussion -->
