@@ -3,7 +3,7 @@ import { GroupFormInfo } from '../../models/group-info.model';
 import { SearchAGroupService } from '../../services/search-a-group.service';
 import { Observable } from 'rxjs';
 import { SharedModule } from '../../../shared/shared.module';
-import { AsyncPipe, JsonPipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { DisplayService } from '../../../shared/display/service/display.service';
 
 @Component({
@@ -12,8 +12,7 @@ import { DisplayService } from '../../../shared/display/service/display.service'
     SharedModule,
     AsyncPipe,
     NgIf,
-    NgFor,
-    JsonPipe
+    NgFor
   ],
   templateUrl: './my-group.component.html',
   styleUrl: './my-group.component.scss'
