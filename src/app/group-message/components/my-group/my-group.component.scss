@@ -240,3 +240,11 @@
     align-items: center;
     gap: 0.5vw;
 }
+
+// Style à appliquer sur l'avatar du créateur
+.creator-avatar{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
