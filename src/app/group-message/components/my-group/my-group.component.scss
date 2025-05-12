@@ -142,6 +142,25 @@
 
 
 
+
+
+
+// Style à appliquer sur la div contenant la description du groupe
+.description-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
 // Style à appliquer au bouton pour rejoindre la discussion
 .button-chat{
     background-color: #7289da !important;
