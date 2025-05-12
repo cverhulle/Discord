@@ -211,6 +211,11 @@
 
 
 
+
+
+
+
+
 // Couleur de fond du panel
 ::ng-deep mat-expansion-panel {
     background-color: #7289da !important;
@@ -222,4 +227,15 @@
     font-weight: bold !important;
     color: white !important;
     font-size: 1vw; 
+}
+
+
+
+
+
+
+// Style à appliquer sur la div contenant le créateur
+.creator-container{
+    display: flex;
+    align-items: center;
 }

@@ -57,11 +57,12 @@
                         <p><strong>Catégories :</strong> {{ group.groupCategories.join(', ') }}</p>
 
                         <!-- Créateur du groupe -->
-                        <p><strong>Créateur :</strong> 
+                        <div class="creator-container">
+                            <strong>Créateur :</strong> 
                             <img [src]="group.creator.image" alt="Avatar du créateur"  width="30" height="30"/>
-                            {{ group.creator.loginInfo.username }}
-                        </p>
-                        
+                            <span> {{ group.creator.loginInfo.username }} </span>
+                        </div>
+                                                
                         <!-- Membres du groupe -->
                         <p><strong>Membres :</strong></p>
                         <ul>
