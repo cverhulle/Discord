@@ -43,7 +43,13 @@
                     <p><strong>Créateur :</strong> {{ group.creator }}</p>
                     
 
-                    <pre>{{ group.members | json }}</pre>
+                    <p><strong>Membres :</strong></p>
+                    <ul>
+                        <li *ngFor="let member of group.members">
+                            <img *ngIf="member.image" [src]="member.image" alt="Avatar" width="30" height="30" />
+                            {{ member.loginInfo.username }}
+                        </li>
+                    </ul>
 
                 </mat-expansion-panel>
 
