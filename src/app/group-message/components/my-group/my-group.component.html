@@ -15,16 +15,19 @@
             <!-- Mat card pour afficher chaque groupe -->
             <mat-card class="group-mat-card appear-animation">
 
-                <!-- Logo du groupe-->
-                <img [src]="group.groupLogoPath" alt="Logo du groupe" class="group-logo">
+                <!-- Div contenant le logo, le nom du groupe et l'icone par rapport au type du groupe -->
+                <div>
+                    <!-- Logo du groupe-->
+                    <img [src]="group.groupLogoPath" alt="Logo du groupe" class="group-logo">
 
-                <!-- Nom du groupe -->
-                <p class="group-name">{{ group.groupName }}</p>
+                    <!-- Nom du groupe -->
+                    <p class="group-name">{{ group.groupName }}</p>
 
-                <!-- Type de groupe -->
-                <mat-icon *ngIf="group.groupType === 'Public'" class="group-type-icon">public</mat-icon>
-                <mat-icon *ngIf="group.groupType === 'Privé'" class="group-type-icon">lock</mat-icon>
-                <mat-icon *ngIf="group.groupType === 'Restreint'" class="group-type-icon">vpn_key</mat-icon>
+                    <!-- Type de groupe -->
+                    <mat-icon *ngIf="group.groupType === 'Public'" class="group-type-icon">public</mat-icon>
+                    <mat-icon *ngIf="group.groupType === 'Privé'" class="group-type-icon">lock</mat-icon>
+                    <mat-icon *ngIf="group.groupType === 'Restreint'" class="group-type-icon">vpn_key</mat-icon>
+                </div>
 
                 <!-- Bouton pour rejoindre la discussion -->
                 <mat-card-actions>
