@@ -248,3 +248,14 @@
     border-radius: 50%;
     object-fit: cover;
 }
+
+
+
+
+
+// Style à appliquer sur la liste des membres
+.members-list{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

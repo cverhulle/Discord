@@ -66,9 +66,9 @@
                         <!-- Membres du groupe -->
                         <p><strong>Membres :</strong></p>
                         <ul>
-                            <li *ngFor="let member of group.members">
+                            <li *ngFor="let member of group.members" class="members-list">
                                 <img *ngIf="member.image" [src]="member.image" alt="Avatar du membre" width="30" height="30" />
-                                {{ member.loginInfo.username }}
+                                <span> {{ member.loginInfo.username }} </span>
                             </li>
                         </ul>
 
