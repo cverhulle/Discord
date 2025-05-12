@@ -40,13 +40,17 @@
                     <p><strong>Description :</strong> {{ group.groupDescription }}</p>
                     <p><strong>Langues :</strong> {{ group.groupLanguages.join(', ') }}</p>
                     <p><strong>Catégories :</strong> {{ group.groupCategories.join(', ') }}</p>
-                    <p><strong>Créateur :</strong> {{ group.creator }}</p>
-                    
 
+
+                    <p><strong>Créateur :</strong> 
+                        <img [src]="group.creator.image" alt="Avatar du créateur"  width="30" height="30"/>
+                        {{ group.creator.loginInfo.username }}
+                    </p>
+                    
                     <p><strong>Membres :</strong></p>
                     <ul>
                         <li *ngFor="let member of group.members">
-                            <img *ngIf="member.image" [src]="member.image" alt="Avatar" width="30" height="30" />
+                            <img *ngIf="member.image" [src]="member.image" alt="Avatar du membre" width="30" height="30" />
                             {{ member.loginInfo.username }}
                         </li>
                     </ul>
