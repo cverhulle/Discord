@@ -212,9 +212,14 @@
 
 
 // Couleur de fond du panel
-::ng-deep .mat-expansion-panel {
+::ng-deep mat-expansion-panel {
     background-color: #7289da !important;
     color: white !important;
 }
 
-
+// Style à appliquer sur le titre du panel
+::ng-deep mat-expansion-panel mat-expansion-panel-header .mat-content mat-panel-title{
+    font-weight: bold !important;
+    color: white !important;
+    font-size: 1vw; 
+}
