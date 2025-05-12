@@ -10,6 +10,6 @@ export class GroupFormInfo {
     groupCategories!: string[];
     groupLogoPath!: string;
     createdAt!: string;
-    creator! : string;
-    members!: MembersInGroup[]
+    creator! : MembersInGroup;
+    members!: MembersInGroup[];
 }
