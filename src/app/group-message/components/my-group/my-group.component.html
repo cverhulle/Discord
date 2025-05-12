@@ -34,41 +34,46 @@
                     <span class="description">{{  group.groupDescription }}</span>
                 </div>
 
-                <!-- Bouton pour rejoindre la discussion -->
-                <mat-card-actions>
-                    <button mat-flat-button class="button-chat" (click)="onChat()"> Rejoindre la discussion </button>
-                </mat-card-actions>
-
-                <!-- Onglet déroulant pour afficher les informations supplémentaires -->
-                <mat-expansion-panel>
-
-                    <!-- Titre du panel -->
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>Informations supplémentaires</mat-panel-title>
-                    </mat-expansion-panel-header>
-
-                    <!-- Langues du groupe -->
-                    <p><strong>Langues :</strong> {{ group.groupLanguages.join(', ') }}</p>
-
-                    <!-- Catégories du groupe -->
-                    <p><strong>Catégories :</strong> {{ group.groupCategories.join(', ') }}</p>
-
-                    <!-- Créateur du groupe -->
-                    <p><strong>Créateur :</strong> 
-                        <img [src]="group.creator.image" alt="Avatar du créateur"  width="30" height="30"/>
-                        {{ group.creator.loginInfo.username }}
-                    </p>
+                <!-- Div contenant le bouton rejoindre et le bouton d'informations supplémentaires -->
+                <div>
                     
-                    <!-- Membres du groupe -->
-                    <p><strong>Membres :</strong></p>
-                    <ul>
-                        <li *ngFor="let member of group.members">
-                            <img *ngIf="member.image" [src]="member.image" alt="Avatar du membre" width="30" height="30" />
-                            {{ member.loginInfo.username }}
-                        </li>
-                    </ul>
+                    <!-- Bouton pour rejoindre la discussion -->
+                    <mat-card-actions>
+                        <button mat-flat-button class="button-chat" (click)="onChat()"> Rejoindre la discussion </button>
+                    </mat-card-actions>
 
-                </mat-expansion-panel>
+                    <!-- Onglet déroulant pour afficher les informations supplémentaires -->
+                    <mat-expansion-panel>
+
+                        <!-- Titre du panel -->
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>Informations supplémentaires</mat-panel-title>
+                        </mat-expansion-panel-header>
+
+                        <!-- Langues du groupe -->
+                        <p><strong>Langues :</strong> {{ group.groupLanguages.join(', ') }}</p>
+
+                        <!-- Catégories du groupe -->
+                        <p><strong>Catégories :</strong> {{ group.groupCategories.join(', ') }}</p>
+
+                        <!-- Créateur du groupe -->
+                        <p><strong>Créateur :</strong> 
+                            <img [src]="group.creator.image" alt="Avatar du créateur"  width="30" height="30"/>
+                            {{ group.creator.loginInfo.username }}
+                        </p>
+                        
+                        <!-- Membres du groupe -->
+                        <p><strong>Membres :</strong></p>
+                        <ul>
+                            <li *ngFor="let member of group.members">
+                                <img *ngIf="member.image" [src]="member.image" alt="Avatar du membre" width="30" height="30" />
+                                {{ member.loginInfo.username }}
+                            </li>
+                        </ul>
+
+                    </mat-expansion-panel>
+
+                </div>
 
             </mat-card>
 
