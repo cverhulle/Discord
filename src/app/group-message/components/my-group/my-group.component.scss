@@ -95,6 +95,14 @@
 
 
 
+// Style à appliquer sur la div contenant le logo, le nom et le type du groupe
+.logo-name-type-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 
 
 // Style à appliquer sur le logo du groupe
@@ -116,6 +124,16 @@
 .group-type-icon {
     color: #ffc1e3
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
