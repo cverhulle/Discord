@@ -260,7 +260,18 @@
 
 // Gestion lorsque la taille est sous les 1400px
 @media (max-width: 1400px) {
+
+    // Gestion de la taille de la mat-card
     .group-mat-card{
         width: 70%;
+    }
+}
+
+// Gestion lorsque la taille est sous les 1000px
+@media(max-width: 1000px){
+
+    // Gestion de la taille de la mat-card
+    .group-mat-card{
+        width: 80%;
     }
 }
