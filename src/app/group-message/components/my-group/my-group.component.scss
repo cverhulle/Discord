@@ -265,6 +265,21 @@
     .group-mat-card{
         width: 70%;
     }
+
+    // Gestion du nom du groupe
+    .group-name{
+        font-size: 2.8vw;
+    }
+
+    // Gestion du logo du groupe
+    .group-type-icon{
+        font-size: 1.8vw;
+    }
+
+    // Gestion de la description
+    .description{
+        font-size: 2vw;
+    }
 }
 
 // Gestion lorsque la taille est sous les 1000px
@@ -282,7 +297,7 @@
 
     // Gestion du logo du groupe
     .group-type-icon{
-        font-size: 2.7vw;
+        font-size: 2.5vw;
     }
 
     // Gestion de la description
