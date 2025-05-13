@@ -8,6 +8,7 @@ import { UserService } from '../../../shared/post/services/user.service';
 import { DisplayService } from '../../../shared/display/service/display.service';
 import { EmojisService } from '../../../shared/emojis/services/emojis.service';
 import { ImageService } from '../../../shared/image/services/image.services';
+import { GroupMessageService } from '../../services/group-message-chat.service';
 
 @Component({
   selector: 'app-group-message-chat',
@@ -69,15 +70,15 @@ export class GroupMessageChatComponent implements OnInit{
 
 
   constructor(private avatarService : AvatarService,
-              private postService : PostService,
               private userService : UserService,
               private displayService : DisplayService,
               private emojisService : EmojisService,
-              private imageService : ImageService) {}
+              private imageService : ImageService,
+              private groupMessageService : GroupMessageService) {}
 
   
   ngOnInit(): void {
-    this.postService.setValueOfLoading(true)
+    this.groupMessageService.setValueOfLoading(false)
     this.initCurrentUser()
     this.initGroupInfos()
   }
