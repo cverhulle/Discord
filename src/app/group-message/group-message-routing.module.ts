@@ -8,7 +8,8 @@ import { MyGroupComponent } from './components/my-group/my-group.component';
 const routes: Routes = [
   {path: 'create-group', component: CreateGroupComponent, canActivate: [AuthGuard]},
   {path: 'my-group', component: MyGroupComponent, canActivate: [AuthGuard]},
-  {path: '', component : HomepageGroupMessageComponent, canActivate : [AuthGuard]}
+  {path: 'chat', component: MyGroupComponent, canActivate: [AuthGuard]},
+  {path: '', component : HomepageGroupMessageComponent, canActivate : [AuthGuard]},
 ];
 
 @NgModule({
