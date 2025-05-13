@@ -2,6 +2,12 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { usernameImage } from '../../../private-message/models/username-image.models';
 import { Observable } from 'rxjs';
 import { Post } from '../../../shared/post/models/post.model';
+import { AvatarService } from '../../../shared/avatar/service/avatar.service';
+import { PostService } from '../../../shared/post/services/post.service';
+import { UserService } from '../../../shared/post/services/user.service';
+import { DisplayService } from '../../../shared/display/service/display.service';
+import { EmojisService } from '../../../shared/emojis/services/emojis.service';
+import { ImageService } from '../../../shared/image/services/image.services';
 
 @Component({
   selector: 'app-group-message-chat',
@@ -59,4 +65,11 @@ export class GroupMessageChatComponent implements OnInit{
   // Observable pour gérer l'opacité du bandeau de prévisualisation
   opacityPreview$!: Observable<number>
 
+
+  constructor(private avatarService : AvatarService,
+              private postService : PostService,
+              private userService : UserService,
+              private displayService : DisplayService,
+              private emojisService : EmojisService,
+              private imageService : ImageService) {}
 }
