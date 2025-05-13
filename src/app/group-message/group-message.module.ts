@@ -9,6 +9,11 @@ import { LanguageService } from './services/language.service';
 import { DisplayService } from '../shared/display/service/display.service';
 import { PasswordService } from '../shared/password/service/password.service';
 import { SearchAGroupService } from './services/search-a-group.service';
+import { AvatarService } from '../shared/avatar/service/avatar.service';
+import { PostService } from '../shared/post/services/post.service';
+import { UserService } from '../shared/post/services/user.service';
+import { EmojisService } from '../shared/emojis/services/emojis.service';
+import { ProfileService } from '../profile/service/profile.service';
 
 
 @NgModule({
@@ -24,7 +29,12 @@ import { SearchAGroupService } from './services/search-a-group.service';
     LanguageService,
     DisplayService,
     PasswordService,
-    SearchAGroupService
+    SearchAGroupService,
+    AvatarService,
+    PostService,
+    UserService,
+    EmojisService,
+    ProfileService
   ]
 })
 export class GroupMessageModule { }
