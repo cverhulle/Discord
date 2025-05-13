@@ -3,7 +3,6 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { catchError, Observable, of, tap } from 'rxjs';
 
 import { usernameImage } from '../../../private-message/models/username-image.models';
-import { Post } from '../../../shared/post/models/post.model';
 
 import { AvatarService } from '../../../shared/avatar/service/avatar.service';
 import { UserService } from '../../../shared/post/services/user.service';
@@ -11,6 +10,7 @@ import { DisplayService } from '../../../shared/display/service/display.service'
 import { EmojisService } from '../../../shared/emojis/services/emojis.service';
 import { ImageService } from '../../../shared/image/services/image.services';
 import { GroupMessageService } from '../../services/group-message-chat.service';
+import { GroupPost } from '../../models/group-post.model';
 
 @Component({
   selector: 'app-group-message-chat',
@@ -41,7 +41,7 @@ export class GroupMessageChatComponent implements OnInit{
   messageContent: string = ''
 
   // Observable qui stocke la discussion entre les utilisateurs
-  chat$!: Observable<Post[]>
+  chat$!: Observable<GroupPost[]>
 
   // Observable pour gérer le loading
   loading$!: Observable<boolean>
@@ -50,7 +50,7 @@ export class GroupMessageChatComponent implements OnInit{
   isChatEmpty$!: Observable<boolean>
 
   // Observable pour réagir lorsque l'utilisateur modifie un message.
-  editMessage$!: Observable<Post | null>;
+  editMessage$!: Observable<GroupPost | null>;
 
   // Observable pour gérer l'affichage du selecteur d'émotes.
   showEmojisList$!: Observable<boolean>
