@@ -79,7 +79,7 @@ export class GroupMessageChatComponent implements OnInit{
   ngOnInit(): void {
     this.postService.setValueOfLoading(true)
     this.initCurrentUser()
-    this.initGroupName()
+    this.initGroupInfos()
   }
 
   // Cette méthode permet d'initialiser le currentUser
@@ -94,7 +94,7 @@ export class GroupMessageChatComponent implements OnInit{
   }
 
   // Cette méthode permet d'initialiser le nom du groupe
-  private initGroupName(): void {
+  private initGroupInfos(): void {
     try {
       this.groupName = history.state.groupName;
       this.groupLogo = history.state.groupLogoPath
