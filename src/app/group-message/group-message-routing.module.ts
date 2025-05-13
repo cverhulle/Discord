@@ -4,7 +4,7 @@ import { HomepageGroupMessageComponent } from './components/homepage-group-messa
 import { AuthGuard } from '../guard/auth.guard';
 import { CreateGroupComponent } from './components/create-group/create-group.component';
 import { MyGroupComponent } from './components/my-group/my-group.component';
-import { GroupMessageChatComponent } from '../group-message-chat/group-message-chat.component';
+import { GroupMessageChatComponent } from './components/group-message-chat/group-message-chat.component';
 
 const routes: Routes = [
   {path: 'create-group', component: CreateGroupComponent, canActivate: [AuthGuard]},
