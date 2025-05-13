@@ -77,10 +77,11 @@ export class GroupMessageChatComponent implements OnInit{
   ngOnInit(): void {
     this.postService.setValueOfLoading(true)
     this.initCurrentUser()
+    this.initGroupName()
   }
 
   // Cette méthode permet d'initialiser le currentUser
-  private initCurrentUser() {
+  private initCurrentUser() : void {
     this.userService.getCurrentUser().pipe(
         tap( user => this.currentUser = user),
         catchError( () => {
@@ -90,6 +91,14 @@ export class GroupMessageChatComponent implements OnInit{
     ).subscribe()
   }
 
+  // Cette méthode permet d'initialiser le nom du groupe
+  private initGroupName(): void {
+    try {
+      this.groupName = history.state.groupName;
+    } catch (error) {
+      this.displayService.displayMessage('Erreur lors de la récupération du nom du groupe.');
+    }
+  }
 
 
 }
