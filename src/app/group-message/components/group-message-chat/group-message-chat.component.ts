@@ -1,9 +1,11 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { usernameImage } from '../../../private-message/models/username-image.models';
+
 import { catchError, Observable, of, tap } from 'rxjs';
+
+import { usernameImage } from '../../../private-message/models/username-image.models';
 import { Post } from '../../../shared/post/models/post.model';
+
 import { AvatarService } from '../../../shared/avatar/service/avatar.service';
-import { PostService } from '../../../shared/post/services/post.service';
 import { UserService } from '../../../shared/post/services/user.service';
 import { DisplayService } from '../../../shared/display/service/display.service';
 import { EmojisService } from '../../../shared/emojis/services/emojis.service';
