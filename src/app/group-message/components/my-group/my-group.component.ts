@@ -30,7 +30,12 @@ export class MyGroupComponent implements OnInit {
   }
 
   // Cette méthode permet d'afficher le chat après appui sur le bouton "Message"
-  onChat() {
-    this.router.navigateByUrl('group-message/chat')
+  onChat(group : GroupFormInfo) {
+      this.router.navigate(['/group-message/chat'], { state: {
+      groupName: group.groupName,
+      groupLogoPath: group.groupLogoPath,
+      groupId: group._id 
+      }
+  });
   }
 }
