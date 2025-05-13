@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { usernameImage } from '../../../private-message/models/username-image.models';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of, tap } from 'rxjs';
 import { Post } from '../../../shared/post/models/post.model';
 import { AvatarService } from '../../../shared/avatar/service/avatar.service';
 import { PostService } from '../../../shared/post/services/post.service';
@@ -72,4 +72,24 @@ export class GroupMessageChatComponent implements OnInit{
               private displayService : DisplayService,
               private emojisService : EmojisService,
               private imageService : ImageService) {}
+
+  
+  ngOnInit(): void {
+    this.postService.setValueOfLoading(true)
+    this.initCurrentUser()
+  }
+
+  // Cette méthode permet d'initialiser le currentUser
+  private initCurrentUser() {
+    this.userService.getCurrentUser().pipe(
+        tap( user => this.currentUser = user),
+        catchError( () => {
+          this.displayService.displayMessage('Erreur lors de la récupération des données de l\'utilisateur.')
+          return of(false)
+        })
+    ).subscribe()
+  }
+
+
+
 }
