@@ -27,4 +27,18 @@ export class GroupMessageService{
     getValueOfChat(): GroupPost[] {
         return this.chatSubject.getValue()
     }
+
+    // Subject et Observable pour gérer si le chat est vide ou non
+    private isChatEmptySubject = new BehaviorSubject<boolean>(true)
+    isChatEmpty$ = this.isChatEmptySubject.asObservable()
+
+    // Méthode pour gérer l'état de isChatEmptySubject
+    setIsChatEmpty(state: boolean): void{
+        this.isChatEmptySubject.next(state)
+    }
+
+    // Méthode pour récuperer la valeur de isChatEmptySubject
+    getValueOfIsChatEmpty(): boolean{
+        return this.isChatEmptySubject.getValue()
+    }
 }
