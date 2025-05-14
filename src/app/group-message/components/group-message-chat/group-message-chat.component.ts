@@ -89,6 +89,9 @@ export class GroupMessageChatComponent implements OnInit{
   private initCurrentUserAndGroupInfos() : void{
     this.initCurrentUser()
     this.initGroupInfos()
+    if (this.groupName !== '') {
+      this.initChat(groupId)
+    }
   }
 
   // Cette méthode permet d'initialiser le currentUser
