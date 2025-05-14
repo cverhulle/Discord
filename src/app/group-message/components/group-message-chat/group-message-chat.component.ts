@@ -92,6 +92,7 @@ export class GroupMessageChatComponent implements OnInit{
     this.groupMessageService.setValueOfLoading(false)
     this.initCurrentUserAndGroupInfos()
     this.initObservable()
+    this.initEmojis()
   }
 
   // Cette méthode permet d'initialiser les données de l'utilisateur et du groupe
@@ -169,6 +170,11 @@ export class GroupMessageChatComponent implements OnInit{
 
     // On initialise l'Observable du chat
     this.chat$ = this.groupMessageService.chat$
+  }
+
+  // Méthode pour initialiser les catégories d'émojis à ne pas charger.
+  private initEmojis(): void {
+    this.categoriesEmojisExcluded = this.emojisService.categoryExcluded()
   }
 
 
