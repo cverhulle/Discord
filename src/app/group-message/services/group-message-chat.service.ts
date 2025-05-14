@@ -183,6 +183,13 @@ export class GroupMessageService{
 
 
 
+    // Cette méthode vérifie si le message n'est pas vide et si sa longueur ne dépasse pas maxLenght (500 par défaut).
+    messageValid(message: string, maxLenght: number = 500): boolean {
+        
+        // trim supprime les espaces au début et à la fin de message.
+        return message.trim().length > 0 && message.length <= maxLenght;
+    }
+
     // Méthode pour réinitialiser l'opacité du bandeau, l'affichage des émojis 
     resetOpacityEmojisDisplayAndImageToSend(resetImageToSend : boolean): void{
         this.imageService.resetValueOfOpacity()

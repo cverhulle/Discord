@@ -178,6 +178,8 @@ export class GroupMessageChatComponent implements OnInit{
     this.categoriesEmojisExcluded = this.emojisService.categoryExcluded()
   }
 
+  
+
 
 
 
