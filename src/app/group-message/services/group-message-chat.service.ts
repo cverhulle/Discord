@@ -95,4 +95,18 @@ export class GroupMessageService{
 
         return formData
     }
+
+    // Méthode pour créer le message, de type GroupPost, dans le Chat après l'envoi réussi au serveur
+    createPostAfterSending(formData: FormData, imageInChat : string | null ): GroupPost {
+        return {
+            postId: formData.get('postId') ? formData.get('postId') as string : '',
+            groupId: formData.get('groupId') as string,
+            senderId: formData.get('senderId') as string,
+            senderUsername: formData.get('senderUsername') as string,
+            senderProfileImage: formData.get('senderPrifileImage') as string,
+            content: formData.get('content') as string,
+            timestamp: new Date(),
+            imageInChat: imageInChat,
+        };
+    }
 }
