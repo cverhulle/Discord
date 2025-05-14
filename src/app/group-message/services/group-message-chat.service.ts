@@ -134,4 +134,9 @@ export class GroupMessageService{
         const updatedMessageContent = this.resetString();
         return {updatedMessageContent}
     }
+    
+    // Méthode à appeler lorsque l'envoi du post a échoué.
+    sendPostError(): void {
+        this.displayService.displayMessage('Erreur lors de l\'envoi du message.');
+    }
 }
