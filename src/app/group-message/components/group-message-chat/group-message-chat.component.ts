@@ -112,7 +112,15 @@ export class GroupMessageChatComponent implements OnInit{
     }
   }
 
-
+  // Cette méthode initialise l'historique de la discussion du groupe : on ne récupère que les 10 derniers messages.
+  private initChat(groupId: string): void {
+    this.groupMessageService.initChat(groupId).subscribe(
+      () => {
+        this.groupMessageService.setValueOfLoading(false)
+        this.scrollToBottom()
+      }
+    )
+  }
 
 
 
