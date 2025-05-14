@@ -178,7 +178,44 @@ export class GroupMessageChatComponent implements OnInit{
     this.categoriesEmojisExcluded = this.emojisService.categoryExcluded()
   }
 
-  
+    // Méthode au clic sur le bouton envoi.
+  onSendMessage(): void{
+    if (this.groupMessageService.messageValid(this.messageContent)) {
+      this.groupMessageService.setValueOfLoading(true)
+
+      // const postToEdit = this.postService.getValueOfEditMessageSubject();
+      // Si l'on édite un post, on lance la méthode adaptée et on quitte la boucle.
+      // if (postToEdit !== null) {
+        //this.updateMessage(postToEdit);
+        // this.postService.setValueOfLoading(false)
+        //return;
+      //}
+      
+      // On crée le formData grâce au service
+      const formData = this.groupMessageService.createFormDataToSend(
+        this.groupId,
+        this.currentUser.id,
+        this.currentUser.username,
+        this.currentUser.image,
+        this.messageContent,
+        this.imageService.getValueOfImageToSend()
+      )
+
+      // On envoie le post grâce au service et au FormData
+      this.groupMessageService.sendPost(formData)
+          .subscribe((result) => {
+            // Mis à jour des éléments
+            this.messageContent = result.updatedMessageContent;
+            this.groupMessageService.setValueOfLoading(false)
+            this.scrollToBottom();
+        });
+       
+        
+    } else {
+      this.displayService.displayMessage('Le message ne peut pas être vide et doit contenir moins de 500 caractères.')
+    }
+    
+  }
 
 
 
