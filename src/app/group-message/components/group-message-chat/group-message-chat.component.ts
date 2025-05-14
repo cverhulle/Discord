@@ -91,17 +91,18 @@ export class GroupMessageChatComponent implements OnInit{
   ngOnInit(): void {
     this.groupMessageService.setValueOfLoading(false)
     this.initCurrentUserAndGroupInfos()
-    this.initObservable()
-    this.initEmojis()
+    if (this.groupName !== '') {
+      this.initChat(this.groupId)
+      this.initObservable()
+      this.initEmojis()
+    }
+
   }
 
   // Cette méthode permet d'initialiser les données de l'utilisateur et du groupe
   private initCurrentUserAndGroupInfos() : void{
     this.initCurrentUser()
     this.initGroupInfos()
-    if (this.groupName !== '') {
-      this.initChat(this.groupId)
-    }
   }
 
   // Cette méthode permet d'initialiser le currentUser
