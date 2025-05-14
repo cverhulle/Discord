@@ -1,14 +1,16 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject, catchError, map, Observable, of } from "rxjs";
 import { GroupPost } from "../models/group-post.model";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../environments/environment.development";
+import { DisplayService } from "../../shared/display/service/display.service";
 
 @Injectable()
 
 export class GroupMessageService{
 
-    constructor( private http : HttpClient) {}
+    constructor(    private http : HttpClient,
+                    private displayService : DisplayService) {}
 
     // Observable et Subject pour gérer le chargement
     private loadingSubject = new BehaviorSubject<boolean>(true)
@@ -55,5 +57,26 @@ export class GroupMessageService{
         return this.http.get<GroupPost[]>(`${environment.apiUrl}/group-message/getPreviousPost`, {
             params: {groupId, skip} 
         })
+    }
+
+    // Méthode pour initialiser le chat d'un groupe de discussion
+    initChat(groupId: string): Observable<boolean> {
+        return this.getPreviousPosts(groupId,0).pipe(
+            map( (posts) => {
+                const updatedChat = posts;
+                if (updatedChat.length > 0) {
+                    this.setIsChatEmpty(false)
+                } else {
+                    this.setIsChatEmpty(true)
+                }
+                this.setValueOfChat(updatedChat)
+                return true
+            }),
+            catchError( () => {
+                this.setValueOfChat([])
+                this.displayService.displayMessage('Erreur lors du chargement de la discussion.')
+                return of(false)
+            })
+        )
     }
 }
