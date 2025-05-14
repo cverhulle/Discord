@@ -82,6 +82,11 @@ export class GroupMessageChatComponent implements OnInit{
   
   ngOnInit(): void {
     this.groupMessageService.setValueOfLoading(false)
+    this.initCurrentUserAndGroupInfos()
+  }
+
+  // Cette méthode permet d'initialiser les données de l'utilisateur et du groupe
+  private initCurrentUserAndGroupInfos() : void{
     this.initCurrentUser()
     this.initGroupInfos()
   }
