@@ -11,11 +11,14 @@ import { DisplayService } from '../../../shared/display/service/display.service'
 import { EmojisService } from '../../../shared/emojis/services/emojis.service';
 import { ImageService } from '../../../shared/image/services/image.services';
 import { GroupMessageService } from '../../services/group-message-chat.service';
+import { AsyncPipe } from '@angular/common';
 
 
 @Component({
   selector: 'app-group-message-chat',
-  imports: [],
+  imports: [
+    AsyncPipe
+  ],
   templateUrl: './group-message-chat.component.html',
   styleUrl: './group-message-chat.component.scss'
 })
