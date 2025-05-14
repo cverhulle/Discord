@@ -109,4 +109,12 @@ export class GroupMessageService{
             imageInChat: imageInChat,
         };
     }
+
+    // Méthode à appeler pour ajouter un message au chat.
+    addPostToChat(message : GroupPost): void {
+        const chat = this.getValueOfChat()
+        chat.push(message)
+        this.setValueOfChat(chat)
+        
+    }
 }
