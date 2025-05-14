@@ -4,13 +4,18 @@ import { GroupPost } from "../models/group-post.model";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../environments/environment.development";
 import { DisplayService } from "../../shared/display/service/display.service";
+import { ImageService } from "../../shared/image/services/image.services";
+import { EmojisService } from "../../shared/emojis/services/emojis.service";
+
 
 @Injectable()
 
 export class GroupMessageService{
 
     constructor(    private http : HttpClient,
-                    private displayService : DisplayService) {}
+                    private displayService : DisplayService,
+                    private imageService : ImageService,
+                    private emojiService : EmojisService) {}
 
     // Observable et Subject pour gérer le chargement
     private loadingSubject = new BehaviorSubject<boolean>(true)
@@ -156,7 +161,7 @@ export class GroupMessageService{
                     const message = this.createPostAfterSending(formData, imageInChat)
 
                     // On remet à zéro les variables
-                    // this.resetOpacityEmojisDisplayAndImageToSend(true)
+                    this.resetOpacityEmojisDisplayAndImageToSend(true)
 
                     // On émet que le chat n'est pas vide
                     this.setIsChatEmpty(false)
@@ -174,5 +179,16 @@ export class GroupMessageService{
                 return of({ updatedMessageContent: formData.get('content') as string});
             })
         );
+    }
+
+
+
+    // Méthode pour réinitialiser l'opacité du bandeau, l'affichage des émojis 
+    resetOpacityEmojisDisplayAndImageToSend(resetImageToSend : boolean): void{
+        this.imageService.resetValueOfOpacity()
+        this.emojiService.resetEmojisDisplay()
+        if (resetImageToSend) {
+            this.imageService.setImageToSend(null)
+        }
     }
 }
