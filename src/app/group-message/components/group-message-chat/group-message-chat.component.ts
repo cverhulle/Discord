@@ -91,6 +91,7 @@ export class GroupMessageChatComponent implements OnInit{
   ngOnInit(): void {
     this.groupMessageService.setValueOfLoading(false)
     this.initCurrentUserAndGroupInfos()
+    this.initObservable()
   }
 
   // Cette méthode permet d'initialiser les données de l'utilisateur et du groupe
@@ -132,6 +133,42 @@ export class GroupMessageChatComponent implements OnInit{
         this.scrollToBottom()
       }
     )
+  }
+
+  // Cette méthode initialise les observables pour réagir aux modifications de message.
+  private initObservable(): void {
+    // On initialise l'Observable pour la modification de messages.
+    // this.editMessage$ = this.postService.editMessage$
+
+    //this.editMessage$.subscribe( (post) => {
+    //  this.messageContent = post?.content ? post?.content : ''
+    //  this.scrollToBottom()
+    // })
+    
+
+    // On initialise l'Observable pour afficher le selecteur d'émotes.
+    this.showEmojisList$= this.emojisService.showEmojisList$
+
+    // On initialise l'Observable pour l'envoi d'image
+    this.imageToSend$ = this.imageService.imageToSend$
+
+    // On initialise l'Observable pour la suppression d'une image dans un Post à modifier
+    this.deleteImageInModifiedPost$ = this.imageService.deleteImageInModifiedPost$
+
+    // On initialise l'Observable pour la prévisualisation de l'image à envoyer.
+    this.imageToSendUrl$ = this.imageService.imageToSendUrl$
+
+    // On initialise l'Observable pour gérer l'opacité du bandeau de prévisualisation
+    this.opacityPreview$ = this.imageService.opacityPreview$
+
+    // On initialise l'Observable pour vérifier si le chat est vide ou non
+    this.isChatEmpty$ = this.groupMessageService.isChatEmpty$
+
+    // On initialise l'Observable pour le loading
+    this.loading$ = this.groupMessageService.loading$
+
+    // On initialise l'Observable du chat
+    this.chat$ = this.groupMessageService.chat$
   }
 
 
