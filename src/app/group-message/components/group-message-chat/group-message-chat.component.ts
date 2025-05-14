@@ -35,6 +35,9 @@ export class GroupMessageChatComponent implements OnInit{
   // Variable pour récupérer le logi du groupe
   groupLogo : string = '';
 
+  // Variable pour stocker l'id du groupe
+  groupId : string = '';
+
 
 
 
@@ -90,7 +93,7 @@ export class GroupMessageChatComponent implements OnInit{
     this.initCurrentUser()
     this.initGroupInfos()
     if (this.groupName !== '') {
-      this.initChat(groupId)
+      this.initChat(this.groupId)
     }
   }
 
@@ -110,6 +113,7 @@ export class GroupMessageChatComponent implements OnInit{
     try {
       this.groupName = history.state.groupName;
       this.groupLogo = history.state.groupLogoPath
+      this.groupId = history.state.groupId
     } catch (error) {
       this.displayService.displayMessage('Erreur lors de la récupération du nom du groupe.');
     }
