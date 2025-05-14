@@ -40,6 +40,10 @@ export class GroupMessageService{
         return this.chatSubject.getValue()
     }
 
+    // Observable pour réagir lorsque l'utilisateur modifie un message.
+    private editMessageSubject = new BehaviorSubject<GroupPost | null>(null);
+    editMessage$ = this.editMessageSubject.asObservable();
+
     // Subject et Observable pour gérer si le chat est vide ou non
     private isChatEmptySubject = new BehaviorSubject<boolean>(true)
     isChatEmpty$ = this.isChatEmptySubject.asObservable()
