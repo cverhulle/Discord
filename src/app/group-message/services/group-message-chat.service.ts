@@ -44,6 +44,16 @@ export class GroupMessageService{
     private editMessageSubject = new BehaviorSubject<GroupPost | null>(null);
     editMessage$ = this.editMessageSubject.asObservable();
 
+    // Méthode pour modifier le statut de l'observable editMessage.
+    setValueOfEditMessage(post : GroupPost | null): void {
+        this.editMessageSubject.next(post)
+        if (post) {
+            this.resetOpacityEmojisDisplayAndImageToSend(false)
+            this.displayService.displayMessage('Vous modifiez un message')
+            this.imageService.setValueOfImageToSendUrlWithPath(post.imageInChat)
+        } 
+    }
+    
     // Subject et Observable pour gérer si le chat est vide ou non
     private isChatEmptySubject = new BehaviorSubject<boolean>(true)
     isChatEmpty$ = this.isChatEmptySubject.asObservable()
