@@ -54,7 +54,7 @@ export class GroupMessageService{
 
     // Méthode pour récupérer les 10 derniers posts entre deux utilisateurs.
     getPreviousPosts(groupId: string, skip: number): Observable<GroupPost[]> {
-        return this.http.get<GroupPost[]>(`${environment.apiUrl}/group-message/getPreviousPost`, {
+        return this.http.get<GroupPost[]>(`${environment.apiUrl}/group-message/getPreviousPosts`, {
             params: {groupId, skip} 
         })
     }
