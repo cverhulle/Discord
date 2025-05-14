@@ -53,6 +53,11 @@ export class GroupMessageService{
             this.imageService.setValueOfImageToSendUrlWithPath(post.imageInChat)
         } 
     }
+
+    // Méthode pour récupérer la valeur de editMessageSubject
+    getValueOfEditMessageSubject() : GroupPost | null {
+        return this.editMessageSubject.getValue()
+    }
     
     // Subject et Observable pour gérer si le chat est vide ou non
     private isChatEmptySubject = new BehaviorSubject<boolean>(true)
