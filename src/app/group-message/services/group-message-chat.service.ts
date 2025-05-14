@@ -114,7 +114,16 @@ export class GroupMessageService{
     addPostToChat(message : GroupPost): void {
         const chat = this.getValueOfChat()
         chat.push(message)
-        this.setValueOfChat(chat)
-        
+        this.setValueOfChat(chat)        
+    }
+
+    // Méthode pour remettre un string à ''
+    resetString(): string {
+        return ''
+    }
+    
+    // Méthode pour remettre l'image par défaut dans un Post à null
+    resetImageToSend(): null {
+        return null
     }
 }
