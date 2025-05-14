@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 import { GroupPost } from "../models/group-post.model";
 import { HttpClient } from "@angular/common/http";
+import { environment } from "../../../environments/environment.development";
 
 @Injectable()
 
@@ -47,4 +48,12 @@ export class GroupMessageService{
     }
 
 
+
+
+    // Méthode pour récupérer les 10 derniers posts entre deux utilisateurs.
+    getPreviousPosts(groupId: string, skip: number): Observable<GroupPost[]> {
+        return this.http.get<GroupPost[]>(`${environment.apiUrl}/group-message/getPreviousPost`, {
+            params: {groupId, skip} 
+        })
+    }
 }
