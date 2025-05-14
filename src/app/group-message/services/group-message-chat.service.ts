@@ -126,4 +126,12 @@ export class GroupMessageService{
     resetImageToSend(): null {
         return null
     }
+
+    // Méthode à appeler lors du succès de l'envoi du GroupPost.
+    // Cette méthode retourne le chat, le booléan pour savoir si le chat est vide, le nouveau contenu du formulaire et l'image dans le GroupPost à jour.
+    sendPostSuccess(message : GroupPost): {updatedMessageContent : string} {
+        this.addPostToChat(message);
+        const updatedMessageContent = this.resetString();
+        return {updatedMessageContent}
+    }
 }
