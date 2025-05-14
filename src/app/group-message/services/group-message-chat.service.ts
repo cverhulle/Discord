@@ -1,10 +1,14 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import { GroupPost } from "../models/group-post.model";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable()
 
 export class GroupMessageService{
+
+    constructor( private http : HttpClient) {}
+
     // Observable et Subject pour gérer le chargement
     private loadingSubject = new BehaviorSubject<boolean>(true)
     loading$ = this.loadingSubject.asObservable()
@@ -41,4 +45,6 @@ export class GroupMessageService{
     getValueOfIsChatEmpty(): boolean{
         return this.isChatEmptySubject.getValue()
     }
+
+
 }
