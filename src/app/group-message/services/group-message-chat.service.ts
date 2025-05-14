@@ -86,7 +86,7 @@ export class GroupMessageService{
     }
 
     // Méthode pour créer le formData avec toutes les données pour l'envoi d'un post.
-    createFormDataToSend( groupId: string, senderId: string, senderUsername: string, senderProfileImage: string, content: string, imageToSend?: File ) : FormData {
+    createFormDataToSend( groupId: string, senderId: string, senderUsername: string, senderProfileImage: string, content: string, imageToSend?: File | null ) : FormData {
         const formData = new FormData();
         formData.append('groupId', groupId);
         formData.append('senderId', senderId);
