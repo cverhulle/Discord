@@ -139,4 +139,40 @@ export class GroupMessageService{
     sendPostError(): void {
         this.displayService.displayMessage('Erreur lors de l\'envoi du message.');
     }
+
+    // Méthode pour envoyer un post et l'enregistrer sur le serveur.
+    sendPost(formData: FormData): Observable<{ updatedMessageContent: string}> {
+        return this.http.post<{ message: string, postId: string, imageInChat?: string }>(`${environment.apiUrl}/group-message/send-message`, formData).pipe(
+            map(response => {
+                const postId = response.postId;
+                if (postId) {
+                    // Ajouter le postId au FormData pour les traitements futurs
+                    formData.append('postId', postId);
+
+                    // On sauvegarde l'url de l'image, ou null, dans umageInChat
+                    const imageInChat = response.imageInChat? response.imageInChat : null
+
+                    // On construit le GroupPost dans le front-End pour l'afficher 
+                    const message = this.createPostAfterSending(formData, imageInChat)
+
+                    // On remet à zéro les variables
+                    // this.resetOpacityEmojisDisplayAndImageToSend(true)
+
+                    // On émet que le chat n'est pas vide
+                    this.setIsChatEmpty(false)
+                    
+                    // Appelle la méthode pour mettre à jour l'affichage du chat
+                    return this.sendPostSuccess(message);
+
+                } else {
+                    this.sendPostError();
+                    return {updatedMessageContent: formData.get('content') as string };
+                }
+            }),
+            catchError(() => {
+                this.sendPostError();
+                return of({ updatedMessageContent: formData.get('content') as string});
+            })
+        );
+    }
 }
