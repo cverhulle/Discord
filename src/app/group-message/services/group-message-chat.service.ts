@@ -58,6 +58,15 @@ export class GroupMessageService{
     getValueOfEditMessageSubject() : GroupPost | null {
         return this.editMessageSubject.getValue()
     }
+
+    // Méthode pour retirer une image dans un post
+    removeImageInPost(): void { 
+        this.imageService.setImageToSend(null)
+        if(this.getValueOfEditMessageSubject()) {
+            this.imageService.setDeleteImageInModifiedPost(true)
+        }
+    }
+
     
     // Subject et Observable pour gérer si le chat est vide ou non
     private isChatEmptySubject = new BehaviorSubject<boolean>(true)
