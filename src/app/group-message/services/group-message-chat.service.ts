@@ -211,11 +211,11 @@ export class GroupMessageService{
     }
 
     // Méthode pour charger 10 messages de plus dans une discussion entre deux utilisateurs.
-    loadMoreMessages(otherUserId: string): Observable<boolean> {
+    loadMoreMessages(groupId: string): Observable<boolean> {
         this.setValueOfLoading(true)
         const chat = this.getValueOfChat()
         const skip = chat.length;
-        return this.getPreviousPosts(otherUserId, skip).pipe(
+        return this.getPreviousPosts(groupId, skip).pipe(
             map( (posts) => {
                 this.setValueOfChat([...posts, ...chat])
                 this.setValueOfLoading(false)
