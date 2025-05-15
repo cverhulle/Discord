@@ -182,7 +182,7 @@ export class GroupMessageService{
 
     // Méthode pour modifier un message dans le backend.
     updatePostBackend(formData : FormData) : Observable<GroupPost> {
-        return this.http.put<GroupPost>(`${environment.apiUrl}/private-message/updatePost`, formData).pipe(
+        return this.http.put<GroupPost>(`${environment.apiUrl}/group-message/updateGroupPost`, formData).pipe(
             catchError( () => {
                 this.displayService.displayMessage('Erreur lors de la modification du message.')
                 return of()
