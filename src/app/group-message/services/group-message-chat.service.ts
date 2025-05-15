@@ -210,6 +210,26 @@ export class GroupMessageService{
         )
     }
 
+    // Méthode pour charger 10 messages de plus dans une discussion entre deux utilisateurs.
+    loadMoreMessages(otherUserId: string): Observable<boolean> {
+        this.setValueOfLoading(true)
+        const chat = this.getValueOfChat()
+        const skip = chat.length;
+        return this.getPreviousPosts(otherUserId, skip).pipe(
+            map( (posts) => {
+                this.setValueOfChat([...posts, ...chat])
+                this.setValueOfLoading(false)
+                return true
+            }),
+            catchError( () => {
+                this.displayService.displayMessage('Erreur lors du chargement des messages précédents.')
+                this.setValueOfLoading(false)
+                return of(false)
+            })
+        )
+    }
+
+
     // Cette méthode vérifie si le message n'est pas vide et si sa longueur ne dépasse pas maxLenght (500 par défaut).
     messageValid(message: string, maxLenght: number = 500): boolean {
         
