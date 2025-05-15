@@ -84,35 +84,6 @@ export class GroupMessageService{
 
 
 
-
-    // Méthode pour récupérer les 10 derniers posts entre deux utilisateurs.
-    getPreviousPosts(groupId: string, skip: number): Observable<GroupPost[]> {
-        return this.http.get<GroupPost[]>(`${environment.apiUrl}/group-message/getPreviousPosts`, {
-            params: {groupId, skip} 
-        })
-    }
-
-    // Méthode pour initialiser le chat d'un groupe de discussion
-    initChat(groupId: string): Observable<boolean> {
-        return this.getPreviousPosts(groupId,0).pipe(
-            map( (posts) => {
-                const updatedChat = posts;
-                if (updatedChat.length > 0) {
-                    this.setIsChatEmpty(false)
-                } else {
-                    this.setIsChatEmpty(true)
-                }
-                this.setValueOfChat(updatedChat)
-                return true
-            }),
-            catchError( () => {
-                this.setValueOfChat([])
-                this.displayService.displayMessage('Erreur lors du chargement de la discussion.')
-                return of(false)
-            })
-        )
-    }
-
     // Méthode pour créer le formData avec toutes les données pour l'envoi d'un post.
     createFormDataToSend( groupId: string, senderId: string, senderUsername: string, senderProfileImage: string, content: string, imageToSend?: File | null ) : FormData {
         const formData = new FormData();
@@ -210,6 +181,34 @@ export class GroupMessageService{
     }
 
 
+
+    // Méthode pour récupérer les 10 derniers posts entre deux utilisateurs.
+    getPreviousPosts(groupId: string, skip: number): Observable<GroupPost[]> {
+        return this.http.get<GroupPost[]>(`${environment.apiUrl}/group-message/getPreviousPosts`, {
+            params: {groupId, skip} 
+        })
+    }
+
+    // Méthode pour initialiser le chat d'un groupe de discussion
+    initChat(groupId: string): Observable<boolean> {
+        return this.getPreviousPosts(groupId,0).pipe(
+            map( (posts) => {
+                const updatedChat = posts;
+                if (updatedChat.length > 0) {
+                    this.setIsChatEmpty(false)
+                } else {
+                    this.setIsChatEmpty(true)
+                }
+                this.setValueOfChat(updatedChat)
+                return true
+            }),
+            catchError( () => {
+                this.setValueOfChat([])
+                this.displayService.displayMessage('Erreur lors du chargement de la discussion.')
+                return of(false)
+            })
+        )
+    }
 
     // Cette méthode vérifie si le message n'est pas vide et si sa longueur ne dépasse pas maxLenght (500 par défaut).
     messageValid(message: string, maxLenght: number = 500): boolean {
