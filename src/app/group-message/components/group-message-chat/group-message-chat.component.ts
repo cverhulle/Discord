@@ -11,7 +11,7 @@ import { DisplayService } from '../../../shared/display/service/display.service'
 import { EmojisService } from '../../../shared/emojis/services/emojis.service';
 import { ImageService } from '../../../shared/image/services/image.services';
 import { GroupMessageService } from '../../services/group-message-chat.service';
-import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, NgFor, NgIf, NgStyle } from '@angular/common';
 import { SharedModule } from '../../../shared/shared.module';
 
 
@@ -21,7 +21,8 @@ import { SharedModule } from '../../../shared/shared.module';
     AsyncPipe,
     NgIf,
     NgFor,
-    SharedModule
+    SharedModule,
+    NgStyle
   ],
   templateUrl: './group-message-chat.component.html',
   styleUrl: './group-message-chat.component.scss'
