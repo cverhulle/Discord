@@ -208,7 +208,7 @@ export class PrivateMessageChatComponent implements OnInit{
 
     this.postService.updatePost(editedPost, this.messageContent, this.imageService.getValueOfImageToSend(), this.imageService.getValueOfDeleteImageInModifiedPost()).subscribe()
       
-    }
+  }
   
 
   // Méthode au clic sur le bouton envoi.
