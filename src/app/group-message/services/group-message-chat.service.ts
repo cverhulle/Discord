@@ -206,7 +206,8 @@ export class GroupMessageService{
             editedPost.senderUsername,
             editedPost.senderProfileImage,
             newContent,
-            newImage            
+            newImage,
+            editedPost.postId
         );
         
         return this.updatePostBackend(formData).pipe(
