@@ -178,7 +178,23 @@ export class GroupMessageChatComponent implements OnInit{
     this.categoriesEmojisExcluded = this.emojisService.categoryExcluded()
   }
 
-    // Méthode au clic sur le bouton envoi.
+  // Méthode pour réinitialiser l'image à envoyer
+  private resetAllSubject(): void {
+    this.groupMessageService.resetModifiedPostStuff()
+  }
+
+  // Méthode pour éditer un message.
+  onEditMessage(post : GroupPost) {
+    this.groupMessageService.setValueOfEditMessage(post)
+  }
+
+  // Méthode pour annuler la modification d'un message
+  onNotModify() : void{
+    this.groupMessageService.resetModifiedPostStuff()
+  }
+
+  
+  // Méthode au clic sur le bouton envoi.
   onSendMessage(): void{
     if (this.groupMessageService.messageValid(this.messageContent)) {
       this.groupMessageService.setValueOfLoading(true)
