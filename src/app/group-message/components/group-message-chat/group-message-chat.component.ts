@@ -210,13 +210,13 @@ export class GroupMessageChatComponent implements OnInit{
     if (this.groupMessageService.messageValid(this.messageContent)) {
       this.groupMessageService.setValueOfLoading(true)
 
-      // const postToEdit = this.postService.getValueOfEditMessageSubject();
+      const postToEdit = this.groupMessageService.getValueOfEditMessageSubject();
       // Si l'on édite un post, on lance la méthode adaptée et on quitte la boucle.
-      // if (postToEdit !== null) {
-        //this.updateMessage(postToEdit);
-        // this.postService.setValueOfLoading(false)
-        //return;
-      //}
+      if (postToEdit !== null) {
+        this.updateMessage(postToEdit);
+        this.groupMessageService.setValueOfLoading(false)
+        return;
+      }
       
       // On crée le formData grâce au service
       const formData = this.groupMessageService.createFormDataToSend(
