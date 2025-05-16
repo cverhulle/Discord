@@ -306,4 +306,9 @@ export class GroupMessageChatComponent implements OnInit{
     this.avatarService.updateImageError(post.senderUsername, true)
   }
 
+  // Récupérer la couleur de la mat-card
+  getPostCardColor(postsenderId: string) : string {
+    return this.groupMessageService.getPostCardColor(postsenderId, this.currentUser.id)
+  }
+
 }
