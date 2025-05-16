@@ -2,3 +2,14 @@
     <img [src]="groupLogo" alt="Logo du groupe" class="group-logo">
     {{ groupName}}
 </h1>
+
+<div class="discussion" #chatContainer>
+    <!-- Affichage en cas de chargement -->
+    <mat-spinner *ngIf="(loading$ | async)"> </mat-spinner>
+    
+    <!-- Affichage en cas chat vide  et pas de chargement -->
+    <div *ngIf="(isChatEmpty$ | async) && !(loading$ | async)" class="empty-chat">
+        <p> Ce groupe ne contient pas encore de messages </p>
+    </div>
+
+</div>
