@@ -140,12 +140,12 @@ export class GroupMessageChatComponent implements OnInit{
   // Cette méthode initialise les observables pour réagir aux modifications de message.
   private initObservable(): void {
     // On initialise l'Observable pour la modification de messages.
-    // this.editMessage$ = this.postService.editMessage$
+    this.editMessage$ = this.groupMessageService.editMessage$
 
-    //this.editMessage$.subscribe( (post) => {
-    //  this.messageContent = post?.content ? post?.content : ''
-    //  this.scrollToBottom()
-    // })
+    this.editMessage$.subscribe( (post) => {
+      this.messageContent = post?.content ? post?.content : ''
+      this.scrollToBottom()
+    })
     
 
     // On initialise l'Observable pour afficher le selecteur d'émotes.
