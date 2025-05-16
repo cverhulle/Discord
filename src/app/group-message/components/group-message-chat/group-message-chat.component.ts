@@ -296,5 +296,10 @@ export class GroupMessageChatComponent implements OnInit{
     }, 200);
   }
 
+  // Si l'image ne peut pas être chargée, on modifie l'Url du profil par l'Url par défaut.
+  getProfileImage(post: GroupPost): string {
+    return this.avatarService.getProfileImage(post.senderProfileImage, post.senderUsername)
+  }
+
 
 }
