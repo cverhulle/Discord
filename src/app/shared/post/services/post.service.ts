@@ -214,7 +214,8 @@ export class PostService{
             editedPost.image,
             newImage,
             editedPost.postId,
-            
+            editedPost.imageInChat,
+            deleteCurrentImage
         );
         
         return this.updatePostBackend(formData).pipe(
