@@ -193,7 +193,18 @@ export class GroupMessageChatComponent implements OnInit{
     this.groupMessageService.resetModifiedPostStuff()
   }
 
-  
+  // Méthode pour mettre à jour le contenu d'un post.
+  private updateMessage(editedPost : GroupPost): void {
+    if (!editedPost.postId) {
+      this.displayService.displayMessage('ID du message non disponible.')
+      return;
+    }
+
+    this.groupMessageService.updatePost(editedPost, this.messageContent, this.imageService.getValueOfImageToSend(), this.imageService.getValueOfDeleteImageInModifiedPost()).subscribe()
+      
+  }
+
+
   // Méthode au clic sur le bouton envoi.
   onSendMessage(): void{
     if (this.groupMessageService.messageValid(this.messageContent)) {
