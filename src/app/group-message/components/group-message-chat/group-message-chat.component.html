@@ -56,5 +56,49 @@
         </div>
     </div>
 
+    <!-- Affichage en cas de chat non vide, pas de chargement et, si l'on modifie un message-->
+    <div *ngIf="!(loading$ | async) && !(isChatEmpty$ | async) && (editMessage$ | async)  as editMessage">
+
+        <div class="modify-post-header">
+            <p class="modify-post-header-text"> Vous modifiez le message suivant : </p>
+
+            <!-- On affiche un bouton pour revenir en arrière -->
+            <mat-card-actions class="go-back-button-modify-post-container">
+                <button mat-flat-button (click)="onNotModify()" [disabled]="(loading$ | async)" class="button-previous-post"> Revenir en arrière </button>
+            </mat-card-actions>
+        </div>
+
+        <div *ngIf="editMessage !==null" class="mat-card-post-modify-container">
+            <!-- On affiche le post que l'on modifie -->
+            <mat-card class="mat-card-post" [ngStyle]="{'background-color': getPostCardColor(editMessage.senderId)}" [class.editing]="editMessage$ | async">
+
+                <!-- Affichage de l'en-tête du post : nom de l'utilisateur, photo etc... -->
+                <div class="avatar-username-menu"> 
+                    <div class="avatar-username">
+                        <img [src]="getProfileImage(editMessage)" (error)="setImageError(editMessage)" alt="Avatar de {{editMessage.senderUsername}}" class="avatar">
+                        <mat-card-header> {{editMessage.senderUsername}} </mat-card-header>
+                    </div>
+
+                </div>
+                
+                <!-- Affichage du contenu à modifier-->
+                <mat-card-content> {{editMessage.content}} </mat-card-content>
+
+                <!-- Affichage de l'image du message à modifier -->
+                <div class="post-image-container">
+                    <img *ngIf="editMessage.imageInChat" [src]="editMessage.imageInChat" alt="image du post" class="post-image">
+                </div>
+
+                <!-- Affichage du timestamp du message à modifier -->
+                <mat-card-footer class="timestamp"> {{editMessage.timestamp | timeAgo }} </mat-card-footer>
+                
+                
+            </mat-card>
+        </div>
+
+        
+
+    </div>
+
 
 </div>
