@@ -270,6 +270,31 @@ export class GroupMessageService{
         )
     }
 
+    // Méthode pour supprimer un post.
+    deletePost(postId: string): Observable<boolean> {
+        this.setValueOfLoading(true)
+        return this.http.delete(`${environment.apiUrl}/group-message/deleteGroupPost`, {
+            params: {postId}
+        }).pipe(
+            map( () => {
+                const chat = this.getValueOfChat()
+                const updatedChat = chat.filter( post => post.postId !== postId)
+                this.setValueOfChat(updatedChat)
+                this.displayService.displayMessage('Message supprimé avec succès.')
+                if (updatedChat.length === 0) {
+                    this.setIsChatEmpty(true)
+                }
+                this.setValueOfLoading(false)
+                return true
+        }),
+            catchError( () => {
+                this.displayService.displayMessage('Erreur lors de la suppression du message.')
+                this.setValueOfLoading(false)
+                return of(false)
+        }) 
+        )
+    }
+
 
     // Cette méthode vérifie si le message n'est pas vide et si sa longueur ne dépasse pas maxLenght (500 par défaut).
     messageValid(message: string, maxLenght: number = 500): boolean {
