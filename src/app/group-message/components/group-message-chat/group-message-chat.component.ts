@@ -264,7 +264,15 @@ export class GroupMessageChatComponent implements OnInit{
 
 
 
-
+  // Méthode pour ouvrir la roue d'émoticones
+  onOpenEmojisList() : void{
+    this.emojisService.openEmojisList()
+  }
+  
+  // Méthode pour ajouter l'émote dans le message de l'utilisateur.
+  onEmojiClick(event: any): void {
+    this.messageContent = this.emojisService.addEmojisToMessage(event, this.messageContent)
+  }
 
   // Scroll de l'écran après l'envoi d'un nouveau message.
   private scrollToBottom(): void {
