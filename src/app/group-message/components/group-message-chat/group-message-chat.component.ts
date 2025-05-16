@@ -301,5 +301,9 @@ export class GroupMessageChatComponent implements OnInit{
     return this.avatarService.getProfileImage(post.senderProfileImage, post.senderUsername)
   }
 
+  // Met l'imageError du service à true pour l'utilisateur.
+  setImageError(post: GroupPost): void {
+    this.avatarService.updateImageError(post.senderUsername, true)
+  }
 
 }
