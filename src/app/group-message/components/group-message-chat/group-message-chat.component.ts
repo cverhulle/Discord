@@ -241,10 +241,12 @@ export class GroupMessageChatComponent implements OnInit{
     } else {
       this.displayService.displayMessage('Le message ne peut pas être vide et doit contenir moins de 500 caractères.')
     }
-    
   }
 
-
+  // Méthode pour charger plus de messages à l'appui du bouton.
+  onLoadMoreMessages(): void {
+    this.groupMessageService.loadMoreMessages(this.groupId).subscribe()
+  } 
 
 
 
