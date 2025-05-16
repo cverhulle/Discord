@@ -27,8 +27,34 @@
                         <img [src]="getProfileImage(post)" (error)="setImageError(post)" alt="Avatar de {{post.senderUsername}}" class="avatar">
                         <mat-card-header> {{post.senderUsername}} </mat-card-header>
                     </div>
+
+                    <!-- Menu déroulant pour modifier ou supprimer un message -->
+                    <mat-card-actions *ngIf="post.senderId === currentUser.id">
+                        <button mat-icon-button [matMenuTriggerFor]="menu">
+                            <mat-icon class="burger-icon"> more_vert </mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)="onEditMessage(post)"> Modifier </button>
+                            <button mat-menu-item (click)="onDeleteMessage(post)"> Supprimer </button>
+                        </mat-menu>
+                    </mat-card-actions>
                 </div>
+
+                <!-- Affichage du message -->
+                <mat-card-content> {{post.content}} </mat-card-content>
+
+                <!-- Affichage de l'image -->
+                <div class="post-image-container">
+                    <img *ngIf="post.imageInChat" [src]="post.imageInChat" alt="image du post" class="post-image">
+                </div>
+
+                <!-- Affichage de la date du message -->            
+                <mat-card-footer class="timestamp"> {{post.timestamp | timeAgo }} </mat-card-footer>
+                
+                
             </mat-card>
         </div>
+    </div>
+
 
 </div>
