@@ -262,6 +262,10 @@ export class GroupMessageChatComponent implements OnInit{
     )
   }
 
+  // Méthode pour gérer l'opacité du bandeau de prévisualisation
+  onSetOpacity(): void{
+    this.imageService.setValueOfOpacity()
+  }
 
 
   // Méthode pour ouvrir la roue d'émoticones
@@ -273,6 +277,7 @@ export class GroupMessageChatComponent implements OnInit{
   onEmojiClick(event: any): void {
     this.messageContent = this.emojisService.addEmojisToMessage(event, this.messageContent)
   }
+  
 
   // Scroll de l'écran après l'envoi d'un nouveau message.
   private scrollToBottom(): void {
