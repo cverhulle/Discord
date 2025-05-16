@@ -277,7 +277,17 @@ export class GroupMessageChatComponent implements OnInit{
   onEmojiClick(event: any): void {
     this.messageContent = this.emojisService.addEmojisToMessage(event, this.messageContent)
   }
-  
+
+  // Méthode à déclencher au clic sur une image. 
+  onImageToSend(event : Event): void {
+    this.imageService.getImageToSend(event)      
+  }
+
+  // Méthode pour retirer l'image dans le Post
+  onRemoveImage(): void {
+    this.groupMessageService.removeImageInPost()
+  }
+
 
   // Scroll de l'écran après l'envoi d'un nouveau message.
   private scrollToBottom(): void {
