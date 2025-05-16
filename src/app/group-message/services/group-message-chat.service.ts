@@ -295,6 +295,15 @@ export class GroupMessageService{
         )
     }
 
+    // Méthode pour gérer la couleur des cartes de messages.
+    getPostCardColor(postsenderId: string, currentUserId: string) : string {
+        if(postsenderId === currentUserId) {
+            return '#283e6e'
+        } else {
+            return  '#5e3a8c'
+        }
+    }
+
 
     // Cette méthode vérifie si le message n'est pas vide et si sa longueur ne dépasse pas maxLenght (500 par défaut).
     messageValid(message: string, maxLenght: number = 500): boolean {
