@@ -85,7 +85,7 @@ export class GroupMessageService{
 
 
     // Méthode pour créer le formData avec toutes les données pour l'envoi d'un post.
-    createFormDataToSend( groupId: string, senderId: string, senderUsername: string, senderProfileImage: string, content: string, imageToSend?: File | null, postId? : string, removeImage?: boolean ) : FormData {
+    createFormDataToSend( groupId: string, senderId: string, senderUsername: string, senderProfileImage: string, content: string, imageToSend?: File | null, postId? : string, previousImage? : string | null,  removeImage?: boolean ) : FormData {
         const formData = new FormData();
         formData.append('groupId', groupId);
         formData.append('senderId', senderId);
@@ -93,18 +93,21 @@ export class GroupMessageService{
         formData.append('senderProfileImage', senderProfileImage);
         formData.append('content', content);
 
-        if (imageToSend) {
-            formData.append('imageToSend', imageToSend, imageToSend.name);
-        }
-
         if(postId) {
             formData.append("postId", postId)
+        }
+
+        if(previousImage) {
+            formData.append("previousImage", previousImage)
+        }
+
+        if (imageToSend) {
+            formData.append('imageToSend', imageToSend, imageToSend.name);
         }
 
         if(removeImage) {
             formData.append("removeImage", "removeImage")
         }
-
         return formData
     }
 
@@ -212,6 +215,7 @@ export class GroupMessageService{
             newContent,
             newImage,
             editedPost.postId,
+            editedPost.imageInChat,
             deleteCurrentImage
         );
         
