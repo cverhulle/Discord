@@ -114,3 +114,35 @@
     </mat-card>
 
 </div>
+
+<!-- Barre d'envoi de messages -->
+<div class="send-message-container">
+    <mat-form-field appearance="fill" class="send-message">
+        <mat-label> Mon message </mat-label>
+        <textarea matInput placeholder="Entrez votre message ici..." [(ngModel)]="messageContent"> </textarea>
+
+        <!-- Envoi d'émotes -->
+        <mat-icon matSuffix (click)="onOpenEmojisList()" class="emoji-icon"> mood </mat-icon>
+        <div *ngIf="showEmojisList$ | async" class="emoji-list">
+            <emoji-mart (emojiClick)="onEmojiClick($event)" [exclude]="categoriesEmojisExcluded"> </emoji-mart>
+        </div>
+
+        <!-- Affichage de l'icone de selection d'images ou de suppression -->
+        <ng-container matSuffix> 
+            <!-- Affichage de l'icone de selection du message-->
+            <ng-container *ngIf="!(imageToSend$ | async) && (!(editMessage$ | async)?.imageInChat || (deleteImageInModifiedPost$ | async)) ; else deleteImageIcon">
+                <mat-icon (click)="fileInput.click()" class="image-icon">image</mat-icon>
+                <input type="file" #fileInput accept=".jpg, .jpeg, .png" style="display: none;" (change)="onImageToSend($event)">
+            </ng-container>
+
+            <!-- Affichage de l'icône pour supprimer l'image du message -->
+            <ng-template #deleteImageIcon>
+                <mat-icon (click)="onRemoveImage()" class="image-icon" >delete</mat-icon>
+            </ng-template>
+        </ng-container>
+        
+
+        <!-- Bouton pour envoyer le message -->
+        <mat-icon matSuffix class="send-message-icon" (click)="onSendMessage()"> send </mat-icon>
+    </mat-form-field>
+</div>
