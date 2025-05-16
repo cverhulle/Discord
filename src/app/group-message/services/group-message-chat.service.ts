@@ -190,6 +190,38 @@ export class GroupMessageService{
         )
     }
 
+    // Méthode pour modifier un message
+    updatePost(editedPost : GroupPost, newContent : string, newImage : File | null, deleteCurrentImage : boolean): Observable<boolean> {
+        if (!newImage && !deleteCurrentImage && (this.getValueOfEditMessageSubject()?.content === newContent)) {
+            return of(false)
+        }
+        
+        const formData = this.createFormDataToSend(
+            editedPost.groupId,
+            editedPost.senderId,
+            editedPost.senderUsername,
+            editedPost.senderProfileImage,
+            newContent,
+            newImage            
+        );
+        
+        return this.updatePostBackend(formData).pipe(
+            map((updatedPost) => {
+                const chat = this.getValueOfChat()
+                const messageIndex = chat.findIndex(post => post.postId === updatedPost.postId);
+                chat[messageIndex] = updatedPost;
+                this.setValueOfChat(chat)
+                this.resetModifiedPostStuff()
+                return true
+                
+            }),
+            catchError( () => {
+                this.displayService.displayMessage('Erreur lors de la modification du message')
+                return of(false)
+            })
+        )
+    }
+
 
     // Méthode pour récupérer les 10 derniers posts entre deux utilisateurs.
     getPreviousPosts(groupId: string, skip: number): Observable<GroupPost[]> {
