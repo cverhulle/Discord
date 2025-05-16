@@ -85,7 +85,7 @@ export class GroupMessageService{
 
 
     // Méthode pour créer le formData avec toutes les données pour l'envoi d'un post.
-    createFormDataToSend( groupId: string, senderId: string, senderUsername: string, senderProfileImage: string, content: string, imageToSend?: File | null ) : FormData {
+    createFormDataToSend( groupId: string, senderId: string, senderUsername: string, senderProfileImage: string, content: string, imageToSend?: File | null, postId? : string ) : FormData {
         const formData = new FormData();
         formData.append('groupId', groupId);
         formData.append('senderId', senderId);
@@ -95,6 +95,10 @@ export class GroupMessageService{
 
         if (imageToSend) {
             formData.append('imageToSend', imageToSend, imageToSend.name);
+        }
+
+        if(postId) {
+            formData.append("postId", postId)
         }
 
         return formData
