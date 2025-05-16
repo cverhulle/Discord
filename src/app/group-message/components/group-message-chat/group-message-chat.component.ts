@@ -102,6 +102,7 @@ export class GroupMessageChatComponent implements OnInit{
       this.initChat(this.groupId)
       this.initObservable()
       this.initEmojis()
+      this.resetAllSubject()
     }
 
   }
