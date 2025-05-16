@@ -286,4 +286,11 @@ export class GroupMessageService{
             this.imageService.setImageToSend(null)
         }
     }
+
+    // Méthode pour réinitialiser les variables liés à la modification d'un post.
+    resetModifiedPostStuff(): void {
+        this.setValueOfEditMessage(null)
+        this.imageService.setDeleteImageInModifiedPost(false)
+        this.resetOpacityEmojisDisplayAndImageToSend(true)
+    }
 }
