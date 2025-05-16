@@ -14,6 +14,7 @@ import { GroupMessageService } from '../../services/group-message-chat.service';
 import { AsyncPipe, NgFor, NgIf, NgStyle } from '@angular/common';
 import { SharedModule } from '../../../shared/shared.module';
 import { TimeAgoPipe } from '../../../shared/post/pipe/time-ago.pipe';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
@@ -24,7 +25,8 @@ import { TimeAgoPipe } from '../../../shared/post/pipe/time-ago.pipe';
     NgFor,
     SharedModule,
     NgStyle,
-    TimeAgoPipe
+    TimeAgoPipe,
+    FormsModule
   ],
   templateUrl: './group-message-chat.component.html',
   styleUrl: './group-message-chat.component.scss'
