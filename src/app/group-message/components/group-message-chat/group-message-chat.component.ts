@@ -248,6 +248,20 @@ export class GroupMessageChatComponent implements OnInit{
     this.groupMessageService.loadMoreMessages(this.groupId).subscribe()
   } 
 
+  // Méthode pour supprimer un message.
+  onDeleteMessage(post : GroupPost) {
+    if (!post.postId) {
+      this.displayService.displayMessage('ID du message non disponible.');
+      return; 
+    }
+
+    this.groupMessageService.deletePost(post.postId).subscribe(
+      () => {
+        this.scrollToBottom()
+      }
+    )
+  }
+
 
 
 
