@@ -13,6 +13,7 @@ import { ImageService } from '../../../shared/image/services/image.services';
 import { GroupMessageService } from '../../services/group-message-chat.service';
 import { AsyncPipe, NgFor, NgIf, NgStyle } from '@angular/common';
 import { SharedModule } from '../../../shared/shared.module';
+import { TimeAgoPipe } from '../../../shared/post/pipe/time-ago.pipe';
 
 
 @Component({
@@ -22,7 +23,8 @@ import { SharedModule } from '../../../shared/shared.module';
     NgIf,
     NgFor,
     SharedModule,
-    NgStyle
+    NgStyle,
+    TimeAgoPipe
   ],
   templateUrl: './group-message-chat.component.html',
   styleUrl: './group-message-chat.component.scss'
