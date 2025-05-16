@@ -5,6 +5,10 @@ html, body{
     padding: 0;
 }
 
+
+
+
+
 // Styles pour le titre de la page
 .title{
     color: #7289da;
@@ -25,3 +29,454 @@ html, body{
     box-shadow: 0 0 10px rgba(255, 193, 227, 0.4);
     margin-right: 1vw;
 }
+
+
+
+// Style pour l'encart des discussions
+.discussion{
+    overflow-y: auto;
+    height: 65%;
+    margin-left: 1%;
+    margin-right: 1%;
+    scroll-behavior: smooth;
+}
+
+
+
+
+// Style à appliquer lorsque le message de chat vide apparaît
+.empty-chat{
+    margin-top: 10%;
+    color: #ffc1e3;
+    text-align: center;
+    font-size: 2vw;
+    margin-bottom: 2vh;
+    display: flex;
+    justify-content: center; 
+}
+
+
+
+
+
+
+
+
+
+
+// Style pour placer le bouton permettant de charger plus de messages.
+.button-previous-post-container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1vh;
+}
+
+// Style à appliquer sur le bouton permettant de charger plus de messages.
+.button-previous-post{
+    background-color: #7289da !important;
+    color: white !important;
+    border-radius: 20px;
+    padding: 0.8rem 1.5rem; 
+    font-size: 1vw; 
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+// Effet au survol du bouton 
+.button-previous-post:hover {
+    background-color: #5b6eae;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+
+
+
+
+// Style à appliquer au container de mat-card-post
+.mat-card-post-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+// Style pour la mat-card de chaque post
+.mat-card-post{
+    width: 80%;
+    margin-bottom: 1%;
+    font-size: 1.2vw;
+    padding: 10px;
+    border-radius: 12px;
+    word-wrap: break-word;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    animation: fadeInSlide 0.3s ease-in;
+}
+
+// Style à appliquer au survol de la mat card
+.mat-card-post:hover {
+    box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.6);
+    transform: scale(1.05); 
+}
+
+
+
+// Animation d'apparition des mat-cards
+@keyframes fadeInSlide {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Style pour le menu déroulant
+.avatar-username-menu{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1%;
+}
+
+// Style pour placer l'avatar, l'username et le menu sur la même ligne
+.avatar-username{
+    display: flex;
+    align-items: center;
+    gap: 0.3vw;
+}
+
+// Style pour l'image de profil
+.avatar{
+    width: 5%;
+    height: 5%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+
+
+
+
+
+
+
+
+// Style pour gérer l'image dans le post
+.post-image-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+// Style pour gérer la taille de l'image dans un post.
+.post-image{
+    max-width: 30vw;
+    max-height: 50vh;
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+
+
+
+
+
+
+
+
+
+
+// Style à appliquer sur l'icone du menu burger
+.burger-icon{
+    color: black;
+}
+
+// Style à appliquer au passage de la souris sur l'icone burger
+.burger-icon:hover {
+    transform: scale(1.5);
+    transition: transform 0.2s ease-in-out;
+}
+
+
+
+
+
+
+
+
+
+
+// Style pour afficher la date du post.
+.timestamp{
+    font-size: 0.7em;
+    text-align: right;
+    margin-right: 1%;
+}
+
+
+
+
+
+
+
+
+
+
+// Style à appliquer sur la div contenant la mat card de la prévisualisation d'image
+.mat-card-image-preview-container{
+    position: fixed;
+    bottom: 13vh;
+    height: 12vh;
+    width: 100%;    
+}
+
+
+// Style à appliquer sur la mat-card contenant la prévisualisation de l'image
+.mat-card-image-preview{
+    background-color: rgb(114, 83, 172);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+// Style à appliquer sur le texte lors de la prévisualisation de l'image
+.mat-card-image-preview p {
+    margin-right: 1vw;
+}
+
+
+
+// Style pour gérer l'image dans la prévisualition du post à envoyer
+.post-image-preview{
+    max-width: 12vh;
+    max-height: 12vh;
+    width: auto;
+    height: auto;
+}
+
+
+
+// Style pour gérer la position du logo d'opacité
+.opacity-icon{
+    position: absolute;
+    right: 2vh;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+// Style à appliquer lorsque l'utilisateur veut modifier un post.
+.modify-post-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+// Style à appliquer sur le message de modification de psot
+.modify-post-header-text{
+    color: #7289da;
+    font-size: 2.5vw;
+}
+
+// Style à appliquer sur le container du bouton pour revenir en arrière lors de la modification d'un post
+.go-back-button-modify-post-container{
+    margin-right: 20vh;
+}
+
+// Style à appliquer sur le container de la mat-card à modifier
+.mat-card-post-modify-container{
+    display: flex;
+    justify-content: center;
+}
+
+// Style à appliquer au titre lors de l'édition d'un message
+.title.editing {
+    margin-bottom: -2vh;
+}
+
+// Style à appliquer sur la mat-card lors de l'édition d'un message
+.mat-card-post.editing{
+    width: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// Style à appliquer sur la div contenant la mat card d'envoi de message
+.send-message-container{
+    position: fixed;
+    height: 13vh;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    box-sizing: border-box;
+}
+
+// Style pour la mat-card d'envoi d'un message
+.send-message{
+    width: 100%;    
+}
+
+
+// Style pour gérer la taille du text-area pour l'envoi d'un message
+.send-message textarea {
+    resize: none; 
+    min-height: 8vh; 
+    margin-bottom: 1.5vh;
+
+}
+
+
+
+
+
+
+// Style à appliquer sur l'icone des émojis
+.emoji-icon{
+    cursor: pointer;
+}
+
+// Style pour afficher l'émote des émojis
+.emoji-list{
+    position: fixed; 
+    overflow: auto; 
+    background-color: white; 
+    max-width: 30em; 
+    max-height: 30em; 
+    top: calc(25em); 
+    right: calc(6em); 
+}
+
+
+
+
+
+// Style à appliquer sur l'icone d'ajout ou de suppression d'image
+.image-icon{
+    cursor: pointer;
+}
+
+
+
+
+
+// Style pour le bouton d'envoi d'un message
+.send-message-icon{
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 1000px) {
+    // Style à appliquer sur le titre.
+    .title{
+        font-size: 5vh;
+    }
+
+    // Style à appliquer sur le bouton previous post
+    .button-previous-post{
+        font-size: 2vh;
+    }
+
+    // Style à appliquer sur le texte quand le chat est vide.
+    .empty-chat{
+        font-size: 3vh;
+    }
+
+    // Style à appliquer aux mat-cards contenant les posts
+    .mat-card-post{
+        font-size: 2.5vw;
+    }
+
+    // Style à appliquer sur le titre lors de l'édition d'un message
+    .title.editing{
+        margin-bottom: 1vh;
+    }
+
+    // Style à appliquer sur le message de modification de psot
+    .modify-post-header-text{
+        font-size: 3vw;
+    }
+
+    // Style à appliquer aux mat-cards d'édition de posts
+    .mat-card-post.editing{
+        width: 80%;
+    }
+
+
+}
+
+@media (min-width: 1000px) and  (max-width: 1350px) {
+    // Style à appliquer aux mat-cards contenant les posts
+    .mat-card-post{
+        font-size: 2vw;
+    }
+
+    // Style à appliquer sur le bouton previous post
+    .button-previous-post{
+        font-size: 1.5vw;
+    }
+}
+
+
