@@ -81,7 +81,7 @@ export class PostService{
     }
 
     // Méthode pour créer le formData avec toutes les données pour l'envoi d'un post.
-    createFormDataToSend(currentUserId : string, otherUserId : string, username: string, messageContent: string, image: string, imageToSend : any, postId? : string) : FormData {
+    createFormDataToSend(currentUserId : string, otherUserId : string, username: string, messageContent: string, image: string, imageToSend : File | null, postId? : string, previousImage? : string | null,  removeImage?: boolean) : FormData {
         const formData = new FormData();
         formData.append('currentUserId', currentUserId);
         formData.append('otherUserId', otherUserId);
@@ -90,12 +90,20 @@ export class PostService{
         formData.append('image', image)
             
 
-        if(imageToSend) {
-            formData.append('imageToSend', imageToSend, imageToSend.name)
-        }
-
         if(postId) {
             formData.append("postId", postId)
+        }
+
+        if(previousImage) {
+            formData.append("previousImage", previousImage)
+        }
+
+        if (imageToSend) {
+            formData.append('imageToSend', imageToSend, imageToSend.name);
+        }
+
+        if(removeImage) {
+            formData.append("removeImage", "removeImage")
         }
 
         return formData
