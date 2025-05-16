@@ -12,4 +12,23 @@
         <p> Ce groupe ne contient pas encore de messages </p>
     </div>
 
+    <!-- Affichage en cas chat non vide, pas de chargement et, si on ne modifie pas un message-->
+    <div *ngIf="!(isChatEmpty$ | async) && !(loading$ | async) && (editMessage$ | async) === null">
+        <!-- Bouton pour charger plus de messages -->
+        <mat-card-actions class="button-previous-post-container">
+            <button mat-flat-button (click)="onLoadMoreMessages()" [disabled]="(loading$ | async)" class="button-previous-post"> Charger les messages précédents </button>
+        </mat-card-actions>
+
+        <div class="mat-card-post-container">
+            <!-- Affichage des messages dans un chat à l'aide de mat-card -->
+            <mat-card *ngFor="let post of (chat$ | async)" class="mat-card-post" [ngStyle]="{'background-color': getPostCardColor(post.senderId)}">
+                <div class="avatar-username-menu"> 
+                    <div class="avatar-username">
+                        <img [src]="getProfileImage(post)" (error)="setImageError(post)" alt="Avatar de {{post.senderUsername}}" class="avatar">
+                        <mat-card-header> {{post.senderUsername}} </mat-card-header>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+
 </div>
