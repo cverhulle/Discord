@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AsyncPipe, NgFor, NgIf, NgStyle } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { catchError, Observable, of, tap } from 'rxjs';
 
@@ -11,10 +13,12 @@ import { DisplayService } from '../../../shared/display/service/display.service'
 import { EmojisService } from '../../../shared/emojis/services/emojis.service';
 import { ImageService } from '../../../shared/image/services/image.services';
 import { GroupMessageService } from '../../services/group-message-chat.service';
-import { AsyncPipe, NgFor, NgIf, NgStyle } from '@angular/common';
+
 import { SharedModule } from '../../../shared/shared.module';
+
 import { TimeAgoPipe } from '../../../shared/post/pipe/time-ago.pipe';
-import { FormsModule } from '@angular/forms';
+
+
 
 
 @Component({
