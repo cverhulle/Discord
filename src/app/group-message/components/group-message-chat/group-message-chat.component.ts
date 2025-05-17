@@ -38,20 +38,14 @@ export class GroupMessageChatComponent implements OnInit{
   // Variable pour récupérer les données de l'utilisateur actuel.
   currentUser!: usernameImage;
 
-
-
-
   // Variable pour récupérer le nom du groupe
-  groupName : string = '';
+  groupName$!: Observable<string>;
 
   // Variable pour récupérer le logi du groupe
-  groupLogo : string = '';
+  groupLogo$!:  Observable<string>;
 
   // Variable pour stocker l'id du groupe
-  groupId : string = '';
-
-
-
+  groupId$!:  Observable<string>;
 
   // Variable pour récupérer le texte dans le message.
   messageContent: string = ''
@@ -98,8 +92,8 @@ export class GroupMessageChatComponent implements OnInit{
   ngOnInit(): void {
     this.groupMessageService.setValueOfLoading(false)
     this.initCurrentUserAndGroupInfos()
-    if (this.groupName !== '') {
-      this.initChat(this.groupId)
+    if (this.groupMessageService.getValueOfGroupNameSubject() !== '') {
+      this.initChat(this.groupMessageService.getValueOfGroupIdSubject())
       this.initObservable()
       this.initEmojis()
       this.resetAllSubject()
@@ -127,9 +121,9 @@ export class GroupMessageChatComponent implements OnInit{
   // Cette méthode permet d'initialiser le nom du groupe
   private initGroupInfos(): void {
     try {
-      this.groupName = history.state.groupName;
-      this.groupLogo = history.state.groupLogoPath
-      this.groupId = history.state.groupId
+      this.groupMessageService.setValueOfGroupName(history.state.groupName);
+      this.groupMessageService.setValueOfGroupLogo(history.state.groupLogoPath);
+      this.groupMessageService.setValueOfGroupId(history.state.groupId);
     } catch (error) {
       this.displayService.displayMessage('Erreur lors de la récupération du nom du groupe.');
     }
@@ -179,6 +173,15 @@ export class GroupMessageChatComponent implements OnInit{
 
     // On initialise l'Observable du chat
     this.chat$ = this.groupMessageService.chat$
+
+    // On intialise l'Observable du groupId
+    this.groupId$ = this.groupMessageService.groupId$
+
+    // On intialise l'Observable du groupName
+    this.groupName$ = this.groupMessageService.groupName$
+
+    // On intialise l'Observable du groupLogo
+    this.groupLogo$ = this.groupMessageService.groupLogo$
   }
 
   // Méthode pour initialiser les catégories d'émojis à ne pas charger.
@@ -228,7 +231,7 @@ export class GroupMessageChatComponent implements OnInit{
       
       // On crée le formData grâce au service
       const formData = this.groupMessageService.createFormDataToSend(
-        this.groupId,
+        this.groupMessageService.getValueOfGroupIdSubject(),
         this.currentUser.id,
         this.currentUser.username,
         this.currentUser.image,
@@ -253,7 +256,7 @@ export class GroupMessageChatComponent implements OnInit{
 
   // Méthode pour charger plus de messages à l'appui du bouton.
   onLoadMoreMessages(): void {
-    this.groupMessageService.loadMoreMessages(this.groupId).subscribe()
+    this.groupMessageService.loadMoreMessages(this.groupMessageService.getValueOfGroupIdSubject()).subscribe()
   } 
 
   // Méthode pour supprimer un message.
