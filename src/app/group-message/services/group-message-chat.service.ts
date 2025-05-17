@@ -28,17 +28,17 @@ export class GroupMessageService{
     groupLogo$ = this.groupLogoSubject.asObservable();
 
     // Méthode pour fixer la valeur du subject groupId
-    setGroupId(id: string) {
+    setValueOfGroupId(id: string) {
     this.groupIdSubject.next(id);
     }
 
     // Méthode pour fixer la valeur du subject groupName
-    setGroupName(name: string) {
+    setValueOfGroupName(name: string) {
         this.groupNameSubject.next(name);
     }
 
     // Méthode pour fixer la valeur du subject groupLogo
-    setGroupLogo(logo: string) {
+    setValueOfGroupLogo(logo: string) {
         this.groupLogoSubject.next(logo);
     }
 
