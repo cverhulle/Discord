@@ -388,4 +388,10 @@ export class GroupMessageService{
         this.setValueOfGroupLogo('')
         this.setValueOfGroupName('')
     }
+
+    // Méthode pour réinitialiser tous les subjects
+    resetAllSubjects(): void{
+        this.resetGroupInfos
+        this.resetModifiedPostStuff()
+    }
 }
