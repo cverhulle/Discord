@@ -27,6 +27,21 @@ export class GroupMessageService{
     groupName$ = this.groupNameSubject.asObservable();
     groupLogo$ = this.groupLogoSubject.asObservable();
 
+    // Méthode pour fixer la valeur du subject groupId
+    setGroupId(id: string) {
+    this.groupIdSubject.next(id);
+    }
+
+    // Méthode pour fixer la valeur du subject groupName
+    setGroupName(name: string) {
+        this.groupNameSubject.next(name);
+    }
+
+    // Méthode pour fixer la valeur du subject groupLogo
+    setGroupLogo(logo: string) {
+        this.groupLogoSubject.next(logo);
+    }
+
     // Observable et Subject pour gérer le chargement
     private loadingSubject = new BehaviorSubject<boolean>(true)
     loading$ = this.loadingSubject.asObservable()
