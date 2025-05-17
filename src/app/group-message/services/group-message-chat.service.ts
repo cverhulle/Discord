@@ -42,6 +42,21 @@ export class GroupMessageService{
         this.groupLogoSubject.next(logo);
     }
 
+    // Méthode pour obtenir la valeur du subject groupIdSubject
+    getValueOfGroupIdSubject(): string{
+        return this.groupIdSubject.getValue()
+    }
+
+    // Méthode pour obtenir la valeur du subject groupNameSubject
+    getValueOfGroupNameSubject(): string{
+        return this.groupNameSubject.getValue()
+    }
+
+    // Méthode pour obtenir la valeur du subject groupLogoSubject
+    getValueOfGroupLogoSubject(): string{
+        return this.groupLogoSubject.getValue()
+    }
+
     // Observable et Subject pour gérer le chargement
     private loadingSubject = new BehaviorSubject<boolean>(true)
     loading$ = this.loadingSubject.asObservable()
