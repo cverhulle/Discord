@@ -381,4 +381,11 @@ export class GroupMessageService{
         this.imageService.setDeleteImageInModifiedPost(false)
         this.resetOpacityEmojisDisplayAndImageToSend(true)
     }
+
+    // Méthode pour réinitialiser les données du groupe
+    resetGroupInfos(): void{
+        this.setValueOfGroupId('')
+        this.setValueOfGroupLogo('')
+        this.setValueOfGroupName('')
+    }
 }
