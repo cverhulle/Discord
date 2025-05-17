@@ -45,7 +45,7 @@ export class GroupMessageChatComponent implements OnInit{
   // Variable pour récupérer le nom du groupe
   groupName$!: Observable<string>;
 
-  // Variable pour récupérer le logi du groupe
+  // Variable pour récupérer le logo du groupe
   groupLogo$!:  Observable<string>;
 
   // Variable pour stocker l'id du groupe
