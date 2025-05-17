@@ -391,7 +391,7 @@ export class GroupMessageService{
 
     // Méthode pour réinitialiser tous les subjects
     resetAllSubjects(): void{
-        this.resetGroupInfos
+        this.resetGroupInfos()
         this.resetModifiedPostStuff()
     }
 }
