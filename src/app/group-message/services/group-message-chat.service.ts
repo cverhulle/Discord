@@ -16,6 +16,11 @@ export class GroupMessageService{
                     private displayService : DisplayService,
                     private imageService : ImageService,
                     private emojiService : EmojisService) {}
+    
+    // Subject pour gérer les informations sur le groupe
+    private groupIdSubject = new BehaviorSubject<string>('');
+    private groupNameSubject = new BehaviorSubject<string>('');
+    private groupLogoSubject = new BehaviorSubject<string>('');
 
     // Observable et Subject pour gérer le chargement
     private loadingSubject = new BehaviorSubject<boolean>(true)
