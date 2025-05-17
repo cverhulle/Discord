@@ -22,6 +22,11 @@ export class GroupMessageService{
     private groupNameSubject = new BehaviorSubject<string>('');
     private groupLogoSubject = new BehaviorSubject<string>('');
 
+    // Observables pour les informations du groupe
+    groupId$ = this.groupIdSubject.asObservable();
+    groupName$ = this.groupNameSubject.asObservable();
+    groupLogo$ = this.groupLogoSubject.asObservable();
+
     // Observable et Subject pour gérer le chargement
     private loadingSubject = new BehaviorSubject<boolean>(true)
     loading$ = this.loadingSubject.asObservable()
