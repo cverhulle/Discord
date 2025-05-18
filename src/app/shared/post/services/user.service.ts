@@ -16,6 +16,22 @@ export class UserService{
     private currentUserSubject = new BehaviorSubject<usernameImage | null>(null);
     currentUser$ = this.currentUserSubject.asObservable();
 
+    // Cette méthode permet d'initialiser les données du currentUser 
+    initCurrentUser(): void{
+        this.profileService.getProfile().pipe(
+            map( (profile : any) => {
+                return {
+                    id: profile.user._id,
+                    username: profile.user.loginInfo.username,
+                    image: profile.user.image
+                } as usernameImage;
+            })
+        ).subscribe(user => {
+            this.currentUserSubject.next(user);
+        });
+    }
+
+
     // Cette méthode permet de récupérer les données de l'utilisateur actuel.
     getCurrentUser(): Observable<usernameImage>{
         const currentUser = new usernameImage();
