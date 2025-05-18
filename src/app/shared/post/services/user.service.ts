@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ProfileService } from "../../../profile/service/profile.service";
-import { map, Observable, tap } from "rxjs";
+import { BehaviorSubject, map, Observable, tap } from "rxjs";
 import { usernameImage } from "../../../private-message/models/username-image.models";
 import { Router } from "@angular/router";
 import { DisplayService } from "../../display/service/display.service";
@@ -11,6 +11,10 @@ export class UserService{
     constructor(private profileService : ProfileService,
                 private displayService : DisplayService,
                 private router : Router){}
+    
+    // Subject et Observable pour gérer les données du currentUser
+    private currentUserSubject = new BehaviorSubject<usernameImage | null>(null);
+    currentUser$ = this.currentUserSubject.asObservable();
 
     // Cette méthode permet de récupérer les données de l'utilisateur actuel.
     getCurrentUser(): Observable<usernameImage>{
