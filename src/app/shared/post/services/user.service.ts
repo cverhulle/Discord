@@ -74,6 +74,21 @@ export class UserService{
         }
     }
 
+    // Cette méthode permet de récupérer l'id du otherUser
+    getOtherUserId(): string  {
+        return this.otherUserSubject.getValue().id 
+    }
+
+    // Cette méthode permet de récupérer l'username du otherUser
+    getOtherUserUsername(): string  {
+        return this.otherUserSubject.getValue().username
+    }
+
+    // Cette méthode permet de récupérer l'image de profil du otherUser
+    getOtherUserImage(): string  {
+        return this.otherUserSubject.getValue().image
+    }
+
 
     // Cette méthode permet de récupérer les données de l'utilisateur avec lequel on communique.
     getOtherUser(historyState: any): usernameImage{
