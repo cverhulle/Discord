@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AsyncPipe, NgFor, NgIf, NgStyle } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { catchError, Observable, of, tap } from 'rxjs';
+import {Observable} from 'rxjs';
 
 import { usernameImage } from '../../../private-message/models/username-image.models';
 import { GroupPost } from '../../models/group-post.model';
@@ -17,6 +17,7 @@ import { GroupMessageService } from '../../services/group-message-chat.service';
 import { SharedModule } from '../../../shared/shared.module';
 
 import { TimeAgoPipe } from '../../../shared/post/pipe/time-ago.pipe';
+import { Router } from '@angular/router';
 
 
 
@@ -90,7 +91,8 @@ export class GroupMessageChatComponent implements OnInit{
               private displayService : DisplayService,
               private emojisService : EmojisService,
               private imageService : ImageService,
-              private groupMessageService : GroupMessageService) {}
+              private groupMessageService : GroupMessageService,
+              private router : Router) {}
 
   
   ngOnInit(): void {
@@ -124,6 +126,7 @@ export class GroupMessageChatComponent implements OnInit{
       this.groupMessageService.setValueOfGroupId(history.state.groupId);
     } catch (error) {
       this.displayService.displayMessage('Erreur lors de la récupération du nom du groupe.');
+      this.router.navigateByUrl('/my-group')
     }
   }
 
