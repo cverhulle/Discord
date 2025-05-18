@@ -233,7 +233,7 @@ export class GroupMessageService{
 
     // Méthode pour modifier un message dans le backend.
     updatePostBackend(formData : FormData) : Observable<GroupPost> {
-        return this.http.put<GroupPost>(`${environment.apiUrl}/group-message/updateGroupPost`, formData).pipe(
+        return this.http.put<GroupPost>(`${environment.apiUrl}/group-message/updatePost`, formData).pipe(
             catchError( () => {
                 this.displayService.displayMessage('Erreur lors de la modification du message.')
                 return of()
@@ -327,7 +327,7 @@ export class GroupMessageService{
     // Méthode pour supprimer un post.
     deletePost(postId: string): Observable<boolean> {
         this.setValueOfLoading(true)
-        return this.http.delete(`${environment.apiUrl}/group-message/deleteGroupPost`, {
+        return this.http.delete(`${environment.apiUrl}/group-message/deletePost`, {
             params: {postId}
         }).pipe(
             map( () => {
