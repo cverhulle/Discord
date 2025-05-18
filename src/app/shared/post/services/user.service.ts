@@ -47,20 +47,6 @@ export class UserService{
     }
 
 
-    // Cette méthode permet de récupérer les données de l'utilisateur actuel.
-    getCurrentUser(): Observable<usernameImage>{
-        const currentUser = new usernameImage();
-    
-        return this.profileService.getProfile().pipe(
-            map((profile: any) => {
-                currentUser['id']= profile.user._id,
-                currentUser['username']=profile.user.loginInfo.username,
-                currentUser['image']=profile.user.image
-                return currentUser
-            })
-        )
-    }
-
     // Cette méthode permet de récupérer les données de l'utilisateur avec lequel on communique.
     getOtherUser(historyState: any): usernameImage{
         if (historyState && historyState.id && historyState.username && historyState.image) {
