@@ -40,8 +40,8 @@ export class PrivateMessageChatComponent implements OnInit{
   // Directive pour scroller el chat en bas après l'envoi d'un nouveau message.
   @ViewChild('chatContainer') chatContainer!: ElementRef
 
-  // Variable pour récupérer les données de l'utilisateur actuel.
-  currentUser!: usernameImage;
+  // Observable pour récupérer les données de l'utilisateur actuel.
+  currentUser$!: Observable<usernameImage>
 
   // Variable pour récupérer les données de l'utilisateur à qui on envoie des messages.
   otherUser: usernameImage = {id: '', username: '', image: ''}
