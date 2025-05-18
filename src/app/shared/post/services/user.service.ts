@@ -31,6 +31,11 @@ export class UserService{
         });
     }
 
+    // Cette méthode permet de récupérer l'id du currentUser
+    getCurrentUserId(): string | null {
+        return this.currentUserSubject.getValue()?.id ?? null
+    }
+
 
     // Cette méthode permet de récupérer les données de l'utilisateur actuel.
     getCurrentUser(): Observable<usernameImage>{
