@@ -13,7 +13,7 @@ export class UserService{
                 private router : Router){}
     
     // Subject et Observable pour gérer les données du currentUser
-    private currentUserSubject = new BehaviorSubject<usernameImage | null>(null);
+    private currentUserSubject = new BehaviorSubject<usernameImage>({id: '', username : '', image: ''});
     currentUser$ = this.currentUserSubject.asObservable();
 
     // Cette méthode permet d'initialiser les données du currentUser 
@@ -38,18 +38,18 @@ export class UserService{
     }
 
     // Cette méthode permet de récupérer l'id du currentUser
-    getCurrentUserId(): string | null {
-        return this.currentUserSubject.getValue().id
+    getCurrentUserId(): string  {
+        return this.currentUserSubject.getValue().id 
     }
 
     // Cette méthode permet de récupérer l'username du currentUser
-    getCurrentUsername(): string | null {
-        return this.currentUserSubject.getValue()?.username ?? null;
+    getCurrentUsername(): string {
+        return this.currentUserSubject.getValue().username
     }
 
     // Cette méthode permet de récupérer l'image de profil de l'utilisateur
     getCurrentUserImage(): string | null {
-        return this.currentUserSubject.getValue()?.image ?? null;
+        return this.currentUserSubject.getValue().image 
     }
 
 
