@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ProfileService } from "../../../profile/service/profile.service";
-import { BehaviorSubject, map, Observable, tap } from "rxjs";
+import { BehaviorSubject, catchError, map, Observable, of, tap } from "rxjs";
 import { usernameImage } from "../../../private-message/models/username-image.models";
 import { Router } from "@angular/router";
 import { DisplayService } from "../../display/service/display.service";
@@ -25,6 +25,10 @@ export class UserService{
                     username: profile.user.loginInfo.username,
                     image: profile.user.image
                 } as usernameImage;
+            }),
+            catchError( () => {
+                this.displayService.displayMessage('Erreur lors de la récupération des données de l\'utilisateur.')
+                return of(null)
             })
         ).subscribe(user => {
             this.currentUserSubject.next(user);
