@@ -110,13 +110,7 @@ export class GroupMessageChatComponent implements OnInit{
 
   // Cette méthode permet d'initialiser le currentUser
   private initCurrentUser() : void {
-    this.userService.getCurrentUser().pipe(
-        tap( user => this.currentUser = user),
-        catchError( () => {
-          this.displayService.displayMessage('Erreur lors de la récupération des données de l\'utilisateur.')
-          return of(false)
-        })
-    ).subscribe()
+    this.userService.initCurrentUser()
   }
 
   // Cette méthode permet d'initialiser le nom du groupe
