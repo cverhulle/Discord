@@ -146,7 +146,9 @@ export class PrivateMessageChatComponent implements OnInit{
       this.scrollToBottom()
     })
     
-
+    // On initialise l'Observable de l'utilisateur actuel
+    this.currentUser$ = this.userService.currentUser$
+    
     // On initialise l'Observable pour afficher le selecteur d'émotes.
     this.showEmojisList$= this.emojisService.showEmojisList$
 
