@@ -28,16 +28,18 @@ export class UserService{
             }),
             catchError( () => {
                 this.displayService.displayMessage('Erreur lors de la récupération des données de l\'utilisateur.')
+                this.router.navigate(['/login']);
                 return of(null)
             })
         ).subscribe(user => {
+            if (!user) return;
             this.currentUserSubject.next(user);
         });
     }
 
     // Cette méthode permet de récupérer l'id du currentUser
     getCurrentUserId(): string | null {
-        return this.currentUserSubject.getValue()?.id ?? null
+        return this.currentUserSubject.getValue().id
     }
 
     // Cette méthode permet de récupérer l'username du currentUser
