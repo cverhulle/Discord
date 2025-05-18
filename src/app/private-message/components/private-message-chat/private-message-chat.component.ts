@@ -148,7 +148,7 @@ export class PrivateMessageChatComponent implements OnInit{
     
     // On initialise l'Observable de l'utilisateur actuel
     this.currentUser$ = this.userService.currentUser$
-    
+
     // On initialise l'Observable pour afficher le selecteur d'émotes.
     this.showEmojisList$= this.emojisService.showEmojisList$
 
@@ -221,11 +221,11 @@ export class PrivateMessageChatComponent implements OnInit{
       
       // On crée le formData grâce au service
       const formData = this.postService.createFormDataToSend(
-        this.currentUser.id,
+        this.userService.getCurrentUserId(),
         this.otherUser.id,
-        this.currentUser.username,
+        this.userService.getCurrentUserUsername(),
         this.messageContent,
-        this.currentUser.image,
+        this.userService.getCurrentUserImage(),
         this.imageService.getValueOfImageToSend()
       )
 
@@ -314,7 +314,7 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Récupérer la couleur de la mat-card
   getPostCardColor(postCurrentUserId: string) : string {
-    return this.postService.getPostCardColor(postCurrentUserId, this.currentUser.id)
+    return this.postService.getPostCardColor(postCurrentUserId, this.userService.getCurrentUserId())
   }
 
 }
