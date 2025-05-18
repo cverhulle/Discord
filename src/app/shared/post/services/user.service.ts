@@ -52,6 +52,10 @@ export class UserService{
         return this.currentUserSubject.getValue().image 
     }
 
+    // Subject et Observable pour gérer les données du otherUser
+    private otherUserSubject = new BehaviorSubject<usernameImage>({id: '', username : '', image: ''});
+    otherUser$ = this.otherUserSubject.asObservable();
+
 
     // Cette méthode permet de récupérer les données de l'utilisateur avec lequel on communique.
     getOtherUser(historyState: any): usernameImage{
