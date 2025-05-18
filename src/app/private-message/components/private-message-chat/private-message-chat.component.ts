@@ -43,8 +43,8 @@ export class PrivateMessageChatComponent implements OnInit{
   // Observable pour récupérer les données de l'utilisateur actuel.
   currentUser$!: Observable<usernameImage>
 
-  // Variable pour récupérer les données de l'utilisateur à qui on envoie des messages.
-  otherUser: usernameImage = {id: '', username: '', image: ''}
+  // Observable pour récupérer les données de l'utilisateur à qui on envoie des messages.
+  otherUser$! : Observable<usernameImage>
 
   // Variable pour récupérer le texte dans le message.
   messageContent: string = ''
@@ -94,12 +94,10 @@ export class PrivateMessageChatComponent implements OnInit{
   ngOnInit(): void {
     this.postService.setValueOfLoading(true)
     this.initUsers()
-    if (this.otherUser.id !== '') {
-      this.initChat(this.otherUser.id)
-      this.initObservable()
-      this.initEmojis()
-      this.resetAllSubject()
-    }
+    this.initChat(this.userService.getOtherUserId())
+    this.initObservable()
+    this.initEmojis()
+    this.resetAllSubject()
   }
 
   // Cette méthode initialise les données des utilisateurs de la discussion.
@@ -116,15 +114,8 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Cette méthode initialise les données de l'utilisateur avec lequel on va communiquer.
   private initOtherUser(): void {
-    try {
-      this.otherUser = this.userService.getOtherUser(history.state)
-    } catch (error) {
-      this.displayService.displayMessage('Erreur lors de la récupération des données de l\'utilisateur.')
-    }
-          
+    this.userService.initOtherUser(history.state)          
   }
-
-
 
   // Cette méthode initialise l'historique de la discussion entre les utilisateurs : on ne récupère que les 10 derniers messages.
   private initChat(otherUserId: string): void {
@@ -148,6 +139,9 @@ export class PrivateMessageChatComponent implements OnInit{
     
     // On initialise l'Observable de l'utilisateur actuel
     this.currentUser$ = this.userService.currentUser$
+
+    // On initialise l'Observable pour l'otherUser
+    this.otherUser$ = this.userService.otherUser$
 
     // On initialise l'Observable pour afficher le selecteur d'émotes.
     this.showEmojisList$= this.emojisService.showEmojisList$
@@ -222,7 +216,7 @@ export class PrivateMessageChatComponent implements OnInit{
       // On crée le formData grâce au service
       const formData = this.postService.createFormDataToSend(
         this.userService.getCurrentUserId(),
-        this.otherUser.id,
+        this.userService.getOtherUserId(),
         this.userService.getCurrentUserUsername(),
         this.messageContent,
         this.userService.getCurrentUserImage(),
@@ -247,7 +241,7 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Méthode pour charger plus de messages à l'appui du bouton.
   onLoadMoreMessages(): void {
-    this.postService.loadMoreMessages(this.otherUser.id).subscribe()
+    this.postService.loadMoreMessages(this.userService.getOtherUserId()).subscribe()
   } 
 
   // Méthode pour supprimer un message.

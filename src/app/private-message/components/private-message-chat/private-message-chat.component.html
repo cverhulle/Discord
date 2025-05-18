@@ -1,5 +1,5 @@
 <h1 class="title" [class.editing]="editMessage$ | async">
-    Discussion avec {{otherUser.username}}
+    Discussion avec {{ (otherUser$ | async)?.username }}
 </h1>
 
 <div class="discussion" #chatContainer>
@@ -8,7 +8,7 @@
     
     <!-- Affichage en cas chat vide  et pas de chargement -->
     <div *ngIf="(isChatEmpty$ | async) && !(loading$ | async)" class="empty-chat">
-        <p> Vous n'avez pas encore échangé de messages avec {{otherUser.username}}. </p>
+        <p> Vous n'avez pas encore échangé de messages avec {{ (otherUser$ | async)?.username}}. </p>
     </div>
 
     <!-- Affichage en cas chat non vide, pas de chargement et, si on ne modifie pas un message-->

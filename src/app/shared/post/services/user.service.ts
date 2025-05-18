@@ -89,19 +89,4 @@ export class UserService{
         return this.otherUserSubject.getValue().image
     }
 
-
-    // Cette méthode permet de récupérer les données de l'utilisateur avec lequel on communique.
-    getOtherUser(historyState: any): usernameImage{
-        if (historyState && historyState.id && historyState.username && historyState.image) {
-            const otherUser = new usernameImage();
-            otherUser.id = historyState.id;
-            otherUser.username = historyState.username;
-            otherUser.image = historyState.image;
-            return otherUser;
-        } else {
-            this.displayService.displayMessage('Impossible de récupérer les informations de l\'autre utilisateur.');
-            this.router.navigateByUrl('/private-message');
-            throw new Error('Impossible de récupérer les informations de l\'autre utilisateur.');
-        }
-    }
 }
