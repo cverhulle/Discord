@@ -110,15 +110,8 @@ export class PrivateMessageChatComponent implements OnInit{
 
   // Cette méthode initialise les données de l'utilisateur actuellement connecté
   private initCurrentUser(): void {
-    this.userService.getCurrentUser().pipe(
-      tap( user => this.currentUser = user),
-      catchError( () => {
-        this.displayService.displayMessage('Erreur lors de la récupération des données de l\'utilisateur.')
-        return of(false)
-      })
-    ).subscribe()
+    this.userService.initCurrentUser()
   }
-
 
 
   // Cette méthode initialise les données de l'utilisateur avec lequel on va communiquer.
