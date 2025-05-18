@@ -227,9 +227,9 @@ export class GroupMessageChatComponent implements OnInit{
       // On crée le formData grâce au service
       const formData = this.groupMessageService.createFormDataToSend(
         this.groupMessageService.getValueOfGroupIdSubject(),
-        this.currentUser.id,
-        this.currentUser.username,
-        this.currentUser.image,
+        this.userService.getCurrentUserId(),
+        this.userService.getCurrentUserUsername(),
+        this.userService.getCurrentUserImage(),
         this.messageContent,
         this.imageService.getValueOfImageToSend()
       )
@@ -314,7 +314,7 @@ export class GroupMessageChatComponent implements OnInit{
 
   // Récupérer la couleur de la mat-card
   getPostCardColor(postsenderId: string) : string {
-    return this.groupMessageService.getPostCardColor(postsenderId, this.currentUser.id)
+    return this.groupMessageService.getPostCardColor(postsenderId, this.userService.getCurrentUserId())
   }
 
 }
