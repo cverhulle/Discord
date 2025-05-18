@@ -41,6 +41,11 @@ export class UserService{
         return this.currentUserSubject.getValue()?.username ?? null;
     }
 
+    // Cette méthode permet de récupérer l'image de profil de l'utilisateur
+    getCurrentUserImage(): string | null {
+        return this.currentUserSubject.getValue()?.image ?? null;
+    }
+
 
     // Cette méthode permet de récupérer les données de l'utilisateur actuel.
     getCurrentUser(): Observable<usernameImage>{
