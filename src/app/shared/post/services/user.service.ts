@@ -56,6 +56,24 @@ export class UserService{
     private otherUserSubject = new BehaviorSubject<usernameImage>({id: '', username : '', image: ''});
     otherUser$ = this.otherUserSubject.asObservable();
 
+    // Cette méthode permet d'initialiser les données de otherUser  à partir des données dans l'historique
+    initOtherUser(historyState: any): void{
+        if (historyState && historyState.id && historyState.username && historyState.image) {
+            this.otherUserSubject.next( 
+                {
+                    id : history.state.id,
+                    username : history.state.username,
+                    image: history.state.image
+                } as usernameImage
+            )
+        }
+        else {
+            this.displayService.displayMessage('Impossible de récupérer les informations de l\'autre utilisateur.');
+            this.router.navigateByUrl('/private-message');
+            throw new Error('Impossible de récupérer les informations de l\'autre utilisateur.');
+        }
+    }
+
 
     // Cette méthode permet de récupérer les données de l'utilisateur avec lequel on communique.
     getOtherUser(historyState: any): usernameImage{
