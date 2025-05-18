@@ -28,7 +28,7 @@
                     </div>
 
                     <!-- Menu déroulant pour modifier ou supprimer un message -->
-                    <mat-card-actions *ngIf="post.currentUserId === currentUser.id">
+                    <mat-card-actions *ngIf="post.currentUserId === (currentUser$ | async)?.id">
                         <button mat-icon-button [matMenuTriggerFor]="menu">
                             <mat-icon class="burger-icon"> more_vert </mat-icon>
                         </button>
