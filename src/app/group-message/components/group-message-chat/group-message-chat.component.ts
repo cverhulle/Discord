@@ -39,9 +39,6 @@ export class GroupMessageChatComponent implements OnInit{
   // Directive pour scroller el chat en bas après l'envoi d'un nouveau message.
   @ViewChild('chatContainer') chatContainer!: ElementRef
   
-  // Variable pour récupérer les données de l'utilisateur actuel.
-  currentUser!: usernameImage;
-
   // Variable pour récupérer le nom du groupe
   groupName$!: Observable<string>;
 
