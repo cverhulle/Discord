@@ -43,12 +43,12 @@ export class UserService{
     }
 
     // Cette méthode permet de récupérer l'username du currentUser
-    getCurrentUsername(): string {
+    getCurrentUserUsername(): string {
         return this.currentUserSubject.getValue().username
     }
 
     // Cette méthode permet de récupérer l'image de profil de l'utilisateur
-    getCurrentUserImage(): string | null {
+    getCurrentUserImage(): string {
         return this.currentUserSubject.getValue().image 
     }
 
