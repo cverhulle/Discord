@@ -16,14 +16,24 @@
 
 // Style à appliquer sur la mat-card de recherche
 .search-mat-card{
+
+    // Mise en place des éléments
     display: flex;
     justify-content: center; 
-    align-items: center;      
+    align-items: center; 
+
+    // Taille de la mat-card
+    width: 80vw;   
+
+    // Marges, padding etc...
     padding: 2vh 2vw;
-    margin: 0 auto;            
-    width: 80vw;               
+    margin: 0 auto; 
+    border-radius: 1vw;            
+
+    // Couleur de la mat-card
     background-color: rgb(74,35,90); 
-    border-radius: 1vw;    
+
+    // Animation
     transition: transform 0.3s ease, box-shadow 0.3s ease;    
 }
 
