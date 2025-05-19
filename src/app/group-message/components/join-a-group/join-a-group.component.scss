@@ -12,6 +12,9 @@
 
 // Style à appliquer sur la question (sous-titre)
 .subtitle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #7289da;
     font-size: 1.4vw;
 }
