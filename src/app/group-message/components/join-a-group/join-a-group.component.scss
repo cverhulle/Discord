@@ -39,7 +39,7 @@
 
 // Effet lumineux au passage de la souris sur la mat-card
 .search-mat-card:hover {
-    transform: translateY(-5px);
+    transform: scale(1.05);
     box-shadow: 0 0 20px rgba(255, 193, 227, 0.4);
 }
 
@@ -150,4 +150,11 @@
 
     // Animation
     transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+// Style à appliquer au survol du bouton
+.save-button:hover {
+    background-color: #5b6eae;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
