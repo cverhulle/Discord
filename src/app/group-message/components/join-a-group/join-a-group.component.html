@@ -5,23 +5,33 @@
 
 <!-- Cette div contient les options de recherche -->
 <div class="search-container">
-    
+
     <!-- Barre de recherche pour le nom du groupe -->
-    <mat-card-subtitle> Nom du groupe : </mat-card-subtitle>
-    <mat-form-field appearance="fill" class="searchNameQuery">
-        <mat-label>Nom du groupe</mat-label>
-        <input matInput placeholder="Entrez un nom de groupe">
-    </mat-form-field>
+    <div class="display-row">
+ 
+        <mat-card-subtitle> Nom du groupe : </mat-card-subtitle>
+        <mat-form-field appearance="fill" class="searchNameQuery">
+            <mat-label>Nom du groupe</mat-label>
+            <input matInput placeholder="Entrez un nom de groupe">
+        </mat-form-field>
+
+    </div>
+
 
     <!-- Recherche du type de groupe -->
-    <mat-card-subtitle> Type de groupe : </mat-card-subtitle>
-    <mat-form-field> 
-        <mat-label> Type de groupe </mat-label>
-        <mat-select>
-            <mat-option value="Public">Public</mat-option>
-            <mat-option value="Restreint">Restreint</mat-option>
-            <mat-option value="Privé">Privé</mat-option>
-        </mat-select>
-    </mat-form-field>
+    <div class="display-row"> 
+
+        <mat-card-subtitle> Type de groupe : </mat-card-subtitle>
+        <mat-form-field> 
+            <mat-label> Type de groupe </mat-label>
+            <mat-select>
+                <mat-option value="Public">Public</mat-option>
+                <mat-option value="Restreint">Restreint</mat-option>
+                <mat-option value="Privé">Privé</mat-option>
+            </mat-select>
+        </mat-form-field>
+    
+    </div>
+
 
 </div>

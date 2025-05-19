@@ -23,6 +23,13 @@
 
 
 
+// Style à appliquer sur les divisions des options de recherche pour afficher le nom à côté des possibilités
+.display-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 
 
 
