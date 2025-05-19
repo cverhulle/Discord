@@ -3,64 +3,69 @@
     Rejoindre un groupe
 </h1>
 
-<!-- Cette div contient les options de recherche -->
-<div class="search-container">
+<!-- Mat-card contenant le formulaire de recherche -->
+<mat-card class="search-mat-card">
 
-    <!-- Barre de recherche pour le nom du groupe -->
-    <div class="display-search-item">
- 
-        <p class="subtitle"> Nom du groupe : </p>
+    <!-- Cette div contient les options de recherche -->
+    <div class="search-container">
 
-        <div class="search-entry-container">
-            <mat-form-field appearance="fill" class="searchNameQuery">
-                <mat-label>Nom du groupe</mat-label>
-                <input matInput placeholder="Entrez un nom de groupe">
-            </mat-form-field>
+        <!-- Barre de recherche pour le nom du groupe -->
+        <div class="display-search-item">
+    
+            <p class="subtitle"> Nom du groupe : </p>
+
+            <div class="search-entry-container">
+                <mat-form-field appearance="fill" class="searchNameQuery">
+                    <mat-label>Nom du groupe</mat-label>
+                    <input matInput placeholder="Entrez un nom de groupe">
+                </mat-form-field>
+            </div>
+
         </div>
+
+
+        <!-- Recherche du type de groupe -->
+        <div class="display-search-item"> 
+
+            <p class="subtitle"> Type de groupe : </p>
+
+            <div class="search-entry-container">
+                <mat-form-field class="searchNameQuery"> 
+                    <mat-label> Type de groupe </mat-label>
+                    <mat-select>
+                        <mat-option value="Public">Public</mat-option>
+                        <mat-option value="Restreint">Restreint</mat-option>
+                        <mat-option value="Privé">Privé</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+        </div>
+
+        <!-- Langue du groupe -->
+        <div class="display-search-item"> 
+
+            <p class="subtitle"> Langue du groupe : </p>
+            <div class="search-entry-container">
+                <mat-checkbox *ngFor="let language of availableLanguages"> {{language}} </mat-checkbox>
+            </div>
+
+        </div>
+
+        <!-- Catégories du groupe -->
+        <div class="display-search-item">
+
+            <p class="subtitle"> Catégories du groupe : </p>
+
+            <div class="search-entry-container">
+                <mat-chip-set>
+                    <mat-chip *ngFor="let category of chipsCategories" > {{category}} </mat-chip>
+                </mat-chip-set>
+            </div>
+
+        </div>
+
 
     </div>
 
-
-    <!-- Recherche du type de groupe -->
-    <div class="display-search-item"> 
-
-        <p class="subtitle"> Type de groupe : </p>
-
-        <div class="search-entry-container">
-            <mat-form-field class="searchNameQuery"> 
-                <mat-label> Type de groupe </mat-label>
-                <mat-select>
-                    <mat-option value="Public">Public</mat-option>
-                    <mat-option value="Restreint">Restreint</mat-option>
-                    <mat-option value="Privé">Privé</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-
-    </div>
-
-    <!-- Langue du groupe -->
-    <div class="display-search-item"> 
-
-        <p class="subtitle"> Langue du groupe : </p>
-        <div class="search-entry-container">
-            <mat-checkbox *ngFor="let language of availableLanguages"> {{language}} </mat-checkbox>
-        </div>
-
-    </div>
-
-    <!-- Catégories du groupe -->
-    <div class="display-search-item">
-
-        <p class="subtitle"> Catégories du groupe : </p>
-
-        <div class="search-entry-container">
-            <mat-chip-set>
-                <mat-chip *ngFor="let category of chipsCategories" > {{category}} </mat-chip>
-            </mat-chip-set>
-        </div>
-
-    </div>
-
-
-</div>
+</mat-card>

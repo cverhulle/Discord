@@ -14,6 +14,20 @@
 
 
 
+// Style à appliquer sur la mat-card de recherche
+.search-mat-card{
+    display: flex;
+    justify-content: center; 
+    align-items: center;      
+    padding: 2vh 2vw;
+    margin: 0 auto;            
+    width: 80vw;               
+    background-color: rgb(74,35,90); 
+    border-radius: 1vw;        
+}
+
+
+
 
 
 // Style à appliquer sur la mat-card qui contient les options de recherhce
