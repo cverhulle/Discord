@@ -7,12 +7,14 @@ import { SharedModule } from '../../../shared/shared.module';
 import { ChipService } from '../../services/chip.service';
 import { LanguageService } from '../../services/language.service';
 import { DisplayService } from '../../../shared/display/service/display.service';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-join-a-group',
   imports: [
     SharedModule,
-    NgFor
+    NgFor,
+    ReactiveFormsModule
   ],
   templateUrl: './join-a-group.component.html',
   styleUrl: './join-a-group.component.scss'
@@ -25,9 +27,17 @@ export class JoinAGroupComponent implements OnInit{
   // Variable pour stocker les languages disponibles.
   availableLanguages!: string[]
 
+  // Variables liées au formulaire
+  registerForm!: FormGroup;
+  groupName!: FormControl;
+  groupType!: FormControl;
+  groupLanguages!: FormControl;
+  groupCategories!: FormControl;
+
   constructor(private chipService : ChipService,
               private languageService : LanguageService,
-              private displayService : DisplayService) {}
+              private displayService : DisplayService,
+              private formBuilder : FormBuilder) {}
 
   ngOnInit(): void {
       this.initChipsCategoriesAndAvailableLanguages()
