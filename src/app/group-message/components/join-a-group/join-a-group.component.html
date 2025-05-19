@@ -37,7 +37,9 @@
     <div class="display-row"> 
 
         <mat-card-subtitle> Langue du groupe : </mat-card-subtitle>
-        <mat-checkbox *ngFor="let language of ['test1', 'test2']" > {{language}} </mat-checkbox>
+        <div>
+            <mat-checkbox *ngFor="let language of ['test1', 'test2']" > {{language}} </mat-checkbox>
+        </div>
 
     </div>
 
