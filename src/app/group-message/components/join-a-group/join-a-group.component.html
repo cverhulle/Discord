@@ -7,7 +7,7 @@
 <mat-card class="search-mat-card">
 
     <!-- Cette div contient les options de recherche -->
-    <div class="search-container">
+    <div class="search-container" [formGroup]="searchGroupForm">
 
         <!-- Barre de recherche pour le nom du groupe -->
         <div class="display-search-item">
@@ -17,7 +17,7 @@
             <div class="search-entry-container">
                 <mat-form-field appearance="fill" class="searchNameQuery">
                     <mat-label>Nom du groupe</mat-label>
-                    <input matInput placeholder="Entrez un nom de groupe">
+                    <input matInput placeholder="Entrez un nom de groupe" formControlName="groupName">
                 </mat-form-field>
             </div>
 
@@ -32,7 +32,7 @@
             <div class="search-entry-container">
                 <mat-form-field class="searchNameQuery"> 
                     <mat-label> Type de groupe </mat-label>
-                    <mat-select>
+                    <mat-select formControlName="groupType">
                         <mat-option value="Tout">Tout</mat-option>
                         <mat-option value="Public">Public</mat-option>
                         <mat-option value="Restreint">Restreint</mat-option>
