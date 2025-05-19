@@ -28,7 +28,7 @@ export class JoinAGroupComponent implements OnInit{
   availableLanguages!: string[]
 
   // Variables liées au formulaire
-  registerForm!: FormGroup;
+  searchGroupForm!: FormGroup;
   groupName!: FormControl;
   groupType!: FormControl;
   groupLanguages!: FormControl;
@@ -76,7 +76,7 @@ export class JoinAGroupComponent implements OnInit{
 
   // Méthode pour initialiser le formulaire complet
   initRegisterForm(): void{
-    this.registerForm = this.formBuilder.group({
+    this.searchGroupForm = this.formBuilder.group({
       groupName: this.groupName,
       groupType: this.groupType,
       groupLanguages : this.groupLanguages,
