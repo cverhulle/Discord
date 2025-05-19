@@ -83,6 +83,23 @@ export class JoinAGroupComponent implements OnInit{
       groupCategories : this.groupCategories,
     })
   };
+
+  // Méthode pour selectionner ou désectionner une catégorie.
+  onHandleCategories(category: string): void {
+    this.chipService.handleCategories(category);
+    this.updateCategoriesFormControl();
+  }
+
+  // Méthode pour mettre à jour le formControl lié aux catégories
+  private updateCategoriesFormControl(): void{
+    const selectedCatégories = this.chipService.getValueOfSelectedCategories();
+    this.groupCategories.setValue(selectedCatégories);
+  }
+
+  // Méthode pour savoir si une catégorie est déjà selectionnée.
+  isCategorySelected(category: string): boolean {
+    return this.chipService.isSelected(category)
+  }
   
 
   // Méthode pour envoyer le formulaire
