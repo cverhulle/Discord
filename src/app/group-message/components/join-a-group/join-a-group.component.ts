@@ -117,6 +117,12 @@ export class JoinAGroupComponent implements OnInit{
   isLanguageSelected(language: string): boolean {
     return this.languageService.isSelected(language);
   }
+
+  // Méthode pour réinitialiser le formulaire
+  private resetForm(): void{
+    this.searchGroupForm.reset()
+    this.resetSubjects()
+  }
   
 
   // Méthode pour envoyer le formulaire
