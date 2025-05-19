@@ -42,6 +42,12 @@
 
 
 
+
+
+
+
+
+
 // Style à appliquer sur le sous-titre
 .subtitle{
     display: flex;
@@ -51,6 +57,19 @@
     font-size: 1.4vw;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Style à appliquer sur les données à remplir
 .search-entry-container{
     display: flex;
@@ -58,3 +77,12 @@
     align-items: center;
 }
 
+// Style à appliquer sur la barre de recherche
+.searchNameQuery{
+    display: block;
+    margin: 0 auto;
+    width: 70%;
+    min-width: 200px;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 1vw;
+}
