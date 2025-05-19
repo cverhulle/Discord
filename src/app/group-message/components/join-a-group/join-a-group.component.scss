@@ -10,19 +10,6 @@
 }
 
 
-// Style à appliquer sur la question (sous-titre)
-.subtitle{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #7289da;
-    font-size: 1.4vw;
-}
-
-
-
-
-
 
 
 
@@ -50,9 +37,24 @@
     display: grid;
     grid-template-columns: 20vw 40vw; 
     align-items: center;
-    column-gap: 1vw;
 }
 
 
 
+
+// Style à appliquer sur le sous-titre
+.subtitle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7289da;
+    font-size: 1.4vw;
+}
+
+// Style à appliquer sur les données à remplir
+.search-entry-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
