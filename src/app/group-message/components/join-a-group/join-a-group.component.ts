@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NgFor } from '@angular/common';
+
 import { SharedModule } from '../../../shared/shared.module';
-import { NgFor, NgIf } from '@angular/common';
+
+
 import { ChipService } from '../../services/chip.service';
 import { LanguageService } from '../../services/language.service';
 import { DisplayService } from '../../../shared/display/service/display.service';
@@ -9,7 +12,6 @@ import { DisplayService } from '../../../shared/display/service/display.service'
   selector: 'app-join-a-group',
   imports: [
     SharedModule,
-    NgIf,
     NgFor
   ],
   templateUrl: './join-a-group.component.html',
