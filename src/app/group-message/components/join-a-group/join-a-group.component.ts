@@ -3,6 +3,7 @@ import { SharedModule } from '../../../shared/shared.module';
 import { NgFor, NgIf } from '@angular/common';
 import { ChipService } from '../../services/chip.service';
 import { LanguageService } from '../../services/language.service';
+import { DisplayService } from '../../../shared/display/service/display.service';
 
 @Component({
   selector: 'app-join-a-group',
@@ -23,7 +24,8 @@ export class JoinAGroupComponent implements OnInit{
   availableLanguages!: string[]
 
   constructor(private chipService : ChipService,
-              private languageService : LanguageService) {}
+              private languageService : LanguageService,
+              private displayService : DisplayService) {}
 
   ngOnInit(): void {
       this.initChipsCategoriesAndAvailableLanguages()
@@ -40,6 +42,11 @@ export class JoinAGroupComponent implements OnInit{
   private resetSubjects(): void{
     this.chipService.resetSelectedCategoriesSubject()
     this.languageService.resetSelectedLanguagesSubject()
+  }
+
+  // Méthode pour envoyer le formulaire
+  onSubmit(): void{
+    this.displayService.displayMessage("En cours d'implémentation...")
   }
 
 }
