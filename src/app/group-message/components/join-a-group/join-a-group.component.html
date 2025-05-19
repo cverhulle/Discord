@@ -30,13 +30,25 @@
                 <mat-option value="Privé">Privé</mat-option>
             </mat-select>
         </mat-form-field>
-    
+
     </div>
 
     <!-- Langue du groupe -->
-    <div> 
+    <div class="display-row"> 
+
         <mat-card-subtitle> Langue du groupe : </mat-card-subtitle>
-        <mat-checkbox *ngFor="let language of ['Anglais', 'Francais']" > {{language}} </mat-checkbox>
+        <mat-checkbox *ngFor="let language of ['test1', 'test2']" > {{language}} </mat-checkbox>
+
+    </div>
+
+    <!-- Catégories du groupe -->
+    <div class="display-row">
+
+        <mat-card-subtitle> Catégories du groupe : </mat-card-subtitle>
+        <mat-chip-set>
+            <mat-chip *ngFor="let category of ['test', 'test2']" > {{category}} </mat-chip>
+        </mat-chip-set>
+
     </div>
 
 
