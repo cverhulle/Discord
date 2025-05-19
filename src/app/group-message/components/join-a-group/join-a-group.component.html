@@ -9,7 +9,7 @@
     <!-- Barre de recherche pour le nom du groupe -->
     <div class="display-search-item">
  
-        <mat-card-subtitle> Nom du groupe : </mat-card-subtitle>
+        <p class="subtitle"> Nom du groupe : </p>
         <mat-form-field appearance="fill" class="searchNameQuery">
             <mat-label>Nom du groupe</mat-label>
             <input matInput placeholder="Entrez un nom de groupe">
@@ -21,7 +21,7 @@
     <!-- Recherche du type de groupe -->
     <div class="display-search-item"> 
 
-        <mat-card-subtitle> Type de groupe : </mat-card-subtitle>
+        <p class="subtitle"> Type de groupe : </p>
         <mat-form-field> 
             <mat-label> Type de groupe </mat-label>
             <mat-select>
@@ -36,7 +36,7 @@
     <!-- Langue du groupe -->
     <div class="display-search-item"> 
 
-        <mat-card-subtitle> Langue du groupe : </mat-card-subtitle>
+        <p class="subtitle"> Langue du groupe : </p>
         <div>
             <mat-checkbox *ngFor="let language of ['test1', 'test2']" > {{language}} </mat-checkbox>
         </div>
@@ -46,7 +46,7 @@
     <!-- Catégories du groupe -->
     <div class="display-search-item">
 
-        <mat-card-subtitle> Catégories du groupe : </mat-card-subtitle>
+        <p class="subtitle"> Catégories du groupe : </p>
         <mat-chip-set>
             <mat-chip *ngFor="let category of ['test', 'test2']" > {{category}} </mat-chip>
         </mat-chip-set>

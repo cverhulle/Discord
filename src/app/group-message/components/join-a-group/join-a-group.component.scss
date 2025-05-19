@@ -10,6 +10,19 @@
 }
 
 
+// Style à appliquer sur la question (sous-titre)
+.subtitle{
+    color: #7289da;
+    font-size: 1.4vw;
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -21,13 +34,20 @@
 
 
 
+
+
+
+
+
+
+
+
 // Style à appliquer sur les divisions des options de recherche pour afficher le nom à côté des possibilités
 .display-search-item{
     display: grid;
-    grid-template-columns: 15vw 40vw; 
+    grid-template-columns: 20vw 40vw; 
     align-items: center;
     column-gap: 1vw;
-    justify-items: center;
 }
 
 
