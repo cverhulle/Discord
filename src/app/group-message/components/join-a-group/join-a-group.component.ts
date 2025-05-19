@@ -26,7 +26,13 @@ export class JoinAGroupComponent implements OnInit{
               private languageService : LanguageService) {}
 
   ngOnInit(): void {
-    
+      this.initChipsCategoriesAndAvailableLanguages()
+  }
+
+  // Méthode pour initialiser les catégories disponibles et le subject lié.
+  private initChipsCategoriesAndAvailableLanguages(): void{
+    this.chipsCategories = this.chipService.chipsCategories
+    this.availableLanguages = this.languageService.availableLanguages
   }
 
 }
