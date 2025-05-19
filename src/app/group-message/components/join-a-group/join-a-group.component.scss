@@ -24,9 +24,10 @@
 // Style à appliquer sur les divisions des options de recherche pour afficher le nom à côté des possibilités
 .display-row{
     display: grid;
-    grid-template-columns: 20vw 40vw; 
+    grid-template-columns: 15vw 40vw; 
     align-items: center;
-    column-gap: 4vw;
+    column-gap: 1vw;
+    justify-items: center;
 }
 
 
