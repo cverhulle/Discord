@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { NgFor, NgStyle } from '@angular/common';
 
 import { SharedModule } from '../../../shared/shared.module';
 
@@ -14,7 +14,8 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angul
   imports: [
     SharedModule,
     NgFor,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgStyle
   ],
   templateUrl: './join-a-group.component.html',
   styleUrl: './join-a-group.component.scss'

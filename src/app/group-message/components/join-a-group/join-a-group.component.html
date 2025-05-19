@@ -48,7 +48,7 @@
 
             <p class="subtitle"> Langue du groupe : </p>
             <div class="search-entry-container">
-                <mat-checkbox *ngFor="let language of availableLanguages"> {{language}} </mat-checkbox>
+                <mat-checkbox *ngFor="let language of availableLanguages" (click)="onHandleLanguages(language)" [checked]="isLanguageSelected(language)"> {{language}} </mat-checkbox>
             </div>
 
         </div>
@@ -60,7 +60,7 @@
 
             <div class="search-entry-container">
                 <mat-chip-set>
-                    <mat-chip *ngFor="let category of chipsCategories" > {{category}} </mat-chip>
+                    <mat-chip *ngFor="let category of chipsCategories" (click)="onHandleCategories(category)" [ngStyle]="{'background-color': isCategorySelected(category) ? 'green' : 'transparent'}"> {{category}} </mat-chip>
                 </mat-chip-set>
             </div>
 
