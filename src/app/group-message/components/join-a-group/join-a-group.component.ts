@@ -42,6 +42,7 @@ export class JoinAGroupComponent implements OnInit{
   ngOnInit(): void {
       this.initChipsCategoriesAndAvailableLanguages()
       this.resetSubjects()
+      this.initFormControls()
   }
 
   // Méthode pour initialiser les catégories disponibles et le subject lié.
@@ -54,6 +55,22 @@ export class JoinAGroupComponent implements OnInit{
   private resetSubjects(): void{
     this.chipService.resetSelectedCategoriesSubject()
     this.languageService.resetSelectedLanguagesSubject()
+  }
+
+  // Méthode pour initialiser tous les FormControl
+  initFormControls(): void{
+
+    // Initialisation du nom du groupe.
+    this.groupName = this.formBuilder.control('')
+
+    // Initialisation du type de groupe.
+    this.groupType = this.formBuilder.control('Tout');
+
+    // Initialisation du language
+    this.groupLanguages = this.formBuilder.control([]);
+
+    // Initialisation des catégories
+    this.groupCategories = this.formBuilder.control([]);
   }
 
   // Méthode pour envoyer le formulaire
