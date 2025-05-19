@@ -43,6 +43,7 @@ export class JoinAGroupComponent implements OnInit{
       this.initChipsCategoriesAndAvailableLanguages()
       this.resetSubjects()
       this.initFormControls()
+      this.initRegisterForm()
   }
 
   // Méthode pour initialiser les catégories disponibles et le subject lié.
@@ -72,6 +73,17 @@ export class JoinAGroupComponent implements OnInit{
     // Initialisation des catégories
     this.groupCategories = this.formBuilder.control([]);
   }
+
+  // Méthode pour initialiser le formulaire complet
+  initRegisterForm(): void{
+    this.registerForm = this.formBuilder.group({
+      groupName: this.groupName,
+      groupType: this.groupType,
+      groupLanguages : this.groupLanguages,
+      groupCategories : this.groupCategories,
+    })
+  };
+  
 
   // Méthode pour envoyer le formulaire
   onSubmit(): void{
