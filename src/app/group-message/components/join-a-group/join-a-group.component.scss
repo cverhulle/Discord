@@ -13,14 +13,17 @@
 
 
 
-
-
-// Style à appliquer sur la barre de recherche du nom du groupe
-.searchNameQuery{
-    display: block;
-    margin: 0 auto;
-    width: 50%;
-    min-width: 250px;
-    background-color: rgba(255,255,255,0.1);
-    border-radius: 1vw;
+// Style à appliquer sur la mat-card qui contient les options de recherhce
+.search-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
+
+
+
+
+
+
+
