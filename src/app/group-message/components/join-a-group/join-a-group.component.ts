@@ -100,6 +100,23 @@ export class JoinAGroupComponent implements OnInit{
   isCategorySelected(category: string): boolean {
     return this.chipService.isSelected(category)
   }
+
+  // Méthode pour selectionner ou déselectionner un language.
+  onHandleLanguages(language: string): void {
+    this.languageService.handleLanguages(language);
+    this.updateLanguagesFormControl();
+  }
+
+  // Méthode pour mettre à jour le formControl lié aux languages
+  private updateLanguagesFormControl(): void{
+    const selectedLanguages = this.languageService.getValueOfSelectedLanguages();
+    this.groupLanguages.setValue(selectedLanguages);
+  }
+
+  // Méthode pour savoir si une langue est sélectionnée.
+  isLanguageSelected(language: string): boolean {
+    return this.languageService.isSelected(language);
+  }
   
 
   // Méthode pour envoyer le formulaire
