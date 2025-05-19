@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SharedModule } from '../../../shared/shared.module';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-homepage-group-message',
@@ -13,9 +13,4 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class HomepageGroupMessageComponent {
 
-  constructor(private router: Router) {}
-
-  onJoinAGroup(): void{
-    this.router.navigateByUrl('/group-message/join-a-group')
-  }
 }
