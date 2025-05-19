@@ -120,3 +120,34 @@
     background-color: rgba(255,255,255,0.1);
     border-radius: 1vw;
 }
+
+
+
+
+
+
+// Style à appliquer sur le container du bouton d'envoi
+.save-button-container{
+    display: flex;
+    justify-content: center;
+}
+
+// Style à appliquer sur le bouton
+.save-button{
+    // Taille du bouton
+    width : 30vw;
+
+    // Marges, padding, etc...
+    margin-bottom: 0.5vh;
+    margin-top: 1vh;
+    border-radius: 20px;
+    padding: 0.8rem 1.5rem; 
+    font-size: 0.8vw; 
+
+    // Couleur du bouton et des textes 
+    background-color: #7289da !important;
+    color: white !important;
+
+    // Animation
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
