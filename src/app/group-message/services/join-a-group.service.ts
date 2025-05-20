@@ -16,6 +16,16 @@ export class JoinAGroupService{
     joinAGroupsSubject = new BehaviorSubject<GroupFormInfo[]>([])
     joinAGroup$ = this.joinAGroupsSubject.asObservable()
 
+    // Cette méthode permet de modifier la valeur de joinAGroupSubject
+    setValueOfJoinAGroupSubject(state : GroupFormInfo[]) : void {
+        this.joinAGroupsSubject.next(state)
+    }
+
+    // Cette méthode permet de récupérer la dernière valeur émise par le subject joinAGroupSubject
+    getValueOfJoinAGroupSubject() : GroupFormInfo[] {
+        return this.joinAGroupsSubject.getValue()
+    }
+
     // Cette méthode permet de supprimer les critères que l'utilisateur n'a pas filtrés
     handleSearchCriterias(criteria : JoinAGroup) : JoinAGroup {
         if (!criteria.groupName) delete criteria.groupName
