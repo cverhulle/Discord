@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgFor, NgStyle } from '@angular/common';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '../../../shared/shared.module';
 
@@ -7,7 +8,7 @@ import { SharedModule } from '../../../shared/shared.module';
 import { ChipService } from '../../services/chip.service';
 import { LanguageService } from '../../services/language.service';
 import { DisplayService } from '../../../shared/display/service/display.service';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { JoinAGroupService } from '../../services/join-a-group.service';
 
 @Component({
   selector: 'app-join-a-group',
@@ -38,7 +39,8 @@ export class JoinAGroupComponent implements OnInit{
   constructor(private chipService : ChipService,
               private languageService : LanguageService,
               private displayService : DisplayService,
-              private formBuilder : FormBuilder) {}
+              private formBuilder : FormBuilder,
+              private joinAGroup : JoinAGroupService) {}
 
   ngOnInit(): void {
       this.initChipsCategoriesAndAvailableLanguages()
@@ -129,6 +131,9 @@ export class JoinAGroupComponent implements OnInit{
   // Méthode pour envoyer le formulaire
   onSubmit(): void{
     this.displayService.displayMessage("En cours d'implémentation...")
+
+    const criterias = this.joinAGroup.handleSearchCriterias(this.searchGroupForm.value)
+    console.log(criterias)
   }
 
 }
