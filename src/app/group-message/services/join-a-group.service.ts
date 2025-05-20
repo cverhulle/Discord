@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { JoinAGroup } from "../models/join-a-group.model";
-import { Observable } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import { GroupFormInfo } from "../models/group-info.model";
 import { environment } from "../../../environments/environment.development";
 
@@ -11,6 +11,10 @@ import { environment } from "../../../environments/environment.development";
 export class JoinAGroupService{
 
     constructor(private http: HttpClient) {}
+
+    // Subject et Observable pour stocker les groups de l'utilisateur
+    joinAGroupsSubject = new BehaviorSubject<GroupFormInfo[]>([])
+    joinAGroup$ = this.joinAGroupsSubject.asObservable()
 
     // Cette méthode permet de supprimer les critères que l'utilisateur n'a pas filtrés
     handleSearchCriterias(criteria : JoinAGroup) : JoinAGroup {
