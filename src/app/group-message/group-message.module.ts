@@ -14,6 +14,7 @@ import { UserService } from '../shared/post/services/user.service';
 import { EmojisService } from '../shared/emojis/services/emojis.service';
 import { ProfileService } from '../profile/service/profile.service';
 import { GroupMessageService } from './services/group-message-chat.service';
+import { JoinAGroupService } from './services/join-a-group.service';
 
 
 @NgModule({
@@ -35,7 +36,7 @@ import { GroupMessageService } from './services/group-message-chat.service';
     EmojisService,
     ProfileService,
     GroupMessageService,
-    SearchAGroupService
+    JoinAGroupService
   ]
 })
 export class GroupMessageModule { }
