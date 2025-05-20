@@ -34,7 +34,8 @@ import { GroupMessageService } from './services/group-message-chat.service';
     UserService,
     EmojisService,
     ProfileService,
-    GroupMessageService
+    GroupMessageService,
+    SearchAGroupService
   ]
 })
 export class GroupMessageModule { }
