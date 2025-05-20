@@ -30,7 +30,7 @@ export class JoinAGroupComponent implements OnInit{
   availableLanguages!: string[]
 
   // Variables liées au formulaire
-  searchGroupForm!: FormGroup;
+  joinAGroupForm!: FormGroup;
   groupName!: FormControl;
   groupType!: FormControl;
   groupLanguages!: FormControl;
@@ -40,7 +40,7 @@ export class JoinAGroupComponent implements OnInit{
               private languageService : LanguageService,
               private displayService : DisplayService,
               private formBuilder : FormBuilder,
-              private joinAGroup : JoinAGroupService) {}
+              private joinAGroupService : JoinAGroupService) {}
 
   ngOnInit(): void {
       this.initChipsCategoriesAndAvailableLanguages()
@@ -79,7 +79,7 @@ export class JoinAGroupComponent implements OnInit{
 
   // Méthode pour initialiser le formulaire complet
   initRegisterForm(): void{
-    this.searchGroupForm = this.formBuilder.group({
+    this.joinAGroupForm = this.formBuilder.group({
       groupName: this.groupName,
       groupType: this.groupType,
       groupLanguages : this.groupLanguages,
@@ -123,7 +123,7 @@ export class JoinAGroupComponent implements OnInit{
 
   // Méthode pour réinitialiser le formulaire
   private resetForm(): void{
-    this.searchGroupForm.reset()
+    this.joinAGroupForm.reset()
     this.resetSubjects()
   }
   
@@ -132,7 +132,7 @@ export class JoinAGroupComponent implements OnInit{
   onSubmit(): void{
     this.displayService.displayMessage("En cours d'implémentation...")
 
-    const criterias = this.joinAGroup.handleSearchCriterias(this.searchGroupForm.value)
+    const criterias = this.joinAGroupService.handleSearchCriterias(this.joinAGroupForm.value)
     console.log(criterias)
   }
 
