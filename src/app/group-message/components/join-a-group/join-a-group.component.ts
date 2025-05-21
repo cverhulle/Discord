@@ -132,10 +132,16 @@ export class JoinAGroupComponent implements OnInit{
   onSubmit(): void{
     this.displayService.displayMessage("En cours d'implémentation...")
 
+    // On supprime les filtres non utilisés
     const criterias = this.joinAGroupService.handleSearchCriterias(this.joinAGroupForm.value)
 
+    // On envoie la requete au service qui met à jour la liste des groupes répondant aux critères
     this.joinAGroupService.joinGroups(criterias).subscribe( (success : boolean) => {
-      if (!success) {
+
+      // En cas d'échec...
+      if (!success) { 
+
+        // On affiche un message d'erreur
         this.displayService.displayMessage("Erreur lors de l'envoi au serveur");
       }
     })
