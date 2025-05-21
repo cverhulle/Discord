@@ -133,7 +133,14 @@ export class JoinAGroupComponent implements OnInit{
     this.displayService.displayMessage("En cours d'implémentation...")
 
     const criterias = this.joinAGroupService.handleSearchCriterias(this.joinAGroupForm.value)
-    console.log(criterias)
+
+    this.joinAGroupService.joinGroups(criterias).subscribe( (success : boolean) => {
+      if (success) {
+        this.displayService.displayMessage("Vous avez rejoint ce groupe !");
+      } else {
+        this.displayService.displayMessage("Erreur lors de l'envoi au serveur");
+      }
+    })
   }
 
 }
