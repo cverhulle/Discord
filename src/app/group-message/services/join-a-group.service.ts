@@ -54,12 +54,15 @@ export class JoinAGroupService{
     // Cette méthode permet d'envoyer au backend les critères de recherche
     // Elle retourne les groupes correspondant à la recherche
     joinGroups(criteria : JoinAGroup) : Observable<boolean> {
+        this.setValueOfLoadingSubject(true)
         return this.http.post<GroupFormInfo[]>(`${environment.apiUrl}/group-message/join-a-group`, criteria).pipe(
-            tap( groupList =>
+            tap( groupList => {
+                this.setValueOfLoadingSubject(false),
                 this.setValueOfJoinAGroupSubject(groupList)
-            ),
+            }),
             map( () => true),
             catchError( () => {
+                this.setValueOfLoadingSubject(false)
                 this.displayService.displayMessage('Erreur lors de la recherche des groupes.');
                 this.setValueOfJoinAGroupSubject([])
                 return of(false)
