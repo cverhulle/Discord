@@ -132,7 +132,6 @@ export class JoinAGroupComponent implements OnInit{
 
   // Méthode pour envoyer le formulaire
   onSubmit(): void{
-    this.displayService.displayMessage("En cours d'implémentation...")
 
     // On supprime les filtres non utilisés
     const criterias = this.joinAGroupService.handleSearchCriterias(this.joinAGroupForm.value)
