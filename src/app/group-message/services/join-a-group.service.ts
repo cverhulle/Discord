@@ -14,6 +14,10 @@ export class JoinAGroupService{
     constructor(private http: HttpClient,
                 private displayService : DisplayService) {}
 
+    // Subject et Observable pour gérer les chargements
+    loadingSubject = new BehaviorSubject<boolean>(false);
+    loading$ = this.loadingSubject.asObservable();
+
     // Subject et Observable pour stocker les groups de l'utilisateur
     joinAGroupsSubject = new BehaviorSubject<GroupFormInfo[]>([])
     joinAGroup$ = this.joinAGroupsSubject.asObservable()
