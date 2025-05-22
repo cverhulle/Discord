@@ -18,6 +18,16 @@ export class JoinAGroupService{
     loadingSubject = new BehaviorSubject<boolean>(false);
     loading$ = this.loadingSubject.asObservable();
 
+    // Cette méthode permet de modifier la valeur de loadingSubject
+    setValueOfLoadingSubject(state : boolean) : void {
+        this.loadingSubject.next(state)
+    }
+
+    // Cette méthode permet de récupérer la valeur du loadingSubject
+    getValueOfLoadingSubject(): boolean {
+        return this.loadingSubject.getValue()
+    }
+
     // Subject et Observable pour stocker les groups de l'utilisateur
     joinAGroupsSubject = new BehaviorSubject<GroupFormInfo[]>([])
     joinAGroup$ = this.joinAGroupsSubject.asObservable()
