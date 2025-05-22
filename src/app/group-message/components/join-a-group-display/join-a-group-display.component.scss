@@ -8,3 +8,313 @@
     margin-top: 1vh;
     margin-bottom: 2vh;
 }
+
+
+
+// Style à appliquer sur la div quand aucun groupe n'est trouvé
+.no-group{
+    display: flex;
+    justify-content: center;
+    color: #ffc1e3;
+    font-size: 2.5vw;
+    margin-top: 5vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// Style à appliquer sur la mat-card de chaque groupe
+.group-mat-card{
+    // Taille et bordure de la carte
+    width: 60%;
+    margin: 2vh auto;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 20px rgba(114, 137, 218, 0.2);
+    border-radius: 15px;
+    font-size: 1.5vw;
+    gap: 1rem; 
+
+    // Couleur de la carte
+    background: linear-gradient(135deg, rgba(97,18,97,0.9), rgba(60, 60, 110, 0.8));
+
+    // Disposition des éléments
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: space-between; 
+
+    // Animation de la carte
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+// Effet au survol de la carte 
+.group-mat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(114, 137, 218, 0.4);
+}
+
+// Animation d'apparition fluide 
+.appear-animation {
+    opacity: 0;
+    animation: appearFade 0.6s ease forwards;
+}
+
+// Définition de l'animation 
+@keyframes appearFade {
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Style à appliquer sur la div contenant le logo, le nom et le type du groupe
+.logo-name-type-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+// Style à appliquer sur le logo du groupe
+.group-logo{
+    width: 9vh;
+    height: 9vh;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(255, 193, 227, 0.4);
+}
+
+// Style à appliquer au nom du groupe
+.group-name{
+    color: #ffc1e3;
+    font-size: 2.5vw;
+}
+
+// Style à appliquer sur les icones représentant le type de groupe
+.group-type-icon {
+    color: #ffc1e3;
+    font-size: 1.2vw;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Style à appliquer sur la div contenant la description du groupe
+.description-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// Style à appliquer sur le texte de description du groupe
+.description{
+    color: #ffc1e3;
+    font-size: 1.5vw;
+    font-style: italic;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Style à appliquer à la div contenant le bouton et le panel
+.button-panel-container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+// Style à appliquer au bouton pour rejoindre la discussion
+.button-chat{
+    background-color: #7289da !important;
+    color: white !important;
+    border-radius: 20px;
+    padding: 0.8rem 1.5rem; 
+    font-size: 1.2vw; 
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+// Effet au survol du bouton 
+.button-chat:hover {
+    background-color: #5b6eae;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+
+
+
+// Couleur de fond du panel
+::ng-deep mat-expansion-panel {
+    background-color: #7289da !important;
+    color: white !important;
+}
+
+// Style à appliquer sur le titre du panel
+::ng-deep mat-expansion-panel mat-expansion-panel-header .mat-content mat-panel-title{
+    font-weight: bold !important;
+    color: white !important;
+    font-size: 1vw; 
+}
+
+
+
+
+
+
+// Style à appliquer sur la div contenant le créateur
+.creator-container{
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+}
+
+// Style à appliquer sur l'avatar du créateur
+.creator-members-avatar{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+
+
+
+// Style à appliquer sur la liste des membres
+.members-list{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+// Gestion lorsque la taille est sous les 1400px
+@media (max-width: 1400px) {
+
+    // Gestion de la taille de la mat-card
+    .group-mat-card{
+        width: 70%;
+    }
+
+    // Gestion du nom du groupe
+    .group-name{
+        font-size: 2.8vw;
+    }
+
+    // Gestion du logo du groupe
+    .group-type-icon{
+        font-size: 1.8vw;
+    }
+
+    // Gestion de la description
+    .description{
+        font-size: 2vw;
+    }
+
+    // Gestion du bouton
+    .button-chat{
+        font-size: 1.3vw;
+    }
+
+    // Gestion du texte en titre du panel
+    ::ng-deep mat-expansion-panel mat-expansion-panel-header .mat-content mat-panel-title{
+        font-size: 1.3vw; 
+    }
+}
+
+// Gestion lorsque la taille est sous les 1000px
+@media(max-width: 1000px){
+
+    // Gestion de la taille de la mat-card
+    .group-mat-card{
+        width: 80%;
+    }
+
+    // Gestion du nom du groupe
+    .group-name{
+        font-size: 3.5vw;
+    }
+
+    // Gestion du logo du groupe
+    .group-type-icon{
+        font-size: 2.5vw;
+    }
+
+    // Gestion de la description
+    .description{
+        font-size: 2.8vw;
+    }
+
+    // Gestion du bouton
+    .button-chat{
+        font-size: 2vw;
+    }
+
+    // Gestion du texte en titre du panel
+    ::ng-deep mat-expansion-panel mat-expansion-panel-header .mat-content mat-panel-title{
+        font-size: 2vw; 
+    }
+}
