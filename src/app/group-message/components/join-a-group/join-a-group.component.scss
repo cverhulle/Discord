@@ -169,3 +169,12 @@
     display: flex;
     justify-content: center;
 }
+
+
+// Style à appliquer lorsque la taille de l'écran est inférieure ou égale à 1400px
+@media (max-width: 1400px) {
+    // Style à appliquer sur le bouton
+    .save-button{
+        font-size: 1.1vw; 
+    }
+}
