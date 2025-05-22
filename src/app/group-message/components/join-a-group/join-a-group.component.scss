@@ -126,6 +126,8 @@
 
 
 
+
+
 // Style à appliquer sur le container du bouton d'envoi
 .save-button-container{
     display: flex;
@@ -176,5 +178,13 @@
     // Style à appliquer sur le bouton
     .save-button{
         font-size: 1.1vw; 
+    }
+}
+
+// Style à appliquer lorsque la taille de l'écran est inférieure ou égale à 800px
+@media (max-width : 800px) {
+    .language-container{
+        flex-direction: column;
+        align-items: flex-start;
     }
 }

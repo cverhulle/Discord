@@ -47,7 +47,7 @@
         <div class="display-search-item"> 
 
             <p class="subtitle"> Langue du groupe : </p>
-            <div class="search-entry-container">
+            <div class="search-entry-container language-container">
                 <mat-checkbox *ngFor="let language of availableLanguages" (click)="onHandleLanguages(language)" [checked]="isLanguageSelected(language)"> {{language}} </mat-checkbox>
             </div>
 
