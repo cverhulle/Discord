@@ -71,6 +71,10 @@
             <button mat-flat-button type="submit" (click)="onSubmit()" class="save-button"> Enregistrer </button>
         </mat-card-actions>
 
+        <div *ngIf="loading$ | async">
+            <mat-spinner></mat-spinner>
+        </div>
+
 
     </div>
 
