@@ -9,6 +9,7 @@ import { ChipService } from '../../services/chip.service';
 import { LanguageService } from '../../services/language.service';
 import { DisplayService } from '../../../shared/display/service/display.service';
 import { JoinAGroupService } from '../../services/join-a-group.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-join-a-group',
@@ -40,7 +41,8 @@ export class JoinAGroupComponent implements OnInit{
               private languageService : LanguageService,
               private displayService : DisplayService,
               private formBuilder : FormBuilder,
-              private joinAGroupService : JoinAGroupService) {}
+              private joinAGroupService : JoinAGroupService,
+              private router :Router) {}
 
   ngOnInit(): void {
       this.initChipsCategoriesAndAvailableLanguages()
@@ -143,6 +145,12 @@ export class JoinAGroupComponent implements OnInit{
 
         // On affiche un message d'erreur
         this.displayService.displayMessage("Erreur lors de l'envoi au serveur");
+
+        // En cas de succès...
+      } else {
+
+        // On redirige vers le component d'affichage
+        this.router.navigateByUrl('/group-message/join-a-group-display')
       }
     })
   }
