@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgFor, NgStyle } from '@angular/common';
+import { AsyncPipe, NgFor, NgIf, NgStyle } from '@angular/common';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '../../../shared/shared.module';
@@ -18,7 +18,9 @@ import { Observable } from 'rxjs';
     SharedModule,
     NgFor,
     ReactiveFormsModule,
-    NgStyle
+    NgStyle,
+    NgIf,
+    AsyncPipe
   ],
   templateUrl: './join-a-group.component.html',
   styleUrl: './join-a-group.component.scss'
