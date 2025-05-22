@@ -10,6 +10,7 @@ import { LanguageService } from '../../services/language.service';
 import { DisplayService } from '../../../shared/display/service/display.service';
 import { JoinAGroupService } from '../../services/join-a-group.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-join-a-group',
@@ -30,6 +31,9 @@ export class JoinAGroupComponent implements OnInit{
   // Variable pour stocker les languages disponibles.
   availableLanguages!: string[]
 
+  // Observable pour gérer le chargement
+  loading$!: Observable<boolean>
+
   // Variables liées au formulaire
   joinAGroupForm!: FormGroup;
   groupName!: FormControl;
@@ -47,6 +51,7 @@ export class JoinAGroupComponent implements OnInit{
   ngOnInit(): void {
       this.initChipsCategoriesAndAvailableLanguages()
       this.resetSubjects()
+      this.initObservables()
       this.initFormControls()
       this.initRegisterForm()
   }
@@ -61,6 +66,11 @@ export class JoinAGroupComponent implements OnInit{
   private resetSubjects(): void{
     this.chipService.resetSelectedCategoriesSubject()
     this.languageService.resetSelectedLanguagesSubject()
+  }
+
+  // Méthode pour initialiser les Observables
+  private initObservables() : void{
+    this.loading$ = this.joinAGroupService.loading$
   }
 
   // Méthode pour initialiser tous les FormControl
