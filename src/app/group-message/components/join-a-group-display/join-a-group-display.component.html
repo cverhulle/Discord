@@ -3,3 +3,88 @@
     Rejoindre un groupe
 </h1>
 
+<!-- On récupère les groupes dans l'Observable. On les "renomme" groups -->
+<div *ngIf="groups$ | async as groups"> 
+
+    <!-- S'il y a au moins un groupe, on affiche cette div. Sinon, on affiche le message dans le ng-template ci-dessous -->
+    <div *ngIf="groups.length > 0; else noGroup"> 
+
+        <!-- Pour chaque groupe, on affiche sa mat-card-->
+        <div *ngFor="let group of groups">
+
+            <!-- Mat card pour afficher chaque groupe -->
+            <mat-card class="group-mat-card appear-animation">
+
+                <!-- Div contenant le logo, le nom du groupe et l'icone par rapport au type du groupe -->
+                <div class="logo-name-type-container">
+                    <!-- Logo du groupe-->
+                    <img [src]="group.groupLogoPath" alt="Logo du groupe" class="group-logo">
+
+                    <!-- Nom du groupe -->
+                    <span class="group-name">{{ group.groupName }}</span>
+
+                    <!-- Type de groupe -->
+                    <mat-icon *ngIf="group.groupType === 'Public'" class="group-type-icon">public</mat-icon>
+                    <mat-icon *ngIf="group.groupType === 'Privé'" class="group-type-icon">lock</mat-icon>
+                    <mat-icon *ngIf="group.groupType === 'Restreint'" class="group-type-icon">vpn_key</mat-icon>
+                </div>
+
+                <!-- Description du groupe -->
+                <div class="description-container">
+                    <span class="description">{{  group.groupDescription }}</span>
+                </div>
+
+                <!-- Div contenant le bouton rejoindre et le bouton d'informations supplémentaires -->
+                <div class="button-panel-container">
+
+                    <!-- Bouton pour rejoindre la discussion -->
+                    <mat-card-actions>
+                        <button mat-flat-button class="button-chat"               >              Rejoindre ce groupe                     </button>
+                    </mat-card-actions>
+
+                    <!-- Onglet déroulant pour afficher les informations supplémentaires -->
+                    <mat-expansion-panel>
+
+                        <!-- Titre du panel -->
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>Informations supplémentaires</mat-panel-title>
+                        </mat-expansion-panel-header>
+
+                        <!-- Langues du groupe -->
+                        <p><strong>Langues :</strong> {{ group.groupLanguages.join(', ') }}</p>
+
+                        <!-- Catégories du groupe -->
+                        <p><strong>Catégories :</strong> {{ group.groupCategories.join(', ') }}</p>
+
+                        <!-- Créateur du groupe -->
+                        <div class="creator-container">
+                            <strong>Créateur :</strong> 
+                            <img [src]="group.creator.image" alt="Avatar du créateur"  class="creator-members-avatar"/>
+                            <span> {{ group.creator.loginInfo.username }} </span>
+                        </div>
+                                                
+                        <!-- Membres du groupe -->
+                        <p><strong>Membres :</strong></p>
+                        <ul>
+                            <li *ngFor="let member of group.members" class="members-list">
+                                <img *ngIf="member.image" [src]="member.image" alt="Avatar du membre" class="creator-members-avatar" />
+                                <span> {{ member.loginInfo.username }} </span>
+                            </li>
+                        </ul>
+
+                    </mat-expansion-panel>
+
+                </div>
+
+            </mat-card>
+
+
+        </div>
+    </div>
+
+    <!-- S'il n'y a pas de groupes, on affiche cette div-->
+    <ng-template #noGroup>
+        <p class="no-group">Aucun groupe trouvé.</p>
+    </ng-template>
+
+</div>
