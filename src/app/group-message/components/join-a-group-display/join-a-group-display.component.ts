@@ -54,7 +54,7 @@ export class JoinAGroupDisplayComponent implements OnInit {
 
       // Sinon on rejoint le groupe.
       else {
-        
+        // this.joinAGroupService.addUserToAGroup(group._id).subscribe()
       }
 
     }
