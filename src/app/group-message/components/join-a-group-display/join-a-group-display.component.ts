@@ -43,16 +43,20 @@ export class JoinAGroupDisplayComponent implements OnInit {
       return;
     }
 
-    // Si le groupe est public
+    // Si le groupe est public...
     if (group.groupType === 'Public') {
 
-      // S'il y a déjà 10 membres, on affiche une erreur
+      // S'il y a déjà 10 membres, on affiche une erreur.
       if (group.members.length >= 10) {
         this.displayService.displayMessage("Ce groupe est déjà complet (10 membres maximum).");
         return;
       }
 
-      // Sinon on rejoint le groupe
+      // Sinon on rejoint le groupe.
+      else {
+        
+      }
+
     }
 
   }
