@@ -183,8 +183,15 @@
 
 // Style à appliquer lorsque la taille de l'écran est inférieure ou égale à 800px
 @media (max-width : 800px) {
+
+    // Style à appliquer pour afficher les langues en colonnes.
     .language-container{
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    // Gestion de la taille des sous-titres
+    .subtitle{
+        font-size: 2vw;
     }
 }
