@@ -54,11 +54,11 @@ export class JoinAGroupDisplayComponent implements OnInit {
         return;
       }
 
-      // Sinon on rejoint le groupe, on affiche un message et on redirige vers "my-group".
+      // Sinon on rejoint le groupe, on affiche un message et on redirige vers la page d'accueil des groupes de discussion.
       else {
         this.joinAGroupService.addUserToAGroup(group._id).subscribe()
         this.displayService.displayMessage("Vous avez rejoint le groupe");
-        this.router.navigateByUrl('/group-message/my-group')
+        this.router.navigateByUrl('/group-message')
       }
 
     }
