@@ -44,6 +44,11 @@ export class JoinAGroupDisplayComponent implements OnInit {
     this.joinAGroupService.joinPrivateGroup()
   }
 
+  // Cette méthode est à appeler lorsque le groupe contient déjà 10 membres
+  onJoin10MembersGroup(): void{
+    this.joinAGroupService.Join10MembersGroup()
+  }
+
   // Cette méthode se déclenche à l'appui sur le bouton "rejoindre un groupe"
   onJoinGroup(group : GroupFormInfo): void {
 
@@ -55,7 +60,7 @@ export class JoinAGroupDisplayComponent implements OnInit {
 
     // S'il y a déjà 10 membres, on affiche une erreur.
     if (group.members.length >= 10) {
-      this.displayService.displayMessage("Ce groupe est déjà complet (10 membres maximum).");
+      this.onJoin10MembersGroup()
       return;
     }
 

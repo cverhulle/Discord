@@ -75,6 +75,11 @@ export class JoinAGroupService{
         this.displayService.displayMessage("Ce groupe est privé. Vous ne pouvez pas le rejoindre.");
     }
 
+    // Cette méthode est à appeler lorsque l'on veut rejoindre un groupe complet.
+    Join10MembersGroup() : void {
+        this.displayService.displayMessage("Ce groupe est déjà complet (10 membres maximum).");
+    }
+
     // Cette méthode permet d'ajouter l'utilisateur dans le groupe d'id groupId
     addUserToAGroup(groupId : string, password? : string) : Observable<boolean> {
 
