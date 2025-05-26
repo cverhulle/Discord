@@ -39,16 +39,6 @@ export class JoinAGroupDisplayComponent implements OnInit {
     this.groups$ = this.joinAGroupService.joinAGroup$
   }
 
-  // Cette méthode est à appeler pour rejoindre un groupe Privé
-  private joinPrivateGroup() : void {
-    this.joinAGroupService.joinPrivateGroup()
-  }
-
-  // Cette méthode est à appeler lorsque le groupe contient déjà 10 membres
-  private join10MembersGroup(): void{
-    this.joinAGroupService.Join10MembersGroup()
-  }
-
   // Cette est à appeler pour rejoindre un groupe Public
   private joinPublicGroup(groupId: string) : void{
 
@@ -99,13 +89,13 @@ export class JoinAGroupDisplayComponent implements OnInit {
 
     // Si le groupe est privé, on affiche un message d'erreur
     if (group.groupType === 'Privé') {
-      this.joinPrivateGroup()
+      this.joinAGroupService.joinPrivateGroup()
       return;
     }
 
     // S'il y a déjà 10 membres, on affiche une erreur.
     if (group.members.length >= 10) {
-      this.join10MembersGroup()
+      this.joinAGroupService.Join10MembersGroup()
       return;
     }
 
