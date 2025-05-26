@@ -71,7 +71,7 @@ export class JoinAGroupService{
     }
 
     // Cette méthode permet d'ajouter l'utilisateur dans le groupe d'id groupId
-    addUserToAGroup(groupId : string) : Observable<boolean> {
+    addUserToAGroup(groupId : string, password? : string) : Observable<boolean> {
         return this.http.post(`${environment.apiUrl}/group-message/add-user`, {groupId} ).pipe(
             map( () => true),
             catchError( () => {

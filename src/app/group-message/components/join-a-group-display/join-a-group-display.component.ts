@@ -79,8 +79,16 @@ export class JoinAGroupDisplayComponent implements OnInit {
 
       dialogRef.afterClosed().subscribe(password => {
         if (password) {
-          // Envoyer sur le service
-        }
+          this.joinAGroupService.addUserToAGroup(group._id, password).subscribe( success => {
+            
+            if (success) {          
+              this.displayService.displayMessage("Vous avez rejoint le groupe");
+              this.router.navigateByUrl('/group-message')
+            } else {
+              this.displayService.displayMessage("Mot de passe incorrect");
+            }
+          })
+        }  
       });
 
     }
