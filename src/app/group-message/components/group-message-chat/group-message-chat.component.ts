@@ -120,14 +120,21 @@ export class GroupMessageChatComponent implements OnInit{
 
   // Cette méthode permet d'initialiser le nom du groupe
   private initGroupInfos(): void {
-    try {
-      this.groupMessageService.setValueOfGroupName(history.state.groupName);
-      this.groupMessageService.setValueOfGroupLogo(history.state.groupLogoPath);
-      this.groupMessageService.setValueOfGroupId(history.state.groupId);
-    } catch (error) {
-      this.displayService.displayMessage('Erreur lors de la récupération du nom du groupe.');
-      this.router.navigateByUrl('/my-group')
+
+    // On récupère les données du groupe dans l'historique
+    const { groupName, groupLogoPath, groupId } = history.state;
+
+    // Si une donnée est manquante (par ex, en tapant l'URL directement, on redirige l'utilisateur
+    if (!groupName || !groupLogoPath || !groupId) {
+      this.displayService.displayMessage('Données du groupe manquantes. Redirection...');
+      this.router.navigateByUrl('/my-group');
+      return;
     }
+
+    // Si tout est présent, on affecte les valeurs aux subjects.
+    this.groupMessageService.setValueOfGroupName(groupName);
+    this.groupMessageService.setValueOfGroupLogo(groupLogoPath);
+    this.groupMessageService.setValueOfGroupId(groupId);
   }
 
   // Cette méthode initialise l'historique de la discussion du groupe : on ne récupère que les 10 derniers messages.
