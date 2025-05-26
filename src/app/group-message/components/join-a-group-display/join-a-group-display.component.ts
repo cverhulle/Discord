@@ -53,32 +53,25 @@ export class JoinAGroupDisplayComponent implements OnInit {
       return;
     }
 
+    // S'il y a déjà 10 membres, on affiche une erreur.
+    if (group.members.length >= 10) {
+      this.displayService.displayMessage("Ce groupe est déjà complet (10 membres maximum).");
+      return;
+    }
+
     // Si le groupe est public...
     if (group.groupType === 'Public') {
 
-      // S'il y a déjà 10 membres, on affiche une erreur.
-      if (group.members.length >= 10) {
-        this.displayService.displayMessage("Ce groupe est déjà complet (10 membres maximum).");
-        return;
-      }
+      // On affiche un message et on redirige vers la page d'accueil des groupes de discussion.     
+      this.joinAGroupService.addUserToAGroup(group._id).subscribe()
+      this.displayService.displayMessage("Vous avez rejoint le groupe");
+      this.router.navigateByUrl('/group-message')
 
-      // Sinon on rejoint le groupe, on affiche un message et on redirige vers la page d'accueil des groupes de discussion.
-      else {
-        this.joinAGroupService.addUserToAGroup(group._id).subscribe()
-        this.displayService.displayMessage("Vous avez rejoint le groupe");
-        this.router.navigateByUrl('/group-message')
-      }
 
     }
 
     // Si le groupe est Restreint...
     if (group.groupType === 'Restreint') {
-
-      // S'il y a déjà 10 membres, on affiche une erreur.
-      if (group.members.length >= 10) {
-        this.displayService.displayMessage("Ce groupe est déjà complet (10 membres maximum).");
-        return;
-      }
 
       // On ouvre la boite de dialogue pour faire apparaitre le champ pour entrer le mot de passe
       const dialogRef = this.dialog.open(PasswordDialogComponent, { data: { groupName: group.groupName } } );
