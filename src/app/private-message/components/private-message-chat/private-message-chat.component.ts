@@ -65,7 +65,7 @@ export class PrivateMessageChatComponent implements OnInit{
   showEmojisList$!: Observable<boolean>
 
   // Variable pour stocker les catégories d'émojis à ne pas charger.
-  categoriesEmojisExcluded!: [string] 
+  categoriesEmojisExcluded!: string[]
 
   // Observable pour gérer l'image à envoyer dans le Post.
   imageToSend$! : Observable<File | null>;
