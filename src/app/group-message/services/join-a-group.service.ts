@@ -81,7 +81,10 @@ export class JoinAGroupService{
             data.password = password;
         }
 
+        // On envoie la requête pour ajouter l'utilisateur
         return this.http.post(`${environment.apiUrl}/group-message/add-user`, data ).pipe(
+
+            // Le backend renvoie true si l'ajout est réalisé et false sinon (mot de passe incorrect etc...)
             map( (response : any) => response.success),
             catchError( () => {
                 this.displayService.displayMessage("Erreur lors de l'ajout de l'utilisateur");
