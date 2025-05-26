@@ -49,6 +49,18 @@ export class JoinAGroupDisplayComponent implements OnInit {
     this.joinAGroupService.Join10MembersGroup()
   }
 
+  // Cette est à appeler pour rejoindre un groupe Public
+  onJoinPublicGroup(groupId: string) : void{
+
+      // On affiche un message et on redirige vers la page d'accueil des groupes de discussion.     
+      this.joinAGroupService.addUserToAGroup(groupId).subscribe( success => {
+        if (success) {
+          this.displayService.displayMessage("Vous avez rejoint le groupe");
+          this.router.navigateByUrl('/group-message')
+        }
+      })
+  }
+
   // Cette méthode se déclenche à l'appui sur le bouton "rejoindre un groupe"
   onJoinGroup(group : GroupFormInfo): void {
 
@@ -66,13 +78,7 @@ export class JoinAGroupDisplayComponent implements OnInit {
 
     // Si le groupe est public...
     if (group.groupType === 'Public') {
-
-      // On affiche un message et on redirige vers la page d'accueil des groupes de discussion.     
-      this.joinAGroupService.addUserToAGroup(group._id).subscribe()
-      this.displayService.displayMessage("Vous avez rejoint le groupe");
-      this.router.navigateByUrl('/group-message')
-
-
+      this.onJoinPublicGroup(group._id)
     }
 
     // Si le groupe est Restreint...
