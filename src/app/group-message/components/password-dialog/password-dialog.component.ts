@@ -1,12 +1,13 @@
 import { Component, Inject } from '@angular/core';
 import { SharedModule } from '../../../shared/shared.module';
-import { NgModel } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-password-dialog',
   imports: [
     SharedModule,
+    FormsModule
   ],
   templateUrl: './password-dialog.component.html',
   styleUrl: './password-dialog.component.scss'
