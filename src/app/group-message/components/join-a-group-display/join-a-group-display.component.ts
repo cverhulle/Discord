@@ -63,5 +63,13 @@ export class JoinAGroupDisplayComponent implements OnInit {
 
     }
 
+    if (group.groupType === 'Restreint') {
+      // S'il y a déjà 10 membres, on affiche une erreur.
+      if (group.members.length >= 10) {
+        this.displayService.displayMessage("Ce groupe est déjà complet (10 membres maximum).");
+        return;
+      }
+    }
+
   }
 }
