@@ -75,15 +75,26 @@ export class JoinAGroupDisplayComponent implements OnInit {
         return;
       }
 
+      // On ouvre la boite de dialogue pour faire apparaitre le champ pour entrer le mot de passe
       const dialogRef = this.dialog.open(PasswordDialogComponent, { data: { groupName: group.groupName } } );
 
+      // Après fermeture...
       dialogRef.afterClosed().subscribe(password => {
+
+        // Si un mot de passe est entré...
         if (password) {
+
+          // On ajoute l'utilisateur au groupe
           this.joinAGroupService.addUserToAGroup(group._id, password).subscribe( success => {
             
+            // Si le mot de passe est correct...
             if (success) {          
+
+              // On affiche un message et, on redirige vers l'accueil de group-message
               this.displayService.displayMessage("Vous avez rejoint le groupe");
               this.router.navigateByUrl('/group-message')
+
+              // Sinon, on affiche un message d'erreur
             } else {
               this.displayService.displayMessage("Mot de passe incorrect");
             }
