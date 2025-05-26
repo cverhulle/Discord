@@ -39,12 +39,17 @@ export class JoinAGroupDisplayComponent implements OnInit {
     this.groups$ = this.joinAGroupService.joinAGroup$
   }
 
+  // Cette méthode est à appeler pour rejoindre un groupe Privé
+  onJoinPrivateGroup() : void {
+    this.joinAGroupService.joinPrivateGroup()
+  }
+
   // Cette méthode se déclenche à l'appui sur le bouton "rejoindre un groupe"
   onJoinGroup(group : GroupFormInfo): void {
 
     // Si le groupe est privé, on affiche un message d'erreur
     if (group.groupType === 'Privé') {
-      this.displayService.displayMessage("Ce groupe est privé. Vous ne pouvez pas le rejoindre.");
+      this.onJoinPrivateGroup()
       return;
     }
 
