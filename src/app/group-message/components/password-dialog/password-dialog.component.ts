@@ -22,10 +22,12 @@ export class PasswordDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: { groupName: string }
   ) {}
 
+  // Méthode à appeler si l'utilisateur annule l'envoi du mot de passe
   onCancel(): void {
     this.dialogRef.close();
   }
 
+  // Méthode à appler si l'utilisateur confirme son mot de passe
   onConfirm(): void {
     this.dialogRef.close(this.password);
   }
