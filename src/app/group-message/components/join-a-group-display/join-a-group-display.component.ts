@@ -54,7 +54,7 @@ export class JoinAGroupDisplayComponent implements OnInit {
         return;
       }
 
-      // Sinon on rejoint le groupe.
+      // Sinon on rejoint le groupe, on affiche un message et on redirige vers "my-group".
       else {
         this.joinAGroupService.addUserToAGroup(group._id).subscribe()
         this.displayService.displayMessage("Vous avez rejoint le groupe");
