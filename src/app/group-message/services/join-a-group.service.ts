@@ -70,6 +70,11 @@ export class JoinAGroupService{
         )
     }
 
+    // Cette méthode est à appeler lorsque l'on rejoint un groupe privé
+    joinPrivateGroup() : void {
+        this.displayService.displayMessage("Ce groupe est privé. Vous ne pouvez pas le rejoindre.");
+    }
+
     // Cette méthode permet d'ajouter l'utilisateur dans le groupe d'id groupId
     addUserToAGroup(groupId : string, password? : string) : Observable<boolean> {
 
