@@ -6,6 +6,8 @@ import { SharedModule } from '../../../shared/shared.module';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { DisplayService } from '../../../shared/display/service/display.service';
 import { Router } from '@angular/router';
+import { PasswordDialogComponent } from '../password-dialog/password-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-join-a-group-display',
@@ -25,7 +27,8 @@ export class JoinAGroupDisplayComponent implements OnInit {
 
   constructor(  private joinAGroupService : JoinAGroupService,
                 private displayService : DisplayService,
-                private router : Router) {}
+                private router : Router,
+                private dialog : MatDialog) {}
 
   ngOnInit(): void {
     this.initObservables()
@@ -71,7 +74,18 @@ export class JoinAGroupDisplayComponent implements OnInit {
         this.displayService.displayMessage("Ce groupe est déjà complet (10 membres maximum).");
         return;
       }
+
+      const dialogRef = this.dialog.open(PasswordDialogComponent, { data: { groupName: group.groupName } } );
+
+      dialogRef.afterClosed().subscribe(password => {
+        if (password) {
+          // Envoyer sur le service
+        }
+      });
+
     }
 
   }
+
+
 }
