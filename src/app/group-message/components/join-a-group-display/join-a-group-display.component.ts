@@ -5,6 +5,7 @@ import { GroupFormInfo } from '../../models/group-info.model';
 import { SharedModule } from '../../../shared/shared.module';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { DisplayService } from '../../../shared/display/service/display.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-join-a-group-display',
@@ -23,7 +24,8 @@ export class JoinAGroupDisplayComponent implements OnInit {
   groups$!: Observable<GroupFormInfo[]>
 
   constructor(  private joinAGroupService : JoinAGroupService,
-                private displayService : DisplayService) {}
+                private displayService : DisplayService,
+                private router : Router) {}
 
   ngOnInit(): void {
     this.initObservables()
@@ -54,7 +56,9 @@ export class JoinAGroupDisplayComponent implements OnInit {
 
       // Sinon on rejoint le groupe.
       else {
-        // this.joinAGroupService.addUserToAGroup(group._id).subscribe()
+        this.joinAGroupService.addUserToAGroup(group._id).subscribe()
+        this.displayService.displayMessage("Vous avez rejoint le groupe");
+        this.router.navigateByUrl('/group-message/my-group')
       }
 
     }
