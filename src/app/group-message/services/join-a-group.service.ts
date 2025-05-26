@@ -82,7 +82,7 @@ export class JoinAGroupService{
         }
 
         return this.http.post(`${environment.apiUrl}/group-message/add-user`, data ).pipe(
-            map( () => true),
+            map( (response : any) => response.success),
             catchError( () => {
                 this.displayService.displayMessage("Erreur lors de l'ajout de l'utilisateur");
                 return of(false)
