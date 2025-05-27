@@ -427,4 +427,9 @@ export class GroupMessageService{
 
         return nextColor;
     }
+
+    // Cette méthode permet de réinitialiser la palette de couleur
+    clearUserColors() {
+        this.userColorMap.clear();
+    }
 }
