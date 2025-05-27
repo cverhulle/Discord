@@ -30,28 +30,24 @@ h1,h2{
 
 
 
+
+
+
 // Style pour la div private-message
-.private-message-container{
+.private-message-global-container{
     background-color: rgba(45, 184, 103, 0.3)
 }
 
-
-
-
 // Style pour la div de private-message-preview (photo et texte)
-.private-message-preview{
+.private-message-container{
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 6vh;
 }
 
-
-
-
-
 // Style pour transformer la taille de l'image au passage de la souris.
-.image-size:hover .private-message-picture {
+.image-private-message-container:hover .private-message-picture {
     transform: scale(1.15) translateX(-4vh);
 }
 
@@ -154,13 +150,13 @@ h1,h2{
     }
 
     // Modification de la disposition des éléments pour un écran plus petit.
-    .private-message-preview {
+    .private-message-container {
         flex-direction: column;
         gap: 3vh;
     }
 
     // Modification de l'effet d'agrandissement de l'image
-    .image-size:hover .private-message-picture {
+    .image-private-message-container:hover .private-message-picture {
         transform: scale(1.05);
     }
 }
