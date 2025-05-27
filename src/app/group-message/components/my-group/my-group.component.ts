@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { SharedModule } from '../../../shared/shared.module';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
+import { GroupMessageService } from '../../services/group-message-chat.service';
 
 @Component({
   selector: 'app-my-group',
@@ -22,7 +23,8 @@ export class MyGroupComponent implements OnInit {
   groups$!: Observable<GroupFormInfo[]>
 
   constructor(private searchAGroupService : SearchAGroupService,
-              private router: Router) {}
+              private router: Router,
+              private groupMessageService : GroupMessageService) {}
 
   ngOnInit(): void {
     this.groups$ = this.searchAGroupService.currentUserGroup$
@@ -31,6 +33,7 @@ export class MyGroupComponent implements OnInit {
 
   // Cette méthode permet d'afficher le chat après appui sur le bouton "Message"
   onChat(group : GroupFormInfo) {
+      this.groupMessageService.clearUserColors()
       this.router.navigate(['/group-message/chat'], { state: {
       groupName: group.groupName,
       groupLogoPath: group.groupLogoPath,
