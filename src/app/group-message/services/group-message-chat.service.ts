@@ -390,7 +390,13 @@ export class GroupMessageService{
         if(postsenderId === currentUserId) {
             return '#283e6e'
         } else {
-            return  '#5e3a8c'
+            return  '	#5e3a8c'
         }
     }
+
+    private userColorMap = new Map<string, string>();
+    private colorPalette = [
+        '#5e3a8c', '#2e5e4e', '#e0c177', '#5c4033', '#c48ba5', '#b2bec3', '#4d90d5', '#33c2a2', '#8475c4', '#b2bec3' 
+        // violet   vert foncé    jaune     marron    rose        gris     rouge     bleu ciel  vert pale  violet pale
+    ];
 }
