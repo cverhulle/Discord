@@ -114,7 +114,7 @@ h1,h2{
 
 
 // Style pour la zone de création de compte
-.create-account{
+.create-account-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -122,7 +122,12 @@ h1,h2{
     background-color:  rgba(230, 126, 34, 0.3);
 }
 
-// Styles pour le bouton de création de groupz
+// Style à appliquer sur les paragraphes de create-account-container
+.create-account-container p {
+    color: #e67e22;
+}
+
+// Styles pour le bouton de création de groupe
 .create-account-button[mat-flat-button]{
     background-color: #e67e22;
     color: white;
