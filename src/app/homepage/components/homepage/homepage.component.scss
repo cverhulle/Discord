@@ -5,8 +5,14 @@ h1,h2{
     justify-content: center;
 }
 
+
+
+
+
+
 // Style pour les "sous-titres" de la page
 .subtitle{
+
     // Texte en gras
     font-weight: bold; 
     font-size: 3vh; 
@@ -25,7 +31,7 @@ h1,h2{
 
 
 // Style pour la div private-message
-.private-message{
+.private-message-container{
     background-color: rgba(45, 184, 103, 0.3)
 }
 
