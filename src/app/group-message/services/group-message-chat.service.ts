@@ -385,21 +385,46 @@ export class GroupMessageService{
         this.resetModifiedPostStuff()
     }
 
-    // Méthode pour gérer la couleur des cartes de messages.
-    getPostCardColor(postsenderId: string, currentUserId: string) : string {
-        if(postsenderId === currentUserId) {
-            return '#283e6e'
-        } else {
-            return  '	#5e3a8c'
-        }
-    }
-
     // Map permet d'associer une clé à une valeur (un peu comme un objet)
     private userColorMap = new Map<string, string>();
+    
+    // On définit la couleur de l'utilisateur actuel
+    private currentUserColor = '#283e6e';
 
     // On crée notre palette de couleur
     private colorPalette = [
         '#5e3a8c', '#2e5e4e', '#e0c177', '#5c4033', '#c48ba5', '#b2bec3', '#4d90d5', '#33c2a2', '#8475c4', '#b2bec3' 
         // violet   vert foncé    jaune     marron    rose        gris     rouge     bleu ciel  vert pale  violet pale
     ];
+
+    // Cette méthode permet de gérer les couleurs des GroupPosts
+    getPostCardColor(postSenderId: string, currentUserId: string): string {
+
+        // L'utilisateur actuel a une couleur prédéfinie
+        if (postSenderId === currentUserId) {
+            return this.currentUserColor;
+        }
+
+        // Si l'utilisateur a déjà une couleur, on la retourne
+        if (this.userColorMap.has(postSenderId)) {
+            return this.userColorMap.get(postSenderId)!;
+        }
+
+        // Sinon, on liste les couleurs déjà utilisées
+        const usedColors = new Set(this.userColorMap.values());
+        usedColors.add(this.currentUserColor);
+
+        // On filtre les couleurs encore libres
+        const availableColors = this.colorPalette.filter(c => !usedColors.has(c));
+
+        // On prend la première dispo sinon on cycle dans la palette
+        const nextColor = availableColors.length > 0
+            ? availableColors[0]
+            : this.colorPalette[this.userColorMap.size % this.colorPalette.length];
+
+        // On assigne la couleur à l’utilisateur
+        this.userColorMap.set(postSenderId, nextColor);
+
+        return nextColor;
+    }
 }
