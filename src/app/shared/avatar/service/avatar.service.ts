@@ -16,14 +16,14 @@ export class AvatarService{
 
     // Cette méthode permet de faire émettre au Subject le dictionnaire.
     updateImageError(username: string, hasError: boolean): void {
-        const currentErrors = this.imageErrorsSubject.value;
+        const currentErrors = this.imageErrorsSubject.getValue();
         currentErrors[username] = hasError;
         this.imageErrorsSubject.next(currentErrors)
     }
 
     // Cette méthode permet de retourner l'image par défaut s'il y a une erreur dans l'image de profil de l'utilisateur.
     getProfileImage(userImage: string, username: string) : string {
-        const currentErrors = this.imageErrorsSubject.value;
+        const currentErrors = this.imageErrorsSubject.getValue();
         return currentErrors[username] ? this.defaultUrl : userImage;
     }
 }
