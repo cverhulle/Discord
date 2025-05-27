@@ -20,7 +20,10 @@ h1,h2{
     margin-left: 1%;
 }
 
-
+// Style à appliquer au sous-titre de private-message
+.private-message-subtitle{
+    color: #2ECC71;
+}
 
 
 
@@ -38,6 +41,12 @@ h1,h2{
     background-color: rgba(45, 184, 103, 0.3)
 }
 
+
+
+
+
+
+
 // Style pour la div de private-message-preview (photo et texte)
 .private-message-container{
     display: flex;
@@ -47,13 +56,13 @@ h1,h2{
 }
 
 // Style pour transformer la taille de l'image au passage de la souris.
-.image-private-message-container:hover .private-message-picture {
+.image-private-message-container:hover .image-private-message {
     transform: scale(1.15) translateX(-4vh);
 }
 
 
 // Style pour l'image de présentation d'un chat.
-.private-message-picture{
+.image-private-message{
     border-radius: 3vh; 
     border: 3px solid #2ECC71;
     width: auto;
@@ -145,7 +154,7 @@ h1,h2{
     }
 
     // Taille de l'image.
-    .private-message-picture{
+    .image-private-message{
         max-width: 70vh;
     }
 
@@ -156,7 +165,7 @@ h1,h2{
     }
 
     // Modification de l'effet d'agrandissement de l'image
-    .image-private-message-container:hover .private-message-picture {
+    .image-private-message-container:hover .image-private-message {
         transform: scale(1.05);
     }
 }
