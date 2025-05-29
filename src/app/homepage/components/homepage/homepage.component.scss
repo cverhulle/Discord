@@ -69,13 +69,13 @@ h1,h2{
 }
 
 //Style pour le texte sur la photo de private-message-preview
-.private-message-text{
+.content-container{
     color: #2ECC71;
     font-size: 4.5vh;
 }
 
 // Style à appliquer sur les paragraphes p dans le private-message-preview
-.private-message-text p {
+.content-container p {
     max-width: 20ch;
     word-wrap: break-word;
 }
@@ -111,7 +111,7 @@ h1,h2{
 // Style à appliquer dès que la taille de l'écran est plus petite que 990px.
 @media(max-width: 1200px) {
     // Taille du texte de private-message.
-    .private-message-text{
+    .content-container{
         font-size : 2.5vh;
     }
 
