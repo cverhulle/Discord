@@ -9,24 +9,12 @@
     position: relative;
 }
 
-
-
-
-
-
-
 // Style le titre "Discord" de la page
 .title {
     font-family: 'Orbitron', sans-serif;
     font-size: 2vw;
     color: #7289da;
 }
-
-
-
-
-
-
 
 // Style sur la div entourant les parties de l'application
 .nav-links {
@@ -35,12 +23,6 @@
     display: flex;
     gap: 3vh;
 }
-
-
-
-
-
-
 
 // Style pour l'affichage des noms des parties
 .nav-links li a, .logout-button {
@@ -59,10 +41,6 @@
     color: #ffd700; 
 }
 
-
-
-
-
 // Style à appliquer sur le bouton burger
 .burger{
     display: none;
@@ -71,10 +49,6 @@
     color: #7289da;
     cursor: pointer;
 }
-
-
-
-
 
 // On gère la taille de la police quand l'écran rétrécit
 @media (max-width: 1400px) {
@@ -88,7 +62,6 @@
       font-size: 2.5vw;
     }
 }
-
 
 // Quand l'écran est très petit, on affiche un menu burger
 @media (max-width: 750px) {
