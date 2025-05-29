@@ -22,8 +22,6 @@
                 </mat-form-field>
                 <mat-error class="required-fields" *ngIf="registerForm.get('groupName')?.hasError('required') && registerForm.get('groupName')?.touched"> Ce champ est requis </mat-error>
 
-
-
                 <!-- Description du groupe -->
                 <mat-card-subtitle class="subtitle-name"> Description du groupe </mat-card-subtitle>
                 <mat-form-field class="mat-form-field-text-area">
@@ -31,8 +29,6 @@
                     <textarea matInput placeholder="Entrez votre description..." formControlName="groupDescription"></textarea>
                 </mat-form-field>
                 <mat-error class="required-fields" *ngIf="registerForm.get('groupDescription')?.hasError('required') && registerForm.get('groupDescription')?.touched"> Ce champ est requis </mat-error>
-
-
 
                 <!-- Logo du groupe -->
                 <mat-card-subtitle class="subtitle-name"> Logo du groupe </mat-card-subtitle>
@@ -57,8 +53,6 @@
                 <mat-error *ngIf="registerForm.get('groupLogo')?.hasError('logoRequired') && registerForm.get('groupLogo')?.touched">
                     Le logo est requis.
                 </mat-error>
-
-
 
                 <!-- Type de groupe -->        
                 <mat-card-subtitle class="subtitle-name"> Type de groupe </mat-card-subtitle>
@@ -100,7 +94,6 @@
 
                     </mat-form-field>
 
-
                     <!-- Message d'erreur (champ requis) pour le champ de mot de passe -->
                     <mat-error *ngIf="groupPassword.hasError('required') && groupPassword.touched" class="margin-left">
                         Le mot de passe est requis pour un groupe restreint.
@@ -118,9 +111,6 @@
 
                 </div>
 
-
-
-
                 <!-- Langue du groupe -->
                 <section class="margin-bottom"> 
                     <mat-card-subtitle class="subtitle-name"> Langue du groupe </mat-card-subtitle>
@@ -129,9 +119,6 @@
                         Veuillez sélectionner au moins une langue.
                     </mat-error>
                 </section>
-
-
-
 
                 <!-- Catégories du groupe -->
                 <mat-card-subtitle class="subtitle-name margin-bottom" > Catégories du groupe </mat-card-subtitle>
@@ -153,14 +140,10 @@
 
         </div>
 
-
-
-
         <!-- Bouton d'envoi-->
         <mat-card-actions class="save-button-container">
             <button mat-flat-button type="submit" (click)="onSubmit()" [disabled]="registerForm.invalid" class="button-to-style save-button"> Enregistrer </button>
         </mat-card-actions>
-
 
     </mat-card>
 
