@@ -59,13 +59,13 @@ h1,h2{
 }
 
 // Style pour transformer la taille de l'image au passage de la souris.
-.image-private-group-message-container:hover .image-private-message {
+.image-private-group-message-container:hover .image-private-group-message {
     transform: scale(1.15) translateX(-4vh);
 }
 
 
 // Style pour l'image de présentation d'un chat.
-.image-private-message{
+.image-private-group-message{
     border-radius: 3vh; 
     border: 3px solid #2ECC71;
     width: auto;
@@ -180,7 +180,7 @@ h1,h2{
     }
 
     // Taille de l'image.
-    .image-private-message{
+    .image-private-group-message{
         max-width: 70vh;
     }
 
@@ -191,7 +191,7 @@ h1,h2{
     }
 
     // Modification de l'effet d'agrandissement de l'image
-    .image-private-group-message-container:hover .image-private-message {
+    .image-private-group-message-container:hover .image-private-group-message {
         transform: scale(1.05);
     }
 }
