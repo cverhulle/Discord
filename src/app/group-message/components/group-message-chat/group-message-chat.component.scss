@@ -5,10 +5,6 @@ html, body{
     padding: 0;
 }
 
-
-
-
-
 // Styles pour le titre de la page
 .title{
     color: #7289da;
@@ -41,9 +37,6 @@ html, body{
     scroll-behavior: smooth;
 }
 
-
-
-
 // Style à appliquer lorsque le message de chat vide apparaît
 .empty-chat{
     margin-top: 10%;
@@ -54,15 +47,6 @@ html, body{
     display: flex;
     justify-content: center; 
 }
-
-
-
-
-
-
-
-
-
 
 // Style pour placer le bouton permettant de charger plus de messages.
 .button-previous-post-container{
@@ -88,20 +72,12 @@ html, body{
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-
-
-
-
-
-
-
 // Style à appliquer au container de mat-card-post
 .mat-card-post-container{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
 
 // Style pour la mat-card de chaque post
 .mat-card-post{
@@ -122,7 +98,6 @@ html, body{
 }
 
 
-
 // Animation d'apparition des mat-cards
 @keyframes fadeInSlide {
     from {
@@ -134,23 +109,6 @@ html, body{
       transform: translateY(0);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Style pour le menu déroulant
 .avatar-username-menu{
@@ -175,15 +133,6 @@ html, body{
     object-fit: cover;
 }
 
-
-
-
-
-
-
-
-
-
 // Style pour gérer l'image dans le post
 .post-image-container{
     width: 100%;
@@ -201,16 +150,6 @@ html, body{
     object-fit: contain;
 }
 
-
-
-
-
-
-
-
-
-
-
 // Style à appliquer sur l'icone du menu burger
 .burger-icon{
     color: black;
@@ -222,30 +161,12 @@ html, body{
     transition: transform 0.2s ease-in-out;
 }
 
-
-
-
-
-
-
-
-
-
 // Style pour afficher la date du post.
 .timestamp{
     font-size: 0.7em;
     text-align: right;
     margin-right: 1%;
 }
-
-
-
-
-
-
-
-
-
 
 // Style à appliquer sur la div contenant la mat card de la prévisualisation d'image
 .mat-card-image-preview-container{
@@ -254,7 +175,6 @@ html, body{
     height: 12vh;
     width: 100%;    
 }
-
 
 // Style à appliquer sur la mat-card contenant la prévisualisation de l'image
 .mat-card-image-preview{
@@ -271,8 +191,6 @@ html, body{
     margin-right: 1vw;
 }
 
-
-
 // Style pour gérer l'image dans la prévisualition du post à envoyer
 .post-image-preview{
     max-width: 12vh;
@@ -281,23 +199,12 @@ html, body{
     height: auto;
 }
 
-
-
 // Style pour gérer la position du logo d'opacité
 .opacity-icon{
     position: absolute;
     right: 2vh;
     cursor: pointer;
 }
-
-
-
-
-
-
-
-
-
 
 // Style à appliquer lorsque l'utilisateur veut modifier un post.
 .modify-post-header{
@@ -333,17 +240,6 @@ html, body{
     width: 50%;
 }
 
-
-
-
-
-
-
-
-
-
-
-
 // Style à appliquer sur la div contenant la mat card d'envoi de message
 .send-message-container{
     position: fixed;
@@ -370,11 +266,6 @@ html, body{
 
 }
 
-
-
-
-
-
 // Style à appliquer sur l'icone des émojis
 .emoji-icon{
     cursor: pointer;
@@ -391,42 +282,15 @@ html, body{
     right: calc(6em); 
 }
 
-
-
-
-
 // Style à appliquer sur l'icone d'ajout ou de suppression d'image
 .image-icon{
     cursor: pointer;
 }
 
-
-
-
-
 // Style pour le bouton d'envoi d'un message
 .send-message-icon{
     cursor: pointer;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @media (max-width: 1000px) {
     // Style à appliquer sur le titre.
