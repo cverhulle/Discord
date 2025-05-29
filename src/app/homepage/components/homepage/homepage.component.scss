@@ -68,11 +68,21 @@ h1,h2{
     border: 3px solid #3498DB;
 }
 
-//Style pour le texte sur la photo de private-message-preview
+// Style pour les textes descriptifs des fonctionnalités
 .content-container{
-    color: #2ECC71;
     font-size: 4.5vh;
 }
+
+// Style sur le texte de private-message
+.content-container-private-message{
+    color: #2ECC71;
+}
+
+// Style sur le texte de group-message
+.content-container-group-message{
+    color: #3498DB;
+}
+
 
 // Style à appliquer sur les paragraphes p dans le private-message-preview
 .content-container p {
