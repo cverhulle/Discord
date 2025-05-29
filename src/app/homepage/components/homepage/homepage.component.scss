@@ -59,7 +59,7 @@ h1,h2{
 }
 
 // Style pour transformer la taille de l'image au passage de la souris.
-.image-private-message-container:hover .image-private-message {
+.image-private-group-message-container:hover .image-private-message {
     transform: scale(1.15) translateX(-4vh);
 }
 
@@ -191,7 +191,7 @@ h1,h2{
     }
 
     // Modification de l'effet d'agrandissement de l'image
-    .image-private-message-container:hover .image-private-message {
+    .image-private-group-message-container:hover .image-private-message {
         transform: scale(1.05);
     }
 }
