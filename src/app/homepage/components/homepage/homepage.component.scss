@@ -5,11 +5,6 @@ h1,h2{
     justify-content: center;
 }
 
-
-
-
-
-
 // Style pour les "sous-titres" de la page
 .subtitle{
 
@@ -30,25 +25,15 @@ h1,h2{
     color: #3498DB;
 }
 
-
-
-
-
-
-
-
-
-
 // Style pour la div private-message
 .private-message-global-container{
     background-color: rgba(45, 184, 103, 0.3)
 }
 
-
-
-
-
-
+// Style pour la div private-message
+.group-message-global-container{
+    background-color: rgba(66, 135, 245, 0.3)
+}
 
 // Style pour la div de private-message et group-message (photo et texte)
 .private-group-message-container{
@@ -63,7 +48,6 @@ h1,h2{
     transform: scale(1.15) translateX(-4vh);
 }
 
-
 // Style pour l'image de présentation d'un chat.
 .image{
     border-radius: 3vh; 
@@ -74,21 +58,15 @@ h1,h2{
     transition: transform 0.4s ease-in-out, box-shadow 0.4s ease;
 }
 
+// Style à appliquer sur l'image de private-message
 .image-private-message{
     border: 3px solid #2ECC71;
 }
 
+// Style à appliquer sur l'image de group-message
 .image-group-message{
     border: 3px solid #3498DB;
 }
-
-
-
-
-
-
-
-
 
 //Style pour le texte sur la photo de private-message-preview
 .private-message-text{
@@ -101,44 +79,6 @@ h1,h2{
     max-width: 20ch;
     word-wrap: break-word;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Style pour la div private-message
-.group-message-global-container{
-    background-color: rgba(66, 135, 245, 0.3)
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Style pour la zone de création de compte
 .create-account-container{
@@ -167,16 +107,6 @@ h1,h2{
 .create-account-button:hover {
     background-color: #d35400;
 }
-
-
-
-
-
-
-
-
-
-
 
 // Style à appliquer dès que la taille de l'écran est plus petite que 990px.
 @media(max-width: 1200px) {
