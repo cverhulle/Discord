@@ -10,3 +10,4 @@ Fonctionnalités à implémenter :
 2) Supprimer un groupe de discussion.
 3) Centrer les images de profil et des groupes.
 4) Charger les images de profil à l'aide d'une photo de l'utilisateur et non d'un URL.
+5) Suppression des images dans le dossier lorsuqe le post et/ou l'utilisateur est/sont supprimé(s).
