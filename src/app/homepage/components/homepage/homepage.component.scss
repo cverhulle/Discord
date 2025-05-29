@@ -50,8 +50,8 @@ h1,h2{
 
 
 
-// Style pour la div de private-message-preview (photo et texte)
-.private-message-container{
+// Style pour la div de private-message et group-message (photo et texte)
+.private-group-message-container{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -185,7 +185,7 @@ h1,h2{
     }
 
     // Modification de la disposition des éléments pour un écran plus petit.
-    .private-message-container {
+    .private-group-message-container {
         flex-direction: column;
         gap: 3vh;
     }
