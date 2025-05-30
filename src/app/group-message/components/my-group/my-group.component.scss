@@ -9,15 +9,6 @@
     justify-content: center; 
 }
 
-
-
-
-
-
-
-
-
-
 // Style à appliquer sur la div quand aucun groupe n'est trouvé
 .no-group{
     display: flex;
@@ -26,17 +17,6 @@
     font-size: 2.5vw;
     margin-top: 5vh;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 // Style à appliquer sur la mat-card de chaque groupe
 .group-mat-card{
@@ -81,20 +61,6 @@
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Style à appliquer sur la div contenant le logo, le nom et le type du groupe
 .logo-name-type-container{
     width: 100%;
@@ -103,7 +69,6 @@
     justify-content: space-between;
     align-items: center;
 }
-
 
 // Style à appliquer sur le logo du groupe
 .group-logo{
@@ -126,25 +91,6 @@
     font-size: 1.2vw;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Style à appliquer sur la div contenant la description du groupe
 .description-container{
     display: flex;
@@ -160,34 +106,12 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 // Style à appliquer à la div contenant le bouton et le panel
 .button-panel-container{
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
-
-
-
-
-
-
-
-
-
-
 
 // Style à appliquer au bouton pour rejoindre la discussion
 .button-chat{
@@ -199,19 +123,12 @@
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-
 // Effet au survol du bouton 
 .button-chat:hover {
     background-color: #5b6eae;
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
-
-
-
-
-
-
 
 // Couleur de fond du panel
 ::ng-deep mat-expansion-panel {
@@ -225,11 +142,6 @@
     color: white !important;
     font-size: 1vw; 
 }
-
-
-
-
-
 
 // Style à appliquer sur la div contenant le créateur
 .creator-container{
@@ -246,17 +158,12 @@
     object-fit: cover;
 }
 
-
-
-
-
 // Style à appliquer sur la liste des membres
 .members-list{
     display: flex;
     align-items: center;
     gap: 10px;
 }
-
 
 // Gestion lorsque la taille est sous les 1400px
 @media (max-width: 1400px) {
