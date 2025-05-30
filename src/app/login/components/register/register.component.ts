@@ -39,15 +39,15 @@ export class RegisterComponent implements OnInit{
         
   }
 
+  // Cette méthode permet d'initialiser l'Observable de loading.
   private initLoadingAndErrorsObservables(): void{
-    // Récupère dans le service l'observable loading
     this.loading$ = this.registerModifyService.loading$
   
   }
 
+  // Retourne un Observable permettant de vérifier si l'adresse email dans le formulaire envoyée existe déjà dans la BDD.
+  // Si oui, on arrête le chargement et, on passe errorFormEmail à true.
   private emailAlreadyExists(event: RegisterForm): Observable<boolean> {
-    // Retourne un Observable permettant de vérifier si l'adresse email dans le formulaire envoyée existe déjà dans la BDD.
-    // Si oui, on arrête le chargement et, on passe errorFormEmail à true.
     return this.registerFormService.emailExists(event).pipe(
       tap(exist => {
         if (exist) {
@@ -59,9 +59,9 @@ export class RegisterComponent implements OnInit{
     )
   }
 
+  // Retourne un Observable permettant de vérifier si l'username dans le formulaire envoyée existe déjà dans la BDD.
+  // Si oui, on arrête le chargement et, on passe errorFormUsername à true.
   private usernameAlreadyExists(event: RegisterForm): Observable<boolean> {
-    // Retourne un Observable permettant de vérifier si l'username dans le formulaire envoyée existe déjà dans la BDD.
-    // Si oui, on arrête le chargement et, on passe errorFormUsername à true.
     return this.registerFormService.usernameExists(event).pipe(
       tap(exist => {
         if (exist) {
@@ -73,8 +73,8 @@ export class RegisterComponent implements OnInit{
     )
   }
 
+  // Retourne un Observable permettant d'envoyer le formulaire.
   private sendForm(event: RegisterForm): Observable<boolean> {
-    // Retourne un Observable permettant d'envoyer le formulaire.
     return this.registerFormService.saveUserInfo(event).pipe(
       tap(saved => {
         this.registerModifyService.setLoading(false)
@@ -88,8 +88,8 @@ export class RegisterComponent implements OnInit{
     )
   }
 
+  // Cette méthode permet de créer l'utilisateur
   onCreateUser(event: RegisterForm) {
-
     forkJoin([
       // On regarde si l'email est déjà dans la base de données.
       this.emailAlreadyExists(event),
@@ -107,8 +107,7 @@ export class RegisterComponent implements OnInit{
         }
       }
 
-    )
-    
+    ) 
   }
 }
   
