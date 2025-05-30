@@ -19,8 +19,7 @@ export class PasswordDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<PasswordDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { groupName: string }
-  ) {}
+    @Inject(MAT_DIALOG_DATA) public data: { groupName: string }) {}
 
   // Méthode à appeler si l'utilisateur annule l'envoi du mot de passe
   onCancel(): void {
