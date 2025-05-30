@@ -29,30 +29,21 @@ export class RegisterComponent implements OnInit{
   //Variable pour le chargement
   loading$!: Observable<boolean>
 
-
-
   constructor(private registerFormService : RegisterFormService,
               private registerModifyService : RegisterModifyService,
               private router : Router,
               private displayService : DisplayService) {}
-
-
 
   ngOnInit() {
     this.initLoadingAndErrorsObservables()
         
   }
 
-
   private initLoadingAndErrorsObservables(): void{
     // Récupère dans le service l'observable loading
     this.loading$ = this.registerModifyService.loading$
   
   }
-
-  
-
-
 
   private emailAlreadyExists(event: RegisterForm): Observable<boolean> {
     // Retourne un Observable permettant de vérifier si l'adresse email dans le formulaire envoyée existe déjà dans la BDD.
@@ -68,7 +59,6 @@ export class RegisterComponent implements OnInit{
     )
   }
 
-
   private usernameAlreadyExists(event: RegisterForm): Observable<boolean> {
     // Retourne un Observable permettant de vérifier si l'username dans le formulaire envoyée existe déjà dans la BDD.
     // Si oui, on arrête le chargement et, on passe errorFormUsername à true.
@@ -82,9 +72,6 @@ export class RegisterComponent implements OnInit{
       })
     )
   }
-
-
-
 
   private sendForm(event: RegisterForm): Observable<boolean> {
     // Retourne un Observable permettant d'envoyer le formulaire.
@@ -100,7 +87,6 @@ export class RegisterComponent implements OnInit{
       })
     )
   }
-
 
   onCreateUser(event: RegisterForm) {
 
@@ -124,9 +110,6 @@ export class RegisterComponent implements OnInit{
     )
     
   }
-
-
-
 }
   
 
