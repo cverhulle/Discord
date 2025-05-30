@@ -9,11 +9,6 @@
     margin-bottom: 2vh;
 }
 
-
-
-
-
-
 // Style à appliquer sur la mat-card de recherche
 .search-mat-card{
 
@@ -43,28 +38,11 @@
     box-shadow: 0 0 20px rgba(255, 193, 227, 0.4);
 }
 
-
-
-
-
-
-
-
 // Style à appliquer sur la mat-card qui contient les options de recherhce
 .search-container{
     display: flex;
     flex-direction: column;
 }
-
-
-
-
-
-
-
-
-
-
 
 // Style à appliquer sur les divisions des options de recherche pour afficher le nom à côté des possibilités
 .display-search-item{
@@ -72,15 +50,6 @@
     grid-template-columns: 20vw 40vw; 
     align-items: center;
 }
-
-
-
-
-
-
-
-
-
 
 // Style à appliquer sur le sous-titre
 .subtitle{
@@ -90,19 +59,6 @@
     color: #7289da;
     font-size: 1.4vw;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Style à appliquer sur les données à remplir
 .search-entry-container{
@@ -120,13 +76,6 @@
     background-color: rgba(255,255,255,0.1);
     border-radius: 1vw;
 }
-
-
-
-
-
-
-
 
 // Style à appliquer sur le container du bouton d'envoi
 .save-button-container{
@@ -161,17 +110,11 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-
-
-
-
-
 // Style à appliquer sur le spinner
 .spinner-container{
     display: flex;
     justify-content: center;
 }
-
 
 // Style à appliquer lorsque la taille de l'écran est inférieure ou égale à 1400px
 @media (max-width: 1400px) {
