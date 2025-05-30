@@ -13,9 +13,6 @@
     margin-top: 1vh;
 }
 
-
-
-
 // Style pour le container de la page
 .login-container {
     display: flex;
@@ -25,22 +22,11 @@
     height: calc(100vh - 15vh)
 }
 
-
-
-
-
-
-
-
-
-
-
 // Style pour la div appliquée sur le login form.
 .login-form-div{
     width: 100%;
     max-width: 80vh;
 }
-
 
 // Style pour l'apparence de la mat-card
 .login-form{
@@ -54,24 +40,12 @@
  
 }
 
-
-
 // Style pour l'image de login
 .login-picture{
     max-width: 50vh;
     max-height: 50vh;
     margin-left: 10vh;
 }
-
-
-
-
-
-
-
-
-
-
 
 // Style lorsque le bouton est désactivé
 button[mat-flat-button][disabled] {
@@ -107,16 +81,6 @@ button[mat-flat-button]:hover {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-
-
-
-
-
-
-
-
-
-
 // Style à appliquer pour les écrans plus petits
 @media (max-width: 1300px) {
     // On modifie l'affichage des éléments (affichage en colonne et plus en ligne)
@@ -135,8 +99,4 @@ button[mat-flat-button]:hover {
     .login-form{
         width: 50vh
     }
-
-
-
-
 }

@@ -41,8 +41,6 @@ export class LoginHomepageComponent implements OnInit {
               private router : Router,
               private displayService : DisplayService) {}
 
-
-
   ngOnInit() {
     this.initForm()
   }
@@ -54,7 +52,6 @@ export class LoginHomepageComponent implements OnInit {
       password: [null, Validators.required]
     })
   }
-
 
   // Cette méthode permet d'envoyer le formulaire au back-end.
   private sendForm(data: any) {
@@ -72,10 +69,8 @@ export class LoginHomepageComponent implements OnInit {
         
   }  
 
-
   // Métohde à appeler à l'appui du bouton "Connexion"
   onSubmitForm() {
-
     // On lance le chargement
     this.loading = true;
 
@@ -88,8 +83,6 @@ export class LoginHomepageComponent implements OnInit {
       },
       error: (err) => {this.loading = false, 
                       this.displayService.displayMessage('Erreur lors de la connexion')}
-  })
-    
+    })
   }
-
 }
