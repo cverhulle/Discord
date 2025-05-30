@@ -20,13 +20,11 @@ export class AuthGuard implements CanActivate{
 
         // Si je suis connecté (autrement dit, j'ai un token et il n'a pas expiré)...
         if (this.tokenService.isLogged()) {
-
             // La route n'est pas bloquée
             return true
         
         // Sinon...
         } else {
-
             // Je suis redirigé vers la page de connexion et les autres routes sont bloquées
             this.router.navigateByUrl('/login');
             return false
