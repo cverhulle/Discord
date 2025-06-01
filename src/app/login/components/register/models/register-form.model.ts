@@ -1,3 +1,4 @@
+// Ce modèle permet de stocker les données du formulaire d'inscription (ou de modification) de compte.
 export class RegisterForm {
   personalInfo!: {
     firstName: string,
