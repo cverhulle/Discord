@@ -4,10 +4,9 @@ import { environment } from "../../../../../environments/environment.development
 import { HttpClient } from "@angular/common/http";
 import { RegisterForm } from "../models/register-form.model";
 
-
-
 @Injectable()
 
+// Service du component register
 export class RegisterFormService {
     constructor(private http: HttpClient) {}
 
@@ -16,7 +15,6 @@ export class RegisterFormService {
         return this.http.post(`${environment.apiUrl}/users/register/email`, formValue).pipe(
             map( () => false),
             catchError(() => of(true))
-            
         );
     }
 
