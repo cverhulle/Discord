@@ -8,7 +8,6 @@ import { AsyncPipe, NgFor } from '@angular/common';
 import { Router } from '@angular/router';
 import { AvatarService } from '../../../shared/avatar/service/avatar.service';
 
-
 @Component({
   selector: 'app-private-message-homepage',
   imports: [
@@ -20,7 +19,6 @@ import { AvatarService } from '../../../shared/avatar/service/avatar.service';
   templateUrl: './private-message-homepage.component.html',
   styleUrl: './private-message-homepage.component.scss'
 })
-
 
 export class PrivateMessageHomepageComponent implements OnInit, OnDestroy{
   // Contient la requete de l'utilisateur
@@ -34,7 +32,6 @@ export class PrivateMessageHomepageComponent implements OnInit, OnDestroy{
 
   // Variable pour gérer le désabonnement au Subject de recherche
   subscriptionSearchSubject!: Subscription;
-
 
   constructor(private privateMessage : PrivateMessageService,
               private router: Router,
@@ -90,5 +87,4 @@ export class PrivateMessageHomepageComponent implements OnInit, OnDestroy{
       this.privateMessage.resetAllSubjects();
     }
   }
-
 }
