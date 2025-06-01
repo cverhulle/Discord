@@ -84,12 +84,7 @@ export class PrivateMessageChatComponent implements OnInit{
               private userService : UserService,
               private displayService : DisplayService,
               private emojisService : EmojisService,
-              private imageService : ImageService) {}
-                
-               
-                
-              
-
+              private imageService : ImageService) {}              
 
   ngOnInit(): void {
     this.postService.setValueOfLoading(true)
@@ -198,7 +193,6 @@ export class PrivateMessageChatComponent implements OnInit{
     this.postService.updatePost(editedPost, this.messageContent, this.imageService.getValueOfImageToSend(), this.imageService.getValueOfDeleteImageInModifiedPost()).subscribe()
       
   }
-  
 
   // Méthode au clic sur le bouton envoi.
   onSendMessage(): void{
@@ -230,13 +224,10 @@ export class PrivateMessageChatComponent implements OnInit{
             this.messageContent = result.updatedMessageContent;
             this.postService.setValueOfLoading(false)
             this.scrollToBottom();
-        });
-       
-        
+        });     
     } else {
       this.displayService.displayMessage('Le message ne peut pas être vide et doit contenir moins de 500 caractères.')
     }
-    
   }
 
   // Méthode pour charger plus de messages à l'appui du bouton.
@@ -263,8 +254,6 @@ export class PrivateMessageChatComponent implements OnInit{
     this.imageService.setValueOfOpacity()
   }
 
-
-
   // Méthode pour ouvrir la roue d'émoticones
   onOpenEmojisList() : void{
     this.emojisService.openEmojisList()
@@ -285,9 +274,6 @@ export class PrivateMessageChatComponent implements OnInit{
   onRemoveImage(): void {
     this.postService.removeImageInPost()
   }
-
-
-
 
   // Scroll de l'écran après l'envoi d'un nouveau message.
   private scrollToBottom(): void {
@@ -310,5 +296,4 @@ export class PrivateMessageChatComponent implements OnInit{
   getPostCardColor(postCurrentUserId: string) : string {
     return this.postService.getPostCardColor(postCurrentUserId, this.userService.getCurrentUserId())
   }
-
 }
