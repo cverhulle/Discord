@@ -9,14 +9,6 @@
     margin-bottom: 2vh;
 }
 
-
-
-
-
-
-
-
-
 // Style à appliquer sur la question (sous-titre)
 .subtitle{
     color: #7289da;
@@ -24,15 +16,6 @@
     margin-bottom: 2vh;
     font-size: 1.5vw;
 }
-
-
-
-
-
-
-
-
-
 
 // Style à appliquer sur la barre de recherche
 .searchQuery{
@@ -43,19 +26,6 @@
     background-color: rgba(255,255,255,0.1);
     border-radius: 1vw;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Style à appliquer sur les mat card des utilisateurs
 .mat-card-users{
@@ -101,21 +71,6 @@
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Style à appliquer sur les avatars des photos
 .avatar{
     width: 7vh;
@@ -144,15 +99,12 @@
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-
 // Effet au survol du bouton 
 .button:hover {
     background-color: #5b6eae;
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
-
-
 
 // Affichage lorsque l'écran est plus petit
 @media (max-width: 1000px) {
@@ -185,4 +137,6 @@
     .button{
         font-size: 2.5vw;
     }
+
+    
 }
