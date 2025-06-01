@@ -4,9 +4,7 @@ import { SharedModule } from '../../../shared/shared.module';
 import { Router, RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { LoginFormService } from './service/login-form.service';
-import { catchError, map, of, tap } from 'rxjs';
 import { TokenService } from '../../../interceptors/services/auth.service';
-import { DateAdapter } from '@angular/material/core';
 import { DisplayService } from '../../../shared/display/service/display.service';
 
 @Component({
@@ -22,12 +20,10 @@ import { DisplayService } from '../../../shared/display/service/display.service'
   styleUrl: './login-homepage.component.scss'
 })
 
-
 export class LoginHomepageComponent implements OnInit {
 
   //Variables pour le chargement
   loading = false;
-
 
   //Variables pour le formulaire  
   loginForm! : FormGroup
