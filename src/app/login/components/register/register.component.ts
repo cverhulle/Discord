@@ -9,7 +9,6 @@ import { RegisterModifyService } from '../../../shared/register-modify/services/
 import { Router } from '@angular/router';
 import { DisplayService } from '../../../shared/display/service/display.service';
 
-
 @Component({
   selector: 'app-register',
   imports: [
@@ -110,9 +109,3 @@ export class RegisterComponent implements OnInit{
     ) 
   }
 }
-  
-
-
-
-  
-
