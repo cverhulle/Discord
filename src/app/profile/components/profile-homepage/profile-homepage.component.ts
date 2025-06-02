@@ -8,7 +8,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDeleteAccountComponent } from '../confirm-delete-account/confirm-delete-account.component';
 import { DisplayService } from '../../../shared/display/service/display.service';
 
-
 @Component({
   selector: 'app-profile-homepage',
   imports: [
@@ -28,12 +27,10 @@ export class ProfileHomepageComponent implements OnInit{
   email!: string;
   imageUrl!: string;
 
-
   constructor(private profilService : ProfileService,
               private router : Router,
               private dialog: MatDialog,
               private displayService : DisplayService) {}
-
 
   ngOnInit(): void {
 
@@ -82,5 +79,4 @@ export class ProfileHomepageComponent implements OnInit{
     ).subscribe()
     
   }
-  
 }
