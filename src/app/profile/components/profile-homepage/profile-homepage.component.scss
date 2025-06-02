@@ -31,15 +31,6 @@
     color: #ffc1e3 ;
 }
 
-
-
-
-
-
-
-
-
-
 // Style sur la div encapsulant la mat-card principale
 .profile-container-wrapper{
     margin-top: 2vh;
@@ -48,20 +39,6 @@
     align-items: center;
     height: 70vh;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Style sur la mat-card permettant d'afficher les éléments en deux parties : gauche et droite
 .profile-container{
@@ -100,14 +77,6 @@
     box-shadow: 0 0 20px rgba(255, 193, 227, 0.4);
 }
 
-
-
-
-
-
-
-
-
 // Style à appliquer sur l'username
 .username-style{
     font-size: 3vw ;
@@ -122,20 +91,6 @@
 .attribute-color{
     color: 	#ffc1e3;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Style sur la div de gauche contenat l'image et l'username
 .profile-card-left{
@@ -185,14 +140,6 @@
     box-shadow: 0 0 10px rgba(255, 193, 227, 0.4);
 }
 
-
-
-
-
-
-
-
-
 // Style à appliquer sur la div contenant les éléments de la partie droite.
 .profile-card-right{
     width: 100%;
@@ -203,9 +150,6 @@
     justify-content: center;
     align-items: center;
 }
-
-
-
 
 // On applique l'animation sur les champs de texte
 .profile-card-right h2:hover,
@@ -231,12 +175,6 @@
         text-shadow: 0 0 5px rgba(255, 193, 227, 0.6);
     }
 }
-
-
-
-
-
-
 
 @media (max-width: 1000px) {
 
