@@ -35,14 +35,13 @@ export class ModifyPasswordComponent implements OnInit{
     this.initLoading()
   }
 
+  // Cette méthode permet d'initialiser le loading$
   private initLoading() {
-    // Récupère dans le service l'observable loading
     this.loading$ = this.registerModifyService.loading$
   }
 
   // Cette méthode est utilisée pour envoyer le nouveau mot de passe au back-end.
   private sendForm(event: RegisterForm) {
-
     return this.profileService.modifyPassword(event).pipe(      
       tap( saved => {
         this.registerModifyService.setLoading(false)
