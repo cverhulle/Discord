@@ -7,7 +7,6 @@ import { DisplayService } from "../../display/service/display.service";
 import { ImageService } from "../../image/services/image.services";
 import { EmojisService } from "../../emojis/services/emojis.service";
 
-
 @Injectable() 
 
 export class PostService{
@@ -346,6 +345,5 @@ export class PostService{
             this.imageService.setImageToSend(null)
         }
     }
-
 }
 

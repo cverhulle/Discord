@@ -88,5 +88,4 @@ export class UserService{
     getOtherUserImage(): string  {
         return this.otherUserSubject.getValue().image
     }
-
 }
