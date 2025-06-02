@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 import { ProfileService } from '../../service/profile.service';
 import { DisplayService } from '../../../shared/display/service/display.service';
 
-
 @Component({
   selector: 'app-modify-password',
   imports: [
@@ -27,14 +26,10 @@ export class ModifyPasswordComponent implements OnInit{
   //Variable pour le chargement
   loading$!: Observable<boolean>
 
-
-
   constructor(private registerModifyService : RegisterModifyService,
               private profileService : ProfileService,
               private router : Router,
               private displayService : DisplayService) {}
-
-
 
   ngOnInit(): void {
     this.initLoading()
@@ -57,18 +52,13 @@ export class ModifyPasswordComponent implements OnInit{
         } else {
           this.displayService.displayMessage("Erreur lors de l'enregistrement du mot de passe.")
         }
-        
-        
       }
     )
     ).subscribe()
-
   }
 
   // Méthode à déclencher lors de l'appui sur le bouton "Modifier".
   onModifyPassword(event : RegisterForm) {
     this.sendForm(event)
   }
-
-
 }
