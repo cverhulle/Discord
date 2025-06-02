@@ -50,8 +50,6 @@ export class ImageService {
         return this.deleteImageInModifiedPostSubject.getValue()
     }
 
-
-
     // Subject et Observable pour gérer l'affichage de l'image à envoyer dans la prévisualition.
     private imageToSendUrlSubject = new BehaviorSubject<string | null>(null)
     imageToSendUrl$ = this.imageToSendUrlSubject.asObservable()
@@ -107,8 +105,6 @@ export class ImageService {
         this.opacityPreviewSubject.next(1)
     }
 
-
-
     // Cette méthode permet de sauvegarder l'image, en argument, dans le backend.
     private uploadImage(image: File): void {
 
@@ -141,6 +137,4 @@ export class ImageService {
             console.error('La requête a échoué'); 
         };
     }
-
-
 }

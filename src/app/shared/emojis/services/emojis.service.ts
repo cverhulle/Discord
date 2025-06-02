@@ -35,7 +35,4 @@ export class EmojisService{
     resetEmojisDisplay(): void{
         this.showEmojisListSubject.next(false)
     }
-
-
-
 }
