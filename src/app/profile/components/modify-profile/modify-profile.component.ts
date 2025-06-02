@@ -8,8 +8,6 @@ import { RegisterModifyService } from '../../../shared/register-modify/services/
 import { RegisterModifyFormComponent } from '../../../shared/register-modify/components/register-modify-form/register-modify-form.component';
 import { DisplayService } from '../../../shared/display/service/display.service';
 
-
-
 @Component({
   selector: 'app-modify-profile',
   imports: [
@@ -41,16 +39,10 @@ export class ModifyProfileComponent implements OnInit{
   //Variable pour le chargement
   loading$!: Observable<boolean>
 
-
-
-
   constructor( private profileService: ProfileService,
                private router: Router,
                private registerModifyService : RegisterModifyService,
                private displayService : DisplayService) {}
-
-
-
 
   ngOnInit(): void {
     this.initLoadingAndErrorsObservables()
@@ -59,7 +51,6 @@ export class ModifyProfileComponent implements OnInit{
 
         this.createInitForm()
       }
-
     )
   }
 
@@ -67,7 +58,6 @@ export class ModifyProfileComponent implements OnInit{
   private initLoadingAndErrorsObservables() : void {
     this.loading$ = this.registerModifyService.loading$
   }
-
 
   // On récupère les données du profil de l'utilisateur.
   private getProfileInfos() : Observable<any> {
@@ -84,7 +74,6 @@ export class ModifyProfileComponent implements OnInit{
       })
     )
   }
-
 
   // On configure initForm qui contient les données de l'utilisateur dans le format du modèle de données.
   private createInitForm() : void {
@@ -104,7 +93,6 @@ export class ModifyProfileComponent implements OnInit{
       image: this.imageUrl
     }
   }
-
 
   // Retourne un Observable permettant de vérifier si l'adresse email dans le formulaire envoyée existe déjà dans la BDD (en dehors de l'utilisateur actuel).
   // Si oui, on arrête le chargement et, on passe errorFormEmail à true.
