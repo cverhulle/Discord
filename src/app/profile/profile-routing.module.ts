@@ -9,8 +9,6 @@ import { ModifyPasswordComponent } from "./components/modify-password/modify-pas
 import { DisplayService } from "../shared/display/service/display.service";
 import { PasswordService } from "../shared/password/service/password.service";
 
-
-
 const routes: Routes = [
     { path: '', component: ProfileHomepageComponent, canActivate : [AuthGuard]},
     { path: 'modify', component: ModifyProfileComponent, canActivate : [AuthGuard]},
