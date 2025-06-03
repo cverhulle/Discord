@@ -36,15 +36,6 @@ mat-card mat-card {
     border: none;
 }
 
-
-
-
-
-
-
-
-
-
 // Style à appliquer sur la mat-card globale
 .global-container{
     margin: auto;
@@ -55,10 +46,6 @@ mat-card mat-card {
     box-shadow: 0 2vh 3vh rgba(0, 0, 0, 0.2);
 
 }
-
-
-
-
 
 // Style pour gérer la mise en colonne des champs d'un côté et l'image de l'autre
 .card-content {
@@ -80,24 +67,6 @@ mat-card mat-card {
     align-items: center;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Style pour les div contenant plusieurs champs
 .form-row{
     display: flex;
@@ -108,28 +77,6 @@ mat-card mat-card {
 .form-row-margin{
     margin-right: 1%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Style pour les messages d'erreurs.
 .error-text{
@@ -143,9 +90,6 @@ mat-card mat-card {
     margin-bottom: 2vh;
 }
 
-
-
-
 // Affichage de la preview de l'image
 .image-preview {
     max-width: 100%;
@@ -157,20 +101,6 @@ mat-card mat-card {
     border: 1px solid #ddd; 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Style pour gérer l'image
 .picture {
     width: 100%;
@@ -181,48 +111,12 @@ mat-card mat-card {
     z-index: 1;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Style sur la mat-card-actions contenant le bouton pour le centrer.
 .button-container{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Style lorsque le bouton est désactivé
 button[mat-flat-button][disabled] {
     background-color: rgba(114, 137, 218, 0.3) !important;
@@ -250,15 +144,6 @@ button[mat-flat-button]:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
-
-
-
-
-
-
-
-
-
 
 // Style pour les petits écrans
 @media (max-width: 1000px) {
