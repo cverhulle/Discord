@@ -19,15 +19,17 @@ export class RegisterModifyService{
     private errorUsernameSuject = new BehaviorSubject<boolean>(false)
     errorUsername$ = this.errorUsernameSuject.asObservable()
 
-
+    // Cette méthode permet de modifier la valeur du subject de loading
     setLoading(loading: boolean) {
         this.loadingSuject.next(loading)
     }
 
+    // Cette méthode permet de modifier la valeur du subject de l'erreur d'email
     setErrorEmail(errorEmail: boolean) {
         this.errorEmailSuject.next(errorEmail)
     }
 
+    // Cette méthode permet de modifier la valeur du subject de l'erreur d'username
     setErrorUsername(errorUsername: boolean) {
         this.errorUsernameSuject.next(errorUsername)
     }
