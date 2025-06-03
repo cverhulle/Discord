@@ -73,12 +73,6 @@ export class RegisterModifyFormComponent implements OnInit{
   // Observable pour masquer ou afficher les mots de passe
   hidePassword$! : Observable<boolean>
   
-
-
-  
-  
-
-
   constructor(private formBuilder : FormBuilder,
               private passwordService : PasswordService,
               private registerModifyService : RegisterModifyService) 
@@ -109,8 +103,7 @@ export class RegisterModifyFormComponent implements OnInit{
       image: ''
     }
   }
-
-  
+ 
   ngOnInit() {
     this.initFormControls();
     this.initRegisterForm();
@@ -121,9 +114,6 @@ export class RegisterModifyFormComponent implements OnInit{
     
         
   }
-
-  
-
 
   private initFormControls(): void {
 
@@ -164,8 +154,6 @@ export class RegisterModifyFormComponent implements OnInit{
     
   }
 
-
-
   private initRegisterForm(): void {
     // Initialisation du formulaire d'inscription complet.
     this.registerForm = this.formBuilder.group({
@@ -175,8 +163,6 @@ export class RegisterModifyFormComponent implements OnInit{
       image: this.image
     })
   }
-
-
 
   private initObservables(): void {
     // Observable pour afficher un message d'erreur si l'email et la confirmation de l'email ne sont pas identiques.
@@ -205,8 +191,6 @@ export class RegisterModifyFormComponent implements OnInit{
     // On initialise l'Observable pour gérer l'affichage du mot de passe
     this.hidePassword$ = this.passwordService.hidePassword$
   }
-
-
 
   private initPasswordFields(disablePasswordFields: boolean) : void {
 
@@ -237,9 +221,6 @@ export class RegisterModifyFormComponent implements OnInit{
 
   }
 
-
-
-
   private initLoadingAndErrorsObservables(): void{
     // Initialisation du loading
     this.loading$ = this.registerModifyService.loading$
@@ -253,7 +234,6 @@ export class RegisterModifyFormComponent implements OnInit{
     this.errorFormUsername$ = this.registerModifyService.errorUsername$
   }
 
-
   getFormControlErrorText( ctrl: AbstractControl) : string {
     // Affiche un message d'erreur en fonction de la validation du champ (pour les Validtors)
     if (ctrl.hasError('required')) {
@@ -266,9 +246,6 @@ export class RegisterModifyFormComponent implements OnInit{
       return 'Ce champ contient une erreur'
     }
   }
-
-  
-
 
   // Lorsqu'on clique sur "Username" le message d'erreur disparaît.
   onHideUsernameErrorMessage(): void {
@@ -293,15 +270,10 @@ export class RegisterModifyFormComponent implements OnInit{
     this.registerModifyService.setLoading(true)
   }
 
-
   onSubmitForm(){
     this.initSubmitForm()
     this.fillForm.emit(this.registerForm.value)
   }
-
-
-  
-
 
 }
 
