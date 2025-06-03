@@ -270,6 +270,7 @@ export class RegisterModifyFormComponent implements OnInit{
     this.registerModifyService.setLoading(true)
   }
 
+  // Cette méthode permet d'envoyer le formulaire et d'émettre au composant parent.
   onSubmitForm(){
     this.initSubmitForm()
     this.fillForm.emit(this.registerForm.value)
