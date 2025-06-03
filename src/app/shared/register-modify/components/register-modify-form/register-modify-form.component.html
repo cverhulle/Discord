@@ -25,7 +25,6 @@
 
             </mat-card>
 
-
             <!-- Email -->
             <mat-card [formGroup]="emailForm">
                 <mat-card-subtitle> Email </mat-card-subtitle>
@@ -55,9 +54,6 @@
                 <small *ngIf="showEmailError$ | async" class="error-text"> Les emails ne correspondent pas </small>
 
             </mat-card>
-
-
-
 
             <!-- Username et mot de passe -->
             <mat-card [formGroup]="loginForm">
@@ -106,9 +102,6 @@
                     <small *ngIf="showPasswordError$ | async" class="error-text"> Les mots de passe ne correspondent pas </small> 
             </mat-card>
 
-
-
-
             <!-- Image de profil -->
             <mat-card>
 
@@ -121,16 +114,11 @@
                     </mat-form-field>
             </mat-card>
 
-
             <!-- On affiche l'image de profil sur l'écran de création de compte -->
             <div *ngIf="showImage$ | async" > 
                 <img [(src)]="image.value" alt="image de profil" class="image-preview">
             </div>
 
-
-            
-
-            
             <!-- Bouton d'envoi-->
             <mat-card-actions *ngIf="loadingInverse$ |async" class="button-container">
                 <button mat-flat-button (click)="onSubmitForm()" [disabled]="registerForm.invalid"> Enregistrer </button>
@@ -143,12 +131,6 @@
             <img src="assets/register-picture.jpg" alt="Image création de compte" class="picture">
         </div>
     </div>
-
-
-
-
-
-
 
 </mat-card>
 
