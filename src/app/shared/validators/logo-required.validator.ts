@@ -12,7 +12,5 @@ export function LogoRequiredValidator() : ValidatorFn{
         } else {
             return null
         }
-
-
     }
 }

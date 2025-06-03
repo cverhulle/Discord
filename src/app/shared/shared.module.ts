@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material.module';
 import { PickerComponent } from '@ctrl/ngx-emoji-mart'
 
-
-
 @NgModule({
   declarations: [],
   imports: [
@@ -17,4 +15,5 @@ import { PickerComponent } from '@ctrl/ngx-emoji-mart'
     PickerComponent
   ]
 })
+
 export class SharedModule { }
